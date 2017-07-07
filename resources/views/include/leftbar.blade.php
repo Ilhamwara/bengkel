@@ -16,11 +16,11 @@
                 @endif
             </a>
         </li>
-        <li class="nav-item @if(Request::is('dropping') || Request::is('tarik-dropping') || Request::is('tambah-dropping') || Request::is('pengembalian-dropping')) active open @endif">
+        <li class="nav-item @if(Request::is('pelanggan') || Request::is('tambah-pelanggan') || Request::is('edit-pelanggan')) active open @endif">
             <a href="javascript:;" class="nav-link nav-toggle">
                 <i class="fa fa-truck"></i>
-                <span class="title">Dropping</span>
-                @if(Request::is('dropping') || Request::is('tambah-dropping') || Request::is('tarik-dropping') || Request::is('pengembalian-dropping'))
+                <span class="title">Data Pelanggan</span>
+                @if(Request::is('pelanggan') || Request::is('tambah-pelanggan') || Request::is('edit-pelanggan'))
                     <span class="arrow open"></span>
                     <span class="selected"></span>
                 @else
@@ -28,7 +28,7 @@
                 @endif
             </a>
             <ul class="sub-menu">
-                <li class="nav-item @if(Request::is('dropping')) active open @endif">
+                <li class="nav-item @if(Request::is('pelanggan')) active open @endif">
                     <a href="{{url('dropping')}}" class="nav-link ">
                         <span class="title">Informasi Dropping</span>
                         @if(Request::is('dropping'))
@@ -52,50 +52,6 @@
                     <a href="{{url('pengembalian-dropping')}}" class="nav-link ">
                         <span class="title">Pengembalian Dropping</span>
                         @if(Request::is('pengembalian-dropping'))
-                            <span class="selected"></span>
-                        @else
-                            <span class="arrow"></span>
-                        @endif
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="nav-item @if(Request::is('transaksi') || Request::is('input-transaksi') || Request::is('verifikasi-transaksi') || Request::is('confirm-transaksi')) active open @endif">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-money"></i>
-                <span class="title">Transaksi</span>
-                @if(Request::is('transaksi') || Request::is('input-transaksi') || Request::is('verifikasi-transaksi') || Request::is('confirm-transaksi'))
-                    <span class="arrow open"></span>
-                    <span class="selected"></span>
-                @else
-                    <span class="arrow"></span>
-                @endif
-            </a>
-            <ul class="sub-menu">
-                <li class="nav-item @if(Request::is('transaksi')) active open @endif">
-                    <a href="{{url('transaksi')}}" class="nav-link ">
-                        <span class="title">Informasi Transaksi</span>
-                        @if(Request::is('transaksi'))
-                            <span class="selected"></span>
-                        @else
-                            <span class="arrow"></span>
-                        @endif
-                    </a>
-                </li>
-                <li class="nav-item @if(Request::is('input-transaksi')) active open @endif">
-                    <a href="{{url('input-transaksi')}}" class="nav-link ">
-                        <span class="title">Input Transaksi</span>
-                        @if(Request::is('input-transaksi'))
-                            <span class="selected"></span>
-                        @else
-                            <span class="arrow"></span>
-                        @endif
-                    </a>
-                </li>
-                <li class="nav-item @if(Request::is('verifikasi-transaksi')) active open @endif">
-                    <a href="{{url('verifikasi-transaksi')}}" class="nav-link ">
-                        <span class="title">Verifikasi Transaksi</span>
-                        @if(Request::is('verifikasi-transaksi'))
                             <span class="selected"></span>
                         @else
                             <span class="arrow"></span>

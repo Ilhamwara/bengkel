@@ -16,7 +16,7 @@ class Session
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth::check() OR Auth::user()->type !== 'admin') {
+        if (!Auth::check()) {
             return redirect('/');
         }
 

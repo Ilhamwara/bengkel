@@ -34,7 +34,7 @@
                 <!-- BEGIN LOGO -->
                 <div class="page-logo">
                     <a href="{{url('home')}}">
-                        <img src="{{asset('recources/pages/img/login/Logo_Asabri.png')}}" alt="logo" class="logo-default" width="35"> </a>
+                        {{-- <img src="{{asset('recources/pages/img/login/Logo_Asabri.png')}}" alt="logo" class="logo-default" width="35"> </a> --}}
                     <div class="menu-toggler sidebar-toggler"> </div>
                 </div>
                 <!-- END LOGO -->

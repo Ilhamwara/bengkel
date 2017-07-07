@@ -26,19 +26,4 @@ Route::group(['middleware' => ['session']], function () {
 
     //Dashboard
     Route::get('home', 'DashboardController@home');
-
-    //Dropping
-    Route::get('dropping', 'DroppingController@index');
-    Route::get('tarik-dropping', 'DroppingController@tarik');
-    Route::get('tambah-dropping', 'DroppingController@tambah');
-    Route::get('pengembalian-dropping', 'DroppingController@pengembalian');
-
-    //Transaksi
-    Route::get('transaksi', 'TransaksiController@index');
-    Route::get('input-transaksi', 'TransaksiController@input');
-    Route::get('confirm-transaksi', 'TransaksiController@confirm');
-    Route::get('verifikasi-transaksi', 'TransaksiController@verifikasi');
-
-    //Management
-    Route::get('management', 'ManagementController@management');
 });
