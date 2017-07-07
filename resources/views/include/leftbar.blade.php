@@ -16,10 +16,10 @@
                 @endif
             </a>
         </li>
-        <li class="nav-item @if(Request::is('pelanggan') || Request::is('tambah-pelanggan') || Request::is('edit-pelanggan')) active open @endif">
+        <li class="nav-item @if(Request::is('pelanggan') || Request::is('pelanggan/tambah-pelanggan')) active open @endif">
             <a href="javascript:;" class="nav-link nav-toggle">
                 <i class="fa fa-truck"></i>
-                <span class="title">Data Pelanggan</span>
+                <span class="title">Pelanggan</span>
                 @if(Request::is('pelanggan') || Request::is('tambah-pelanggan') || Request::is('edit-pelanggan'))
                     <span class="arrow open"></span>
                     <span class="selected"></span>
@@ -28,30 +28,105 @@
                 @endif
             </a>
             <ul class="sub-menu">
-                <li class="nav-item @if(Request::is('pelanggan')) active open @endif">
-                    <a href="{{url('dropping')}}" class="nav-link ">
-                        <span class="title">Informasi Dropping</span>
-                        @if(Request::is('dropping'))
+
+            <li class="nav-item @if(Request::is('pelanggan')) active open @endif">
+                    <a href="{{url('pelanggan')}}" class="nav-link ">
+                        <span class="title">Data Pelanggan</span>
+                        @if(Request::is('pelanggan'))
                             <span class="selected"></span>
                         @else
                             <span class="arrow"></span>
                         @endif
                     </a>
                 </li>
-                <li class="nav-item @if(Request::is('tambah-dropping')) active open @endif">
-                    <a href="{{url('tambah-dropping')}}" class="nav-link ">
-                        <span class="title">Tambah Dropping</span>
-                        @if(Request::is('tambah-dropping'))
+
+                <li class="nav-item @if(Request::is('pelanggan/tambah-pelanggan')) active open @endif">
+                    <a href="{{url('pelanggan/tambah-pelanggan')}}" class="nav-link ">
+                        <span class="title">Tambah Pelanggan</span>
+                        @if(Request::is('pelanggan/tambah-pelanggan'))
                             <span class="selected"></span>
                         @else
                             <span class="arrow"></span>
                         @endif
                     </a>
                 </li>
-                <li class="nav-item @if(Request::is('pengembalian-dropping')) active open @endif">
-                    <a href="{{url('pengembalian-dropping')}}" class="nav-link ">
-                        <span class="title">Pengembalian Dropping</span>
-                        @if(Request::is('pengembalian-dropping'))
+            </ul>
+        </li>
+        <li class="nav-item @if(Request::is('jasa') || Request::is('sparepart')) active open @endif">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-truck"></i>
+                <span class="title">Referensi</span>
+                @if(Request::is('jasa') || Request::is('sparepart')) 
+                    <span class="arrow open"></span>
+                    <span class="selected"></span>
+                @else
+                    <span class="arrow"></span>
+                @endif
+            </a>
+            <ul class="sub-menu">
+
+            <li class="nav-item @if(Request::is('jasa')) active open @endif">
+                    <a href="{{url('jasa')}}" class="nav-link ">
+                        <span class="title">Jasa</span>
+                        @if(Request::is('jasa'))
+                            <span class="selected"></span>
+                        @else
+                            <span class="arrow"></span>
+                        @endif
+                    </a>
+                </li>
+
+                <li class="nav-item @if(Request::is('sparepart')) active open @endif">
+                    <a href="{{url('sparepart')}}" class="nav-link ">
+                        <span class="title">Sparepart</span>
+                        @if(Request::is('sparepart'))
+                            <span class="selected"></span>
+                        @else
+                            <span class="arrow"></span>
+                        @endif
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item @if(Request::is('buat-order') || Request::is('work-data') || Request::is('history')) active open @endif">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-truck"></i>
+                <span class="title">Work Order</span>
+                @if(Request::is('buat-order') || Request::is('work-data') || Request::is('history')) 
+                    <span class="arrow open"></span>
+                    <span class="selected"></span>
+                @else
+                    <span class="arrow"></span>
+                @endif
+            </a>
+            <ul class="sub-menu">
+
+            <li class="nav-item @if(Request::is('buat-order')) active open @endif">
+                    <a href="{{url('buat-order')}}" class="nav-link ">
+                        <span class="title">Buat Order Work</span>
+                        @if(Request::is('buat-order'))
+                            <span class="selected"></span>
+                        @else
+                            <span class="arrow"></span>
+                        @endif
+                    </a>
+                </li>
+
+            <li class="nav-item @if(Request::is('work-data')) active open @endif">
+                    <a href="{{url('work-data')}}" class="nav-link ">
+                        <span class="title">Data Work Order</span>
+                        @if(Request::is('work-data'))
+                            <span class="selected"></span>
+                        @else
+                            <span class="arrow"></span>
+                        @endif
+                    </a>
+                </li>
+
+                <li class="nav-item @if(Request::is('history')) active open @endif">
+                    <a href="{{url('history')}}" class="nav-link ">
+                        <span class="title">History WO</span>
+                        @if(Request::is('history'))
                             <span class="selected"></span>
                         @else
                             <span class="arrow"></span>
