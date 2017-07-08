@@ -58,3 +58,12 @@ Route::post('post-order', 'WorkordersController@post_order');
 Route::get('Work-order/{id}/edit', 'WorkordersController@edit_order');
 Route::post('Work-order/{id}/editpost', 'WorkordersController@editpost_order');
 Route::get('Work-order/{id}/hapus', 'WorkordersController@hapus_order');
+Route::get('history', 'WorkordersController@history');
+
+//INSPECTION
+Route::get('vehicle-inspection', 'WorkordersController@buat_inspection');
+Route::post('post-inspection', 'WorkordersController@post_inspection');
+
+//ESTIMASI BIAYA
+Route::get('estimasi-biaya', 'WorkordersController@buat_estimasi');
+Route::post('post-estimasi', 'WorkordersController@post_estimasi');

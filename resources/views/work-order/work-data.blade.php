@@ -1,33 +1,37 @@
-@extends('layouts.app')
-
-@section('css_styles')
-<link href="{{asset('css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
+@extends('layouts.master')
+@section('css')
+<link href="{{asset('recources/global/plugins/datatables/datatables.min.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('recources/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css')}}" rel="stylesheet" type="text/css" />     
 <style>
-	div.dataTables_wrapper div.dataTables_paginate{cursor: pointer;}
-	.paginate_button{
-		padding: 0 5px;
+	.action li{
+		display: inline-block;
+		list-style-type: none;
 	}
-	.dt-button{
-		padding: 5px 15px;
-		border-radius: 5px;
-		float: left;
-		background: #3097D1;
-		color: #fff;
-	}
-</style>
+</style>  
 @endsection
 @section('content')
-
-<div class="panel panel-default ">
-	<div class="panel-heading"><h3>Work Data</h3></div>
-	<div class="panel-body">
-		<a href="{{url('work-data/buat-order')}}" class="btn btn-success" style="padding: 6px 12px; margin-bottom: 20px;"><i class="fa fa-plus"></i>Buat Work Order</a>
-		<a href="{{url('vehicle-inspection/buat-vehicle-inspection')}}" class="btn btn-success" style="padding: 6px 12px; margin-bottom: 20px;"><i class="fa fa-plus"></i>Buat Vehicle Inspection</a>
-		<a href="{{url('estimasi-biaya/buat-estimasi-biaya')}}" class="btn btn-success" style="padding: 6px 12px; margin-bottom: 20px;"><i class="fa fa-plus"></i>Buat Estimasi Biaya</a>
-		<div class="table-responsive">
-			<table id="jasa" class="table table-striped table-bordered " cellspacing="0" width="100%">
-				<thead>
-					<tr><th class="text-center">No</th>
+<div class="page-content">
+	<div class="page-bar">
+		<ul class="page-breadcrumb">
+			<li>
+				<a href="{{url('home')}}">Home</a><i class="fa fa-circle"></i>
+			</li>
+			<li>
+				<span>Data Work Order</span>
+			</li>
+		</ul>
+	</div>
+	<!-- END PAGE BAR -->
+	<!-- BEGIN PAGE TITLE-->
+	<h3 class="page-title"><b>Data Work Order</b></h3>
+	<br>
+	<div class="row">
+		<div class="col-md-12">
+		<div class="portlet light bordered">
+				<div class="portlet-body">
+					<table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
+						<thead>
+							<tr><th class="text-center">No</th>
 						<th class="text-center">No WO</th>
 						<th class="text-center">Customer</th>
 						<th class="text-center">Work Order</th>
@@ -41,12 +45,12 @@
 					<?php $i++ ?>
 					<tr>
 						<td>{{$i}}</td>
-						<td class="names">{{$order->no}}</td>
-						<td class="text-center">{{$order->nama}}</td>
-						<td class="names">{{$order->work}}</td>
-						<td class="text-center">{{$order->vehicle}}</td>
-						<td class="names">{{$order->nota}}</td>
-						<td class="text-center">{{$order->estimasi}}</td>
+						<td class="text-center">{{$order->no_wo}}</td>
+						<td class="text-center">{{$order->nama_pelanggan}}</td>
+						<td class="text-center"><a href="{{url('#')}}">Tampilkan</a></td>
+						<td class="text-center"><a href="{{url('#')}}">Tampilkan</a></td>
+						<td class="text-center"><a href="{{url('#')}}">Tampilkan</a></td>
+						<td class="text-center"><a href="{{url('#')}}">Tampilkan</a></td>
 						
 					</tr>
 					@empty
@@ -58,6 +62,7 @@
 	</div>
 
 </div>
+</div>
 
 @endsection
 @section('javascript')
@@ -65,17 +70,7 @@
 	$(document).ready(function(){
 		$('[data-toggle="tooltip"]').tooltip(); 
 	});
-
-	$(document).ready(function() {
-		$('#pelanggan').DataTable();
-	} );
 </script>
-
-
-
-<script src="{{asset('js/jquery-1.12.4.js')}}"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
 
 @endsection
 

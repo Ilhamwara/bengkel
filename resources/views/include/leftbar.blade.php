@@ -52,43 +52,7 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-item @if(Request::is('jasa') || Request::is('sparepart')) active open @endif">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="fa fa-truck"></i>
-                <span class="title">Referensi</span>
-                @if(Request::is('jasa') || Request::is('sparepart')) 
-                    <span class="arrow open"></span>
-                    <span class="selected"></span>
-                @else
-                    <span class="arrow"></span>
-                @endif
-            </a>
-            <ul class="sub-menu">
-
-            <li class="nav-item @if(Request::is('jasa')) active open @endif">
-                    <a href="{{url('jasa')}}" class="nav-link ">
-                        <span class="title">Jasa</span>
-                        @if(Request::is('jasa'))
-                            <span class="selected"></span>
-                        @else
-                            <span class="arrow"></span>
-                        @endif
-                    </a>
-                </li>
-
-                <li class="nav-item @if(Request::is('sparepart')) active open @endif">
-                    <a href="{{url('sparepart')}}" class="nav-link ">
-                        <span class="title">Sparepart</span>
-                        @if(Request::is('sparepart'))
-                            <span class="selected"></span>
-                        @else
-                            <span class="arrow"></span>
-                        @endif
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="nav-item @if(Request::is('buat-order') || Request::is('work-data') || Request::is('history')) active open @endif">
+                <li class="nav-item @if(Request::is('buat-order') || Request::is('work-data') || Request::is('history')) active open @endif">
             <a href="javascript:;" class="nav-link nav-toggle">
                 <i class="fa fa-truck"></i>
                 <span class="title">Work Order</span>
@@ -134,6 +98,80 @@
                     </a>
                 </li>
             </ul>
+        </li>
+         <li class="nav-item @if(Request::is('vehicle-inspection')) active open @endif">
+            <a href="{{url('vehicle-inspection')}}" class="nav-link nav-toggle">
+                <i class="fa fa-group"></i>
+                <span class="title">Vehicle Inspection</span>
+                @if(Request::is('vehicle-inspection'))
+                    <span class="selected"></span>
+                @endif
+            </a>
+        </li>
+          <li class="nav-item @if(Request::is('estimasi-biaya')) active open @endif">
+            <a href="{{url('estimasi-biaya')}}" class="nav-link nav-toggle">
+                <i class="fa fa-group"></i>
+                <span class="title">Estimasi Biaya</span>
+                @if(Request::is('estimasi-biaya'))
+                    <span class="selected"></span>
+                @endif
+            </a>
+        </li>
+
+        <li class="nav-item @if(Request::is('jasa') || Request::is('sparepart')) active open @endif">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-truck"></i>
+                <span class="title">Referensi</span>
+                @if(Request::is('jasa') || Request::is('sparepart')) 
+                    <span class="arrow open"></span>
+                    <span class="selected"></span>
+                @else
+                    <span class="arrow"></span>
+                @endif
+            </a>
+            <ul class="sub-menu">
+
+            <li class="nav-item @if(Request::is('jasa')) active open @endif">
+                    <a href="{{url('jasa')}}" class="nav-link ">
+                        <span class="title">Jasa</span>
+                        @if(Request::is('jasa'))
+                            <span class="selected"></span>
+                        @else
+                            <span class="arrow"></span>
+                        @endif
+                    </a>
+                </li>
+
+                <li class="nav-item @if(Request::is('sparepart')) active open @endif">
+                    <a href="{{url('sparepart')}}" class="nav-link ">
+                        <span class="title">Sparepart</span>
+                        @if(Request::is('sparepart'))
+                            <span class="selected"></span>
+                        @else
+                            <span class="arrow"></span>
+                        @endif
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="nav-item @if(Request::is('purchase-order')) active open @endif">
+            <a href="{{url('purchase-order')}}" class="nav-link nav-toggle">
+                <i class="fa fa-group"></i>
+                <span class="title">Purchase Order</span>
+                @if(Request::is('purchase-order'))
+                    <span class="selected"></span>
+                @endif
+            </a>
+        </li>
+          <li class="nav-item @if(Request::is('laporan-po')) active open @endif">
+            <a href="{{url('laporan-po')}}" class="nav-link nav-toggle">
+                <i class="fa fa-group"></i>
+                <span class="title">Laporan PO</span>
+                @if(Request::is('laporan-po'))
+                    <span class="selected"></span>
+                @endif
+            </a>
         </li>
         <li class="nav-item @if(Request::is('management')) active open @endif">
             <a href="{{url('management')}}" class="nav-link nav-toggle">

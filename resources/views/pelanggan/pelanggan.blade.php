@@ -1,7 +1,13 @@
 @extends('layouts.master')
 @section('css')
 <link href="{{asset('recources/global/plugins/datatables/datatables.min.css')}}" rel="stylesheet" type="text/css" />
-<link href="{{asset('recources/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css')}}" rel="stylesheet" type="text/css" />       
+<link href="{{asset('recources/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css')}}" rel="stylesheet" type="text/css" /> 
+<style>
+	.action li{
+		display: inline-block;
+		list-style-type: none;
+	}
+</style>        
 @endsection
 @section('content')
 <div class="page-content">
@@ -53,7 +59,7 @@
 								<td class="text-center">{{$pelanggan->tipe}}</td>
 								<td class="text-center">{{$pelanggan->noka_nosin}}</td>
 								<td class="text-center">{{$pelanggan->warna}}</td>
-								<td class="buttons">
+								<td class="text-center">
 									<ul class="action">
 										<li><a href="{{url('edit/pelanggan/'.$pelanggan->id)}}" class="btn btn-warning"  data-toggle="tooltip" title="Edit" style="padding: 6px 12px;"><i class="fa fa-pencil"></i></a></li>
 										<li><a href="{{url('hapus/pelanggan/'.$pelanggan->id)}}" class="btn btn-danger"  data-toggle="tooltip" title="Hapus" style="padding: 6px 12px;"><i class="fa fa-trash-o"></i></a></li>
