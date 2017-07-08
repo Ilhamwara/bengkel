@@ -21,7 +21,7 @@
     <div class="row">
         <form action="{{url('post-inspection')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
             {{ csrf_field() }}
-            <div class="col-sm-10 col-sm-offset-1" style="border: 1px solid #ddd; padding:20px 0;margin-bottom: 10px;">
+            <div class="col-sm-11 col-sm-offset-1" style="margin-bottom: 10px;">
                 <div class="col-sm-6">
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Pilih WO</label>

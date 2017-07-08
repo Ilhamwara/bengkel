@@ -61,28 +61,37 @@ class WorkordersController extends Controller
 		return redirect()->back()->with('success','Berhasil tambah');
 	}
 
-	public function edit_order($id)
+	public function show_order($id)
 	{
-		$jasa = Workorder::where('jasa.id', $id)
+		$order = Workorder::where('work_order.id', $id)
+		->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
-		return view ('referensi.edit-jasa' , compact('jasa')); 
+		return view ('work-order.show-order' , compact('order')); 
 	}
 
+	// public function edit_order($id)
+	// {
+	// 	$jasa = Workorder::where('jasa.id', $id)
+	// 	->first();
+	// 	return view ('referensi.edit-jasa' , compact('jasa')); 
+	// }
 
-	public function editpost_order(Request $request, $id)
-	{
 
-		$jasa = Workorder::where('jasa.id', $id)->first();
-		$jasa->update($request->all());
-		return redirect()->back()->with('success','Berhasil tambah');
-	}
+	// public function editpost_order(Request $request, $id)
+	// {
 
-	public function hapus_order($id)
-	{
-		$jasa = Workorder::where('jasa.id', $id)->first();
-		$jasa->delete();
-		return redirect('/jasa');
-	}
+	// 	$jasa = Workorder::where('jasa.id', $id)->first();
+	// 	$jasa->update($request->all());
+	// 	return redirect()->back()->with('success','Berhasil tambah');
+	// }
+
+	// public function hapus_order($id)
+	// {
+	// 	$jasa = Workorder::where('jasa.id', $id)->first();
+	// 	$jasa->delete();
+	// 	return redirect('/jasa');
+	// }
 
 	public function history (){
 		$orders = Workorder::all();

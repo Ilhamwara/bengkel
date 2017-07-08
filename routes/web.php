@@ -55,6 +55,7 @@ Route::get('sparepart/{id}/hapus', 'ReferensisController@hapus_sparepart');
 Route::get('work-data', 'WorkordersController@index');
 Route::get('buat-order', 'WorkordersController@buat_order');
 Route::post('post-order', 'WorkordersController@post_order');
+Route::get('work-order/{id}', 'WorkordersController@show_order');
 Route::get('Work-order/{id}/edit', 'WorkordersController@edit_order');
 Route::post('Work-order/{id}/editpost', 'WorkordersController@editpost_order');
 Route::get('Work-order/{id}/hapus', 'WorkordersController@hapus_order');
