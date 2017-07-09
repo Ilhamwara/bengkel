@@ -127,7 +127,7 @@
                   <tbody>
                     <tr>
                       <td>1</td>
-                      <td class="text-center"><input type="text" class="form-control" name="keluhan[]"></td>
+                      <td class="text-center"><input type="text" class="form-control" name="keluhan"></td>
                       <td class="text-center"><button class="btn btn-info" id="add"><i class="fa fa-plus"></i></button></td>
                   </tr>
               </tbody>
@@ -184,7 +184,7 @@
   var cnt = 2;
 
 $("#add").click(function() {
-  $("table").append("<tr><td>"+cnt+"</td><td class='text-center'><input type='text' class='form-control' name='keluhan[]'></td><td class='text-center'><button class='btn btn-danger' id='delete'><i class='fa fa-trash'></i></button></td></tr>" );
+  $("table").append("<tr><td>"+cnt+"</td><td class='text-center'><input type='text' class='form-control' name='keluhan'></td><td class='text-center'><button class='btn btn-danger' id='delete'><i class='fa fa-trash'></i></button></td></tr>" );
   cnt++;
 });
 
