@@ -19,12 +19,14 @@
   <h3 class="page-title"><b>Buat Estimasi Biaya</b></h3>
   <br>
   <div class="row">
+
     <form action="{{url('post-estimasi')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
       {{ csrf_field() }}
+        <div class="col-sm-10 col-sm-offset-1">
       <div class="col-sm-6">
         <div class="form-group">
-          <label class="col-sm-2 control-label">Pilih WO</label>
-          <div class="col-sm-6">
+          <label class="col-sm-3 control-label">Pilih WO</label>
+          <div class="col-sm-8">
            <select name="order_id" class="form-control" id ="select2">
              <option value=""></option>
              @foreach($workorder as $data)
@@ -35,34 +37,34 @@
        </div>
 
        <div class="form-group">
-        <label class="col-sm-2 control-label">Nama</label>
-        <div class="col-sm-6">
+        <label class="col-sm-3 control-label">Nama</label>
+        <div class="col-sm-8">
           <input type="text" class="form-control" min="0" name="nama" id="data_nama" disabled> 
         </div>
       </div>
 
       <div class="form-group">
-        <label class="col-sm-2 control-label">Alamat</label>
-        <div class="col-sm-6">
+        <label class="col-sm-3 control-label">Alamat</label>
+        <div class="col-sm-8">
           <input type="text" class="form-control" name="alamat" id="data_alamat" disabled> 
         </div>
       </div>
       <div class="form-group">
-        <label class="col-sm-2 control-label">No. Pol</label>
-        <div class="col-sm-6">
+        <label class="col-sm-3 control-label">No. Pol</label>
+        <div class="col-sm-8">
           <input type="text" class="form-control" name="no_pol" id="data_nopol" disabled>
         </div>
       </div>
       <div class="form-group">
-        <label class="col-sm-2 control-label">Telepon</label>
-        <div class="col-sm-6">
+        <label class="col-sm-3 control-label">Telepon</label>
+        <div class="col-sm-8">
           <input type="text" class="form-control" name="telepon" id="data_telepon" disabled>
         </div>
       </div>
 
       <div class="form-group">
-        <label class="col-sm-2 control-label">Tanggal</label>
-        <div class="col-sm-6">
+        <label class="col-sm-3 control-label">Tanggal</label>
+        <div class="col-sm-8">
           <input type="text" class="form-control" name="tanggal" id="data_tanggal" disabled>
         </div>
       </div>
@@ -72,41 +74,42 @@
     <div class="col-sm-6">
 
       <div class="form-group">
-        <label class="col-sm-2 control-label">Type</label>
-        <div class="col-sm-6">
+        <label class="col-sm-3 control-label">Type</label>
+        <div class="col-sm-8">
           <input type="text" class="form-control" name="tipe" id="data_tipe" disabled>
         </div>
       </div>
       <div class="form-group">
-        <label class="col-sm-2 control-label">Noka/ Nosin</label>
-        <div class="col-sm-6">
+        <label class="col-sm-3 control-label">Noka/ Nosin</label>
+        <div class="col-sm-8">
           <input type="text" class="form-control" name="noka_nosin" id="data_nokanosin" disabled>
         </div>
       </div>
       <div class="form-group">
-        <label class="col-sm-2 control-label">Warna</label>
-        <div class="col-sm-6">
+        <label class="col-sm-3 control-label">Warna</label>
+        <div class="col-sm-8">
           <input type="text" class="form-control" name="warna" id="data_warna" disabled>
         </div>
       </div>
 
 
       <div class="form-group">
-        <label class="col-sm-2 control-label">Km Datang</label>
-        <div class="col-sm-6">
+        <label class="col-sm-3 control-label">Km Datang</label>
+        <div class="col-sm-8">
           <input type="text" class="form-control" name="km_datang" id="data_km" disabled>
         </div>
       </div>
       <div class="form-group">
-        <label class="col-sm-2 control-label">Fuel Datang</label>
-        <div class="col-sm-6">
+        <label class="col-sm-3 control-label">Fuel Datang</label>
+        <div class="col-sm-8">
           <input type="text" class="form-control" name="fuel_datang" id="data_fuel" disabled>
         </div>
       </div>
     </div>
+    </div>
 
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-sm-10 col-sm-offset-1">
         <h4>Form Sparepart</h4>
         <div class="portlet light bordered">
          <div class="portlet-body">
@@ -145,7 +148,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-sm-10 col-sm-offset-1">
      <h4>Form Jasa</h4>
      <div class="portlet light bordered">
 
@@ -161,24 +164,35 @@
             </tr>
           </thead>
           <?php $i = 0 ?>
-            <tbody>
-              @forelse($estimasi as $jasa)
-              <?php $i++ ?>
-              <tr>
-                <td class="text-center">{{$i}}</td>
-                <td class="text-center">{{$jasa->nama_jasa}}</td>
-                <td class="text-center">{{$jasa->fr}}</td>
-                <td class="text-center">{{$jasa->harga_perfr}}</td>
-                <td class="text-center">{{$jasa->total_harga_jasa}}</td>
-              </tr>
-              @empty
-              Data Kosong
-              @endforelse
-        </table>
-        <a href="{{url('estimasi-biaya/pilih-jasa')}}">Tambah</a>
+          <tbody>
+            @forelse($estimasi as $jasa)
+            <?php $i++ ?>
+            <tr>
+              <td class="text-center">{{$i}}</td>
+              <td class="text-center">{{$jasa->nama_jasa}}</td>
+              <td class="text-center">{{$jasa->fr}}</td>
+              <td class="text-center">{{$jasa->harga_perfr}}</td>
+              <td class="text-center">{{$jasa->total_harga_jasa}}</td>
+            </tr>
+            @empty
+            Data Kosong
+            @endforelse
+          </table>
+          <a href="{{url('estimasi-biaya/pilih-jasa')}}">Tambah</a>
+        </div>
       </div>
     </div>
   </div>
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+    <h4>Keterangan</h4>
+    <div class="portlet light bordered">
+
+     <div class="portlet-body">
+      <textarea class="form-control" name="keterangan"></textarea>
+    </div>
+  </div>
+</div>
 </div>
 
 <input type="hidden" value="{{ 'csrf_token' }}" name="token">
