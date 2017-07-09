@@ -2,6 +2,11 @@
 @section('css')
 <link href="{{asset('recources/global/plugins/datatables/datatables.min.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('recources/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css')}}" rel="stylesheet" type="text/css" />       
+<style>
+    input{
+
+    }
+</style>
 @endsection
 @section('content')
 <div class="page-content">
@@ -34,43 +39,49 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label text-left">Nama</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="nid" name="nama" value="{{$order->nama_pelanggan}}" >
+                        <input type="text" class="form-control" id="nid" name="nama" value="{{$order->nama_pelanggan}}" disabled >
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label text-left">Alamat</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="jabatan" name="Alamat" value="{{$order->alamat}}">
+                        <input type="text" class="form-control" id="jabatan" name="Alamat" value="{{$order->alamat}}" disabled>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label text-left">Nopol</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="no_pol" name="grade" value="{{$order->no_pol}}">
+                        <input type="text" class="form-control" id="no_pol" name="grade" value="{{$order->no_pol}}" disabled>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label text-left">Telepon</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="telepon" name="telepon" value="{{$order->telepon}}">
+                        <input type="text" class="form-control" id="telepon" name="telepon" value="{{$order->telepon}}" disabled>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label text-left">Tipe</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="tipe" name="tipe" value="{{$order->tipe}}">
+                        <input type="text" class="form-control" id="tipe" name="tipe" value="{{$order->tipe}}" disabled>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label text-left">Noka/ Nosin</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="noka_nosin" name="noka_nosin" value="{{$order->noka_nosin}}">
+                        <input type="text" class="form-control" id="noka_nosin" name="noka_nosin" value="{{$order->noka_nosin}}" disabled>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label text-left">Warna</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="noka_nosin" name="warna" value="{{$order->warna}}">
+                        <input type="text" class="form-control" id="noka_nosin" name="warna" value="{{$order->warna}}" disabled>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label text-left">Keluhan</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="keluhan" value="{{$order->keluhan}}" disabled>
                     </div>
                 </div>
                 <div class="form-group">

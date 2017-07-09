@@ -11,45 +11,45 @@
                 <a href="{{url('home')}}">Home</a><i class="fa fa-circle"></i>
             </li>
             <li>
-                <span>Buat Purchase Order</span>
+                <span>Edit Purchase Order</span>
             </li>
         </ul>
     </div>
 
-    <h3 class="page-title"><b>Buat Purchase Order</b></h3>
+    <h3 class="page-title"><b>Edit Purchase Order</b></h3>
     <br>
     <div class="row">
         <div class="col-md-12">
-            <form action="{{url('post-purchase-order')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+            <form action="{{url('editpost/purchase-order/'. $purchase->id)}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                 {{ csrf_field() }}
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Supplier</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="supplier" required> 
+                        <input type="text" class="form-control" name="supplier" value="{{$purchase->supplier}}"> 
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Alamat</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="alamat" required> 
+                        <input type="text" class="form-control" name="alamat" value="{{$purchase->alamat}}"> 
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">No. PO</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="no_po" required>
+                        <input type="text" class="form-control" name="no_po" value="{{$purchase->no_po}}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Tanggal</label>
                     <div class="col-sm-6">
-                        <input type="date" class="form-control" name="tanggal" required>
+                        <input type="date" class="form-control" name="tanggal" value="{{$purchase->tanggal}}">
                     </div>
                 </div>
 
-                <div class="form-group">
+                 <div class="form-group">
                     <label class="col-sm-2 control-label">Status</label>
                     <div class="col-sm-6">
                     <select name="status" class="form-control" id ="select2">
@@ -58,6 +58,7 @@
                        </select>
                    </div>
                </div>
+
                <input type="hidden" value="{{ 'csrf_token' }}" name="token">
                <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">

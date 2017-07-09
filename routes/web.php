@@ -42,14 +42,14 @@ Route::get('jasa/tambah-jasa', 'ReferensisController@tambah_jasa');
 Route::post('post-jasa', 'ReferensisController@post_jasa');
 Route::get('jasa/{id}/edit', 'ReferensisController@edit_jasa');
 Route::post('jasa/{id}/editpost', 'ReferensisController@editpost_jasa');
-Route::get('jasa/{id}/hapus', 'ReferensisController@hapus_jasa');
+Route::get('hapus/jasa/{id}', 'ReferensisController@hapus_jasa');
 
 Route::get('sparepart', 'ReferensisController@index_sparepart');
 Route::get('sparepart/tambah-sparepart', 'ReferensisController@tambah_sparepart');
 Route::post('post-sparepart', 'ReferensisController@post_sparepart');
 Route::get('sparepart/{id}/edit', 'ReferensisController@edit_sparepart');
 Route::post('sparepart/{id}/editpost', 'ReferensisController@editpost_sparepart');
-Route::get('sparepart/{id}/hapus', 'ReferensisController@hapus_sparepart');
+Route::get('hapus/sparepart/{id}', 'ReferensisController@hapus_sparepart');
 
 //WORKORDER
 Route::get('work-data', 'WorkordersController@index');
@@ -76,4 +76,12 @@ Route::post('post-pilih-jasa', 'EstimasisController@post_pilih_jasa');
 //PURCHASE ORDER
 Route::get('purchase-order', 'PurchasesController@index');
 Route::get('buat-purchase-order', 'PurchasesController@buat_purchase_order');
-Route::post('post-purchase-order', 'PurchasesController@post_po');
+Route::post('post-purchase-order', 'PurchasesController@post_purchase_order');
+Route::get('purchase-order/{id}/edit', 'PurchasesController@edit_purchase_order');
+Route::get('detail-purchase-order/{id}', 'PurchasesController@detail_purchase_order');
+Route::get('hapus/purchase-order/{id}', 'PurchasesController@hapus_purchase_order');
+Route::post('editpost/purchase-order/{id}', 'PurchasesController@editpost_purchase_order');
+
+//LAPORAN
+Route::get('laporan', 'LaporansController@index');
+

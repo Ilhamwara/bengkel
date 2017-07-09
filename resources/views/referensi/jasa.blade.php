@@ -50,7 +50,7 @@
 								<td class="text-center">{{$jasa->harga_perfr}}</td>
 								<td class="text-center">
 									<ul class="action">
-										<li><a href="{{url('edit/jasa/'.$jasa->id)}}" class="btn btn-warning"  data-toggle="tooltip" title="Edit" style="padding: 6px 12px;"><i class="fa fa-pencil"></i></a></li>
+										<li><a href="{{url('jasa/'.$jasa->id.'/edit')}}" class="btn btn-warning"  data-toggle="tooltip" title="Edit" style="padding: 6px 12px;"><i class="fa fa-pencil"></i></a></li>
 										<li><a href="{{url('hapus/jasa/'.$jasa->id)}}" class="btn btn-danger"  data-toggle="tooltip" title="Hapus" style="padding: 6px 12px;"><i class="fa fa-trash-o"></i></a></li>
 									</ul>
 								</td>

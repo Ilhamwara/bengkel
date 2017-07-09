@@ -59,7 +59,7 @@ class EstimasisController extends Controller
 			]);
 
 		if ($validator->fails()) {
-			return redirect('/buat-order')
+			return redirect('/estimasi-biaya')
 			->withErrors($validator)
 			->withInput();
 		}
@@ -75,31 +75,5 @@ class EstimasisController extends Controller
 
 	}
 
-	public function post_pilih_jasa (Request $request)
-	{
-		
 
-		$cek = Estimasi::where('sparepart_id',$request->sparepart)->where('order_id',$request->order)->first();
-		$pilih = new Estimasi;
-		$pilih->sparepart_id    		= $request->sparepart;
-		$pilih->order_id    		= $request->order;
-		$pilih->quantity_sparepart  	= $request->quantity_sparepart;
-		$pilih->total_harga_sparepart   = $request->total_harga_sparepart;
-		$pilih->save();
-		$validator = Validator::make($request->all(), [
-			'sparepart_id'   => 'required',
-			'order_id'    		=> 'required',
-			'quantity_sparepart'        => 'required',
-			'total_harga_sparepart'      => 'required',
-			]);
-
-		if ($validator->fails()) {
-			return redirect('/buat-order')
-			->withErrors($validator)
-			->withInput();
-		}
-
-		$pilih->save();
-		return redirect()->back()->with('success','Berhasil tambah');
-	}
 }

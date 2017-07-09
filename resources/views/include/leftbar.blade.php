@@ -155,6 +155,19 @@
             </ul>
         </li>
 
+        <li class="nav-item @if(Request::is('purchase-order') || Request::is('buat-purchase-order')) active open @endif">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-truck"></i>
+                <span class="title">Purchase Order</span>
+                @if(Request::is('purchase-order') || Request::is('buat-purchase-order')) 
+                    <span class="arrow open"></span>
+                    <span class="selected"></span>
+                @else
+                    <span class="arrow"></span>
+                @endif
+            </a>
+            <ul class="sub-menu">
+
         <li class="nav-item @if(Request::is('purchase-order')) active open @endif">
             <a href="{{url('purchase-order')}}" class="nav-link nav-toggle">
                 <i class="fa fa-group"></i>
@@ -164,11 +177,25 @@
                 @endif
             </a>
         </li>
-          <li class="nav-item @if(Request::is('laporan-po')) active open @endif">
-            <a href="{{url('laporan-po')}}" class="nav-link nav-toggle">
+
+         <li class="nav-item @if(Request::is('buat-purchase-order')) active open @endif">
+            <a href="{{url('buat-purchase-order')}}" class="nav-link nav-toggle">
                 <i class="fa fa-group"></i>
-                <span class="title">Laporan PO</span>
-                @if(Request::is('laporan-po'))
+                <span class="title">Buat PO</span>
+                @if(Request::is('buat-purchase-order'))
+                    <span class="selected"></span>
+                @endif
+            </a>
+        </li>
+
+        </ul>
+        </li>
+
+          <li class="nav-item @if(Request::is('laporan')) active open @endif">
+            <a href="{{url('laporan')}}" class="nav-link nav-toggle">
+                <i class="fa fa-group"></i>
+                <span class="title">Laporan</span>
+                @if(Request::is('laporan'))
                     <span class="selected"></span>
                 @endif
             </a>

@@ -25,7 +25,7 @@
         <div class="form-group">
           <label class="col-sm-2 control-label">Pilih WO</label>
           <div class="col-sm-6">
-           <select name="workorder" class="form-control" id ="select2">
+           <select name="order_id" class="form-control" id ="select2">
              <option value=""></option>
              @foreach($workorder as $data)
              <option value="{{$data->pelanggan_id}}" data-nama="{{$data->nama}}" data-alamat="{{$data->alamat}}" data-nopol="{{$data->no_pol}}" data-telepon="{{$data->telepon}}" data-tipe="{{$data->tipe}}" data-nokanosin="{{$data->noka_nosin}}" data-warna="{{$data->warna}}" data-km="{{$data->km_datang}}" data-fuel="{{$data->fuel_datang}}" data-tanggal="{{$data->tanggal}}">{{$data->no_wo}}</option>
