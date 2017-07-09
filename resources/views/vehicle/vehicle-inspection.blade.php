@@ -21,6 +21,7 @@
     <div class="row">
         <form action="{{url('post-inspection')}}" method="POST" enctype="multipart/form-data" class="form-horizontal" style="overflow: hidden;">
             {{ csrf_field() }}
+            @include('include.alert')
             <div class="col-sm-12" style="margin-bottom: 10px;">
                 <div class="col-sm-6">
                     <div class="form-group">
