@@ -52,7 +52,7 @@
                 </li>
             </ul>
         </li>
-                <li class="nav-item @if(Request::is('buat-order') || Request::is('work-data') || Request::is('history')) active open @endif">
+        <li class="nav-item @if(Request::is('buat-order') || Request::is('work-data') || Request::is('history')) active open @endif">
             <a href="javascript:;" class="nav-link nav-toggle">
                 <i class="fa fa-truck"></i>
                 <span class="title">Work Order</span>
@@ -66,15 +66,15 @@
             <ul class="sub-menu">
 
             <li class="nav-item @if(Request::is('buat-order')) active open @endif">
-                    <a href="{{url('buat-order')}}" class="nav-link ">
-                        <span class="title">Buat Order Work</span>
-                        @if(Request::is('buat-order'))
-                            <span class="selected"></span>
-                        @else
-                            <span class="arrow"></span>
-                        @endif
-                    </a>
-                </li>
+                <a href="{{url('buat-order')}}" class="nav-link ">
+                    <span class="title">Buat Order Work</span>
+                    @if(Request::is('buat-order'))
+                        <span class="selected"></span>
+                    @else
+                        <span class="arrow"></span>
+                    @endif
+                </a>
+            </li>
 
             <li class="nav-item @if(Request::is('work-data')) active open @endif">
                     <a href="{{url('work-data')}}" class="nav-link ">
@@ -99,16 +99,41 @@
                 </li>
             </ul>
         </li>
-         <li class="nav-item @if(Request::is('vehicle-inspection')) active open @endif">
-            <a href="{{url('vehicle-inspection')}}" class="nav-link nav-toggle">
-                <i class="fa fa-group"></i>
-                <span class="title">Vehicle Inspection</span>
-                @if(Request::is('vehicle-inspection'))
+        <li class="nav-item @if(Request::is('vehicle-inspection') || Request::is('tambah-vehicle')) active open @endif">
+            <a href="javascript:;" class="nav-link nav-toggle">
+                <i class="fa fa-truck"></i>
+                <span class="title">Vehicle</span>
+                @if(Request::is('vehicle-inspection') || Request::is('tambah-vehicle'))
+                    <span class="arrow open"></span>
                     <span class="selected"></span>
+                @else
+                    <span class="arrow"></span>
                 @endif
             </a>
+            <ul class="sub-menu">
+                <li class="nav-item @if(Request::is('vehicle-inspection')) active open @endif">
+                    <a href="{{url('vehicle-inspection')}}" class="nav-link nav-toggle">
+                        <span class="title">Vehicle Inspection</span>
+                        @if(Request::is('vehicle-inspection'))
+                            <span class="selected"></span>
+                        @else
+                            <span class="arrow"></span>
+                        @endif
+                    </a>
+                </li>
+                <li class="nav-item @if(Request::is('tambah-vehicle')) active open @endif">
+                    <a href="{{url('tambah-vehicle')}}" class="nav-link nav-toggle">
+                        <span class="title">Tambah Vehicle</span>
+                        @if(Request::is('tambah-vehicle'))
+                            <span class="selected"></span>
+                        @else
+                            <span class="arrow"></span>
+                        @endif
+                    </a>
+                </li>
+            </ul>
         </li>
-          <li class="nav-item @if(Request::is('estimasi-biaya')) active open @endif">
+        <li class="nav-item @if(Request::is('estimasi-biaya')) active open @endif">
             <a href="{{url('estimasi-biaya')}}" class="nav-link nav-toggle">
                 <i class="fa fa-group"></i>
                 <span class="title">Estimasi Biaya</span>

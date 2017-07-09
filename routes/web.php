@@ -60,6 +60,8 @@ Route::group(['middleware' => ['session']], function () {
 
     //INSPECTION
     Route::get('vehicle-inspection', 'WorkordersController@buat_inspection');
+    Route::get('tambah-vehicle', 'WorkordersController@tambahvehicle');
+    Route::post('tambah-vehicle', 'WorkordersController@posttambahvehicle');
     Route::post('post-inspection', 'WorkordersController@post_inspection');
 
     //ESTIMASI BIAYA
