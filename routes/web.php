@@ -66,5 +66,14 @@ Route::get('vehicle-inspection', 'WorkordersController@buat_inspection');
 Route::post('post-inspection', 'WorkordersController@post_inspection');
 
 //ESTIMASI BIAYA
-Route::get('estimasi-biaya', 'WorkordersController@buat_estimasi');
-Route::post('post-estimasi', 'WorkordersController@post_estimasi');
+Route::get('estimasi-biaya', 'EstimasisController@buat_estimasi');
+Route::post('post-estimasi', 'EtimasisController@post_estimasi');
+Route::get('estimasi-biaya/pilih-sparepart', 'EstimasisController@pilih_sparepart');
+Route::post('post-pilih-sparepart', 'EstimasisController@post_pilih_sparepart');
+Route::get('estimasi-biaya/pilih-jasa', 'EstimasisController@pilih_jasa');
+Route::post('post-pilih-jasa', 'EstimasisController@post_pilih_jasa');
+
+//PURCHASE ORDER
+Route::get('purchase-order', 'PurchasesController@index');
+Route::get('buat-purchase-order', 'PurchasesController@buat_purchase_order');
+Route::post('post-purchase-order', 'PurchasesController@post_po');
