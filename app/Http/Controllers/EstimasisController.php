@@ -14,6 +14,18 @@ use Validator;
 
 class EstimasisController extends Controller
 {
+	public function index(){
+
+		$estimasis = Estimasi::join('work_order', 'estimasi_biaya.order_id', 'work_order.id')
+		->join('spare_parts', 'estimasi_biaya.sparepart_id', 'spare_parts.id')
+		->join('jasa', 'estimasi_biaya.jasa_id', 'jasa.id')
+		->select('estimasi_biaya.*', 'work_order.pelanggan_id', 'work_order.no_wo as nomor_wo', 'work_order.km_datang', 'work_order.tanggal', 'work_order.fuel_datang', 'spare_parts.id as sparepart_id','spare_parts.nama as nama_sparepart', 'spare_parts.no as no_sparepart', 'spare_parts.harga_jual as harga_sparepart', 'jasa.nama_jasa', 'jasa.harga_perfr')
+		->get();
+
+		return view('estimasi-biaya.estimasi-biaya', compact('estimasis'));
+
+
+	}
 	public function buat_estimasi (){
 		$pelanggan = Pelanggan::all();
 		$workorder = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')

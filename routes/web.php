@@ -67,7 +67,8 @@ Route::group(['middleware' => ['session']], function () {
 	Route::post('post-inspection', 'WorkordersController@post_inspection');
 
     //ESTIMASI BIAYA
-	Route::get('estimasi-biaya', 'EstimasisController@buat_estimasi');
+    Route::get('estimasi-biaya', 'EstimasisController@index');
+	Route::get('buat-estimasi-biaya', 'EstimasisController@buat_estimasi');
 	Route::post('post-estimasi', 'EtimasisController@post_estimasi');
 	Route::get('estimasi-biaya/pilih-sparepart', 'EstimasisController@pilih_sparepart');
 	Route::post('post-pilih-sparepart', 'EstimasisController@post_pilih_sparepart');

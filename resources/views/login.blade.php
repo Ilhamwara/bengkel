@@ -37,8 +37,8 @@
     <body class=" login">
         <!-- BEGIN LOGO -->
         <div class="logo">
-            <a href="index.html">
-                <img src="{{asset('recources/pages/img/logo-big-white.png')}}" style="height: 17px';" alt="" /> </a>
+            <a href="index.html"><h2>Aplikasi Manajemen Bengkel</h2>
+                <img src="{{--asset('recources/pages/img/logo-big-white.png')--}}" style="height: 17px';" alt="" /> </a>
         </div>
         <!-- END LOGO -->
         <!-- BEGIN LOGIN -->
