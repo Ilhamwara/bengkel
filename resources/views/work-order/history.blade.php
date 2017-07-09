@@ -43,8 +43,8 @@
 					<tr>
 						<td>{{$i}}</td>
 						<td class="text-center">{{$history->no_wo}}</td>
-						<td class="text-center">{{$history->nama}}</td>
-						<td class="text-center"><a href={{url('#')}}>detail</a></td>
+						<td class="text-center">{{$history->tanggal}}</td>
+						<td class="text-center"><a href="{{url('work-order/'. $history->id)}}">Detail</a></td>
 					</tr>
 					@empty
 					@endforelse
@@ -56,15 +56,15 @@
 
 </div>
 </div>
+</div>
 
 @endsection
-@section('javascript')
-<script>
-	$(document).ready(function(){
-		$('[data-toggle="tooltip"]').tooltip(); 
-	});
-</script>
-
+@section('js')
+<script src="{{asset('recources/global/scripts/datatable.js')}}" type="text/javascript"></script>
+<script src="{{asset('recources/global/plugins/datatables/datatables.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('recources/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js')}}" type="text/javascript"></script>
+<script src="{{asset('recources/global/scripts/app.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('recources/pages/scripts/table-datatables-managed.min.js')}}" type="text/javascript"></script>
 @endsection
 
 
