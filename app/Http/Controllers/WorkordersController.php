@@ -41,18 +41,18 @@ class WorkordersController extends Controller
 		$cek = Workorder::where('pelanggan_id',$request->pelanggan)->first();
 		$order = new Workorder;
 		$order->pelanggan_id    = $request->pelanggan;
-		
+		$order->no_wo    = $request->no_wo;
 		$order->tanggal 		= $request->tanggal;
 		$order->km_datang       = $request->km_datang;
 		$order->fuel_datang     = $request->fuel_datang;    
-		
+		$order->keluhan         = $request->keluhan;
 		$order->save();
 		$validator = Validator::make($request->all(), [
 			'pelanggan_id'   => 'required',
 			'tanggal'        => 'required',
 			'km_datang'      => 'required',
 			'fuel_datang'    => 'required',
-		
+			'keluhan'        => 'required',
 			]);
 
 		if ($validator->fails()) {
@@ -144,7 +144,6 @@ class WorkordersController extends Controller
 			$foto[$a]->save();
 		}
 
-		return redirect()->back()->with('success','Berhasil menyimpan data');
 	}
 
 	

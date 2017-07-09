@@ -26,19 +26,19 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Pilih Customer</label>
                     <div class="col-sm-6">
-                       <select name="pelanggan" class="form-control" id ="select2">
-                       <option value="">Pilih Pelanggan</option>
-                        @foreach($pelanggan as $data)
-                        <option value="{{$data->id}}" data-nama="{{$data->nama}}" data-alamat="{{$data->alamat}}" data-nopol="{{$data->no_pol}}" data-telepon="{{$data->telepon}}" data-tipe="{{$data->tipe}}" data-nokanosin="{{$data->noka_nosin}}" data-warna="{{$data->warna}}">{{$data->nama}}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
+                     <select name="pelanggan" class="form-control" id ="select2">
+                         <option value="">Pilih Pelanggan</option>
+                         @foreach($pelanggan as $data)
+                         <option value="{{$data->id}}" data-nama="{{$data->nama}}" data-alamat="{{$data->alamat}}" data-nopol="{{$data->no_pol}}" data-telepon="{{$data->telepon}}" data-tipe="{{$data->tipe}}" data-nokanosin="{{$data->noka_nosin}}" data-warna="{{$data->warna}}">{{$data->nama}}</option>
+                         @endforeach
+                     </select>
+                 </div>
+             </div>
 
-            <div class="form-group">
+             <div class="form-group">
                 <label class="col-sm-2 control-label">Nama</label>
                 <div class="col-sm-6">
-                <input type="text" class="form-control" min="0" name="nama_pelanggan" id="data_nama" disabled> 
+                    <input type="text" class="form-control" min="0" name="nama_pelanggan" id="data_nama" disabled> 
                 </div>
             </div>
 
@@ -80,7 +80,12 @@
                 </div>
             </div>
 
-
+            <div class="form-group">
+                <label class="col-sm-2 control-label">No WO</label>
+                <div class="col-sm-6">
+                    <input type="tet" class="form-control" name="no_wo" placeholder="No WO" required>
+                </div>
+            </div>
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">Tanggal</label>
@@ -100,20 +105,47 @@
                     <input type="text" class="form-control" name="fuel_datang" placeholder="Fuel Datang" required>
                 </div>
             </div>
-    
+           <!--  <div class="form-group">
+                <label class="col-sm-2 control-label">Keluhan</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" name="keluhan" placeholder="Keluhan" required></textarea>
+                </div>
+            </div> -->
 
-            <input type="hidden" value="{{ 'csrf_token' }}" name="token">
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-primary">Simpan</button>
-                  <a href="{{url('#')}}" class="btn btn-warning" data-toggle="modal" data-target="#myModal">Buat Keluhan</a>
-                  <a href="{{url('#')}}" class="btn btn-info">Cetak</a>
+            <div class="col-md-12">
+                <div class="portlet light bordered">
 
-              </div>
-          </div>
-      </form>
+                  <div class="portlet-body">
+                    <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
+                      <thead>
+                        <tr>
+                          <th class="text-center">No</th>
+                          <th class="text-center">Keluhan</th>
+                          <th class="text-center">Action</th>
+                      </tr>
+                  </thead>   
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td class="text-center"><input type="text" class="form-control" name="keluhan[]"></td>
+                      <td class="text-center"><button class="btn btn-info" id="add"><i class="fa fa-plus"></i></button></td>
+                  </tr>
+              </tbody>
+          </table>     
+      </div>
+  </div>
+</div>
+
+<input type="hidden" value="{{ 'csrf_token' }}" name="token">
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-primary">Simpan</button>
 
   </div>
+</div>
+</form>
+
+</div>
 
 </div>
 </div>
@@ -146,6 +178,18 @@
     $('#data_nokanosin').val(nokanosin);
     $('#data_warna').val(warna);
 
+});
+</script>
+<script>
+  var cnt = 2;
+
+$("#add").click(function() {
+  $("table").append("<tr><td>"+cnt+"</td><td class='text-center'><input type='text' class='form-control' name='keluhan[]'></td><td class='text-center'><button class='btn btn-danger' id='delete'><i class='fa fa-trash'></i></button></td></tr>" );
+  cnt++;
+});
+
+$("table").on('click', '#delete', function() {
+ $(this).closest("tr").remove();
 });
 </script>
 @endsection
