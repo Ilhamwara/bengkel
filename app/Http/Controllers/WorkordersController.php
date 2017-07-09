@@ -144,6 +144,7 @@ class WorkordersController extends Controller
 			$foto[$a]->save();
 		}
 
+		return redirect()->back()->with('success','Berhasil menyimpan data');
 	}
 
 	
