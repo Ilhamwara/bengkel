@@ -94,8 +94,7 @@ class WorkordersController extends Controller
 
 	}
 	public function post_inspection (){
-
-
+		
 	}
 
 	

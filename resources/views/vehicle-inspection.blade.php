@@ -19,12 +19,12 @@
     <h3 class="page-title"><b>Buat Vehicle Inspection</b></h3>
     <br>
     <div class="row">
-        <form action="{{url('post-inspection')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+        <form action="{{url('post-inspection')}}" method="POST" enctype="multipart/form-data" class="form-horizontal" style="overflow: hidden;">
             {{ csrf_field() }}
-            <div class="col-sm-11 col-sm-offset-1" style="margin-bottom: 10px;">
+            <div class="col-sm-12" style="margin-bottom: 10px;">
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">Pilih WO</label>
+                        <label class="col-sm-4 text-left">Pilih WO</label>
                         <div class="col-sm-6">
                          <select name="workorder" class="form-control" id ="select2">
                              <option value=""></option>
@@ -36,33 +36,33 @@
                  </div>
 
                  <div class="form-group">
-                    <label class="col-sm-2 control-label">Nama</label>
+                    <label class="col-sm-4 text-left">Nama</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" min="0" name="nama" id="data_nama" disabled> 
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Alamat</label>
+                    <label class="col-sm-4 text-left">Alamat</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" name="alamat" id="data_alamat" disabled> 
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">No. Pol</label>
+                    <label class="col-sm-4 text-left">No. Pol</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" name="no_pol" id="data_nopol" disabled>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Telepon</label>
+                    <label class="col-sm-4 text-left">Telepon</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" name="telepon" id="data_telepon" disabled>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Tanggal</label>
+                    <label class="col-sm-4 text-left">Tanggal</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" name="tanggal" id="data_tanggal" disabled>
                     </div>
@@ -73,19 +73,19 @@
             <div class="col-sm-6">
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Type</label>
+                    <label class="col-sm-4 text-left">Type</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" name="tipe" id="data_tipe" disabled>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Noka/ Nosin</label>
+                    <label class="col-sm-4 text-left">Noka/ Nosin</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" name="noka_nosin" id="data_nokanosin" disabled>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Warna</label>
+                    <label class="col-sm-4 text-left">Warna</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" name="warna" id="data_warna" disabled>
                     </div>
@@ -93,13 +93,13 @@
 
 
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Km Datang</label>
+                    <label class="col-sm-4 text-left">Km Datang</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" name="km_datang" id="data_km" disabled>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Fuel Datang</label>
+                    <label class="col-sm-4 text-left">Fuel Datang</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" name="fuel_datang" id="data_fuel" disabled>
                     </div>
@@ -108,308 +108,321 @@
         </div>
 
         <div class="col-md-12">
-           <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
-              <tr>
-                <th class="tg-031e" colspan="14">Dokumen Kendaraan</th>
-            </tr>
-            <tr>
-                <td class="tg-yw4l">1</td>
-                <td class="tg-yw4l">STNK</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l" rowspan="2"></td>
-                <td class="tg-yw4l">3</td>
-                <td class="tg-yw4l">KIR</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l" rowspan="2"></td>
-                <td class="tg-yw4l">5</td>
-                <td class="tg-yw4l">BUKU MANUAL</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-            </tr>
-            <tr>
-                <td class="tg-yw4l">2</td>
-                <td class="tg-yw4l">BPKB</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">4</td>
-                <td class="tg-yw4l">BUKU SERVICE</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">6</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-            </tr>
-            <tr>
-                <th class="tg-yw4l" colspan="14">Fungsi Aksesoris Bagian Dalam</th>
-            </tr>
-            <tr>
-                <td class="tg-yw4l">1</td>
-                <td class="tg-yw4l">AC</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l" rowspan="9"></td>
-                <td class="tg-yw4l">10</td>
-                <td class="tg-yw4l">CENTRAL LOCK</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l" rowspan="9"></td>
-                <td class="tg-yw4l">19</td>
-                <td class="tg-yw4l">PANEL WIPER</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-            </tr>
-            <tr>
-                <td class="tg-yw4l">2</td>
-                <td class="tg-yw4l">ELECTRIC MIROR</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">11</td>
-                <td class="tg-yw4l">POWER WINDOW</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">20</td>
-                <td class="tg-yw4l">PANEL LAMP</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-            </tr>
-            <tr>
-                <td class="tg-yw4l">3</td>
-                <td class="tg-yw4l">AUDIO</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">12</td>
-                <td class="tg-yw4l">HANDLE WINDOW</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">21</td>
-                <td class="tg-yw4l">PANEL LACI</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-            </tr>
-            <tr>
-                <td class="tg-yw4l">4</td>
-                <td class="tg-yw4l">KLAKSON</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">13</td>
-                <td class="tg-yw4l">PEMATIK ROKOK</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">22</td>
-                <td class="tg-yw4l">PANEL PINTU</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-            </tr>
-            <tr>
-                <td class="tg-yw4l">5</td>
-                <td class="tg-yw4l">LAMPU SIRINE</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">14</td>
-                <td class="tg-yw4l">SUN RUF</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">23</td>
-                <td class="tg-yw4l">PANEL FUEL</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-            </tr>
-            <tr>
-                <td class="tg-yw4l">6</td>
-                <td class="tg-yw4l">HAND BRAKE</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">15</td>
-                <td class="tg-yw4l">LAMPU CABINE</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">24</td>
-                <td class="tg-yw4l">PANEL ENGINE CUP</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-            </tr>
-            <tr>
-                <td class="tg-yw4l">7</td>
-                <td class="tg-yw4l">HANDLE FUEL CUP</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">16</td>
-                <td class="tg-yw4l">KARET</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">25</td>
-                <td class="tg-yw4l">PANEL BAGASI</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-            </tr>
-            <tr>
-                <td class="tg-yw4l">8</td>
-                <td class="tg-yw4l">SABUK PENGAMAN</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">17</td>
-                <td class="tg-yw4l">SPION CABINE</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">26</td>
-                <td class="tg-yw4l">PANEL JOK</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-            </tr>
-            <tr>
-                <td class="tg-yw4l">9</td>
-                <td class="tg-yw4l">HT RADIO</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">18</td>
-                <td class="tg-yw4l">MONITOR GPS</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">27</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-            </tr>
-            <tr>
-                <th class="tg-yw4l" colspan="14">Fungsi Aksesoris Bagian Luar</th>
-            </tr>
-            <tr>
-                <td class="tg-yw4l">1</td>
-                <td class="tg-yw4l">ENGINE CUP</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l" rowspan="7"></td>
-                <td class="tg-yw4l">8</td>
-                <td class="tg-yw4l">HANDLE PINTU</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l" rowspan="7"></td>
-                <td class="tg-yw4l">15</td>
-                <td class="tg-yw4l">KACA PINTU FRN/RH</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-            </tr>
-            <tr>
-                <td class="tg-yw4l">2</td>
-                <td class="tg-yw4l">BEMPER DEPAN</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">8</td>
-                <td class="tg-yw4l">HANDLE BAGASI</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">16</td>
-                <td class="tg-yw4l">KACA PINTU FR/LH</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-            </tr>
-            <tr>
-                <td class="tg-yw4l">3</td>
-                <td class="tg-yw4l">BEMPER BERLAKANG</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">10</td>
-                <td class="tg-yw4l">DOF RODA</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">17</td>
-                <td class="tg-yw4l">KACA PINTU FRN/RH</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-            </tr>
-            <tr>
-                <td class="tg-yw4l">4</td>
-                <td class="tg-yw4l">KACA FELM</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">11</td>
-                <td class="tg-yw4l">TUTUP BAN SEREP</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">18</td>
-                <td class="tg-yw4l">KACA PINTU RR/RH</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-            </tr>
-            <tr>
-                <td class="tg-yw4l">5</td>
-                <td class="tg-yw4l">KACA DEPAN</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">12</td>
-                <td class="tg-yw4l">KACA DEPAN</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">19</td>
-                <td class="tg-yw4l">KACA PINTU RR/LH</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-            </tr>
-            <tr>
-                <td class="tg-yw4l">6</td>
-                <td class="tg-yw4l">FUEL CUP</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">13</td>
-                <td class="tg-yw4l">KACA BELAKANG</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">20</td>
-                <td class="tg-yw4l">KACA SPION</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-            </tr>
-            <tr>
-                <td class="tg-yw4l">7</td>
-                <td class="tg-yw4l">TALANG AIR</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">14</td>
-                <td class="tg-yw4l">ANTENA</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">21</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-            </tr>
-            <tr>
-                <th class="tg-yw4l" colspan="14">Perlengkapan Kendaraan</th>
-            </tr>
-            <tr>
-                <td class="tg-yw4l">1</td>
-                <td class="tg-yw4l">DONGKRAK</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l" rowspan="2"></td>
-                <td class="tg-yw4l">3</td>
-                <td class="tg-yw4l">REMOTE KUNCI</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l" rowspan="2"></td>
-                <td class="tg-yw4l">5</td>
-                <td class="tg-yw4l">PERKAKAS KUNCI</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-            </tr>
-            <tr>
-                <td class="tg-yw4l">2</td>
-                <td class="tg-yw4l">HANDLE DONGKRAK</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">4</td>
-                <td class="tg-yw4l">BAN SEREP</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l">6</td>
-                <td class="tg-yw4l">KUNCI</td>
-                <td class="tg-yw4l"></td>
-                <td class="tg-yw4l"></td>
-            </tr>
-        </table>
+        <br><br>
+           <div class="table-responsive">
+               <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
+                    <tr>
+                        <th class="bg-primary" colspan="14">Dokumen Kendaraan</th>
+                    </tr>
+                    <tr>
+                        <td class="">1</td>
+                        <td class="">STNK</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="" rowspan="2"></td>
+                        <td class="">3</td>
+                        <td class="">KIR</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="" rowspan="2"></td>
+                        <td class="">5</td>
+                        <td class="">BUKU MANUAL</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class="">2</td>
+                        <td class="">BPKB</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">4</td>
+                        <td class="">BUKU SERVICE</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">6</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <th class="bg-primary" colspan="14">Fungsi Aksesoris Bagian Dalam</th>
+                    </tr>
+                    <tr>
+                        <td class="">1</td>
+                        <td class="">AC</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="" rowspan="9"></td>
+                        <td class="">10</td>
+                        <td class="">CENTRAL LOCK</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="" rowspan="9"></td>
+                        <td class="">19</td>
+                        <td class="">PANEL WIPER</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class="">2</td>
+                        <td class="">ELECTRIC MIROR</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">11</td>
+                        <td class="">POWER WINDOW</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">20</td>
+                        <td class="">PANEL LAMP</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class="">3</td>
+                        <td class="">AUDIO</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">12</td>
+                        <td class="">HANDLE WINDOW</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">21</td>
+                        <td class="">PANEL LACI</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class="">4</td>
+                        <td class="">KLAKSON</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">13</td>
+                        <td class="">PEMATIK ROKOK</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">22</td>
+                        <td class="">PANEL PINTU</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class="">5</td>
+                        <td class="">LAMPU SIRINE</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">14</td>
+                        <td class="">SUN RUF</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">23</td>
+                        <td class="">PANEL FUEL</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class="">6</td>
+                        <td class="">HAND BRAKE</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">15</td>
+                        <td class="">LAMPU CABINE</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">24</td>
+                        <td class="">PANEL ENGINE CUP</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class="">7</td>
+                        <td class="">HANDLE FUEL CUP</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">16</td>
+                        <td class="">KARET</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">25</td>
+                        <td class="">PANEL BAGASI</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class="">8</td>
+                        <td class="">SABUK PENGAMAN</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">17</td>
+                        <td class="">SPION CABINE</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">26</td>
+                        <td class="">PANEL JOK</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class="">9</td>
+                        <td class="">HT RADIO</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">18</td>
+                        <td class="">MONITOR GPS</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">27</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <th class="bg-primary" colspan="14">Fungsi Aksesoris Bagian Luar</th>
+                    </tr>
+                    <tr>
+                        <td class="">1</td>
+                        <td class="">ENGINE CUP</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="" rowspan="7"></td>
+                        <td class="">8</td>
+                        <td class="">HANDLE PINTU</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="" rowspan="7"></td>
+                        <td class="">15</td>
+                        <td class="">KACA PINTU FRN/RH</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class="">2</td>
+                        <td class="">BEMPER DEPAN</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">8</td>
+                        <td class="">HANDLE BAGASI</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">16</td>
+                        <td class="">KACA PINTU FR/LH</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class="">3</td>
+                        <td class="">BEMPER BERLAKANG</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">10</td>
+                        <td class="">DOF RODA</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">17</td>
+                        <td class="">KACA PINTU FRN/RH</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class="">4</td>
+                        <td class="">KACA FELM</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">11</td>
+                        <td class="">TUTUP BAN SEREP</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">18</td>
+                        <td class="">KACA PINTU RR/RH</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class="">5</td>
+                        <td class="">KACA DEPAN</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">12</td>
+                        <td class="">KACA DEPAN</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">19</td>
+                        <td class="">KACA PINTU RR/LH</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class="">6</td>
+                        <td class="">FUEL CUP</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">13</td>
+                        <td class="">KACA BELAKANG</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">20</td>
+                        <td class="">KACA SPION</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <td class="">7</td>
+                        <td class="">TALANG AIR</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">14</td>
+                        <td class="">ANTENA</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">21</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class=""></td>
+                    </tr>
+                    <tr>
+                        <th class="bg-primary" colspan="14">Perlengkapan Kendaraan</th>
+                    </tr>
+                    <tr>
+                        <td class="">1</td>
+                        <td class="">DONGKRAK</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="" rowspan="2"></td>
+                        <td class="">3</td>
+                        <td class="">REMOTE KUNCI</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="" rowspan="2"></td>
+                        <td class="">5</td>
+                        <td class="">PERKAKAS KUNCI</td>
+                        <td style="background: #2ecc71; color: #fff;">
+                            <div class="text-center">
+                                <input type="radio" name="radio" id="radio2" value="2" class="form-control">
+                                <label for="radio2"><span class="box"></span></label>
+                            </div>
+                        </td>
+                        <td class="bg-red">
+                            <div class="text-center">
+                                <input type="radio" name="radio" id="radio2" value="2" class="form-control">
+                                <label for="radio2"><span class="box"></span></label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">2</td>
+                        <td class="">HANDLE DONGKRAK</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">4</td>
+                        <td class="">BAN SEREP</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                        <td class="">6</td>
+                        <td class="">KUNCI</td>
+                        <td class=""></td>
+                        <td class=""></td>
+                    </tr>
+                </table>
+           </div>
     </div>
 
    <div class="col-sm-offset-1 col-sm-10">
