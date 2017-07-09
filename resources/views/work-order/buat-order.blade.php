@@ -80,12 +80,7 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="col-sm-2 control-label">No WO</label>
-                <div class="col-sm-6">
-                    <input type="tet" class="form-control" name="no_wo" placeholder="No WO" required>
-                </div>
-            </div>
+
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">Tanggal</label>
@@ -105,12 +100,7 @@
                     <input type="text" class="form-control" name="fuel_datang" placeholder="Fuel Datang" required>
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Keluhan</label>
-                <div class="col-sm-6">
-                    <textarea class="form-control" name="keluhan" placeholder="Keluhan" required></textarea>
-                </div>
-            </div>
+    
 
             <input type="hidden" value="{{ 'csrf_token' }}" name="token">
             <div class="form-group">

@@ -13,7 +13,6 @@ class Workorder extends Model
     'km_datang',
     'fuel_datang',
     'tanggal',
-    'keluhan',
 
     ];
 }
