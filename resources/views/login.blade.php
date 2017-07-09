@@ -44,6 +44,7 @@
         <!-- BEGIN LOGIN -->
         <div class="content">
             <!-- BEGIN LOGIN FORM -->
+            @include('include.alert')
             <form class="login-form" action="{{url('post-login')}}" method="POST">
             {{csrf_field()}}
                 <div class="form-title">
