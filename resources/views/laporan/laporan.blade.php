@@ -37,6 +37,7 @@
 								<th class="text-center">No WO</th>
 								<th class="text-center">Tanggal</th>
 								<th class="text-center">Nilai Transaksi</th>
+								<th class="text-center">Status</th>
 							</tr>
 						</thead>
 						<?php $i = 0 ?>
@@ -48,6 +49,7 @@
 								<td class="text-center"><a href="{{url('work-order/'. $laporan->id)}}">{{$laporan->no_wo}}</a></td>
 								<td class="text-center">{{$laporan->tanggal}}</td>
 								<td class="text-center">{{$laporan->transaksi}}</td>
+								<td class="text-center">{{$laporan->status}}</td>
 							</tr>
 							@empty
 							@endforelse
