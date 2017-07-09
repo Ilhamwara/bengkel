@@ -166,11 +166,11 @@
             </li>
         </ul>
     </li>
-    <li class="nav-item @if(Request::is('jasa') || Request::is('sparepart')) active open @endif">
+    <li class="nav-item @if(Request::is('jasa') || Request::is('sparepart') || Request::is('supplier')) active open @endif">
         <a href="javascript:;" class="nav-link nav-toggle">
             <i class="fa fa-list"></i>
             <span class="title">Referensi</span>
-            @if(Request::is('jasa') || Request::is('sparepart')) 
+            @if(Request::is('jasa') || Request::is('sparepart') || Request::is('supplier')) 
             <span class="arrow open"></span>
             <span class="selected"></span>
             @else
@@ -200,6 +200,18 @@
                     @endif
                 </a>
             </li>
+
+             <li class="nav-item @if(Request::is('supplier')) active open @endif">
+                <a href="{{url('supplier')}}" class="nav-link ">
+                    <span class="title">Supplier</span>
+                    @if(Request::is('supplier'))
+                    <span class="selected"></span>
+                    @else
+                    <span class="arrow"></span>
+                    @endif
+                </a>
+            </li>
+
         </ul>
     </li>
 

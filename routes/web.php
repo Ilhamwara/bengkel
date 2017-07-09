@@ -49,6 +49,13 @@ Route::group(['middleware' => ['session']], function () {
 	Route::post('sparepart/{id}/editpost', 'ReferensisController@editpost_sparepart');
 	Route::get('hapus/sparepart/{id}', 'ReferensisController@hapus_sparepart');
 
+	Route::get('supplier', 'ReferensisController@index_supplier');
+	Route::get('supplier/tambah-supplier', 'ReferensisController@tambah_supplier');
+	Route::post('post-supplier', 'ReferensisController@post_supplier');
+	Route::get('supplier/{id}/edit', 'ReferensisController@edit_supplier');
+	Route::post('supplier/{id}/editpost', 'ReferensisController@editpost_supplier');
+	Route::get('hapus/supplier/{id}', 'ReferensisController@hapus_supplier');
+
 
     //WORKORDER
 	Route::get('work-data', 'WorkordersController@index');

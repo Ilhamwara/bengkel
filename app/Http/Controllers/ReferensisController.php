@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use\App\Jasa;
 use\App\Sparepart;
+use\App\Supplier;
 use Validator;
 
 class ReferensisController extends Controller
 {
-    public function index_jasa()
+	public function index_jasa()
 	{
 		$jasas = Jasa::all();
 		return view ('referensi.jasa', compact('jasas'));
@@ -64,7 +65,7 @@ class ReferensisController extends Controller
 		return redirect('/jasa');
 	}
 //SPAREPART
-	 public function index_sparepart()
+	public function index_sparepart()
 	{
 		$spareparts = Sparepart::all();
 		return view ('referensi.spare-part', compact('spareparts'));
@@ -123,5 +124,68 @@ class ReferensisController extends Controller
 		$sparepart = Sparepart::where('spare_parts.id', $id)->first();
 		$sparepart->delete();
 		return redirect('/sparepart');
+	}
+
+	//SUPPLIER
+
+	public function index_supplier()
+	{
+		$suppliers = Supplier::all();
+		return view ('referensi.supplier', compact('suppliers'));
+
+	}
+	public function tambah_supplier()
+	{
+		$suppliers  = Supplier::all();
+		return view('referensi.tambah-supplier');
+	}
+
+	public function post_supplier(Request $request)
+	{
+		$supplier = new Supplier;
+		$supplier->id_supplier 	   = $request->id_supplier;
+		$supplier->nama 	       = $request->nama;
+		$supplier->alamat	 	   = $request->alamat;
+		$supplier->no_rek 	       = $request->nama;
+		$supplier->kontak	 	   = $request->alamat;
+		$validator = Validator::make($request->all(), [
+			'id_supplier'    => 'required',
+			'nama'        	 => 'required',
+			'alamat'         => 'required',
+			'no_rek'         => 'required',
+			'kontak'         => 'required',
+			]);
+
+		if ($validator->fails()) {
+			return redirect('supplier/tambah-supplier')
+			->withErrors($validator)
+			->withInput();
+		}
+
+		$supplier->save();
+		return redirect()->back()->with('success','Berhasil tambah');
+	}
+
+	public function edit_supplier($id)
+	{
+		$supplier = Supplier::where('supplier.id', $id)
+		->first();
+		return view ('referensi.edit-supplier' , compact('supplier')); 
+	}
+
+
+	public function editpost_supplier(Request $request, $id)
+	{
+
+		$supplier = Supplier::where('supplier.id', $id)->first();
+		$supplier->update($request->all());
+		return redirect()->back()->with('success','Berhasil tambah');
+	}
+
+	public function hapus_supplier($id)
+	{
+		$supplier = Supplier::where('supplier.id', $id)->first();
+		$supplier->delete();
+		return redirect('/supplier');
 	}
 }
