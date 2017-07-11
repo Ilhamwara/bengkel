@@ -124,6 +124,9 @@ class WorkordersController extends Controller
 		return redirect()->back()->with('success','Berhasil menambahkan');
 	}
 	public function post_inspection (Request $r){
+		if (empty($r->keterangan)) {
+			return redirect()->back()->with('warning','Keterangan belum anda isi');
+		}
 		// dd(request()->all());
 		error_reporting(1);
 		foreach ($r->tipe as $k => $v) {
@@ -140,10 +143,12 @@ class WorkordersController extends Controller
 		$gambar[$a] = $val->getClientOriginalName();
 		$val->move(storage_path() . '/uploads/img/', $gambar[$a]);
 			$foto[$a] = new Foto;
-			$foto[$a]->inspect_id = $cek->id;
-			$foto[$a]->img 		= $gambar[$a];
+			$foto[$a]->inspect_id   = $cek->id;
+			$foto[$a]->img 			= $gambar[$a];
 			$foto[$a]->save();
 		}
+
+		return redirect()->back()->with('success','Berhasil Menambahkan');
 
 	}
 
