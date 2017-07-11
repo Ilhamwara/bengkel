@@ -2,6 +2,14 @@
 @section('css')
 <link href="{{asset('recources/global/plugins/select2/css/select2.min.css')}}" rel="stylesheet" type="text/css" />
 <link href="{{asset('recources/global/plugins/select2/css/select2-bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+<style type="text/css">
+  #mceu_50{
+    display: none;
+  }
+/*  #mce_0_ifr{
+    height: 200px!important;
+  }*/
+</style>
 @endsection
 @section('content')
 <div class="page-content">
@@ -112,8 +120,19 @@
                 </div>
             </div> -->
 
-            <div class="col-md-12">
-                <div class="portlet light bordered">
+             <div class="form-group">
+                <label class="col-sm-2 control-label">Keluhan</label>
+                <div class="col-sm-6">
+                    <textarea name="editor1" id="editor1" rows="10" cols="80">
+                This is my textarea to be replaced with CKEditor.
+            </textarea>
+     
+       
+                </div>
+            </div>
+            
+  
+               <!--  <div class="portlet light bordered">
 
                   <div class="portlet-body">
                     <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
@@ -133,7 +152,7 @@
               </tbody>
           </table>     
       </div>
-  </div>
+  </div> -->
 </div>
 
 <input type="hidden" value="{{ 'csrf_token' }}" name="token">
@@ -151,12 +170,18 @@
 </div>
 @endsection
 @section('js')
-<script src="{{asset('recources/global/plugins/select2/js/select2.full.min.js')}}" type="text/javascript"></script>
+
 <script>
   $(document).ready(function() {
     $(".select2").select2();
 });
 </script>
+       <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                CKEDITOR.replace( 'editor1' );
+            </script>
+<script src="{{asset('ckeditor.js')}}" type="text/javascript"></script>
 <script>$('#select2').change(function(){
     var
     value = $(this).val(),
@@ -192,4 +217,5 @@ $("table").on('click', '#delete', function() {
  $(this).closest("tr").remove();
 });
 </script>
+
 @endsection

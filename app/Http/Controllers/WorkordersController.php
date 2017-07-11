@@ -38,31 +38,32 @@ class WorkordersController extends Controller
 
 	public function post_order(Request $request)
 	{
-		$cek = Workorder::where('pelanggan_id',$request->pelanggan)->first();
-		$order = new Workorder;
-		$order->pelanggan_id    = $request->pelanggan;
-		$order->no_wo    = $request->no_wo;
-		$order->tanggal 		= $request->tanggal;
-		$order->km_datang       = $request->km_datang;
-		$order->fuel_datang     = $request->fuel_datang;    
-		$order->keluhan         = $request->keluhan;
-		$order->save();
-		$validator = Validator::make($request->all(), [
-			'pelanggan_id'   => 'required',
-			'tanggal'        => 'required',
-			'km_datang'      => 'required',
-			'fuel_datang'    => 'required',
-			'keluhan'        => 'required',
-			]);
+		dd(request()->all());
+		// $cek = Workorder::where('pelanggan_id',$request->pelanggan)->first();
+		// $order = Workorder::make($request->all);
+		// // $order->pelanggan_id    = $request->pelanggan;
+		// // $order->no_wo    = $request->no_wo;
+		// // $order->tanggal 		= $request->tanggal;
+		// // $order->km_datang       = $request->km_datang;
+		// // $order->fuel_datang     = $request->fuel_datang;    
+		// // $order->keluhan         = $request->keluhan;
+		// $order->save();
+		// $validator = Validator::make($request->all(), [
+		// 	'pelanggan_id'   => 'required',
+		// 	'tanggal'        => 'required',
+		// 	'km_datang'      => 'required',
+		// 	'fuel_datang'    => 'required',
+		// 	'keluhan'        => 'required',
+		// 	]);
 
-		if ($validator->fails()) {
-			return redirect('/buat-order')
-			->withErrors($validator)
-			->withInput();
-		}
+		// if ($validator->fails()) {
+		// 	return redirect('/buat-order')
+		// 	->withErrors($validator)
+		// 	->withInput();
+		// }
 
-		$order->save();
-		return redirect()->back()->with('success','Berhasil tambah');
+		// $order->save();
+		// return redirect()->back()->with('success','Berhasil tambah');
 	}
 
 	public function show_order($id)
