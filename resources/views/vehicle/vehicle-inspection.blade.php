@@ -27,7 +27,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 text-left">Pilih WO</label>
                         <div class="col-sm-6">
-                         <select name="workorder" class="form-control" id ="select2">
+                         <select name="workorder" class="form-control" id ="select2" required>
                              <option value="">Pilih WO</option>
                              @foreach($workorder as $data)
                              <option value="{{$data->id}}" data-nama="{{$data->nama}}" data-alamat="{{$data->alamat}}" data-nopol="{{$data->no_pol}}" data-telepon="{{$data->telepon}}" data-tipe="{{$data->tipe}}" data-nokanosin="{{$data->noka_nosin}}" data-warna="{{$data->warna}}" data-km="{{$data->km_datang}}" data-fuel="{{$data->fuel_datang}}" data-tanggal="{{$data->tanggal}}">{{$data->no_wo}}</option>
@@ -195,11 +195,11 @@
             <label><b>Foto</b></label>
         </div>
         <div class="form-group" id="field-baru">
-            <input type="file" class="form-control" name="foto[]">
+            <input type="file" class="form-control" name="foto[]" required>
         </div>
         <div class="form-group">
             <label><b>Keterangan</b></label> 
-            <textarea class="form-control" name="keterangan"></textarea>  
+            <textarea class="form-control" id="deskripsi" name="deskripsi"></textarea>  
         </div>     
     </div>
     <div class="form-group">
@@ -214,6 +214,7 @@
 @endsection
 @section('js')
 <script src="{{asset('recources/global/plugins/select2/js/select2.full.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/ckeditor.js')}}"></script>
 <script>
   $(document).ready(function() {
     $(".select2").select2();
@@ -249,14 +250,10 @@
 });
 </script>
 <script>
-    function tambah(){
-        $('<div class="form-group" id="field-baru">'+
-            '<input type="file" class="form-control" name="foto[]">'+
-            '<a data-toggle="tooltip" title="Hapus Field" class="remove_field btn btn-danger"><i class="fa fa-trash-o"></i></a>'+
-            '</div>').insertBefore('#field-baru');
-        $(".remove_field").click(function(){
-            $(this).closest("div").remove();
-        });
-    }
+    CKEDITOR.replace( 'deskripsi',
+    {
+        customConfig : '',
+        toolbar : 'simple'
+    })
 </script>
 @endsection

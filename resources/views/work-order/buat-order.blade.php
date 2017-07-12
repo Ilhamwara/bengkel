@@ -33,7 +33,7 @@
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Pilih Customer</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-8">
                      <select name="pelanggan" class="form-control" id ="select2">
                          <option value="">Pilih Pelanggan</option>
                          @foreach($pelanggan as $data)
@@ -45,89 +45,85 @@
 
              <div class="form-group">
                 <label class="col-sm-2 control-label">Nama</label>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     <input type="text" class="form-control" min="0" name="nama_pelanggan" id="data_nama" disabled> 
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">Alamat</label>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     <input type="text" class="form-control" name="alamat" id="data_alamat" disabled> 
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">No. Pol</label>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     <input type="text" class="form-control" name="no_pol" id="data_nopol" disabled>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Telepon</label>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     <input type="text" class="form-control" name="telepon" id="data_telepon" disabled>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">Type</label>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     <input type="text" class="form-control" name="tipe" id="data_tipe" disabled>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Noka/ Nosin</label>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     <input type="text" class="form-control" name="noka_nosin" id="data_nokanosin" disabled>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Warna</label>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     <input type="text" class="form-control" name="warna" id="data_warna" disabled>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">No WO</label>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     <input type="tet" class="form-control" name="no_wo" placeholder="No WO" required>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">Tanggal</label>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     <input type="date" class="form-control" name="tanggal" placeholder="Tanggal" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Km Datang</label>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     <input type="text" class="form-control" name="km_datang" placeholder="Km Datang" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Fuel Datang</label>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     <input type="text" class="form-control" name="fuel_datang" placeholder="Fuel Datang" required>
                 </div>
             </div>
            <!--  <div class="form-group">
                 <label class="col-sm-2 control-label">Keluhan</label>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     <textarea class="form-control" name="keluhan" placeholder="Keluhan" required></textarea>
                 </div>
             </div> -->
 
              <div class="form-group">
                 <label class="col-sm-2 control-label">Keluhan</label>
-                <div class="col-sm-6">
-                    <textarea name="editor1" id="editor1" rows="10" cols="80">
-                This is my textarea to be replaced with CKEditor.
-            </textarea>
-     
-       
+                <div class="col-sm-8">
+                    <textarea name="deskripsi" id="deskripsi" rows="10" cols="80"></textarea>
                 </div>
             </div>
             
@@ -159,7 +155,6 @@
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-primary">Simpan</button>
-
   </div>
 </div>
 </form>
@@ -170,17 +165,18 @@
 </div>
 @endsection
 @section('js')
+<script src="{{asset('js/ckeditor.js')}}"></script>
 
 <script>
   $(document).ready(function() {
     $(".select2").select2();
 });
+  CKEDITOR.replace( 'deskripsi',
+    {
+        customConfig : '',
+        toolbar : 'simple'
+    })
 </script>
-       <script>
-                // Replace the <textarea id="editor1"> with a CKEditor
-                // instance, using default configuration.
-                CKEDITOR.replace( 'editor1' );
-            </script>
 <script src="{{asset('ckeditor.js')}}" type="text/javascript"></script>
 <script>$('#select2').change(function(){
     var
