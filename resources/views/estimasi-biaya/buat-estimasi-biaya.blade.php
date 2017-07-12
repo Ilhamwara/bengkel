@@ -20,7 +20,7 @@
   <br>
   <div class="row">
 
-    <form action="{{url('post-estimasi')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+    <form action="{{url('post-estimasi')}}" method="POST" enctype="multipart/form-data" class="form-horizontal" style="overflow: hidden;">
       {{ csrf_field() }}
         <div class="col-sm-10 col-sm-offset-1">
       <div class="col-sm-6">
@@ -107,41 +107,40 @@
       </div>
     </div>
     </div>
+    
 
     <div class="row">
       <div class="col-sm-10 col-sm-offset-1">
-        <h4>Form Sparepart</h4>
+        <h4><b>Data Sparepart</b></h4>
         <div class="portlet light bordered">
          <div class="portlet-body">
-          <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
-            <thead>
-              <tr>
-                <th class="text-center">No</th>
-                <th class="text-center">Nama Part</th>
-                <th class="text-center">No Part</th>
-                <th class="text-center">Quantity</th>
-                <th class="text-center">Harga Satuan</th>
-                <th class="text-center">Jumlah</th>
-              </tr>
-            </thead>
-            <?php $i = 0 ?>
-            <tbody>
-              @forelse($estimasi as $sparepart)
-              <?php $i++ ?>
-              <tr>
-                <td class="text-center">{{$i}}</td>
-                <td class="text-center">{{$sparepart->nama_sparepart}}</td>
-                <td class="text-center">{{$sparepart->nomor_sparepart}}</td>
-                <td class="text-center">{{$sparepart->quantity_sparepart}}</td>
-                <td class="text-center">{{$sparepart->harga_sparepart}}</td>
-                <td class="text-center">{{$sparepart->total_harga_sparepart}}</td>
-              </tr>
-              @empty
-              Data Kosong
-              @endforelse
-            </tbody>
-          </table>
-          <a href="{{url('estimasi-biaya/pilih-sparepart')}}">Tambah</a>
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+                <tr>
+                  <th class="text-center">Nama</th>
+                  <th class="text-center">Quantity</th>
+                  <th class="text-center">Harga</th>
+                  <th class="text-center">Jumlah</th>
+                  <th class="text-center"></th>
+                </tr>
+                <tr id="field-baru-part">
+                  <td class="text-center">
+                    <select name="part[]" class="select2 selectpart form-control" style="width: 100%;">
+                    <option value="">Pilih Sparepart</option>
+                      @foreach($part as $data_part)
+                        <option value="{{$data_part->id}}" data-harga="{{$data_part->harga_jual}}">{{title_case($data_part->nama)}}</option>
+                      @endforeach
+                    </select>
+                  </td>
+                  <td class="text-center"><input type="number" placeholder="Masukan Quantity" min="0" class="form-control"></td>
+                  <td class="text-center"><input type="text" disabled class="form-control data_harga_part"></td>
+                  <td class="text-center"><input type="text" disabled class="form-control"></td>
+                  <td class="text-center"></td>
+                </tr>
+            </table>
+          </div>
+          {{-- <a href="{{url('estimasi-biaya/pilih-sparepart')}}">Tambah</a> --}}
+          <a onclick="tambah_part()" class="btn btn-primary">Tambah</a>
         </div>
       </div>
     </div>
@@ -149,53 +148,45 @@
 
   <div class="row">
     <div class="col-sm-10 col-sm-offset-1">
-     <h4>Form Jasa</h4>
+     <h4><b>Data Jasa</b></h4>
      <div class="portlet light bordered">
 
        <div class="portlet-body">
-        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
-          <thead>
+        <table class="table table-striped table-bordered table-hover">
             <tr>
-              <th class="text-center">No</th>
               <th class="text-center">Jasa</th>
-              <th class="text-center">Fr</th>
-              <th class="text-center">Harga per FR</th>
+              <th class="text-center">Quantity</th>
+              <th class="text-center">Harga</th>
               <th class="text-center">Jumlah</th>
+              <th class="text-center"></th>
             </tr>
-          </thead>
-          <?php $i = 0 ?>
-          <tbody>
-            @forelse($estimasi as $jasa)
-            <?php $i++ ?>
-            <tr>
-              <td class="text-center">{{$i}}</td>
-              <td class="text-center">{{$jasa->nama_jasa}}</td>
-              <td class="text-center">{{$jasa->fr}}</td>
-              <td class="text-center">{{$jasa->harga_perfr}}</td>
-              <td class="text-center">{{$jasa->total_harga_jasa}}</td>
+            <tr id="field-baru-jasa">
+              <td class="text-center">
+                <select name="" class="select2 form-control">
+                  @foreach($jasa as $data_jasa)
+                    <option value="{{$data_jasa->id}}">{{title_case($data_jasa->nama_jasa)}}</option>
+                  @endforeach
+                </select>
+              </td>
+              <td class="text-center"><input type="text" class="form-control"></td>
+              <td class="text-center"><input type="text" class="form-control" disabled></td>
+              <td class="text-center"><input type="text" class="form-control" disabled></td>
+              <td class="text-center"></td>
             </tr>
-            @empty
-            Data Kosong
-            @endforelse
           </table>
-          <a href="{{url('estimasi-biaya/pilih-jasa')}}">Tambah</a>
+          {{-- <a href="{{url('estimasi-biaya/pilih-jasa')}}">Tambah</a> --}}
+          <a onclick="tambah_jasa()" class="btn btn-primary">Tambah</a>
         </div>
       </div>
     </div>
   </div>
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1">
-    <h4>Keterangan</h4>
-    <div class="portlet light bordered">
-
-     <div class="portlet-body">
-      <textarea class="form-control" name="keterangan"></textarea>
-    </div>
+    <h4><b>Keterangan</b></h4>
+    <textarea class="form-control" name="keterangan" id="" cols="30" rows="10"></textarea>
   </div>
 </div>
-</div>
-
-<input type="hidden" value="{{ 'csrf_token' }}" name="token">
+<br><br>
 <div class="form-group">
   <div class="col-sm-offset-1 col-sm-10">
     <button type="submit" class="btn btn-primary">Simpan</button>
@@ -209,24 +200,71 @@
 @section('js')
 <script src="{{asset('recources/global/plugins/select2/js/select2.full.min.js')}}" type="text/javascript"></script>
 <script>
+  $('.selectpart').change(function(){
+    value       = $(this).val(),
+    $obj        = $('.selectpart option[value="'+value+'"]'),
+    harga_part  = $obj.attr('data-harga');
+    $('.data_harga_part').val(harga_part);
+  });
+  function tambah_part(){
+        $('<tr id="baru">'+
+            '<td class="text-center">'+
+              '<select name="part[]" class="select2 selectpart form-control" style="width: 100%;">'+
+              '<option value="">Pilih Sparepart</option>'+
+                  @foreach ($part as $data_part) 
+                    '<option value="{{$data_part->id}}" data-harga="{{$data_part->harga_jual}}">{{$data_part->nama}}</option>'+
+                  @endforeach
+              '</select>'+
+            '</td>'+
+            '<td class="text-center"><input type="number" placeholder="Masukan Quantity" min="0" class="form-control"></td>'+
+            '<td class="text-center"><input type="text" class="form-control data_harga_part" disabled></td>'+
+            '<td class="text-center"><input type="text" class="form-control" disabled></td>'+
+            '<td><a data-toggle="tooltip" title="Hapus Field" class="remove_field btn btn-danger"><i class="fa fa-trash-o"></i></a></td>'+
+            '</tr>').insertBefore('#field-baru-part');
+        $(".remove_field").click(function(){
+            $(this).closest("tr").remove();
+        });
+    }
+
+    function tambah_jasa(){
+        $('<tr id="baru-jasa">'+
+            '<td class="text-center">'+
+              '<select name="jasa[]" class="select2 form-control" style="width: 100%;">'+
+                  @foreach ($jasa as $data_jasa) 
+                    '<option value="{{$data_jasa->id}}">{{$data_jasa->nama_jasa}}</option>'+
+                  @endforeach
+              '</select>'+
+            '</td>'+
+            '<td class="text-center"><input type="number" placeholder="Masukan Quantity" min="0" class="form-control"></td>'+
+            '<td class="text-center"><input type="text" class="form-control" disabled></td>'+
+            '<td class="text-center"><input type="text" class="form-control" disabled></td>'+
+            '<td><a data-toggle="tooltip" title="Hapus Field" class="remove_field btn btn-danger"><i class="fa fa-trash-o"></i></a></td>'+
+            '</tr>').insertBefore('#field-baru-jasa');
+        $(".remove_field").click(function(){
+            $(this).closest("tr").remove();
+        });
+    }
+</script>
+<script>
   $(document).ready(function() {
     $(".select2").select2();
   });
 </script>
-<script>$('#select2').change(function(){
+<script>
+$('#select2').change(function(){
   var
-  value = $(this).val(),
-  $obj = $('#select2 option[value="'+value+'"]'),
-  nama = $obj.attr('data-nama'),
-  alamat = $obj.attr('data-alamat'),
-  nopol = $obj.attr('data-nopol'),
-  telepon = $obj.attr('data-telepon'),
-  tipe = $obj.attr('data-tipe'),
+  value     = $(this).val(),
+  $obj      = $('#select2 option[value="'+value+'"]'),
+  nama      = $obj.attr('data-nama'),
+  alamat    = $obj.attr('data-alamat'),
+  nopol     = $obj.attr('data-nopol'),
+  telepon   = $obj.attr('data-telepon'),
+  tipe      = $obj.attr('data-tipe'),
   nokanosin = $obj.attr('data-nokanosin')
-  warna = $obj.attr('data-warna'),
-  km = $obj.attr('data-km'),
-  fuel = $obj.attr('data-fuel'),
-  tanggal = $obj.attr('data-tanggal');
+  warna     = $obj.attr('data-warna'),
+  km        = $obj.attr('data-km'),
+  fuel      = $obj.attr('data-fuel'),
+  tanggal   = $obj.attr('data-tanggal');
 
 
   $('#data_nama').val(nama);

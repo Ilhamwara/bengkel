@@ -37,7 +37,10 @@ class EstimasisController extends Controller
 		->join('jasa', 'estimasi_biaya.jasa_id', 'jasa.id')
 		->select('estimasi_biaya.*', 'work_order.pelanggan_id', 'work_order.no_wo as nomor_wo', 'work_order.km_datang', 'work_order.tanggal', 'work_order.fuel_datang', 'spare_parts.id as sparepart_id','spare_parts.nama as nama_sparepart', 'spare_parts.no as no_sparepart', 'spare_parts.harga_jual as harga_sparepart', 'jasa.nama_jasa', 'jasa.harga_perfr')
 		->get();
-		return view ('estimasi-biaya.buat-estimasi-biaya', compact('estimasi', 'pelanggan','workorder'));
+
+		$part = Sparepart::all();
+		$jasa = Jasa::all();
+		return view ('estimasi-biaya.buat-estimasi-biaya', compact('estimasi', 'pelanggan','workorder','part','jasa'));
 
 	}
 
