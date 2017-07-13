@@ -18,13 +18,15 @@
   <h3 class="page-title"><b>Pilih Jasa</b></h3>
   <br>
   <div class="row">
+  @include('include.alert')
     <form action="{{url('post-pilih-jasa')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
-      {{ csrf_field() }}            
+      {{ csrf_field() }} 
+      <input type="hidden" name="idest" value="{{$idest}}">           
       <div class="form-group">
         <label class="col-sm-2 control-label">Pilih Jasa</label>
         <div class="col-sm-6">
-          <select name="jasa" class="form-control" id ="select3">
-           <option value=""></option>
+          <select name="jasa" class="select2 form-control" id ="select3">
+           <option>Pilih Jasa</option>
            @foreach($jasas as $data)
            <option value="{{$data->id}}" data-jasa="{{$data->nama_jasa}}"  data-harga="{{$data->harga_perfr}}">{{$data->nama_jasa}}</option>
            @endforeach
@@ -41,7 +43,7 @@
      <div class="form-group">
        <label class="col-sm-2 control-label">FR</label>
        <div class="col-sm-6">
-        <input type="text" class="form-control" name="fr">
+        <input type="text" class="form-control" name="fr" onblur="checkNum($(this))">
       </div>
     </div>
 
@@ -54,11 +56,10 @@
     <div class="form-group">
       <label class="col-sm-2 control-label">Jumlah</label>
       <div class="col-sm-6">
-      <input type="text" class="form-control" name="total_harga_jasa">
+        <input type="text" class="form-control" name="total_harga_jasa">
       </div>
     </div>
   </div>
-  <input type="hidden" value="{{ 'csrf_token' }}" name="token">
   <div class="form-group">
     <div class="col-sm-offset-1 col-sm-10">
       <button type="submit" class="btn btn-primary">Tambah</button>
@@ -71,6 +72,12 @@
 @endsection
 
 @section('js')
+<script src="{{asset('recources/global/plugins/select2/js/select2.full.min.js')}}" type="text/javascript"></script>
+<script>
+  $(document).ready(function() {
+    $(".select2").select2();
+  });
+</script>
 <script>$('#select3').change(function(){
   var
   value = $(this).val(),
@@ -83,5 +90,13 @@
 
 
 });
+function checkNum(obj) {
+        v = obj.val();
+        if (!$.isNumeric(v)) {
+            alert('Anda harus memasukan angka');
+            obj.val('0');
+            return false;
+        }
+    }
 </script>
 @endsection

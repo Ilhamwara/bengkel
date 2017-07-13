@@ -77,10 +77,12 @@ Route::group(['middleware' => ['session']], function () {
     Route::get('estimasi-biaya', 'EstimasisController@index');
 	Route::get('buat-estimasi-biaya', 'EstimasisController@buat_estimasi');
 	Route::post('post-estimasi', 'EtimasisController@post_estimasi');
-	Route::get('estimasi-biaya/pilih-sparepart', 'EstimasisController@pilih_sparepart');
+	Route::get('estimasi-biaya/pilih-sparepart/{idest}', 'EstimasisController@pilih_sparepart');
 	Route::post('post-pilih-sparepart', 'EstimasisController@post_pilih_sparepart');
-	Route::get('estimasi-biaya/pilih-jasa', 'EstimasisController@pilih_jasa');
+	Route::get('estimasi-biaya/pilih-jasa/{idest}', 'EstimasisController@pilih_jasa');
 	Route::post('post-pilih-jasa', 'EstimasisController@post_pilih_jasa');
+	Route::get('estimasi-biaya/hapus-part/{id}', 'EstimasisController@hapusestpart');
+	Route::get('estimasi-biaya/hapus-jasa/{id}', 'EstimasisController@hapusestjasa');
 
 
 //PURCHASE ORDER

@@ -37,8 +37,11 @@
     <body class=" login">
         <!-- BEGIN LOGO -->
         <div class="logo">
-            <a href="index.html"><h2>Aplikasi Manajemen Bengkel</h2>
-                <img src="{{--asset('recources/pages/img/logo-big-white.png')--}}" style="height: 17px';" alt="" /> </a>
+            <a href="{{url('/')}}">
+            <h2><b>Aplikasi Manajemen Bengkel</b></h2>
+            <br>
+                <img src="{{asset('recources/img/logo.jpeg')}}" width="500"> 
+            </a>
         </div>
         <!-- END LOGO -->
         <!-- BEGIN LOGIN -->
@@ -47,7 +50,7 @@
             @include('include.alert')
             <form class="login-form" action="{{url('post-login')}}" method="POST">
             {{csrf_field()}}
-                <div class="form-title">
+                <div class="form-title text-center">
                     <span class="form-title">Welcome.</span>
                     <span class="form-subtitle">Please login.</span>
                 </div>

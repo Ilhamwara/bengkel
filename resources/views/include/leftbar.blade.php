@@ -269,6 +269,12 @@
             @endif
         </a>
     </li>
+    <li class="nav-item">
+        <a href="{{url('logout')}}" class="nav-link nav-toggle">
+            <i class="icon-logout"></i>
+            <span class="title">Logout</span>
+        </a>
+    </li>
 </ul>
 <!-- END SIDEBAR MENU -->
 <!-- END SIDEBAR MENU -->

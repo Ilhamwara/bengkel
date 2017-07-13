@@ -46,7 +46,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label text-left">Telepon</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="telepon" placeholder="Nopol" required>
+                        <input type="text" maxlength='15' onblur="checkNum($(this))" class="form-control" name="telepon" placeholder="Telepon" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -76,5 +76,16 @@
         </form>
     </div>
 </div>
-
+@endsection
+@section('js')
+<script>
+    function checkNum(obj) {
+        v = obj.val();
+        if (!$.isNumeric(v)) {
+            alert('Anda harus memasukan angka');
+            obj.val('0');
+            return false;
+        }
+    }
+</script>
 @endsection

@@ -10,15 +10,17 @@ use App\Inspection;
 use App\Estimasi;
 use App\Sparepart;
 use App\Jasa;
+use App\EstJasa;
+use App\EstPart;
 use Validator;
 
 class EstimasisController extends Controller
 {
 	public function index(){
 
-		$estimasis = Estimasi::join('work_order', 'estimasi_biaya.order_id', 'work_order.id')
-		->join('spare_parts', 'estimasi_biaya.sparepart_id', 'spare_parts.id')
-		->join('jasa', 'estimasi_biaya.jasa_id', 'jasa.id')
+		$estimasis = Estimasi::join('work_order', 'estimasi_biaya.wo_id', 'work_order.id')
+		->join('spare_parts', 'estimasi_biaya.est_part_id', 'spare_parts.id')
+		->join('jasa', 'estimasi_biaya.est_jasa_id', 'jasa.id')
 		->select('estimasi_biaya.*', 'work_order.pelanggan_id', 'work_order.no_wo as nomor_wo', 'work_order.km_datang', 'work_order.tanggal', 'work_order.fuel_datang', 'spare_parts.id as sparepart_id','spare_parts.nama as nama_sparepart', 'spare_parts.no as no_sparepart', 'spare_parts.harga_jual as harga_sparepart', 'jasa.nama_jasa', 'jasa.harga_perfr')
 		->get();
 
@@ -31,64 +33,88 @@ class EstimasisController extends Controller
 		$workorder = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*', 'pelanggans.nama', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->get();
-		$estimasi = Estimasi::
-		join('work_order', 'estimasi_biaya.order_id', 'work_order.id')
-		->join('spare_parts', 'estimasi_biaya.sparepart_id', 'spare_parts.id')
-		->join('jasa', 'estimasi_biaya.jasa_id', 'jasa.id')
-		->select('estimasi_biaya.*', 'work_order.pelanggan_id', 'work_order.no_wo as nomor_wo', 'work_order.km_datang', 'work_order.tanggal', 'work_order.fuel_datang', 'spare_parts.id as sparepart_id','spare_parts.nama as nama_sparepart', 'spare_parts.no as no_sparepart', 'spare_parts.harga_jual as harga_sparepart', 'jasa.nama_jasa', 'jasa.harga_perfr')
-		->get();
 
-		$part = Sparepart::all();
-		$jasa = Jasa::all();
-		return view ('estimasi-biaya.buat-estimasi-biaya', compact('estimasi', 'pelanggan','workorder','part','jasa'));
+		$cek_est = Estimasi::orderBy('id','DESC')->first();
 
-	}
-
-	public function post_estimasi (){
-
-
-	}
-
-	public function pilih_sparepart (){
-
-		$spareparts = Sparepart::all();
-		return view ('estimasi-biaya.pilih-sparepart', compact('spareparts'));
-
-	}
-	public function post_pilih_sparepart (Request $request)
-	{
-		
-
-		$cek = Estimasi::where('sparepart_id',$request->sparepart)->where('order_id',$request->order)->first();
-		$pilih = new Estimasi;
-		$pilih->sparepart_id    		= $request->sparepart;
-		$pilih->order_id    		= $request->order;
-		$pilih->quantity_sparepart  	= $request->quantity_sparepart;
-		$pilih->total_harga_sparepart   = $request->total_harga_sparepart;
-		$pilih->save();
-		$validator = Validator::make($request->all(), [
-			'sparepart_id'   => 'required',
-			'order_id'    		=> 'required',
-			'quantity_sparepart'        => 'required',
-			'total_harga_sparepart'      => 'required',
+		Estimasi::updateOrCreate([
+				'wo_id' => 0,
+			],[
+				'no_est' => 'EST-'.date('dmy').'-'.$cek_est->wo_id
 			]);
 
-		if ($validator->fails()) {
-			return redirect('/estimasi-biaya')
-			->withErrors($validator)
-			->withInput();
+		$est_part = EstPart::join('spare_parts','est_part.part_id','=','spare_parts.id')->where('no_est',$cek_est->no_est)->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();
+		$est_jasa = EstJasa::join('jasa','est_jasa.jasa_id','=','jasa.id')->where('no_est',$cek_est->no_est)->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr')->get();
+		
+		return view ('estimasi-biaya.buat-estimasi-biaya', compact('pelanggan','workorder','cek_est','est_jasa','est_part'));
+
+	}
+	public function pilih_jasa ($idest){
+		$jasas = Jasa::all();
+		return view ('estimasi-biaya.pilih-jasa', compact('jasas','idest'));
+
+	}
+	public function pilih_sparepart($idest){
+
+		$spareparts = Sparepart::all();
+		return view ('estimasi-biaya.pilih-sparepart', compact('spareparts','idest'));
+
+	}
+	public function post_pilih_sparepart (Request $r)
+	{
+		
+		$est = new EstPart;
+		$est->part_id   = $r->sparepart;
+		$est->no_est    = $r->idest;
+		$est->qty  		= $r->quantity_sparepart;
+		$est->jumlah 	= $r->total_harga_sparepart;
+
+		$part = Sparepart::where('id',$r->sparepart)->first();
+
+		if($r->quantity_sparepart > $part->stok) {
+			return redirect()->back()->with('warning','Maaf jumlah yang anda masukan tidak mencukupi dari stok barang');
 		}
 
-		$pilih->save();
-		return redirect()->back()->with('success','Berhasil tambah');
+		$part->stok = ($part->stok - $r->quantity_sparepart);
+
+		$part->save();
+		$est->save();
+
+		return redirect('buat-estimasi-biaya')->with('success','Berhasil menambahkan estimasi sparepart');
+		
 	}
 
-	public function pilih_jasa (){
+		public function post_pilih_jasa (Request $r)
+	{
+		
+		$est = new EstJasa;
+		$est->jasa_id   = $r->jasa;
+		$est->no_est    = $r->idest;
+		$est->qty  		= $r->fr;
+		$est->jumlah 	= $r->total_harga_jasa;
+		$est->save();
 
-		$jasas = Jasa::all();
-		return view ('estimasi-biaya.pilih-jasa', compact('jasas'));
-
+		return redirect('buat-estimasi-biaya')->with('success','Berhasil menambahkan estimasi jasa');
+		
 	}
 
+	public function hapusestpart($id)
+	{
+		$est = EstPart::findOrFail($id);
+
+		$part = Sparepart::where('id',$est->part_id)->first();
+		$part->stok = ($part->stok + $est->qty);
+		$part->save();
+
+		$est->delete();
+
+		return redirect()->back()->with('success','Berhasil mengahpus estimasi sparepart');
+	}
+	public function hapusestjasa($id)
+	{
+		$jasa = EstJasa::findOrFail($id);
+		$jasa->delete();
+
+		return redirect()->back()->with('success','Berhasil mengahpus estimasi jasa');
+	}
 
 }

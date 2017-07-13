@@ -18,15 +18,17 @@
   <h3 class="page-title"><b>Pilih Sparepart</b></h3>
   <br>
   <div class="row">
+  @include('include.alert')
     <form action="{{url('post-pilih-sparepart')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
-      {{ csrf_field() }}            
+      {{ csrf_field() }}    
+      <input type="hidden" name="idest" value="{{$idest}}" >        
       <div class="form-group">
         <label class="col-sm-2 control-label">Pilih Sparepart</label>
         <div class="col-sm-6">
-         <select name="sparepart" class="form-control" id ="select3">
-           <option value=""></option>
+         <select name="sparepart" class="form-control select2" id ="select3">
+           <option>Pilih Sparepart</option>
            @foreach($spareparts as $data)
-           <option value="{{$data->id}}" data-sparepart="{{$data->nama}}" data-nomor="{{$data->no}}" data-harga="{{$data->harga_jual}}">{{$data->nama}}</option>
+              <option value="{{$data->id}}" data-sparepart="{{$data->nama}}" data-nomor="{{$data->no}}" data-harga="{{$data->harga_jual}}">{{$data->nama}}</option>
            @endforeach
          </select>
        </div>
@@ -48,26 +50,25 @@
       <div class="form-group">
         <label class="col-sm-2 control-label">Quantity</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" name="quantity_sparepart">
+          <input type="text" onblur="checkNum($(this))" class="form-control" id="qty" name="quantity_sparepart">
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-2 control-label">Harga</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" name="total_harga_sparepart" id="data_harga" disabled>
+          <input type="text" class="form-control" id="data_harga" disabled>
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-2 control-label">Total</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" name="total_harga_sparepart">
+          <input type="text" class="form-control" name="total_harga_sparepart" id="total">
         </div>
       </div>
     </div>
-    <input type="hidden" value="{{ 'csrf_token' }}" name="token">
     <div class="form-group">
       <div class="col-sm-offset-1 col-sm-10">
-        <button type="submit" class="btn btn-primary">Tambah</button>
+        <button class="btn btn-primary">Tambah</button>
       </div>
     </div>
   </form>
@@ -77,6 +78,12 @@
 @endsection
 
 @section('js')
+<script src="{{asset('recources/global/plugins/select2/js/select2.full.min.js')}}" type="text/javascript"></script>
+<script>
+  $(document).ready(function() {
+    $(".select2").select2();
+  });
+</script>
 <script>$('#select3').change(function(){
     var
     value = $(this).val(),
@@ -90,8 +97,15 @@
     $('#data_sparepart').val(sparepart);
     $('#data_nomor').val(nomor);
     $('#data_harga').val(harga);
-
-
 });
+
+function checkNum(obj) {
+        v = obj.val();
+        if (!$.isNumeric(v)) {
+            alert('Anda harus memasukan angka');
+            obj.val('0');
+            return false;
+        }
+    }
 </script>
 @endsection

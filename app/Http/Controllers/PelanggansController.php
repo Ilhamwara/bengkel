@@ -49,7 +49,7 @@ class PelanggansController extends Controller
 		}
 
 		$pelanggan->save();
-		return redirect()->back()->with('success','Berhasil tambah');
+		return redirect()->back()->with('success','Berhasil tambah pelanggan');
 	}
 
 	public function edit_pelanggan($id)
@@ -65,14 +65,14 @@ class PelanggansController extends Controller
 
 		$pelanggan = Pelanggan::where('pelanggans.id', $id)->first();
 		$pelanggan->update($request->all());
-		return redirect()->back()->with('success','Berhasil tambah');
+		return redirect('pelanggan')->with('success','Berhasil edit pelanggan');
 	}
 
 	public function hapus_pelanggan($id)
 	{
 		$pelanggan = Pelanggan::where('pelanggans.id', $id)->first();
 		$pelanggan->delete();
-		return redirect('/pelanggan');
+		return redirect()->back()->with('success','Berhasil hapus data pelanggan');
 	}
 
 }

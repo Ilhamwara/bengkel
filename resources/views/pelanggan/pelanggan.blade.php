@@ -27,8 +27,8 @@
 	<br>
 	<div class="row">
 		<div class="col-md-12">
+		@include('include.alert')
 			<div class="portlet light bordered">
-				
 				<div class="portlet-body">
 					<table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
 						<thead>

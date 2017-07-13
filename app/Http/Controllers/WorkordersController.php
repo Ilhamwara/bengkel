@@ -36,34 +36,25 @@ class WorkordersController extends Controller
 		
 	}
 
-	public function post_order(Request $request)
+	public function post_order(Request $r)
 	{
-		dd(request()->all());
-		// $cek = Workorder::where('pelanggan_id',$request->pelanggan)->first();
-		// $order = Workorder::make($request->all);
-		// // $order->pelanggan_id    = $request->pelanggan;
-		// // $order->no_wo    = $request->no_wo;
-		// // $order->tanggal 		= $request->tanggal;
-		// // $order->km_datang       = $request->km_datang;
-		// // $order->fuel_datang     = $request->fuel_datang;    
-		// // $order->keluhan         = $request->keluhan;
-		// $order->save();
-		// $validator = Validator::make($request->all(), [
-		// 	'pelanggan_id'   => 'required',
-		// 	'tanggal'        => 'required',
-		// 	'km_datang'      => 'required',
-		// 	'fuel_datang'    => 'required',
-		// 	'keluhan'        => 'required',
-		// 	]);
+		// dd(request()->all());
+		$cek = Workorder::where('no_wo',$r->no_wo)->first();
 
-		// if ($validator->fails()) {
-		// 	return redirect('/buat-order')
-		// 	->withErrors($validator)
-		// 	->withInput();
-		// }
+		if (count($cek) > 0) {
+			return redirect()->back()->with('warning','Maaf Nomer Workorder yang anda masukan sudah ada');
+		}
 
-		// $order->save();
-		// return redirect()->back()->with('success','Berhasil tambah');
+		$order = new Workorder;
+		$order->pelanggan_id  	= $r->pelanggan;
+		$order->no_wo    	  	= $r->no_wo;
+		$order->tanggal 		= $r->tanggal;
+		$order->km_datang     	= $r->km_datang;
+		$order->fuel_datang   	= $r->fuel_datang;    
+		$order->keluhan       	= $r->deskripsi;
+		$order->save();
+
+		return redirect()->back()->with('success','Berhasil tambah Workorder');
 	}
 
 	public function show_order($id)

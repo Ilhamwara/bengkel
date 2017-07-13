@@ -28,13 +28,14 @@
     <br>
     <div class="row">
         <div class="col-md-12">
+        @include('include.alert')
             <form action="{{url('post-order')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                 {{ csrf_field() }}
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Pilih Customer</label>
                     <div class="col-sm-8">
-                     <select name="pelanggan" class="form-control" id ="select2">
+                     <select name="pelanggan" class="select2 form-control" id ="select2">
                          <option value="">Pilih Pelanggan</option>
                          @foreach($pelanggan as $data)
                          <option value="{{$data->id}}" data-nama="{{$data->nama}}" data-alamat="{{$data->alamat}}" data-nopol="{{$data->no_pol}}" data-telepon="{{$data->telepon}}" data-tipe="{{$data->tipe}}" data-nokanosin="{{$data->noka_nosin}}" data-warna="{{$data->warna}}">{{$data->nama}}</option>
@@ -78,7 +79,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">Noka/ Nosin</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="noka_nosin" id="data_nokanosin" disabled>
+                    <input type="text" class="form-control" onblur="checkNum($(this))" name="noka_nosin" id="data_nokanosin" disabled>
                 </div>
             </div>
             <div class="form-group">
@@ -91,7 +92,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">No WO</label>
                 <div class="col-sm-8">
-                    <input type="tet" class="form-control" name="no_wo" placeholder="No WO" required>
+                    <input type="text" class="form-control" onblur="checkNum($(this))" name="no_wo" placeholder="No WO" required>
                 </div>
             </div>
 
@@ -104,59 +105,27 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">Km Datang</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="km_datang" placeholder="Km Datang" required>
+                    <input type="text" class="form-control" onblur="checkNum($(this))" name="km_datang" placeholder="Km Datang" required>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Fuel Datang</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="fuel_datang" placeholder="Fuel Datang" required>
+                    <input type="text" class="form-control" onblur="checkNum($(this))" name="fuel_datang" placeholder="Fuel Datang" required>
                 </div>
             </div>
-           <!--  <div class="form-group">
-                <label class="col-sm-2 control-label">Keluhan</label>
-                <div class="col-sm-8">
-                    <textarea class="form-control" name="keluhan" placeholder="Keluhan" required></textarea>
-                </div>
-            </div> -->
-
              <div class="form-group">
                 <label class="col-sm-2 control-label">Keluhan</label>
                 <div class="col-sm-8">
                     <textarea name="deskripsi" id="deskripsi" rows="10" cols="80"></textarea>
                 </div>
             </div>
-            
-  
-               <!--  <div class="portlet light bordered">
-
-                  <div class="portlet-body">
-                    <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
-                      <thead>
-                        <tr>
-                          <th class="text-center">No</th>
-                          <th class="text-center">Keluhan</th>
-                          <th class="text-center">Action</th>
-                      </tr>
-                  </thead>   
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td class="text-center"><input type="text" class="form-control" name="keluhan"></td>
-                      <td class="text-center"><button class="btn btn-info" id="add"><i class="fa fa-plus"></i></button></td>
-                  </tr>
-              </tbody>
-          </table>     
-      </div>
-  </div> -->
-</div>
-
-<input type="hidden" value="{{ 'csrf_token' }}" name="token">
-<div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary">Simpan</button>
+    </div>
   </div>
-</div>
 </form>
 
 </div>
@@ -166,7 +135,7 @@
 @endsection
 @section('js')
 <script src="{{asset('js/ckeditor.js')}}"></script>
-
+<script src="{{asset('recources/global/plugins/select2/js/select2.min.js')}}"></script>
 <script>
   $(document).ready(function() {
     $(".select2").select2();
@@ -176,8 +145,15 @@
         customConfig : '',
         toolbar : 'simple'
     })
+  function checkNum(obj) {
+        v = obj.val();
+        if (!$.isNumeric(v)) {
+            alert('Anda harus memasukan angka');
+            obj.val('0');
+            return false;
+        }
+    }
 </script>
-<script src="{{asset('ckeditor.js')}}" type="text/javascript"></script>
 <script>$('#select2').change(function(){
     var
     value = $(this).val(),
