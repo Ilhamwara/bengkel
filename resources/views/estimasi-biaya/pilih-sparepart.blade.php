@@ -50,19 +50,19 @@
       <div class="form-group">
         <label class="col-sm-2 control-label">Quantity</label>
         <div class="col-sm-6">
-          <input type="text" onblur="checkNum($(this))" class="form-control" id="qty" name="quantity_sparepart">
+          <input type="text" onblur="checkNum($(this))" class="form-control" id="qty" name="quantity_sparepart" value="0">
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-2 control-label">Harga</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" id="data_harga" disabled>
+          <input type="text" class="form-control" id="data_harga" name="data_harga" disabled>
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-2 control-label">Total</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" name="total_harga_sparepart" id="total">
+          <input type="text" class="form-control" name="total_harga_sparepart" id="total" value="0">
         </div>
       </div>
     </div>
@@ -107,5 +107,34 @@ function checkNum(obj) {
             return false;
         }
     }
+</script>
+  <script type="text/javascript">
+  $('input[name=quantity_sparepart], input[name=data_harga]').keyup(function() {
+    var divParent = $(this).closest('div');
+    var qty = $('input[name=quantity_sparepart]', divParent).val()-0;
+    var price = $('input[name=data_harga]', divParent).val()-0;
+    if (qty >= 0 && price >= 0)
+      $('input[name=total_harga_sparepart]', divParent).text(qty*price);
+  });
+
+  $(document).ready(function() {
+    //this calculates values automatically 
+    sum();
+    $("#qty, #data_harga").on("keydown keyup", function() {
+      sum();
+    });
+  });
+
+  function sum() {
+    var num1 = document.getElementById('qty').value;
+    var num2 = document.getElementById('data_harga').value;
+
+    var result = parseInt(num1) * parseInt(num2);
+    if (!isNaN(result)) {
+      document.getElementById('total').value = result;
+
+    }
+  }
+
 </script>
 @endsection

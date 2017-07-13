@@ -231,4 +231,15 @@ $('#select2').change(function(){
 
 });
 </script>
+
+  <script type="text/javascript">
+  $('input[name=qty], input[name=price]').keyup(function() {
+    var divParent = $(this).closest('div');
+    var qty = $('input[name=num]', divParent).val()-0;
+    var price = $('input[name=num]', divParent).val()-0;
+    if (qty >= 0 && price >= 0)
+      $('input[name=sum]', divParent).text(qty*price);
+  });
+
+</script>
 @endsection

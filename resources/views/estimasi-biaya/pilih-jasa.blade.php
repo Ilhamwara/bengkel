@@ -43,7 +43,7 @@
      <div class="form-group">
        <label class="col-sm-2 control-label">FR</label>
        <div class="col-sm-6">
-        <input type="text" class="form-control" name="fr" onblur="checkNum($(this))">
+        <input type="text" class="form-control" name="fr" id="banyaknya" value="0" onblur="checkNum($(this))">
       </div>
     </div>
 
@@ -56,7 +56,7 @@
     <div class="form-group">
       <label class="col-sm-2 control-label">Jumlah</label>
       <div class="col-sm-6">
-        <input type="text" class="form-control" name="total_harga_jasa">
+        <input type="text" class="form-control" name="total_harga_jasa" id="sum" value="0">
       </div>
     </div>
   </div>
@@ -98,5 +98,35 @@ function checkNum(obj) {
             return false;
         }
     }
+</script>
+
+  <script type="text/javascript">
+  $('input[name=qty], input[name=harga_perfr]').keyup(function() {
+    var divParent = $(this).closest('div');
+    var qty = $('input[name=qty]', divParent).val()-0;
+    var price = $('input[name=harga_perfr]', divParent).val()-0;
+    if (qty >= 0 && price >= 0)
+      $('input[name=jumlah]', divParent).text(qty*price);
+  });
+
+  $(document).ready(function() {
+    //this calculates values automatically 
+    sum();
+    $("#banyaknya, #data_harga").on("keydown keyup", function() {
+      sum();
+    });
+  });
+
+  function sum() {
+    var num1 = document.getElementById('banyaknya').value;
+    var num2 = document.getElementById('data_harga').value;
+
+    var result = parseInt(num1) * parseInt(num2);
+    if (!isNaN(result)) {
+      document.getElementById('sum').value = result;
+
+    }
+  }
+
 </script>
 @endsection
