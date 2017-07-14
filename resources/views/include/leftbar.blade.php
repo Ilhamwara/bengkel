@@ -260,15 +260,6 @@
             @endif
         </a>
     </li>
-    <li class="nav-item @if(Request::is('management')) active open @endif">
-        <a href="{{url('management')}}" class="nav-link nav-toggle">
-            <i class="fa fa-group"></i>
-            <span class="title">User Management</span>
-            @if(Request::is('management'))
-            <span class="selected"></span>
-            @endif
-        </a>
-    </li>
     <li class="nav-item">
         <a href="{{url('logout')}}" class="nav-link nav-toggle">
             <i class="icon-logout"></i>

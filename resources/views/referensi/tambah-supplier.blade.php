@@ -17,6 +17,7 @@
     <br>
     <div class="row">
         <div class="col-md-12">
+        @include('include.alert')
             <form action="{{url('post-supplier')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                 {{ csrf_field() }}
                  <div class="form-group">

@@ -55,9 +55,9 @@
 								<td class="text-center">{{$po->status}}</td>
 								<td class="text-center">
 									<ul class="action">
-										<li><a href="{{url('purchase-order/'.$po->id.'/edit')}}" class="btn btn-warning"  data-toggle="tooltip" title="Edit" style="padding: 6px 12px;"><i class="fa fa-pencil"></i></a></li>
-										<li><a href="{{url('hapus/purchase-order/'.$po->id)}}" class="btn btn-danger"  data-toggle="tooltip" title="Hapus" style="padding: 6px 12px;"><i class="fa fa-trash-o"></i></a></li>
+										{{-- <li><a href="{{url('purchase-order/'.$po->id.'/edit')}}" class="btn btn-warning"  data-toggle="tooltip" title="Edit" style="padding: 6px 12px;"><i class="fa fa-pencil"></i></a></li> --}}
 										<li><a href="{{url('detail-purchase-order/'.$po->id)}}" class="btn btn-info"  data-toggle="tooltip" title="Detail" style="padding: 6px 12px;"><i class="fa fa-eye"></i></a></li>
+										<li><a href="{{url('hapus/purchase-order/'.$po->id)}}" class="btn btn-danger"  data-toggle="tooltip" title="Hapus" style="padding: 6px 12px;"><i class="fa fa-trash-o"></i></a></li>
 									</ul>
 								</td>
 							</tr>

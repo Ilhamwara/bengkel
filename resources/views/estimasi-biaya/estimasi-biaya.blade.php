@@ -36,27 +36,25 @@
 								<th class="text-center">No</th>
 								<th class="text-center">No WO</th>
 								<th class="text-center">Nama</th>
-								<th class="text-center">Sparepart</th>
-								<th class="text-center">Jasa</th>
+								<th class="text-center">No Pol</th>
+								<th class="text-center">Tanggal</th>
 								<th class="text-center">Keterangan</th>
 							</tr>
 						</thead>
-						<?php $i = 0 ?>
 						<tbody>
-							@forelse($estimasis as $data)
-							<?php $i++ ?>
+							@forelse($estimasis as $i => $data)
 							<tr>
-								<td>{{$i}}</td>
+								<td>{{$i+1}}</td>
 								<td class="text-center">{{$data->no_wo}}</td>
 								<td class="text-center">{{$data->nama}}</td>
 								<td class="text-center">{{$data->total_harga_sparepart}}</td>
 								<td class="text-center">{{$data->total_harga_jasa}}</td>
-								<td class="text-center">{{$data->keterangan}}</td>
+								<td class="text-center">{!!$data->keterangan!!}</td>
 								<td class="text-center">
 									<ul class="action">
-										<li><a href="{{url('edit/pelanggan/'.$pelanggan->id)}}" class="btn btn-warning"  data-toggle="tooltip" title="Edit" style="padding: 6px 12px;"><i class="fa fa-pencil"></i></a></li>
-										<li><a href="{{url('hapus/pelanggan/'.$pelanggan->id)}}" class="btn btn-danger"  data-toggle="tooltip" title="Hapus" style="padding: 6px 12px;"><i class="fa fa-trash-o"></i></a></li>
-										<li><a href="{{url('hapus/pelanggan/'.$pelanggan->id)}}" class="btn btn-info"  data-toggle="tooltip" title="Buat Nota" style="padding: 6px 12px;"><i class="fa fa-calculator"></i></a></li>
+										<li><a href="{{url('edit/estimasi/'.$data->id)}}" class="btn btn-warning"  data-toggle="tooltip" title="Edit" style="padding: 6px 12px;"><i class="fa fa-pencil"></i></a></li>
+										<li><a href="{{url('hapus/estimasi/'.$data->id)}}" class="btn btn-danger"  data-toggle="tooltip" title="Hapus" style="padding: 6px 12px;"><i class="fa fa-trash-o"></i></a></li>
+										<li><a href="{{url('hapus/estimasi/'.$data->id)}}" class="btn btn-info"  data-toggle="tooltip" title="Buat Nota" style="padding: 6px 12px;"><i class="fa fa-calculator"></i></a></li>
 									</ul>
 								</td>
 							</tr>

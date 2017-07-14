@@ -9,8 +9,9 @@ class Estimasi extends Model
 	protected $table = 'estimasi_biaya';
     protected $fillable = [
         'no_est',
-        'est_part_id',
-        'est_jasa_id',
+        'ref_id',
         'wo_id',
+        'keterangan',
+        'type',
     ];
 }

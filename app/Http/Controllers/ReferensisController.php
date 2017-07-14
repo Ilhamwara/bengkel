@@ -148,21 +148,8 @@ class ReferensisController extends Controller
 		$supplier->alamat	 	   = $request->alamat;
 		$supplier->no_rek 	       = $request->nama;
 		$supplier->kontak	 	   = $request->alamat;
-		$validator = Validator::make($request->all(), [
-			'id_supplier'    => 'required',
-			'nama'        	 => 'required',
-			'alamat'         => 'required',
-			'no_rek'         => 'required',
-			'kontak'         => 'required',
-			]);
-
-		if ($validator->fails()) {
-			return redirect('supplier/tambah-supplier')
-			->withErrors($validator)
-			->withInput();
-		}
-
 		$supplier->save();
+		
 		return redirect()->back()->with('success','Berhasil tambah');
 	}
 

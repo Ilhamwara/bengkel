@@ -8,11 +8,11 @@ class Purchase extends Model
 {
     protected $table = 'form_po';
     protected $fillable =[
-    'supplier',
-    'alamat',
-    'no_po',
-    'alamat',
-    'tanggal',
-    'status',
+        'supplier',
+        'alamat',
+        'no_po',
+        'alamat',
+        'tanggal',
+        'status',
     ];
 }

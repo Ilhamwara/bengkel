@@ -55,10 +55,14 @@
 								<td class="text-center">{{$sparepart->harga_jual}}</td>
 								<td class="text-center">{{$sparepart->stok}}</td>
 								<td class="text-center">
+								@if($sparepart->stok > 0)
 									<ul class="action">
 										<li><a href="{{url('sparepart/'.$sparepart->id.'/edit')}}" class="btn btn-warning"  data-toggle="tooltip" title="Edit" style="padding: 6px 12px;"><i class="fa fa-pencil"></i></a></li>
 										<li><a href="{{url('hapus/sparepart/'.$sparepart->id)}}" class="btn btn-danger"  data-toggle="tooltip" title="Hapus" style="padding: 6px 12px;"><i class="fa fa-trash-o"></i></a></li>
 									</ul>
+								@else
+									<a href="{{url('buat-purchase-order')}}" class="btn btn-primary">Buat Order</a>
+								@endif
 								</td>
 							</tr>
 							@empty

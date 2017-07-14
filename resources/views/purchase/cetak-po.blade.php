@@ -55,8 +55,29 @@
                         <input type="text" class="form-control" name="tanggal" value="{{$cetak->status}}" disabled>
                     </div>
                 </div>
-
-               <input type="hidden" value="{{ 'csrf_token' }}" name="token">
+                <br><br>
+               <table class="table table-striped table-condensed">
+                    <tr>
+                        <th class="text-center">No</th>
+                        <th class="text-center">Part Number</th>
+                        <th class="text-center">Part Name</th>
+                        <th class="text-center">Qty</th>
+                        <th class="text-center">ORY</th>
+                        <th class="text-center">Thailand</th>
+                        <th class="text-center">Jepang</th>
+                    </tr>
+                    @foreach($po_part as $k => $data)
+                        <tr>
+                            <td class="text-center">{{$k+1}}</td>
+                            <td class="text-center">{{$data->part_number}}</td>
+                            <td class="text-center">{{$data->part_name}}</td>
+                            <td class="text-center">{{$data->qty}}</td>
+                            <td class="text-center">{{$data->ory}}</td>
+                            <td class="text-center">{{$data->thailand}}</td>
+                            <td class="text-center">{{$data->jepang}}</td>
+                        </tr>
+                    @endforeach
+               </table>
                <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                   <button type="submit" class="btn btn-primary">Cetak</button>
