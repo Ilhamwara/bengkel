@@ -97,4 +97,12 @@ Route::group(['middleware' => ['session']], function () {
 //LAPORAN
 	Route::get('laporan', 'LaporansController@index');
 
+//USER
+	Route::get('user-management', 'UserController@manage');
+	Route::get('hapus/user/{id}', 'UserController@hapususer');
+	Route::get('tambah/user', 'UserController@tambahuser');
+	Route::post('tambah/user', 'UserController@tambahuserpost');
+	Route::get('edit/user/{id}', 'UserController@edituser');
+	Route::post('edit/user/{id}', 'UserController@edituserpost');
+
 });

@@ -17,7 +17,11 @@ use Validator;
 class EstimasisController extends Controller
 {
 	public function index(){
-		$estimasis = Estimasi::all();
+		$estimasis = Estimasi::join('work_order','estimasi_biaya.wo_id','=','work_order.id')
+							 ->join('pelanggans','work_order.pelanggan_id','=','pelanggans.id')
+							 ->select('estimasi_biaya.id','work_order.no_wo','estimasi_biaya.keterangan','pelanggans.nama','pelanggans.no_pol','estimasi_biaya.created_at')
+							 // ->groupBy('estimasi_biaya.no_est')
+							 ->get();
 
 		// $estimasis = Estimasi::join('work_order', 'estimasi_biaya.wo_id', 'work_order.id')
 		// ->join('est_part', 'estimasi_biaya.no_est', 'est_part.no_est')

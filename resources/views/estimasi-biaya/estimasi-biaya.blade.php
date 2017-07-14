@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('css')
 <link href="{{asset('recources/global/plugins/datatables/datatables.min.css')}}" rel="stylesheet" type="text/css" />
-<link href="{{asset('recources/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css')}}" rel="stylesheet" type="text/css" /> 
+<link href="{{asset('recources/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css')}}" rel="stylesheet" type="text/css" />     
 <style>
 	.action li{
 		display: inline-block;
@@ -39,6 +39,7 @@
 								<th class="text-center">No Pol</th>
 								<th class="text-center">Tanggal</th>
 								<th class="text-center">Keterangan</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -47,14 +48,14 @@
 								<td>{{$i+1}}</td>
 								<td class="text-center">{{$data->no_wo}}</td>
 								<td class="text-center">{{$data->nama}}</td>
-								<td class="text-center">{{$data->total_harga_sparepart}}</td>
-								<td class="text-center">{{$data->total_harga_jasa}}</td>
+								<td class="text-center">{{$data->no_pol}}</td>
+								<td class="text-center">{{date('d-m-Y H:i',strtotime($data->created_at))}}</td>
 								<td class="text-center">{!!$data->keterangan!!}</td>
 								<td class="text-center">
 									<ul class="action">
-										<li><a href="{{url('edit/estimasi/'.$data->id)}}" class="btn btn-warning"  data-toggle="tooltip" title="Edit" style="padding: 6px 12px;"><i class="fa fa-pencil"></i></a></li>
+										{{-- <li><a href="{{url('edit/estimasi/'.$data->id)}}" class="btn btn-warning"  data-toggle="tooltip" title="Edit" style="padding: 6px 12px;"><i class="fa fa-pencil"></i></a></li> --}}
+										<li><a href="{{url('view/estimasi/'.$data->id)}}" class="btn btn-info"  data-toggle="tooltip" title="Buat Nota" style="padding: 6px 12px;"><i class="fa fa-calculator"></i></a></li>
 										<li><a href="{{url('hapus/estimasi/'.$data->id)}}" class="btn btn-danger"  data-toggle="tooltip" title="Hapus" style="padding: 6px 12px;"><i class="fa fa-trash-o"></i></a></li>
-										<li><a href="{{url('hapus/estimasi/'.$data->id)}}" class="btn btn-info"  data-toggle="tooltip" title="Buat Nota" style="padding: 6px 12px;"><i class="fa fa-calculator"></i></a></li>
 									</ul>
 								</td>
 							</tr>
@@ -73,6 +74,5 @@
 <script src="{{asset('recources/global/scripts/datatable.js')}}" type="text/javascript"></script>
 <script src="{{asset('recources/global/plugins/datatables/datatables.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('recources/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js')}}" type="text/javascript"></script>
-<script src="{{asset('recources/global/scripts/app.min.js')}}" type="text/javascript"></script>
 <script src="{{asset('recources/pages/scripts/table-datatables-managed.min.js')}}" type="text/javascript"></script>
 @endsection
