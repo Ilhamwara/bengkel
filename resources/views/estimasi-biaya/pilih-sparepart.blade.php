@@ -62,7 +62,7 @@
       <div class="form-group">
         <label class="col-sm-2 control-label">Total</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" name="total_harga_sparepart" id="total" value="0">
+          <input type="text" class="form-control" name="total_harga_sparepart" id="total" value="0" readonly>
         </div>
       </div>
     </div>
