@@ -22,15 +22,16 @@
     @include('include.alert')
     <form action="{{url('post-estimasi')}}" method="POST" enctype="multipart/form-data" class="form-horizontal" style="overflow: hidden;">
       {{ csrf_field() }}
+      <input type="hidden" name="estid" value="{{$cek_est->id}}">
       <div class="col-sm-10 col-sm-offset-1">
         <div class="col-sm-6">
           <div class="form-group">
             <label class="col-sm-3 control-label">Pilih WO</label>
             <div class="col-sm-8">
-             <select name="order_id" class="select2 form-control" id ="select2">
-               <option>Pilih WO</option>
+             <select name="order_id" class="select2 form-control" id ="select2" required>
+               <option value="">-- Pilih WO --</option>
                @foreach($workorder as $data)
-               <option value="{{$data->pelanggan_id}}" data-nama="{{$data->nama}}" data-alamat="{{$data->alamat}}" data-nopol="{{$data->no_pol}}" data-telepon="{{$data->telepon}}" data-tipe="{{$data->tipe}}" data-nokanosin="{{$data->noka_nosin}}" data-warna="{{$data->warna}}" data-km="{{$data->km_datang}}" data-fuel="{{$data->fuel_datang}}" data-tanggal="{{$data->tanggal}}">{{$data->no_wo}}</option>
+                <option value="{{$data->id}}" data-nama="{{$data->nama}}" data-alamat="{{$data->alamat}}" data-nopol="{{$data->no_pol}}" data-telepon="{{$data->telepon}}" data-tipe="{{$data->tipe}}" data-nokanosin="{{$data->noka_nosin}}" data-warna="{{$data->warna}}" data-km="{{$data->km_datang}}" data-fuel="{{$data->fuel_datang}}" data-tanggal="{{$data->tanggal}}">{{$data->no_wo}}</option>
                @endforeach
              </select>
            </div>
@@ -124,6 +125,7 @@
                 <th class="text-center"></th>
               </tr>
               @forelse($est_part as $part)
+              <input type="hidden" name="est_part[]" value="{{$part->id}}">
               <tr>
                 <td class="text-center">{{$part->nama}}</td>
                 <td class="text-center">{{$part->qty}}</td>
@@ -137,11 +139,9 @@
               </tr>
               @endforelse
               <tr>
-               <td colspan="3">Total</td>
-               <td>{{$est_part->sum('jumlah')}}</td>
-               <?php
-               // $total = DB::table('est_part')->where('no_est,')sum('jumlah');
-               ?>
+               <td class="text-center" colspan="3"><b>Total</b></td>
+               <td class="text-center">Rp {{$est_part->sum('jumlah')}}</td>
+               <td></td>
              </tr>
            </table>
          </div>
@@ -167,6 +167,7 @@
         </tr>
         @forelse($est_jasa as $jasa)
         <tr>
+          <input type="hidden" name="est_jasa[]" value="{{$jasa->id}}">
           <td class="text-center">{{$jasa->nama_jasa}}</td>
           <td class="text-center">{{$jasa->qty}}</td>
           <td class="text-center">{{$jasa->harga_perfr}}</td>
@@ -179,8 +180,8 @@
         </tr>
         @endforelse
         <tr>
-         <td colspan="3">Total</td>
-         <td>{{$est_jasa->sum('jumlah')}}</td>
+         <td class="text-center" colspan="3"><b>Total</b></td>
+         <td class="text-center">Rp {{$est_jasa->sum('jumlah')}}</td>
          <td></td>
        </tr>
      </table>
@@ -192,7 +193,7 @@
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1">
     <h4><b>Keterangan</b></h4>
-    <textarea class="form-control" name="keterangan" id="" cols="30" rows="10"></textarea>
+    <textarea class="form-control" id="deskripsi" name="keterangan" id="" cols="30" rows="10"></textarea>
   </div>
 </div>
 <br><br>
@@ -208,10 +209,16 @@
 @endsection
 @section('js')
 <script src="{{asset('recources/global/plugins/select2/js/select2.full.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('js/ckeditor.js')}}"></script>
 <script>
   $(document).ready(function() {
     $(".select2").select2();
   });
+  CKEDITOR.replace( 'deskripsi',
+    {
+        customConfig : '',
+        toolbar : 'simple'
+    })
 </script>
 <script>
   $('#select2').change(function(){

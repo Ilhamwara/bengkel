@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Purchase;
+use App\Supplier;
+use App\PoPart;
 use Validator;
 
 class PurchasesController extends Controller
@@ -18,33 +20,41 @@ class PurchasesController extends Controller
 
 	public function buat_purchase_order(){
 		$purchases = Purchase::all();
+		$supp = Supplier::all();
 
-		return view ('purchase.buat-po');
+		return view ('purchase.buat-po',compact('supp'));
 	}
 
-	public function post_purchase_order(Request $request){
-		$purchase = new Purchase;
-		$purchase->supplier    = $request->supplier;
-		$purchase->alamat      = $request->alamat;
-		$purchase->no_po       = $request->no_po;
-		$purchase->tanggal     = $request->tanggal;
-		$purchase->status      = $request->status;
-		$validator = Validator::make($request->all(), [
-			'supplier'     => 'required',
-			'alamat'       => 'required',
-			'no_po'        => 'required',
-			'tanggal'      => 'required',
-			'status'       => 'required',
-			]);
+	public function post_purchase_order(Request $r){
 
-		if ($validator->fails()) {
-			return redirect('buat-purchase-order')
-			->withErrors($validator)
-			->withInput();
+		$purchase = new Purchase;
+		$purchase->supplier    = $r->supplier;
+		$purchase->alamat      = $r->alamat;
+		$purchase->no_po       = $r->no_po;
+		$purchase->tanggal     = date('Y-m-d');
+		$purchase->status      = $r->status;
+
+		if (Purchase::where('no_po',$r->no_po)->count() > 0) {
+			return redirect()->back()->with('warning','Maaf Nomer Purchase Order yang anda masukan sudah ada');
 		}
 
 		$purchase->save();
-		return redirect()->back()->with('success','Berhasil tambah');
+		$cek_pur = Purchase::orderBy('id','DESC')->first();
+
+		foreach ($r->number as $k => $v) {
+
+			$po_part[$k] = new PoPart;
+			$po_part[$k]->id_sup 		= $cek_pur->id;
+			$po_part[$k]->part_number 	= $v;
+			$po_part[$k]->part_name 	= $r->nama[$k];
+			$po_part[$k]->qty 			= $r->qty[$k];
+			$po_part[$k]->ory 			= $r->ory[$k];
+			$po_part[$k]->thailand 		= $r->thailand[$k];
+			$po_part[$k]->jepang 		= $r->jepang[$k];
+			$po_part[$k]->save();
+		}
+
+		return redirect()->back()->with('success','Berhasil tambah Purchase Order');
 	}
 
 	public function edit_purchase_order($id){
@@ -63,13 +73,14 @@ class PurchasesController extends Controller
 
 	public function detail_purchase_order($id){
 		$cetak = Purchase::where('form_po.id', $id)->first();
+		$po_part = PoPart::where('id_sup',$id)->get();
 
-		return view ('purchase.cetak-po', compact('cetak'));
+		return view ('purchase.cetak-po', compact('cetak','po_part'));
 	}
 
 	public function hapus_purchase_order($id)
 	{
 		Purchase::findOrFail($id)->delete();
-		return redirect()->back()->with('success','Berhasil edit data');
+		return redirect()->back()->with('success','Berhasil hapus purchase order');
 	}
 }

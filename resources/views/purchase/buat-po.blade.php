@@ -20,13 +20,19 @@
   <br>
   <div class="row">
     <div class="col-md-12">
+    @include('include.alert')
       <form action="{{url('post-purchase-order')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
         {{ csrf_field() }}
 
         <div class="form-group">
           <label class="col-sm-2 control-label">Supplier</label>
           <div class="col-sm-6">
-            <input type="text" class="form-control" name="supplier" required> 
+             <select name="supplier" class="select2 form-control" required>
+                 <option value="">Pilih Supplier</option>
+                 @foreach($supp as $data)
+                    <option value="{{$data->id}}">{{$data->nama}}</option>
+                 @endforeach
+             </select>
           </div>
         </div>
 
@@ -45,7 +51,7 @@
         <div class="form-group">
           <label class="col-sm-2 control-label">Tanggal</label>
           <div class="col-sm-6">
-            <input type="date" class="form-control" name="tanggal" required>
+            <input type="text" class="form-control" name="tanggal" value="{{date('d-m-Y')}}" readonly>
           </div>
         </div>
 
@@ -79,20 +85,19 @@
               <tbody>
                 <tr>
                   <td>1</td>
-                  <td class="text-center"><input type="text" class="form-control" name="number[]"></td>
-                  <td class="text-center"><input type="text" class="form-control" name="nama[]"></td>
-                  <td class="text-center"><input type="text" class="form-control" name="qty[]"></td>
-                  <td class="text-center"><input type="text" class="form-control" name="ory[]"></td>
-                  <td class="text-center"><input type="text" class="form-control" name="thailand[]"></td>
-                  <td class="text-center"><input type="text" class="form-control" name="jepang[]"></td>
-                  <td class="text-center"><button class="btn btn-info" id="add"><i class="fa fa-plus"></i></button></td>
+                  <td class="text-center"><input type="text" class="form-control" required name="number[]"></td>
+                  <td class="text-center"><input type="text" class="form-control" required name="nama[]"></td>
+                  <td class="text-center"><input type="text" class="form-control" required name="qty[]"></td>
+                  <td class="text-center"><input type="text" class="form-control" required name="ory[]"></td>
+                  <td class="text-center"><input type="text" class="form-control" required name="thailand[]"></td>
+                  <td class="text-center"><input type="text" class="form-control" required name="jepang[]"></td>
+                  <td class="text-center"><a class="btn btn-info" id="add"><i class="fa fa-plus"></i></a></td>
                 </tr>
               </tbody>
             </table>     
           </div>
         </div>
       </div>
-      <input type="hidden" value="{{ 'csrf_token' }}" name="token">
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <button type="submit" class="btn btn-primary">Simpan</button>
@@ -107,8 +112,12 @@
 @endsection
 
 @section('js')
+<script src="{{asset('recources/global/plugins/select2/js/select2.full.min.js')}}" type="text/javascript"></script>
 <script>
-  var cnt = 0;
+ $(document).ready(function() {
+    $(".select2").select2();
+});
+  var cnt = 2;
 
 $("#add").click(function() {
   $("table").append("<tr><td>"+cnt+"</td><td class='text-center'><input type='text' class='form-control' name='number[]''></td><td class='text-center'><input type='text' class='form-control' name='nama[]'></td><td class='text-center'><input type='text' class='form-control' name='qty[]''></td><td class='text-center'><input type='text' class='form-control' name='ory[]'></td><td class='text-center'><input type='text' class='form-control' name='thailand[]'></td><td class='text-center'><input type='text' class='form-control' name='jepang[]'></td><td><button class='btn btn-danger' id='delete'><i class='fa fa-trash'></i></button></td></tr>" );

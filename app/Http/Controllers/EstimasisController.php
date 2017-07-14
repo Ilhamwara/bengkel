@@ -17,12 +17,15 @@ use Validator;
 class EstimasisController extends Controller
 {
 	public function index(){
+		$estimasis = Estimasi::all();
 
-		$estimasis = Estimasi::join('work_order', 'estimasi_biaya.wo_id', 'work_order.id')
-		->join('spare_parts', 'estimasi_biaya.est_part_id', 'spare_parts.id')
-		->join('jasa', 'estimasi_biaya.est_jasa_id', 'jasa.id')
-		->select('estimasi_biaya.*', 'work_order.pelanggan_id', 'work_order.no_wo as nomor_wo', 'work_order.km_datang', 'work_order.tanggal', 'work_order.fuel_datang', 'spare_parts.id as sparepart_id','spare_parts.nama as nama_sparepart', 'spare_parts.no as no_sparepart', 'spare_parts.harga_jual as harga_sparepart', 'jasa.nama_jasa', 'jasa.harga_perfr')
-		->get();
+		// $estimasis = Estimasi::join('work_order', 'estimasi_biaya.wo_id', 'work_order.id')
+		// ->join('est_part', 'estimasi_biaya.no_est', 'est_part.no_est')
+		// ->join('est_jasa', 'estimasi_biaya.no_est', 'est_jasa.no_est')
+		// ->join('spare_parts', 'est_part.part_id', 'spare_parts.id')
+		// ->join('jasa', 'est_jasa.jasa_id', 'jasa.id')
+		// ->select('estimasi_biaya.*', 'work_order.pelanggan_id', 'work_order.no_wo as nomor_wo', 'work_order.km_datang', 'work_order.tanggal', 'work_order.fuel_datang', 'spare_parts.id as sparepart_id','spare_parts.nama as nama_sparepart', 'spare_parts.no as no_sparepart', 'spare_parts.harga_jual as harga_sparepart', 'jasa.nama_jasa', 'jasa.harga_perfr')
+		// ->get();
 
 		return view('estimasi-biaya.estimasi-biaya', compact('estimasis'));
 
@@ -34,17 +37,15 @@ class EstimasisController extends Controller
 		->select('work_order.*', 'pelanggans.nama', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->get();
 
-		$cek_est = Estimasi::orderBy('id','DESC')->first();
-
 		Estimasi::updateOrCreate([
-				'wo_id' => 0,
-			],[
-				'no_est' => 'EST-'.date('dmy').'-'.$cek_est->wo_id
+				'no_est' => 'EST-'.date('dmy').'-A'
 			]);
 
-		$est_part = EstPart::join('spare_parts','est_part.part_id','=','spare_parts.id')->where('no_est',$cek_est->no_est)->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();
-		
-		$est_jasa = EstJasa::join('jasa','est_jasa.jasa_id','=','jasa.id')->where('no_est',$cek_est->no_est)->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr')->get();
+		$cek_est = Estimasi::orderBy('id','DESC')->first();
+		// dd($cek_est->no_est);
+
+		$est_part = EstPart::where('no_est',$cek_est->no_est)->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();		
+		$est_jasa = EstJasa::where('no_est',$cek_est->no_est)->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr')->get();
 		
 		return view ('estimasi-biaya.buat-estimasi-biaya', compact('pelanggan','workorder','cek_est','est_jasa','est_part'));
 
@@ -53,20 +54,39 @@ class EstimasisController extends Controller
 	public function post_estimasi(Request $r)
 	{
 		// dd(request()->all());
-		// $cek = Estimasi::where('wo_id',$r->wo_id)->first();
+		$cek = Estimasi::findOrFail($r->estid);
+		if ($cek->wo_id > 0) {
+			return redirect()->back()->with('warning','Maaf Nomer Workorder yang anda masukan sudah ada');
+		}
+		$cek_est 	= Estimasi::where('wo_id','>',0)->orderBy('id','DESC')->first();
+		$expl 		= explode('-', $cek_est->no_est);
+		$num		= $expl;
+		$noest 		= 'EST-'.date('dmy').'-'.($num[2]+1);
 
-		// if (count($cek) > 0) {
-		// 	return redirect()->back()->with('warning','Maaf Nomer Workorder yang anda masukan sudah ada');
-		// }
+		if (count($r->est_part) > 0) {
+			foreach ($r->est_part as $a => $b) {
+					$estimasi[$a] = new Estimasi;
+					$estimasi[$a]->no_est  			= $noest;
+					$estimasi[$a]->wo_id  			= $r->order_id;
+					$estimasi[$a]->ref_id  			= $b;
+					$estimasi[$a]->type 			= 'part';
+					$estimasi[$a]->keterangan	 	= $r->keterangan;
+					$estimasi[$a]->save();
+			}
+		}
+		if (count($r->est_jasa) > 0) {
+			foreach ($r->est_jasa as $c => $d) {
+					$estimasi[$c] = new Estimasi;
+					$estimasi[$c]->no_est  			= $noest;
+					$estimasi[$c]->wo_id  			= $r->order_id;
+					$estimasi[$c]->ref_id  			= $d;
+					$estimasi[$c]->type 			= 'jasa';
+					$estimasi[$c]->keterangan	 	= $r->keterangan;
+					$estimasi[$c]->save();
+			}
+		}
 
-		// $estimasi = new Estimasi;
-		// $estimasi->no_est 			= $r->no_est
-		// $estimasi->wo_id  			= $r->wo_id;
-		// $estimasi->est_part_id    	= $r->est_part_id;
-		// $estimasi->est_jasa_id 		= $r->est_jasa_id;
-		// $estimasi->keterangan	 	= $r->keterangan;
-		// $estimasi->save();
-
+		Estimasi::where('wo_id',0)->delete();
 		return redirect()->back()->with('success','Berhasil tambah Workorder');
 	}
 
