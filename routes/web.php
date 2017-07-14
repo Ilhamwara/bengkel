@@ -97,4 +97,10 @@ Route::group(['middleware' => ['session']], function () {
 //LAPORAN
 	Route::get('laporan', 'LaporansController@index');
 
+//PRINT
+
+
+});
+Route::get('/print', function () {
+    return view('print.print_wo');
 });
