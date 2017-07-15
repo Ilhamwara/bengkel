@@ -1,20 +1,32 @@
 <html>
 <head>
-    <title>Daftar Nominatif</title>  
+    <title>Work Order</title>  
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
 .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
 .tg .tg-yw4l{vertical-align:top}
-
+.header .tg-031e, .header .tg-yw4l{
+  border:none!important;
+}
+.header{
+  border-bottom:2px solid #666!important;
+}
+.profil .tg-031e, .profil .tg-yw4l{
+  border:none!important;
+}
+body{
+  width: 1200px;
+  margin: 0 auto;
+}
 </style>
 </head>
 <body>
 
-<table class="tg" style="width: 100%; margin-bottom: 20px;">
+<table class="tg header" style="width: 100%; margin-bottom: 20px;">
   <tr>
-    <td class="tg-031e">AUTO VISION</td>
-    <td class="tg-031e">WORK ORDER</td>
+    <td class="tg-031e" style="font-size: 16px;"><b>AUTO VISION</b></td>
+    <td class="tg-031e" style="font-size: 16px;"><b>WORK ORDER</b></td>
   </tr>
   
   <tr>
@@ -27,7 +39,7 @@
   </tr>
 </table>
 
-<table class="tg" style="width: 100%;">
+<table class="tg profil" style="width: 100%; border:none;">
   <tr>
     <td class="tg-031e">Nama</td>
     <td class="tg-031e">:</td>
@@ -65,59 +77,5 @@
     <td class="tg-yw4l">140, </td>
   </tr>
 </table>
-<table class="tg" style="width: 100%"><tr><td class="tg-031el" style="text-align: center;">KELUHAN PELANGGAN/ PERINTAH KERJA</td></tr></table>
-<table class="tg" style="width: 100%">
-<tr>
-    <td class="tg-yw4l">1</td>
-    <td class="tg-yw4l">mesin bocor</td>
-  </tr>
-</table>
-
-<table class="tg" style="width: 100%">
-<tr>
-    <td class="tg-yw4l">No</td>
-    <td class="tg-yw4l">EST SPARE PART DAN JASA</td>
-    <td class="tg-yw4l">QTY</td>
-    <td class="tg-yw4l">HARGA SAT</td>
-    <td class="tg-yw4l">JUMLAH</td>
-  </tr>
-  <tr>
-    <td class="tg-yw4l">1</td>
-    <td class="tg-yw4l">EST </td>
-    <td class="tg-yw4l">5</td>
-    <td class="tg-yw4l">5000</td>
-    <td class="tg-yw4l">25000</td>
-
-  </tr>
-  <tr>
-  <td colspan="2">
-  <td >Est Biaya</td>
-    <td class="tg-yw4l">Rp</td>
-    <td class="tg-yw4l">21312313</td>
-  </tr>
-</table>
-<table class="tg" width="100%">
-    <tr>
-    <td class="tg-yw4l">Diterima Oleh</td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l">Diserahkan Oleh</td>
-  </tr>
-  <tr>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-  </tr>
-  <tr>
-    <td class="tg-yw4l">Muhammad Zainuri</td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-  </tr>
-  <tr>
-    <td class="tg-yw4l">Service Advisor</td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l">Pemilik/ Pembawa Kendaraan</td>
-  </tr>
-</table>
-
 </body>
 </html>

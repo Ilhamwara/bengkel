@@ -106,8 +106,27 @@ Route::group(['middleware' => ['session']], function () {
 	Route::get('edit/user/{id}', 'UserController@edituser');
 	Route::post('edit/user/{id}', 'UserController@edituserpost');
 //PRINT
-Route::get('/print', function () {
-    return view('print.print_wo');
+Route::get('/print-wo', function () {
+    return view('print.workorder');
+});
+Route::get('/print-inspection', function () {
+    return view('print.inspection');
+});
+
+Route::get('/print-estimasi', function () {
+    return view('print.estimasi');
+});
+
+Route::get('/print-nota', function () {
+    return view('print.nota');
+});
+
+Route::get('/print-po', function () {
+    return view('print.po');
+});
+
+Route::get('/print-sparepart', function () {
+    return view('print.sparepart');
 });
 
 });
