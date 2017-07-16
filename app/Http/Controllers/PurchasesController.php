@@ -8,6 +8,7 @@ use App\Purchase;
 use App\Supplier;
 use App\PoPart;
 use Validator;
+use PDF;
 
 class PurchasesController extends Controller
 {

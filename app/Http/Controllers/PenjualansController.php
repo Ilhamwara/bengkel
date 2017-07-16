@@ -8,6 +8,7 @@ use\App\Penjualan;
 use\App\Sparepart;
 use\App\Penjpart;
 use Validator;
+USE PDF;
 
 class PenjualansController extends Controller
 {
