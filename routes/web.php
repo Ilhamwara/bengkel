@@ -92,10 +92,10 @@ Route::group(['middleware' => ['session']], function () {
 	Route::get('purchase-order', 'PurchasesController@index');
 	Route::get('buat-purchase-order', 'PurchasesController@buat_purchase_order');
 	Route::post('post-purchase-order', 'PurchasesController@post_purchase_order');
-	Route::get('purchase-order/{id}/edit', 'PurchasesController@edit_purchase_order');
+	// Route::get('purchase-order/{id}/edit', 'PurchasesController@edit_purchase_order');
 	Route::get('detail-purchase-order/{id}', 'PurchasesController@detail_purchase_order');
 	Route::get('hapus/purchase-order/{id}', 'PurchasesController@hapus_purchase_order');
-	Route::post('editpost/purchase-order/{id}', 'PurchasesController@editpost_purchase_order');
+	// Route::post('editpost/purchase-order/{id}', 'PurchasesController@editpost_purchase_order');
 	Route::get('purchase-order/cetak-po/{id}', 'WorkordersController@cetak_po');
 
 //LAPORAN
@@ -109,6 +109,18 @@ Route::group(['middleware' => ['session']], function () {
 	Route::post('tambah/user', 'UserController@tambahuserpost');
 	Route::get('edit/user/{id}', 'UserController@edituser');
 	Route::post('edit/user/{id}', 'UserController@edituserpost');
+
+//PENJUALAN
+	Route::get('penjualan', 'PenjualansController@index');
+	Route::get('penjualan/tambah-penjualan', 'PenjualansController@tambah_penjualan');
+	Route::post('post-penjualan', 'PenjualansController@post_penjualan');
+	Route::get('detail/penjualan/{id}', 'PenjualansController@detail_penjualan');
+	Route::get('penjualan/pilih-sparepart/{idpenj}', 'PenjualansController@pilih_sparepart');
+	Route::post('post-jual-sparepart', 'PenjualansController@post_jual_sparepart');
+	// Route::post('editpost/penjualan/{id}', 'PenjualansController@editpost_penjualan');
+	Route::get('hapus/penjualan/{id}', 'PenjualansController@hapus_penjualan');
+
+
 //PRINT
 Route::get('/print-wo', function () {
     return view('print.workorder');

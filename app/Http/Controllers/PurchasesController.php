@@ -35,7 +35,7 @@ class PurchasesController extends Controller
 		$purchase->status      = $r->status;
 
 		if (Purchase::where('no_po',$r->no_po)->count() > 0) {
-			return redirect()->back()->with('warning','Maaf Nomer Purchase Order yang anda masukan sudah ada');
+			return redirect()->back()->with('warning','Maaf Nomor Purchase Order yang anda masukan sudah ada');
 		}
 
 		$purchase->save();

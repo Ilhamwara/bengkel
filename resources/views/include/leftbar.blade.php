@@ -251,6 +251,43 @@
         </ul>
     </li>
 
+
+     <li class="nav-item @if(Request::is('penjualan') || Request::is('penjualan/tambah-penjualan')) active open @endif">
+        <a href="javascript:;" class="nav-link nav-toggle">
+            <i class="fa fa-credit-card"></i>
+            <span class="title">Penjualan Sparepart</span>
+            @if(Request::is('penjualan') || Request::is('penjualan/tambah-penjualan')) 
+            <span class="arrow open"></span>
+            <span class="selected"></span>
+            @else
+            <span class="arrow"></span>
+            @endif
+        </a>
+        <ul class="sub-menu">
+
+            <li class="nav-item @if(Request::is('penjualan')) active open @endif">
+                <a href="{{url('penjualan')}}" class="nav-link nav-toggle">
+                    <i class=""></i>
+                    <span class="title">Penjualan</span>
+                    @if(Request::is('penjualan'))
+                    <span class="selected"></span>
+                    @endif
+                </a>
+            </li>
+
+            <li class="nav-item @if(Request::is('penjualan/tambah-penjualan')) active open @endif">
+                <a href="{{url('penjualan/tambah-penjualan')}}" class="nav-link nav-toggle">
+                    <i class=""></i>
+                    <span class="title">Tambah Penjualan</span>
+                    @if(Request::is('penjualan/tambah-penjualan'))
+                    <span class="selected"></span>
+                    @endif
+                </a>
+            </li>
+
+        </ul>
+    </li>
+
     <li class="nav-item @if(Request::is('laporan')) active open @endif">
         <a href="{{url('laporan')}}" class="nav-link nav-toggle">
             <i class="fa fa-list-alt"></i>

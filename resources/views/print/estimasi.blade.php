@@ -26,7 +26,7 @@
   <table class="tg header" style="width: 100%; margin-bottom: 20px;">
     <tr>
       <td class="tg-031e" style="font-size: 16px;"><b>AUTO VISION</b></td>
-      <td class="tg-031e" style="font-size: 16px;"><b>WORK ORDER</b></td>
+      <td class="tg-031e" style="font-size: 16px;"><b>ESTIMASI BIAYA</b></td>
   </tr>
 
   <tr>
