@@ -65,7 +65,7 @@
                 <div class="form-group">
                     <label class="col-sm-4 text-left">Tanggal</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="tanggal" id="data_tanggal" disabled>
+                        <input type="date" class="form-control" name="tgl" id="data_tanggal">
                     </div>
                 </div>
 
@@ -199,7 +199,7 @@
         </div>
         <div class="form-group">
             <label><b>Keterangan</b></label> 
-            <textarea class="form-control" id="deskripsi" name="deskripsi"></textarea>  
+            <textarea class="form-control" id="deskripsi" name="keterangan"></textarea>  
         </div>     
     </div>
     <div class="form-group">

@@ -103,7 +103,7 @@
                  <td class="text-center">Rp {{$penj_part->sum('jumlah')}}</td>
               </tbody>
             </table>
-            <a href="{{url('penjualan/pilih-sparepart/'.$cek_penj->no_penj)}}" class="btn btn-primary">Tambah</a>     
+            <a href="{{url('penjualan/jual-sparepart/'.$cek_penj->no_penj)}}" class="btn btn-primary">Tambah</a>     
           </div>
         </div>
       </div>

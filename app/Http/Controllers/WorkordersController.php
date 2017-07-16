@@ -75,6 +75,19 @@ class WorkordersController extends Controller
 		return view ('work-order.history', compact('orders'));
 
 	}
+
+	public function index_inspection (){
+		
+		$inspection = Inspection::
+		join('work_order', 'vehicle_inspection.order_id', 'work_order.id')
+		->join('foto', 'vehicle_inspection.id', 'foto.inspect_id')
+		->select('vehicle_inspection.*', 'work_order.pelanggan_id', 'work_order.no_wo as nomor_wo', 'work_order.km_datang', 'work_order.tanggal', 'work_order.fuel_datang', 'foto.img as foto')
+		->get();
+
+
+		return view ('vehicle.data-vehicle', compact('inspection'));
+
+	}
 	
 	public function buat_inspection (){
 		$pelanggan = Pelanggan::all();
@@ -125,6 +138,7 @@ class WorkordersController extends Controller
 			$ins[$k] = new Inspection;
 			$ins[$k]->order_id 		= $r->workorder;
 			$ins[$k]->tipe_id 		= $v;
+			$ins[$k]->tgl 			= $r->tgl;
 			$ins[$k]->keterangan 	= $r->keterangan;
 			$ins[$k]->save();
 		}
@@ -145,17 +159,36 @@ class WorkordersController extends Controller
 	}
 	public function cetak_wo($id, Request $request)
     {
+    	$order = Workorder::where('work_order.id', $id)
+		->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
+		->first();
         // dd(Hashids::connection('spd')->decode($id));
         // $wo = Workorder::findOrFail(Hashids::connection('workorder')->decode($id)[0]);
-        $pdf = PDF::loadView('print.workorder', compact('workorder'));
+        $pdf = PDF::loadView('print.workorder', compact('order'));
         return @$pdf->stream('WORKORDER-'.'pdf');
         // return view('print.spd', compact('spd'));
     }
     public function cetak_inspection($id, Request $request)
     {
+    	
+		
+		$pelanggans = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+		->select('work_order.*','work_order.id', 'pelanggans.nama', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
+		->get();
+		
+		$inspect = Inspection::
+		join('work_order', 'vehicle_inspection.order_id', 'work_order.id')
+		->select('vehicle_inspection.*', 'work_order.pelanggan_id', 'work_order.no_wo as nomor_wo', 'work_order.km_datang', 'work_order.tanggal', 'work_order.fuel_datang')
+		->get();
+
+		$vecdok 	= TipeVehicle::where('type','Dokumen Kendaraan')->get();
+		$vecdalam 	= TipeVehicle::where('type','Fungsi Aksesoris Bagian Dalam')->get();
+		$vecluar 	= TipeVehicle::where('type','Fungsi Aksesoris Bagian Luar')->get();
+		$vecperl 	= TipeVehicle::where('type','Perlengkapan Kendaraan')->get();
         // dd(Hashids::connection('spd')->decode($id));
         // $wo = Workorder::findOrFail(Hashids::connection('workorder')->decode($id)[0]);
-        $pdf = PDF::loadView('print.inspection', compact('inspect'));
+        $pdf = PDF::loadView('print.inspection', compact('pelanggans', 'inspect'));
         return @$pdf->stream('WORKORDER-'.'pdf');
         // return view('print.spd', compact('spd'));
     }

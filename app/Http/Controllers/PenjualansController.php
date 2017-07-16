@@ -87,7 +87,7 @@ class PenjualansController extends Controller
 		return redirect()->back()->with('success','Berhasil hapus data penjualan');
 	}
 
-	public function pilih_sparepart($idpenj){
+	public function jual_sparepart($idpenj){
 
 		$spareparts = Sparepart::all();
 		return view ('penjualan.pilih-sparepart', compact('spareparts','idpenj'));

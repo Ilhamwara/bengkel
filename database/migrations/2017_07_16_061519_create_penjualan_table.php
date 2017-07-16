@@ -15,6 +15,7 @@ class CreatePenjualanTable extends Migration
     {
         Schema::create('penjualan', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('no_penj');
             $table->string('no_nota');
             $table->date('tgl_nota');
             $table->string('no_bkb');

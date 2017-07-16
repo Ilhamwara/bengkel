@@ -36,7 +36,7 @@
     </tr>
     <tr>
       <td class="tg-031e">Telp. 081348956040, Email m_zainuri84@yahoo.com </td>
-      <td class="tg-yw4l">No WO: </td>
+      <td class="tg-yw4l">No WO: {{$order->no_wo}} </td>
     </tr>
   </table>
 
@@ -44,38 +44,38 @@
     <tr>
       <td class="tg-031e">Nama</td>
       <td class="tg-031e">:</td>
-      <td class="tg-031e">Ade Rahhmat</td>
+      <td class="tg-031e">{{$order->nama_pelanggan}}</td>
       <td class="tg-yw4l"></td>
       <td class="tg-yw4l">Type</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">Ford Everest TDCI</td>
+      <td class="tg-yw4l">{{$order->tipe}}</td>
     </tr>
     <tr>
       <td class="tg-031e">Alamat</td>
       <td class="tg-031e">:</td>
-      <td class="tg-031e">Jl kampung Baru</td>
+      <td class="tg-031e">{{$order->alamat}}</td>
       <td class="tg-yw4l"></td>
       <td class="tg-yw4l">Noka/Nosin</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">271238138</td>
+      <td class="tg-yw4l">{{$order->noka_nosin}}</td>
     </tr>
     <tr>
       <td class="tg-yw4l">No Polisi</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">KT0909</td>
+      <td class="tg-yw4l">{{$order->no_pol}}</td>
       <td class="tg-yw4l"></td>
       <td class="tg-yw4l">Warna</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">Putih</td>
+      <td class="tg-yw4l">{{$order->warna}}</td>
     </tr>
     <tr>
       <td class="tg-yw4l">Telp</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">0898898</td>
+      <td class="tg-yw4l">{{$order->telepon}}</td>
       <td class="tg-yw4l"></td>
       <td class="tg-yw4l">Km/ Fuel</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">140, </td>
+      <td class="tg-yw4l">{{$order->fuel_datang}}</td>
     </tr>
   </table>
   <table class="tg keluhan" style="width: 100%; margin-bottom: 10px;border-collapse:collapse;border-spacing:0; border-style:solid;border-width:1px; border-right: none; border-left: none;">
@@ -87,11 +87,7 @@
     <tbody>
       <tr>
         <td class="tg-yw4l" style="text-align: center; border: none;">1</td>
-        <td class="tg-yw4l" style="border:none;">mesin bocor</td>
-      </tr>
-      <tr>
-        <td class="tg-yw4l" style="text-align: center; border: none;">2</td>
-        <td class="tg-yw4l" style="border:none;">mesin bocor</td>
+        <td class="tg-yw4l" style="border:none;">{{$order->keluhan}}</td>
       </tr>
     </tbody>
   </table>

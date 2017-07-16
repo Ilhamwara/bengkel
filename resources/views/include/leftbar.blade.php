@@ -99,11 +99,11 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-item @if(Request::is('vehicle-inspection') || Request::is('tambah-vehicle')) active open @endif">
+        <li class="nav-item @if (Request::is('vehicle-inspection') || Request::is('buat-inspection')  || Request::is('tambah-vehicle')) active open @endif">
             <a href="javascript:;" class="nav-link nav-toggle">
                 <i class="fa fa-truck"></i>
-                <span class="title">Vehicle</span>
-                @if(Request::is('vehicle-inspection') || Request::is('tambah-vehicle'))
+                <span class="title">Vehicle Inspection</span>
+                @if(Request::is('vehicle-inspection') || Request::is('buat-inspection') || Request::is('tambah-vehicle'))
                 <span class="arrow open"></span>
                 <span class="selected"></span>
                 @else
@@ -113,8 +113,18 @@
             <ul class="sub-menu">
                 <li class="nav-item @if(Request::is('vehicle-inspection')) active open @endif">
                     <a href="{{url('vehicle-inspection')}}" class="nav-link nav-toggle">
-                        <span class="title">Vehicle Inspection</span>
+                        <span class="title">Data Vehicle Inspection</span>
                         @if(Request::is('vehicle-inspection'))
+                        <span class="selected"></span>
+                        @else
+                        <span class="arrow"></span>
+                        @endif
+                    </a>
+                </li>
+                <li class="nav-item @if(Request::is('buat-inspection')) active open @endif">
+                    <a href="{{url('buat-inspection')}}" class="nav-link nav-toggle">
+                        <span class="title">Buat Vehicle Inspection</span>
+                        @if(Request::is('buat-inspection'))
                         <span class="selected"></span>
                         @else
                         <span class="arrow"></span>
@@ -145,7 +155,7 @@
                 @endif
             </a>
             <ul class="sub-menu">
-             <li class="nav-item @if(Request::is('estimasi-biaya')) active open @endif">
+               <li class="nav-item @if(Request::is('estimasi-biaya')) active open @endif">
                 <a href="{{url('estimasi-biaya')}}" class="nav-link nav-toggle">
                     <i class=""></i>
                     <span class="title">Data Estimasi Biaya</span>
@@ -201,7 +211,7 @@
                 </a>
             </li>
 
-             <li class="nav-item @if(Request::is('supplier')) active open @endif">
+            <li class="nav-item @if(Request::is('supplier')) active open @endif">
                 <a href="{{url('supplier')}}" class="nav-link ">
                     <span class="title">Supplier</span>
                     @if(Request::is('supplier'))
@@ -252,7 +262,7 @@
     </li>
 
 
-     <li class="nav-item @if(Request::is('penjualan') || Request::is('penjualan/tambah-penjualan')) active open @endif">
+    <li class="nav-item @if(Request::is('penjualan') || Request::is('penjualan/tambah-penjualan')) active open @endif">
         <a href="javascript:;" class="nav-link nav-toggle">
             <i class="fa fa-credit-card"></i>
             <span class="title">Penjualan Sparepart</span>

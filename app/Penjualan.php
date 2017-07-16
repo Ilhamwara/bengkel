@@ -8,6 +8,7 @@ class Penjualan extends Model
 {
     protected $table = 'penjualan';
 	protected $fillable=[
+	'no_penj',
 	'no_nota',
 	'tgl_nota', 
 	'no_bkb', 

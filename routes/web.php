@@ -69,7 +69,8 @@ Route::group(['middleware' => ['session']], function () {
 	Route::get('work-order/cetak-wo/{id}', 'WorkordersController@cetak_wo');
 
     //INSPECTION
-	Route::get('vehicle-inspection', 'WorkordersController@buat_inspection');
+    Route::get('vehicle-inspection', 'WorkordersController@index_inspection');
+	Route::get('buat-inspection', 'WorkordersController@buat_inspection');
 	Route::get('tambah-vehicle', 'WorkordersController@tambahvehicle');
 	Route::post('tambah-vehicle', 'WorkordersController@posttambahvehicle');
 	Route::post('post-inspection', 'WorkordersController@post_inspection');
@@ -115,7 +116,7 @@ Route::group(['middleware' => ['session']], function () {
 	Route::get('penjualan/tambah-penjualan', 'PenjualansController@tambah_penjualan');
 	Route::post('post-penjualan', 'PenjualansController@post_penjualan');
 	Route::get('detail/penjualan/{id}', 'PenjualansController@detail_penjualan');
-	Route::get('penjualan/pilih-sparepart/{idpenj}', 'PenjualansController@pilih_sparepart');
+	Route::get('penjualan/jual-sparepart/{idpenj}', 'PenjualansController@jual_sparepart');
 	Route::post('post-jual-sparepart', 'PenjualansController@post_jual_sparepart');
 	// Route::post('editpost/penjualan/{id}', 'PenjualansController@editpost_penjualan');
 	Route::get('hapus/penjualan/{id}', 'PenjualansController@hapus_penjualan');
