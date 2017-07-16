@@ -83,4 +83,15 @@ class PurchasesController extends Controller
 		Purchase::findOrFail($id)->delete();
 		return redirect()->back()->with('success','Berhasil hapus purchase order');
 	}
+
+	public function cetak_PO($id, Request $request)
+    {
+    	$cetak = Purchase::where('form_po.id', $id)->first();
+		$po_part = PoPart::where('id_sup',$id)->get();
+        // dd(Hashids::connection('spd')->decode($id));
+        // $wo = Workorder::findOrFail(Hashids::connection('workorder')->decode($id)[0]);
+        $pdf = PDF::loadView('print.workorder', compact('cetak', 'po_part'));
+        return @$pdf->stream('PURCHASE-ORDER-'.'pdf');
+        // return view('print.spd', compact('spd'));
+    }
 }

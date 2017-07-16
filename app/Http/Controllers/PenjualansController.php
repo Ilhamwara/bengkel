@@ -119,4 +119,14 @@ class PenjualansController extends Controller
 		return redirect('penjualan/tambah-penjualan')->with('success','Berhasil menambahkan penjualan sparepart');
 		
 	}
+
+	public function cetak_penjualan($id, Request $request)
+    {
+    	$penjualan = Penjualan::all();
+        // dd(Hashids::connection('spd')->decode($id));
+        // $wo = Workorder::findOrFail(Hashids::connection('workorder')->decode($id)[0]);
+        $pdf = PDF::loadView('print.workorder', compact('penjualan'));
+        return @$pdf->stream('PENJUALAN-SPAREPART-'.'pdf');
+        // return view('print.spd', compact('spd'));
+    }
 }

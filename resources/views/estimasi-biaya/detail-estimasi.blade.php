@@ -20,7 +20,7 @@
   <br>
   <div class="row">
     @include('include.alert')
-<form class="form-horizontal">
+<form action="{{url('estimasi-biaya/cetak-estimasi/' .$estimasi->id)}}" method="GET" class="form-horizontal">
     <div class="col-sm-10 col-sm-offset-1">
       <div class="col-sm-6">
 

@@ -20,7 +20,7 @@
     <br>
     <div class="row">
         <div class="col-md-12">
-            <form action="{{url('cetak-purchase-order')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
+           <form action="{{url('purchase-order/cetak-po/' .$cetak->id)}}" method="GET" class="form-horizontal">
                 {{ csrf_field() }}
 
                 <div class="form-group">

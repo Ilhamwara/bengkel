@@ -196,7 +196,7 @@ class WorkordersController extends Controller
         // dd(Hashids::connection('spd')->decode($id));
         // $wo = Workorder::findOrFail(Hashids::connection('workorder')->decode($id)[0]);
         $pdf = PDF::loadView('print.inspection', compact('pelanggans', 'inspect'));
-        return @$pdf->stream('WORKORDER-'.'pdf');
+        return @$pdf->stream('INSPECTION-'.'pdf');
         // return view('print.spd', compact('spd'));
     }
 
