@@ -11,6 +11,7 @@ use App\Sparepart;
 use App\TipeVehicle;
 use App\Foto;
 use Validator;
+use PDF;
 
 class WorkordersController extends Controller
 {
@@ -142,6 +143,22 @@ class WorkordersController extends Controller
 		return redirect()->back()->with('success','Berhasil Menambahkan');
 
 	}
+	public function cetak_wo($id, Request $request)
+    {
+        // dd(Hashids::connection('spd')->decode($id));
+        // $wo = Workorder::findOrFail(Hashids::connection('workorder')->decode($id)[0]);
+        $pdf = PDF::loadView('print.workorder', compact('workorder'));
+        return @$pdf->stream('WORKORDER-'.'pdf');
+        // return view('print.spd', compact('spd'));
+    }
+    public function cetak_inspection($id, Request $request)
+    {
+        // dd(Hashids::connection('spd')->decode($id));
+        // $wo = Workorder::findOrFail(Hashids::connection('workorder')->decode($id)[0]);
+        $pdf = PDF::loadView('print.inspection', compact('inspect'));
+        return @$pdf->stream('WORKORDER-'.'pdf');
+        // return view('print.spd', compact('spd'));
+    }
 
 	
 }

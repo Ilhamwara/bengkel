@@ -27,7 +27,7 @@
     <div class="row">
         <div class="col-md-12">
             
-            <form action="{{url('editpost/pelanggan/' .$order->id) }}" method="POST" class="form-horizontal">
+            <form action="{{url('work-order/cetak-wo/' .$order->id) }}" method="GET" class="form-horizontal">
                 {{ csrf_field() }}
 
                 <div class="form-group">
@@ -86,7 +86,7 @@
                 </div>
                 <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                  <button class="btn btn-primary">Cetak</button>
+                  <button class="btn btn-primary" type="submit">Cetak</button>
                 </div>
               </div>
             </form>

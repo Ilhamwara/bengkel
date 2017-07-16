@@ -66,12 +66,14 @@ Route::group(['middleware' => ['session']], function () {
 	Route::post('Work-order/{id}/editpost', 'WorkordersController@editpost_order');
 	Route::get('Work-order/{id}/hapus', 'WorkordersController@hapus_order');
 	Route::get('history', 'WorkordersController@history');
+	Route::get('work-order/cetak-wo/{id}', 'WorkordersController@cetak_wo');
 
     //INSPECTION
 	Route::get('vehicle-inspection', 'WorkordersController@buat_inspection');
 	Route::get('tambah-vehicle', 'WorkordersController@tambahvehicle');
 	Route::post('tambah-vehicle', 'WorkordersController@posttambahvehicle');
 	Route::post('post-inspection', 'WorkordersController@post_inspection');
+	Route::get('vehicle-inspection/cetak-inspection/{id}', 'WorkordersController@cetak_inspection');
 
     //ESTIMASI BIAYA
     Route::get('estimasi-biaya', 'EstimasisController@index');
@@ -83,6 +85,7 @@ Route::group(['middleware' => ['session']], function () {
 	Route::post('post-pilih-jasa', 'EstimasisController@post_pilih_jasa');
 	Route::get('estimasi-biaya/hapus-part/{id}', 'EstimasisController@hapusestpart');
 	Route::get('estimasi-biaya/hapus-jasa/{id}', 'EstimasisController@hapusestjasa');
+	Route::get('estimasi/cetak-estimasi/{id}', 'EstimasisController@cetak');
 
 
 //PURCHASE ORDER
@@ -93,6 +96,7 @@ Route::group(['middleware' => ['session']], function () {
 	Route::get('detail-purchase-order/{id}', 'PurchasesController@detail_purchase_order');
 	Route::get('hapus/purchase-order/{id}', 'PurchasesController@hapus_purchase_order');
 	Route::post('editpost/purchase-order/{id}', 'PurchasesController@editpost_purchase_order');
+	Route::get('purchase-order/cetak-po/{id}', 'WorkordersController@cetak_po');
 
 //LAPORAN
 	Route::get('laporan', 'LaporansController@index');

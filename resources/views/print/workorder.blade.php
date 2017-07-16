@@ -16,8 +16,9 @@
       border:none!important;
     }
     body{
-      width: 1200px;
+      width: 700px;
       margin: 0 auto;
+      padding-left: 0;
     }
   </style>
 </head>
@@ -35,7 +36,7 @@
     </tr>
     <tr>
       <td class="tg-031e">Telp. 081348956040, Email m_zainuri84@yahoo.com </td>
-      <td class="tg-yw4l">No WO: {{--no--}}</td>
+      <td class="tg-yw4l">No WO: </td>
     </tr>
   </table>
 
