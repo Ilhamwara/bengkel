@@ -109,6 +109,16 @@ class WorkordersController extends Controller
 		return view ('vehicle.vehicle-inspection', compact('inspection', 'pelanggan','workorder','vecdok','vecdalam','vecluar','vecperl'));
 
 	}
+
+	public function detail_inspection($id)
+	{
+		$inspection = Inspection::all();
+		$inspect = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
+		->first();
+		return view ('vehicle.detail-inspection' , compact('inspect', 'inspection')); 
+	}
+
 	public function tambahvehicle()
 	{
 		return view('vehicle.tambah');
@@ -175,12 +185,9 @@ class WorkordersController extends Controller
 		
 		$pelanggans = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*','work_order.id', 'pelanggans.nama', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
-		->get();
+		->first();
 		
-		$inspect = Inspection::
-		join('work_order', 'vehicle_inspection.order_id', 'work_order.id')
-		->select('vehicle_inspection.*', 'work_order.pelanggan_id', 'work_order.no_wo as nomor_wo', 'work_order.km_datang', 'work_order.tanggal', 'work_order.fuel_datang')
-		->get();
+		$inspect = Inspection::first();
 
 		$vecdok 	= TipeVehicle::where('type','Dokumen Kendaraan')->get();
 		$vecdalam 	= TipeVehicle::where('type','Fungsi Aksesoris Bagian Dalam')->get();

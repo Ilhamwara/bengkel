@@ -17,13 +17,13 @@
 				<a href="{{url('home')}}">Home</a><i class="fa fa-circle"></i>
 			</li>
 			<li>
-				<span>Data Penjualan Sparepart</span>
+				<span>Data Vehicle Inspection</span>
 			</li>
 		</ul>
 	</div>
 	<!-- END PAGE BAR -->
 	<!-- BEGIN PAGE TITLE-->
-	<h3 class="page-title"><b>Data Penjualan Sparepart</b></h3>
+	<h3 class="page-title"><b>Data Vehicle Inspection</b></h3>
 	<br>
 	<div class="row">
 		<div class="col-md-12">
@@ -52,7 +52,7 @@
 								<td class="text-center">{{$inspect->keterangan}}</td>
 								<td class="text-center">
 									<ul class="action">
-										<li><a href="{{url('detail/inspect/'.$inspect->id)}}" class="btn btn-warning"  data-toggle="tooltip" title="Detail" style="padding: 6px 12px;"><i class="fa fa-eye"></i></a></li>
+										<li><a href="{{url('detail/inspection/'.$inspect->id)}}" class="btn btn-warning"  data-toggle="tooltip" title="Detail" style="padding: 6px 12px;"><i class="fa fa-eye"></i></a></li>
 										<li><a href="{{url('hapus/inspect/'.$inspect->id)}}" class="btn btn-danger"  data-toggle="tooltip" title="Hapus" style="padding: 6px 12px;"><i class="fa fa-trash-o"></i></a></li>
 									</ul>
 								</td>

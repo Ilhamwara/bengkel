@@ -19,12 +19,12 @@
                 <a href="{{url('home')}}">Home</a><i class="fa fa-circle"></i>
             </li>
             <li>
-                <span>Buat Order Work</span>
+                <span>Buat Work Order</span>
             </li>
         </ul>
     </div>
 
-    <h3 class="page-title"><b>Buat Order Work</b></h3>
+    <h3 class="page-title"><b>Buat Work Order</b></h3>
     <br>
     <div class="row">
         <div class="col-md-12">

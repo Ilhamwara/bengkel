@@ -71,6 +71,7 @@ Route::group(['middleware' => ['session']], function () {
     //INSPECTION
     Route::get('vehicle-inspection', 'WorkordersController@index_inspection');
 	Route::get('buat-inspection', 'WorkordersController@buat_inspection');
+	Route::get('detail/inspection/{id}', 'WorkordersController@detail_inspection');
 	Route::get('tambah-vehicle', 'WorkordersController@tambahvehicle');
 	Route::post('tambah-vehicle', 'WorkordersController@posttambahvehicle');
 	Route::post('post-inspection', 'WorkordersController@post_inspection');
@@ -80,6 +81,7 @@ Route::group(['middleware' => ['session']], function () {
     Route::get('estimasi-biaya', 'EstimasisController@index');
 	Route::get('buat-estimasi-biaya', 'EstimasisController@buat_estimasi');
 	Route::post('post-estimasi', 'EstimasisController@post_estimasi');
+	Route::get('detail/estimasi/{id}', 'EstimasisController@detail_estimasi');
 	Route::get('estimasi-biaya/pilih-sparepart/{idest}', 'EstimasisController@pilih_sparepart');
 	Route::post('post-pilih-sparepart', 'EstimasisController@post_pilih_sparepart');
 	Route::get('estimasi-biaya/pilih-jasa/{idest}', 'EstimasisController@pilih_jasa');
@@ -97,7 +99,7 @@ Route::group(['middleware' => ['session']], function () {
 	Route::get('detail-purchase-order/{id}', 'PurchasesController@detail_purchase_order');
 	Route::get('hapus/purchase-order/{id}', 'PurchasesController@hapus_purchase_order');
 	// Route::post('editpost/purchase-order/{id}', 'PurchasesController@editpost_purchase_order');
-	Route::get('purchase-order/cetak-po/{id}', 'WorkordersController@cetak_po');
+	Route::get('purchase-order/cetak-po/{id}', 'PurchasesController@cetak_po');
 
 //LAPORAN
 	Route::get('laporan', 'LaporansController@index');
@@ -120,6 +122,7 @@ Route::group(['middleware' => ['session']], function () {
 	Route::post('post-jual-sparepart', 'PenjualansController@post_jual_sparepart');
 	// Route::post('editpost/penjualan/{id}', 'PenjualansController@editpost_penjualan');
 	Route::get('hapus/penjualan/{id}', 'PenjualansController@hapus_penjualan');
+	Route::get('penjualan/cetak-penjualan/{id}', 'PenjualansController@cetak_penjualan');
 
 
 //PRINT

@@ -67,7 +67,7 @@
 
                 <li class="nav-item @if(Request::is('buat-order')) active open @endif">
                     <a href="{{url('buat-order')}}" class="nav-link ">
-                        <span class="title">Buat Order Work</span>
+                    <span class="title">Buat Work Order</span>
                         @if(Request::is('buat-order'))
                         <span class="selected"></span>
                         @else
@@ -241,7 +241,7 @@
             <li class="nav-item @if(Request::is('purchase-order')) active open @endif">
                 <a href="{{url('purchase-order')}}" class="nav-link nav-toggle">
                     <i class=""></i>
-                    <span class="title">Purchase Order</span>
+                    <span class="title">Data Purchase Order</span>
                     @if(Request::is('purchase-order'))
                     <span class="selected"></span>
                     @endif
@@ -278,7 +278,7 @@
             <li class="nav-item @if(Request::is('penjualan')) active open @endif">
                 <a href="{{url('penjualan')}}" class="nav-link nav-toggle">
                     <i class=""></i>
-                    <span class="title">Penjualan</span>
+                    <span class="title">Data Penjualan</span>
                     @if(Request::is('penjualan'))
                     <span class="selected"></span>
                     @endif

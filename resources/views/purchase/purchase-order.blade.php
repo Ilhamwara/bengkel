@@ -17,13 +17,13 @@
 				<a href="{{url('home')}}">Home</a><i class="fa fa-circle"></i>
 			</li>
 			<li>
-				<span>Data PO</span>
+				<span>Data Purchase Order</span>
 			</li>
 		</ul>
 	</div>
 	<!-- END PAGE BAR -->
 	<!-- BEGIN PAGE TITLE-->
-	<h3 class="page-title"><b>Data PO</b></h3>
+	<h3 class="page-title"><b>Data Purchase Order</b></h3>
 	<br>
 	<div class="row">
 		<div class="col-md-12">

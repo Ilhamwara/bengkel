@@ -19,10 +19,10 @@ class EstimasisController extends Controller
 {
 	public function index(){
 		$estimasis = Estimasi::join('work_order','estimasi_biaya.wo_id','=','work_order.id')
-							 ->join('pelanggans','work_order.pelanggan_id','=','pelanggans.id')
-							 ->select('estimasi_biaya.id','work_order.no_wo','estimasi_biaya.keterangan','pelanggans.nama','pelanggans.no_pol','estimasi_biaya.created_at')
+		->join('pelanggans','work_order.pelanggan_id','=','pelanggans.id')
+		->select('estimasi_biaya.id','work_order.no_wo','estimasi_biaya.keterangan','pelanggans.nama','pelanggans.no_pol','estimasi_biaya.created_at')
 							 // ->groupBy('estimasi_biaya.no_est')
-							 ->get();
+		->get();
 
 		// $estimasis = Estimasi::join('work_order', 'estimasi_biaya.wo_id', 'work_order.id')
 		// ->join('est_part', 'estimasi_biaya.no_est', 'est_part.no_est')
@@ -43,7 +43,7 @@ class EstimasisController extends Controller
 		->get();
 
 		Estimasi::updateOrCreate([
-				'no_est' => 'EST-'.date('dmy').'-A'
+			'no_est' => 'EST-'.date('dmy').'-A'
 			]);
 
 		$cek_est = Estimasi::orderBy('id','DESC')->first();
@@ -70,29 +70,38 @@ class EstimasisController extends Controller
 
 		if (count($r->est_part) > 0) {
 			foreach ($r->est_part as $a => $b) {
-					$estimasi[$a] = new Estimasi;
-					$estimasi[$a]->no_est  			= $noest;
-					$estimasi[$a]->wo_id  			= $r->order_id;
-					$estimasi[$a]->ref_id  			= $b;
-					$estimasi[$a]->type 			= 'part';
-					$estimasi[$a]->keterangan	 	= $r->keterangan;
-					$estimasi[$a]->save();
+				$estimasi[$a] = new Estimasi;
+				$estimasi[$a]->no_est  			= $noest;
+				$estimasi[$a]->wo_id  			= $r->order_id;
+				$estimasi[$a]->ref_id  			= $b;
+				$estimasi[$a]->type 			= 'part';
+				$estimasi[$a]->keterangan	 	= $r->keterangan;
+				$estimasi[$a]->save();
 			}
 		}
 		if (count($r->est_jasa) > 0) {
 			foreach ($r->est_jasa as $c => $d) {
-					$estimasi[$c] = new Estimasi;
-					$estimasi[$c]->no_est  			= $noest;
-					$estimasi[$c]->wo_id  			= $r->order_id;
-					$estimasi[$c]->ref_id  			= $d;
-					$estimasi[$c]->type 			= 'jasa';
-					$estimasi[$c]->keterangan	 	= $r->keterangan;
-					$estimasi[$c]->save();
+				$estimasi[$c] = new Estimasi;
+				$estimasi[$c]->no_est  			= $noest;
+				$estimasi[$c]->wo_id  			= $r->order_id;
+				$estimasi[$c]->ref_id  			= $d;
+				$estimasi[$c]->type 			= 'jasa';
+				$estimasi[$c]->keterangan	 	= $r->keterangan;
+				$estimasi[$c]->save();
 			}
 		}
 
 		Estimasi::where('wo_id',0)->delete();
 		return redirect()->back()->with('success','Berhasil tambah Workorder');
+	}
+
+	public function detail_estimasi($id)
+	{
+		
+		$estimasi = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
+		->first();
+		return view ('estimasi-biaya.detail-estimasi' , compact('estimasi')); 
 	}
 
 
@@ -131,7 +140,7 @@ class EstimasisController extends Controller
 		
 	}
 
-		public function post_pilih_jasa (Request $r)
+	public function post_pilih_jasa (Request $r)
 	{
 		
 		$est = new EstJasa;

@@ -34,7 +34,10 @@ class PenjualansController extends Controller
 
 	public function post_penjualan(Request $request)
 	{
+	
+		$nopenj 		= 'PENJ-'.date('dmy').'-A';
 		$penjualan = new Penjualan;
+		$penjualan->no_penj     = $request->nopenj;
 		$penjualan->no_nota     = $request->no_nota;
 		$penjualan->tgl_nota    = $request->tgl_nota;
 		$penjualan->no_bkb      = $request->no_bkb;
@@ -61,7 +64,7 @@ class PenjualansController extends Controller
 		}
 
 		$penjualan->save();
-		return redirect()->back()->with('success','Berhasil tambah penjualan');
+		return redirect('penjualan');
 	}
 
 	public function detail_penjualan($id)

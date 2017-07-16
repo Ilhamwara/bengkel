@@ -16,7 +16,7 @@
       border:none!important;
     }
     body{
-      width: 1200px;
+      width: 700px;
       margin: 0 auto;
     }
   </style>
@@ -74,7 +74,7 @@
       <td class="tg-yw4l"></td>
       <td class="tg-yw4l">Km/ Fuel</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">{{$inspect->fuel_datang</td>
+      <td class="tg-yw4l">{{$inspect->fuel_datang}}</td>
     </tr>
   </table>
   <table class="tg keluhan" style="width: 100%; margin-bottom: 10px;border-collapse:collapse;border-spacing:0; border-style:solid;border-width:1px; border-right: none; border-left: none;">

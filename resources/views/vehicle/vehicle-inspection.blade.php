@@ -11,7 +11,7 @@
                 <a href="{{url('home')}}">Home</a><i class="fa fa-circle"></i>
             </li>
             <li>
-                <span>Buat Order Work</span>
+            <span>Buat Vehicle Inspection</span>
             </li>
         </ul>
     </div>
@@ -27,16 +27,16 @@
                     <div class="form-group">
                         <label class="col-sm-4 text-left">Pilih WO</label>
                         <div class="col-sm-6">
-                         <select name="workorder" class="select2 form-control" id ="select2" required>
-                             <option value="">Pilih WO</option>
-                             @foreach($workorder as $data)
-                             <option value="{{$data->id}}" data-nama="{{$data->nama}}" data-alamat="{{$data->alamat}}" data-nopol="{{$data->no_pol}}" data-telepon="{{$data->telepon}}" data-tipe="{{$data->tipe}}" data-nokanosin="{{$data->noka_nosin}}" data-warna="{{$data->warna}}" data-km="{{$data->km_datang}}" data-fuel="{{$data->fuel_datang}}" data-tanggal="{{$data->tanggal}}">{{$data->no_wo}}</option>
-                             @endforeach
-                         </select>
-                     </div>
-                 </div>
+                           <select name="workorder" class="select2 form-control" id ="select2" required>
+                               <option value="">Pilih WO</option>
+                               @foreach($workorder as $data)
+                               <option value="{{$data->id}}" data-nama="{{$data->nama}}" data-alamat="{{$data->alamat}}" data-nopol="{{$data->no_pol}}" data-telepon="{{$data->telepon}}" data-tipe="{{$data->tipe}}" data-nokanosin="{{$data->noka_nosin}}" data-warna="{{$data->warna}}" data-km="{{$data->km_datang}}" data-fuel="{{$data->fuel_datang}}" data-tanggal="{{$data->tanggal}}">{{$data->no_wo}}</option>
+                               @endforeach
+                           </select>
+                       </div>
+                   </div>
 
-                 <div class="form-group">
+                   <div class="form-group">
                     <label class="col-sm-4 text-left">Nama</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" min="0" name="nama" id="data_nama" disabled> 
@@ -109,83 +109,83 @@
         </div>
 
         <div class="col-md-12">
-        <br><br>
-           <div class="table-responsive">
-               <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
+            <br><br>
+            <div class="table-responsive">
+             <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
 
-                    @if($vecdok[0]->type == 'Dokumen Kendaraan')
-                        <tr>
-                            <th class="bg-primary" colspan="4">Dokumen Kendaraan</th>
-                        </tr>
-                    @endif
-                    @foreach($vecdok as $a => $dok)
-                        <tr>
-                            <td class=""><b>{{$a+1}}</b></td>
-                            <td class="">{{$dok->nama}}</td>
-                            <td>
-                                <div class="text-center">
-                                    <input type="checkbox" name="tipe[]" value="{{$dok->id}}" class="form-control">
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
+                @if($vecdok[0]->type == 'Dokumen Kendaraan')
+                <tr>
+                    <th class="bg-primary" colspan="4">Dokumen Kendaraan</th>
+                </tr>
+                @endif
+                @foreach($vecdok as $a => $dok)
+                <tr>
+                    <td class=""><b>{{$a+1}}</b></td>
+                    <td class="">{{$dok->nama}}</td>
+                    <td>
+                        <div class="text-center">
+                            <input type="checkbox" name="tipe[]" value="{{$dok->id}}" class="form-control">
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
 
-                    @if($vecdalam[0]->type == 'Fungsi Aksesoris Bagian Dalam')
-                        <tr>
-                            <th class="bg-primary" colspan="4">Fungsi Aksesoris Bagian Dalam</th>
-                        </tr>
-                    @endif
-                    @foreach($vecdalam as $b => $dal)
-                        <tr>
-                            <td class=""><b>{{$b+1}}</b></td>
-                            <td class="">{{$dal->nama}}</td>
-                            <td>
-                                <div class="text-center">
-                                    <input type="checkbox" name="tipe[]" value="{{$dal->id}}" class="form-control">
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
+                @if($vecdalam[0]->type == 'Fungsi Aksesoris Bagian Dalam')
+                <tr>
+                    <th class="bg-primary" colspan="4">Fungsi Aksesoris Bagian Dalam</th>
+                </tr>
+                @endif
+                @foreach($vecdalam as $b => $dal)
+                <tr>
+                    <td class=""><b>{{$b+1}}</b></td>
+                    <td class="">{{$dal->nama}}</td>
+                    <td>
+                        <div class="text-center">
+                            <input type="checkbox" name="tipe[]" value="{{$dal->id}}" class="form-control">
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
 
-                    @if($vecluar[0]->type == 'Fungsi Aksesoris Bagian Luar')
-                        <tr>
-                            <th class="bg-primary" colspan="4">Fungsi Aksesoris Bagian Luar</th>
-                        </tr>
-                    @endif
-                    @foreach($vecluar as $c => $luar)
-                        <tr>
-                            <td class=""><b>{{$c+1}}</b></td>
-                            <td class="">{{$luar->nama}}</td>
-                            <td>
-                                <div class="text-center">
-                                    <input type="checkbox" name="tipe[]" value="{{$luar->id}}" class="form-control">
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
+                @if($vecluar[0]->type == 'Fungsi Aksesoris Bagian Luar')
+                <tr>
+                    <th class="bg-primary" colspan="4">Fungsi Aksesoris Bagian Luar</th>
+                </tr>
+                @endif
+                @foreach($vecluar as $c => $luar)
+                <tr>
+                    <td class=""><b>{{$c+1}}</b></td>
+                    <td class="">{{$luar->nama}}</td>
+                    <td>
+                        <div class="text-center">
+                            <input type="checkbox" name="tipe[]" value="{{$luar->id}}" class="form-control">
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
 
-                    @if($vecperl[0]->type == 'Perlengkapan Kendaraan')
-                        <tr>
-                            <th class="bg-primary" colspan="4">Perlengkapan Kendaraan</th>
-                        </tr>
-                    @endif
-                    @foreach($vecperl as $d => $perl)
-                        <tr>
-                            <td class=""><b>{{$d+1}}</b></td>
-                            <td class="">{{$perl->nama}}</td>
-                            <td>
-                                <div class="text-center">
-                                    <input type="checkbox" name="tipe[]" value="{{$perl->id}}" class="form-control">
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
+                @if($vecperl[0]->type == 'Perlengkapan Kendaraan')
+                <tr>
+                    <th class="bg-primary" colspan="4">Perlengkapan Kendaraan</th>
+                </tr>
+                @endif
+                @foreach($vecperl as $d => $perl)
+                <tr>
+                    <td class=""><b>{{$d+1}}</b></td>
+                    <td class="">{{$perl->nama}}</td>
+                    <td>
+                        <div class="text-center">
+                            <input type="checkbox" name="tipe[]" value="{{$perl->id}}" class="form-control">
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
 
-                </table>
-           </div>
+            </table>
+        </div>
     </div>
 
-   <div class="col-sm-offset-1 col-sm-10">
+    <div class="col-sm-offset-1 col-sm-10">
         <h4><b>Kondisi Body Luar Kendaraan</b></h4>
         <br>
         <div class="form-group">
