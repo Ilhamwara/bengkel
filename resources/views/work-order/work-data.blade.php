@@ -48,9 +48,9 @@
 						<td class="text-center">{{$order->no_wo}}</td>
 						<td class="text-center">{{$order->nama_pelanggan}}</td>
 						<td class="text-center"><a href="{{url('work-order/'. $order->id)}}">Tampilkan</a></td>
+						<td class="text-center"><a href="{{url('detail/inspection/'. $order->id)}}">Tampilkan</a></td>
 						<td class="text-center"><a href="{{url('#')}}">Tampilkan</a></td>
-						<td class="text-center"><a href="{{url('#')}}">Tampilkan</a></td>
-						<td class="text-center"><a href="{{url('#')}}">Tampilkan</a></td>
+						<td class="text-center"><a href="{{url('detail/estimasi/'. $order->id)}}">Tampilkan</a></td>
 						
 					</tr>
 					@empty

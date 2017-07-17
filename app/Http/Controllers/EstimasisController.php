@@ -97,13 +97,26 @@ class EstimasisController extends Controller
 
 	public function detail_estimasi($id)
 	{
-		
+		$est = Estimasi::where('estimasi_biaya.id', $id)
+		->first();
 		$estimasi = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
-		return view ('estimasi-biaya.detail-estimasi' , compact('estimasi')); 
+
+		$cek_est = Estimasi::orderBy('id','DESC')->first();
+		$est_part = EstPart::where('no_est',$cek_est->no_est)->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();		
+		$est_jasa = EstJasa::where('no_est',$cek_est->no_est)->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr')->get();
+		
+		return view ('estimasi-biaya.detail-estimasi' , compact('estimasi', 'est', 'est_part', 'est_jasa')); 
 	}
 
+	public function hapusestimasi($id)
+	{
+		$estimasi = Estimasi::findOrFail($id);
+		$estimasi->delete();
+
+		return redirect()->back()->with('success','Berhasil menghapus estimasi');
+	}
 
 	public function pilih_jasa ($idest){
 		$jasas = Jasa::all();

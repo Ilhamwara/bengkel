@@ -110,6 +110,15 @@ class WorkordersController extends Controller
 
 	}
 
+
+	public function hapusinspection($id)
+	{
+		$inspection = Inspection::findOrFail($id);
+		$inspection->delete();
+
+		return redirect()->back()->with('success','Berhasil menghapus Inspection');
+	}
+
 	public function detail_inspection($id)
 	{
 		$inspection = Inspection::all();

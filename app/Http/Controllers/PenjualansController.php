@@ -72,7 +72,12 @@ class PenjualansController extends Controller
 	{
 		$penjualan = Penjualan::where('penjualan.id', $id)
 		->first();
-		return view ('penjualan.detail_penjualan' , compact('penjualan')); 
+		$penj_part = PenjPart::where('no_penj',$id)
+		// ->join('penjualan', 'penj_part.no_penj', 'penjualan.no_penj')
+		->join('spare_parts', 'penj_part.part_id', 'spare_parts.id')
+		->select('penj_part.*', 'spare_parts.no as no_part', 'spare_parts.nama as nama_part', 'spare_parts.harga_jual')
+		->get();
+		return view ('penjualan.detail_penjualan' , compact('penjualan', 'penj_part')); 
 	}
 
 

@@ -82,17 +82,18 @@
 						<th class="text-center">Harga Satuan</th>
 						<th class="text-center">Jumlah</th>
 					</tr>
-					{{--@foreach($po_part as $k => $data)
+					@foreach($penj_part as $k => $data)
 					<tr>
 						<td class="text-center">{{$k+1}}</td>
-						<td class="text-center">{{$data->part_number}}</td>
-						<td class="text-center">{{$data->part_name}}</td>
+						<td class="text-center">{{$data->nama_part}}</td>
+						<td class="text-center">{{$data->no_part}}</td>
 						<td class="text-center">{{$data->qty}}</td>
-						<td class="text-center">{{$data->ory}}</td>
-						<td class="text-center">{{$data->thailand}}</td>
-						<td class="text-center">{{$data->jepang}}</td>
+						<td class="text-center">{{$data->harga_jual}}</td>
+						<td class="text-center">{{$data->jumlah}}</td>
+						
 					</tr>
-					@endforeach--}}
+		
+					@endforeach
 				</table>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">

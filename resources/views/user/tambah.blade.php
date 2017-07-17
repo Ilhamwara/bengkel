@@ -7,12 +7,12 @@
                 <a href="{{url('home')}}">Home</a><i class="fa fa-circle"></i>
             </li>
             <li>
-                <span>Edit User</span>
+                <span>Tambah User</span>
             </li>
         </ul>
     </div>
 
-    <h3 class="page-title"><b>Edit User</b></h3>
+    <h3 class="page-title"><b>Tambah User</b></h3>
     <br>
     <div class="row">
         <div class="col-md-12">
@@ -34,7 +34,7 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label text-left">Password</label>
                     <div class="col-sm-6">
-                        <input type="password" class="form-control" name="password" placeholder="Masukan Password Baru"> 
+                        <input type="password" class="form-control" name="password" placeholder="Masukan Password"> 
                     </div>
                 </div>
                 <div class="form-group">

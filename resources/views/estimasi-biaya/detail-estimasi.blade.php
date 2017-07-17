@@ -20,81 +20,81 @@
   <br>
   <div class="row">
     @include('include.alert')
-<form action="{{url('estimasi-biaya/cetak-estimasi/' .$estimasi->id)}}" method="GET" class="form-horizontal">
-    <div class="col-sm-10 col-sm-offset-1">
+    <form action="{{url('estimasi-biaya/cetak-estimasi/' .$estimasi->id)}}" method="GET" class="form-horizontal">
+      <div class="col-sm-10 col-sm-offset-1">
+        <div class="col-sm-6">
+
+         <div class="form-group">
+          <label class="col-sm-3 control-label">Nama</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" min="0" name="nama" value="{{$estimasi->nama_pelanggan}}" readonly> 
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Alamat</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" name="alamat" value="{{$estimasi->alamat}}" readonly> 
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">No. Pol</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" name="no_pol" value="{{$estimasi->no_pol}}" readonly>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Telepon</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" name="telepon" value="{{$estimasi->telepon}}" readonly>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Tanggal</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" name="tanggal" value="{{$estimasi->tanggal}}" readonly>
+          </div>
+        </div>
+
+      </div>
+
       <div class="col-sm-6">
 
-       <div class="form-group">
-        <label class="col-sm-3 control-label">Nama</label>
-        <div class="col-sm-8">
-          <input type="text" class="form-control" min="0" name="nama" value="{{$estimasi->nama_pelanggan}}" readonly> 
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Type</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" name="tipe" value="{{$estimasi->tipe}}" readonly>
+          </div>
         </div>
-      </div>
-
-      <div class="form-group">
-        <label class="col-sm-3 control-label">Alamat</label>
-        <div class="col-sm-8">
-          <input type="text" class="form-control" name="alamat" value="{{$estimasi->alamat}}" readonly> 
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Noka/ Nosin</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" name="noka_nosin" value="{{$estimasi->noka_nosin}}" readonly>
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-3 control-label">No. Pol</label>
-        <div class="col-sm-8">
-          <input type="text" class="form-control" name="no_pol" value="{{$estimasi->no_pol}}" readonly>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Warna</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" name="warna" value="{{$estimasi->warna}}" readonly>
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-3 control-label">Telepon</label>
-        <div class="col-sm-8">
-          <input type="text" class="form-control" name="telepon" value="{{$estimasi->telepon}}" readonly>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="col-sm-3 control-label">Tanggal</label>
-        <div class="col-sm-8">
-          <input type="text" class="form-control" name="tanggal" value="{{$estimasi->tanggal}}" readonly>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="col-sm-6">
-
-      <div class="form-group">
-        <label class="col-sm-3 control-label">Type</label>
-        <div class="col-sm-8">
-          <input type="text" class="form-control" name="tipe" value="{{$estimasi->tipe}}" readonly>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-3 control-label">Noka/ Nosin</label>
-        <div class="col-sm-8">
-          <input type="text" class="form-control" name="noka_nosin" value="{{$estimasi->noka_nosin}}" readonly>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-3 control-label">Warna</label>
-        <div class="col-sm-8">
-          <input type="text" class="form-control" name="warna" value="{{$estimasi->warna}}" readonly>
-        </div>
-      </div>
 
 
-      <div class="form-group">
-        <label class="col-sm-3 control-label">Km Datang</label>
-        <div class="col-sm-8">
-          <input type="text" class="form-control" name="km_datang" value="{{$estimasi->km_datang}}" readonly>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Km Datang</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" name="km_datang" value="{{$estimasi->km_datang}}" readonly>
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-3 control-label">Fuel Datang</label>
-        <div class="col-sm-8">
-          <input type="text" class="form-control" name="fuel_datang" value={{"$estimasi->fuel_datang"}} readonly>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">Fuel Datang</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" name="fuel_datang" value={{"$estimasi->fuel_datang"}} readonly>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </form>
 
 
@@ -110,17 +110,18 @@
               <th class="text-center">Quantity</th>
               <th class="text-center">Harga</th>
               <th class="text-center">Jumlah</th>
-              <th class="text-center"></th>
-            </tr>
-           
-            
-            <tr>
-              <td class="text-center">{{--$part->nama--}}</td>
-              <td class="text-center">{{--$part->qty--}}</td>
-              <td class="text-center">{{--$part->harga_jual--}}</td>
-              <td class="text-center">{{--$part->jumlah--}}</td>    
+
             </tr>
 
+            @forelse($est_part as $part)
+            <tr>
+              <td class="text-center">{{$part->nama}}</td>
+              <td class="text-center">{{$part->qty}}</td>
+              <td class="text-center">{{$part->harga_jual}}</td>
+              <td class="text-center">{{$part->jumlah}}</td>    
+            </tr>
+            @empty
+            @endforelse
             <tr>
              <td class="text-center" colspan="3"><b>Total</b></td>
              <td class="text-center">Rp </td>
@@ -137,7 +138,6 @@
   <div class="col-sm-10 col-sm-offset-1">
    <h4><b>Data Jasa</b></h4>
    <div class="portlet light bordered">
-
      <div class="portlet-body">
       <table class="table table-striped table-bordered table-hover">
         <tr>
@@ -145,16 +145,17 @@
           <th class="text-center">FR</th>
           <th class="text-center">Harga Per FR</th>
           <th class="text-center">Jumlah</th>
-          <th class="text-center"></th>
         </tr>
 
+        @forelse($est_jasa as $jasa)
         <tr>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
+          <td class="text-center">{{$jasa->nama}}</td>
+          <td class="text-center">{{$jasa->fr}}</td>
+          <td class="text-center">{{$jasa->harga_perfr}}</td>
+          <td class="text-center">{{$jasa->jumlah}}</td> 
         </tr> 
-
+        @empty
+        @endforelse
         <tr>
          <td class="text-center" colspan="3"><b>Total</b></td>
          <td class="text-center">Rp </td>
@@ -169,7 +170,7 @@
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1">
     <h4><b>Keterangan</b></h4>
-    <textarea class="form-control" name="keterangan" id="" cols="30" rows="10"></textarea>
+    <textarea class="form-control" name="keterangan" id="" cols="30" rows="10" readonly>{{--$est->keterangan--}}</textarea>
   </div>
 </div>
 <br><br>

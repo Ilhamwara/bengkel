@@ -69,19 +69,21 @@ Route::group(['middleware' => ['session']], function () {
 	Route::get('work-order/cetak-wo/{id}', 'WorkordersController@cetak_wo');
 
     //INSPECTION
-    Route::get('vehicle-inspection', 'WorkordersController@index_inspection');
+	Route::get('vehicle-inspection', 'WorkordersController@index_inspection');
 	Route::get('buat-inspection', 'WorkordersController@buat_inspection');
 	Route::get('detail/inspection/{id}', 'WorkordersController@detail_inspection');
+	Route::get('hapus/inspection/{id}', 'WorkordersController@hapusinspection');
 	Route::get('tambah-vehicle', 'WorkordersController@tambahvehicle');
 	Route::post('tambah-vehicle', 'WorkordersController@posttambahvehicle');
 	Route::post('post-inspection', 'WorkordersController@post_inspection');
 	Route::get('vehicle-inspection/cetak-inspection/{id}', 'WorkordersController@cetak_inspection');
 
     //ESTIMASI BIAYA
-    Route::get('estimasi-biaya', 'EstimasisController@index');
+	Route::get('estimasi-biaya', 'EstimasisController@index');
 	Route::get('buat-estimasi-biaya', 'EstimasisController@buat_estimasi');
 	Route::post('post-estimasi', 'EstimasisController@post_estimasi');
 	Route::get('detail/estimasi/{id}', 'EstimasisController@detail_estimasi');
+	Route::get('hapus/estimasi-biaya/{id}', 'EstimasisController@hapusestimasi');
 	Route::get('estimasi-biaya/pilih-sparepart/{idest}', 'EstimasisController@pilih_sparepart');
 	Route::post('post-pilih-sparepart', 'EstimasisController@post_pilih_sparepart');
 	Route::get('estimasi-biaya/pilih-jasa/{idest}', 'EstimasisController@pilih_jasa');
@@ -104,16 +106,7 @@ Route::group(['middleware' => ['session']], function () {
 //LAPORAN
 	Route::get('laporan', 'LaporansController@index');
 
-
-//USER
-	Route::get('user-management', 'UserController@manage');
-	Route::get('hapus/user/{id}', 'UserController@hapususer');
-	Route::get('tambah/user', 'UserController@tambahuser');
-	Route::post('tambah/user', 'UserController@tambahuserpost');
-	Route::get('edit/user/{id}', 'UserController@edituser');
-	Route::post('edit/user/{id}', 'UserController@edituserpost');
-
-//PENJUALAN
+	//PENJUALAN
 	Route::get('penjualan', 'PenjualansController@index');
 	Route::get('penjualan/tambah-penjualan', 'PenjualansController@tambah_penjualan');
 	Route::post('post-penjualan', 'PenjualansController@post_penjualan');
@@ -125,28 +118,39 @@ Route::group(['middleware' => ['session']], function () {
 	Route::get('penjualan/cetak-penjualan/{id}', 'PenjualansController@cetak_penjualan');
 
 
+//USER
+	Route::get('user-management', 'UserController@manage');
+	Route::get('hapus/user/{id}', 'UserController@hapususer');
+	Route::get('tambah/user', 'UserController@tambahuser');
+	Route::post('tambah/user', 'UserController@tambahuserpost');
+	Route::get('edit/user/{id}', 'UserController@edituser');
+	Route::post('edit/user/{id}', 'UserController@edituserpost');
+
+
+
+
 //PRINT
-Route::get('/print-wo', function () {
-    return view('print.workorder');
-});
-Route::get('/print-inspection', function () {
-    return view('print.inspection');
-});
+	Route::get('/print-wo', function () {
+		return view('print.workorder');
+	});
+	Route::get('/print-inspection', function () {
+		return view('print.inspection');
+	});
 
-Route::get('/print-estimasi', function () {
-    return view('print.estimasi');
-});
+	Route::get('/print-estimasi', function () {
+		return view('print.estimasi');
+	});
 
-Route::get('/print-nota', function () {
-    return view('print.nota');
-});
+	Route::get('/print-nota', function () {
+		return view('print.nota');
+	});
 
-Route::get('/print-po', function () {
-    return view('print.po');
-});
+	Route::get('/print-po', function () {
+		return view('print.po');
+	});
 
-Route::get('/print-sparepart', function () {
-    return view('print.sparepart');
-});
+	Route::get('/print-sparepart', function () {
+		return view('print.sparepart');
+	});
 
 });
