@@ -90,7 +90,6 @@
 						<td class="text-center">{{$data->qty}}</td>
 						<td class="text-center">{{$data->harga_jual}}</td>
 						<td class="text-center">{{$data->jumlah}}</td>
-						
 					</tr>
 					
 					@endforeach

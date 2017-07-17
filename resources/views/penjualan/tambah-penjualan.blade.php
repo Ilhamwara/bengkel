@@ -17,53 +17,54 @@
   <br>
   <div class="row">
     <div class="col-md-12">
+    @include('include.alert')
       <form action="{{url('post-penjualan')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
         {{ csrf_field() }}
         <div class="form-group">
          <label class="col-sm-2 control-label text-left">No Nota</label>
-         <div class="col-sm-6">
+         <div class="col-sm-9">
           <input type="text" class="form-control" name="no_nota" placeholder="No Nota" required> 
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-2 control-label text-left">Tgl Nota</label>
-        <div class="col-sm-6">
-          <input type="date" class="form-control" name="tgl_nota" placeholder="Tgl Nota" required> 
+        <div class="col-sm-9">
+          <input type="text" class="form-control" name="tgl_nota" placeholder="Tgl Nota" disabled value="{{date('d-m-Y')}}"> 
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-2 control-label text-left">No BKB</label>
-        <div class="col-sm-6">
+        <div class="col-sm-9">
           <input type="text" class="form-control" name="no_bkb" placeholder="No_BKB" required>
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-2 control-label text-left">No Pol</label>
-        <div class="col-sm-6">
+        <div class="col-sm-9">
           <input type="text" class="form-control" name="no_pol" placeholder="No Pol" required>
         </div>
       </div>
       <div class="form-group">
         <label class="col-sm-2 control-label text-left">Nama</label>
-        <div class="col-sm-6">
+        <div class="col-sm-9">
           <input type="text" class="form-control" name="nama" placeholder="Nama" required>
         </div>
       </div>
       <div class="form-group">
        <label class="col-sm-2 control-label text-left">Kode</label>
-       <div class="col-sm-6">
+       <div class="col-sm-9">
         <input type="text" class="form-control" name="kode" placeholder="Kode" required>
       </div>
     </div>
     <div class="form-group">
      <label class="col-sm-2 control-label text-left">Alamat</label>
-     <div class="col-sm-6">
+     <div class="col-sm-9">
       <input type="text" class="form-control" name="alamat" placeholder="Alamat" required>
     </div>
   </div>
   <div class="form-group">
     <label class="col-sm-2 control-label text-left">Kota</label>
-    <div class="col-sm-6">
+    <div class="col-sm-9">
       <input type="text" class="form-control" name="kota" placeholder="kota" required>
     </div>
   </div>
@@ -84,20 +85,20 @@
             </tr>
           </thead>   
           <tbody>
-            <?php $i=0; ?>
-            @forelse($penj_part as $part)
-            <?php $i++ ?>
+            @forelse($penj_part as $i => $part)
             <tr>
-              <td>{{$i}}</td>
+              <td>{{$i+1}}</td>
               <td class="text-center">{{$part->nama}}</td>
               <td class="text-center">{{$part->no}}</td>
               <td class="text-center">{{$part->qty}}</td>
               <td class="text-center">{{$part->harga_jual}}</td>
               <td class="text-center">{{$part->jumlah}}</td>
-              
             </tr>
+            <input type="hidden" name="id_part[]" value="{{$part->id}}">
             @empty
-            kosong
+            <tr>
+              <td colspan="6">Kosong</td>
+            </tr>
             @endforelse
             <td colspan="5" class="text-center">Total</td>
             <td class="text-center">Rp {{$penj_part->sum('jumlah')}}</td>
@@ -108,12 +109,15 @@
     </div>
   </div>
 
-  <input type="hidden" value="{{ 'csrf_token' }}" name="token">
+@if(count($penj_part) > 0)
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-primary">Simpan</button>
     </div>
   </div>
+  @endif
+
+
 </form>
 </div>
 </div>
