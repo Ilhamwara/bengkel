@@ -31,7 +31,7 @@
                 {{ csrf_field() }}
 
                 <div class="form-group">
-                <label class="col-sm-2 control-label text-left">No WO</label>
+                    <label class="col-sm-2 control-label text-left">No WO</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="nama" name="no_wo" value="{{$order->no_wo}}" disabled>
                     </div>
@@ -85,13 +85,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button class="btn btn-primary" type="submit">Cetak</button>
-                </div>
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button class="btn btn-primary" type="submit">Cetak</button>
+                  </div>
               </div>
-            </form>
-        </div>
-    </div>
+          </form>
+      </div>
+  </div>
 </div>
 
 @endsection

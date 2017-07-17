@@ -27,11 +27,11 @@
     <br>
     <div class="row">
         <div class="col-md-12">
-        <a href="{{url('tambah/user')}}" class="btn btn-success" style="padding: 6px 12px; margin-bottom: 20px;"><i class="fa fa-plus"></i> Tambah</a>
+            <a href="{{url('tambah/user')}}" class="btn btn-success" style="padding: 6px 12px; margin-bottom: 20px;"><i class="fa fa-plus"></i> Tambah</a>
             <div class="portlet light bordered">
                 
                 <div class="portlet-body">
-                @include('include.alert')
+                    @include('include.alert')
                     <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
                         <thead>
                             <tr>

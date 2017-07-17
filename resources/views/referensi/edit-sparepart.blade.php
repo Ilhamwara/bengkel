@@ -32,40 +32,40 @@
 				{{ csrf_field() }}
 
 				<div class="form-group">
-				<label class="col-sm-2 control-label">No Part</label>
+					<label class="col-sm-2 control-label">No Part</label>
 					<div class="col-sm-6">
 						<input type="text" class="form-control" id="no" name="no" value="{{$sparepart->no}}" >
 					</div>
 				</div>
 				<div class="form-group">
-				<label class="col-sm-2 control-label">Nama Part</label>
+					<label class="col-sm-2 control-label">Nama Part</label>
 					<div class="col-sm-6">
 						<input type="text" class="form-control" id="nama" name="nama" value="{{$sparepart->nama}}" >
 					</div>
 				</div>
 				<div class="form-group">
-				<label class="col-sm-2 control-label">Harga Beli</label>
+					<label class="col-sm-2 control-label">Harga Beli</label>
 					<div class="col-sm-6">
 						<input type="text" class="form-control" id="harga_beli" name="harga_beli" value="{{$sparepart->harga_beli}}" >
 					</div>
 				</div>
 				<div class="form-group">
-				<label class="col-sm-2 control-label">Harga Jual</label>
+					<label class="col-sm-2 control-label">Harga Jual</label>
 					<div class="col-sm-6">
 						<input type="text" class="form-control" id="harga_jual" name="harga_jual" value="{{$sparepart->harga_jual}}" >
 					</div>
 				</div>
 				<div class="form-group">
-				<label class="col-sm-2 control-label">Stok</label>
+					<label class="col-sm-2 control-label">Stok</label>
 					<div class="col-sm-6">
 						<input type="text" class="form-control" id="stok" name="stok" value="{{$sparepart->stok}}" >
 					</div>
 				</div>
 				<div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-primary">Simpan</button>
-              </div>
-          </div>
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">Simpan</button>
+					</div>
+				</div>
 			</form>
 		</div>
 	</div>

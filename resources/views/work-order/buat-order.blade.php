@@ -5,10 +5,10 @@
 <style type="text/css">
   #mceu_50{
     display: none;
-  }
+}
 /*  #mce_0_ifr{
     height: 200px!important;
-  }*/
+}*/
 </style>
 @endsection
 @section('content')
@@ -28,23 +28,23 @@
     <br>
     <div class="row">
         <div class="col-md-12">
-        @include('include.alert')
+            @include('include.alert')
             <form action="{{url('post-order')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                 {{ csrf_field() }}
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Pilih Customer</label>
                     <div class="col-sm-8">
-                     <select name="pelanggan" class="select2 form-control" id ="select2">
-                         <option value="">Pilih Pelanggan</option>
-                         @foreach($pelanggan as $data)
-                         <option value="{{$data->id}}" data-nama="{{$data->nama}}" data-alamat="{{$data->alamat}}" data-nopol="{{$data->no_pol}}" data-telepon="{{$data->telepon}}" data-tipe="{{$data->tipe}}" data-nokanosin="{{$data->noka_nosin}}" data-warna="{{$data->warna}}">{{$data->nama}}</option>
-                         @endforeach
-                     </select>
-                 </div>
-             </div>
+                       <select name="pelanggan" class="select2 form-control" id ="select2">
+                           <option value="">Pilih Pelanggan</option>
+                           @foreach($pelanggan as $data)
+                           <option value="{{$data->id}}" data-nama="{{$data->nama}}" data-alamat="{{$data->alamat}}" data-nopol="{{$data->no_pol}}" data-telepon="{{$data->telepon}}" data-tipe="{{$data->tipe}}" data-nokanosin="{{$data->noka_nosin}}" data-warna="{{$data->warna}}">{{$data->nama}}</option>
+                           @endforeach
+                       </select>
+                   </div>
+               </div>
 
-             <div class="form-group">
+               <div class="form-group">
                 <label class="col-sm-2 control-label">Nama</label>
                 <div class="col-sm-8">
                     <input type="text" class="form-control" min="0" name="nama_pelanggan" id="data_nama" disabled> 
@@ -114,18 +114,18 @@
                     <input type="text" class="form-control" onblur="checkNum($(this))" name="fuel_datang" placeholder="Fuel Datang" required>
                 </div>
             </div>
-             <div class="form-group">
+            <div class="form-group">
                 <label class="col-sm-2 control-label">Keluhan</label>
                 <div class="col-sm-8">
                     <textarea name="deskripsi" id="deskripsi" rows="10" cols="80"></textarea>
                 </div>
             </div>
         </div>
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-primary">Simpan</button>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
     </div>
-  </div>
 </form>
 
 </div>
@@ -141,18 +141,18 @@
     $(".select2").select2();
 });
   CKEDITOR.replace( 'deskripsi',
-    {
-        customConfig : '',
-        toolbar : 'simple'
-    })
+  {
+    customConfig : '',
+    toolbar : 'simple'
+})
   function checkNum(obj) {
-        v = obj.val();
-        if (!$.isNumeric(v)) {
-            alert('Anda harus memasukan angka');
-            obj.val('0');
-            return false;
-        }
+    v = obj.val();
+    if (!$.isNumeric(v)) {
+        alert('Anda harus memasukan angka');
+        obj.val('0');
+        return false;
     }
+}
 </script>
 <script>$('#select2').change(function(){
     var
@@ -180,13 +180,13 @@
 <script>
   var cnt = 2;
 
-$("#add").click(function() {
-  $("table").append("<tr><td>"+cnt+"</td><td class='text-center'><input type='text' class='form-control' name='keluhan'></td><td class='text-center'><button class='btn btn-danger' id='delete'><i class='fa fa-trash'></i></button></td></tr>" );
-  cnt++;
-});
+  $("#add").click(function() {
+      $("table").append("<tr><td>"+cnt+"</td><td class='text-center'><input type='text' class='form-control' name='keluhan'></td><td class='text-center'><button class='btn btn-danger' id='delete'><i class='fa fa-trash'></i></button></td></tr>" );
+      cnt++;
+  });
 
-$("table").on('click', '#delete', function() {
- $(this).closest("tr").remove();
+  $("table").on('click', '#delete', function() {
+   $(this).closest("tr").remove();
 });
 </script>
 

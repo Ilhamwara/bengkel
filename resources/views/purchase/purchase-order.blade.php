@@ -42,12 +42,11 @@
 								<th class="text-center">Action</th>
 							</tr>
 						</thead>
-						<?php $i = 0 ?>
+
 						<tbody>
-							@forelse($purchases as $po)
-							<?php $i++ ?>
+							@forelse($purchases as $i => $po)
 							<tr>
-								<td>{{$i}}</td>
+								<td>{{$i+1}}</td>
 								<td class="text-center">{{$po->supplier}}</td>
 								<td class="text-center">{{$po->alamat}}</td>
 								<td class="text-center">{{$po->no_po}}</td>

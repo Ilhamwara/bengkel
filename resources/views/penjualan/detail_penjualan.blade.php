@@ -92,7 +92,7 @@
 						<td class="text-center">{{$data->jumlah}}</td>
 						
 					</tr>
-		
+					
 					@endforeach
 				</table>
 				<div class="form-group">

@@ -264,7 +264,7 @@
 
     <li class="nav-item @if(Request::is('penjualan') || Request::is('penjualan/tambah-penjualan')) active open @endif">
         <a href="javascript:;" class="nav-link nav-toggle">
-            <i class="fa fa-credit-card"></i>
+            <i class="fa fa-shopping-cart"></i>
             <span class="title">Penjualan Sparepart</span>
             @if(Request::is('penjualan') || Request::is('penjualan/tambah-penjualan')) 
             <span class="arrow open"></span>

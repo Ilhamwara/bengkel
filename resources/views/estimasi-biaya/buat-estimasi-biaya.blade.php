@@ -31,7 +31,7 @@
              <select name="order_id" class="select2 form-control" id ="select2" required>
                <option value="">-- Pilih WO --</option>
                @foreach($workorder as $data)
-                <option value="{{$data->id}}" data-nama="{{$data->nama}}" data-alamat="{{$data->alamat}}" data-nopol="{{$data->no_pol}}" data-telepon="{{$data->telepon}}" data-tipe="{{$data->tipe}}" data-nokanosin="{{$data->noka_nosin}}" data-warna="{{$data->warna}}" data-km="{{$data->km_datang}}" data-fuel="{{$data->fuel_datang}}" data-tanggal="{{$data->tanggal}}">{{$data->no_wo}}</option>
+               <option value="{{$data->id}}" data-nama="{{$data->nama}}" data-alamat="{{$data->alamat}}" data-nopol="{{$data->no_pol}}" data-telepon="{{$data->telepon}}" data-tipe="{{$data->tipe}}" data-nokanosin="{{$data->noka_nosin}}" data-warna="{{$data->warna}}" data-km="{{$data->km_datang}}" data-fuel="{{$data->fuel_datang}}" data-tanggal="{{$data->tanggal}}">{{$data->no_wo}}</option>
                @endforeach
              </select>
            </div>
@@ -215,10 +215,10 @@
     $(".select2").select2();
   });
   CKEDITOR.replace( 'deskripsi',
-    {
-        customConfig : '',
-        toolbar : 'simple'
-    })
+  {
+    customConfig : '',
+    toolbar : 'simple'
+  })
 </script>
 <script>
   $('#select2').change(function(){

@@ -27,7 +27,7 @@
 	<br>
 	<div class="row">
 		<div class="col-md-12">
-		@include('include.alert')
+			@include('include.alert')
 			<div class="portlet light bordered">
 				<div class="portlet-body">
 					<table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
@@ -40,15 +40,13 @@
 								<th class="text-center">Action</th>
 							</tr>
 						</thead>
-						<?php $i = 0 ?>
+						
 						<tbody>
-							@forelse($inspection as $inspect)
-							<?php $i++ ?>
+							@forelse($inspection as $i => $inspect)
 							<tr>
-								<td>{{$i}}</td>
+								<td>{{$i+1}}</td>
 								<td class="text-center">{{$inspect->nomor_wo}}</td>
-								<td class="text-center">{{$inspect->tgl}}</td>
-								
+								<td class="text-center">{{$inspect->tgl}}</td>		
 								<td class="text-center">{!!$inspect->keterangan!!}</td>
 								<td class="text-center">
 									<ul class="action">
@@ -60,6 +58,7 @@
 							@empty
 							@endforelse
 						</tbody>
+
 					</table>
 				</div>
 			</div>

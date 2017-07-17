@@ -81,7 +81,7 @@
   <table class="tg keluhan" style="width: 100%; margin-bottom: 10px;border-collapse:collapse;border-spacing:0; border-style:solid;border-width:1px; border-right: none; border-left: none;">
     <thead>
       <tr>
-      <td colspan="2" class="tg-031el" style="text-align: center; border-right: none; border-left:none;"><b>KELUHAN PELANGGAN/ PERINTAH KERJA</b></td>
+        <td colspan="2" class="tg-031el" style="text-align: center; border-right: none; border-left:none;"><b>KELUHAN PELANGGAN/ PERINTAH KERJA</b></td>
       </tr>
     </thead>
     <tbody>

@@ -27,7 +27,7 @@
 	<br>
 	<div class="row">
 		<div class="col-md-12">
-		<a href="{{url('sparepart/tambah-sparepart')}}" class="btn btn-success" style="padding: 6px 12px; margin-bottom: 20px;"><i class="fa fa-plus"></i> Tambah</a>
+			<a href="{{url('sparepart/tambah-sparepart')}}" class="btn btn-success" style="padding: 6px 12px; margin-bottom: 20px;"><i class="fa fa-plus"></i> Tambah</a>
 			<div class="portlet light bordered">
 				
 				<div class="portlet-body">
@@ -55,14 +55,14 @@
 								<td class="text-center">{{$sparepart->harga_jual}}</td>
 								<td class="text-center">{{$sparepart->stok}}</td>
 								<td class="text-center">
-								@if($sparepart->stok > 0)
+									@if($sparepart->stok > 0)
 									<ul class="action">
 										<li><a href="{{url('sparepart/'.$sparepart->id.'/edit')}}" class="btn btn-warning"  data-toggle="tooltip" title="Edit" style="padding: 6px 12px;"><i class="fa fa-pencil"></i></a></li>
 										<li><a href="{{url('hapus/sparepart/'.$sparepart->id)}}" class="btn btn-danger"  data-toggle="tooltip" title="Hapus" style="padding: 6px 12px;"><i class="fa fa-trash-o"></i></a></li>
 									</ul>
-								@else
+									@else
 									<a href="{{url('buat-purchase-order')}}" class="btn btn-primary">Buat Order</a>
-								@endif
+									@endif
 								</td>
 							</tr>
 							@empty

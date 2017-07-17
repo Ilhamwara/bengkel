@@ -27,35 +27,34 @@
 	<br>
 	<div class="row">
 		<div class="col-md-12">
-		<div class="portlet light bordered">
+			<div class="portlet light bordered">
 				<div class="portlet-body">
 					<table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
 						<thead>
 							<tr><th class="text-center">No</th>
-						<th class="text-center">No WO</th>
-						<th class="text-center">Tanggal</th>
-						<th class="text-center">Detail</th>
-					</tr>
-				</thead>
-				<?php $i = 0 ?>
-				<tbody>@forelse($orders as $history)
-					<?php $i++ ?>
-					<tr>
-						<td>{{$i}}</td>
-						<td class="text-center">{{$history->no_wo}}</td>
-						<td class="text-center">{{$history->tanggal}}</td>
-						<td class="text-center"><a href="{{url('work-order/'. $history->id)}}">Detail</a></td>
-					</tr>
-					@empty
-					@endforelse
-				</tbody>
-			</table>
+								<th class="text-center">No WO</th>
+								<th class="text-center">Tanggal</th>
+								<th class="text-center">Detail</th>
+							</tr>
+						</thead>
+						
+						<tbody>
+							@forelse($orders as $i => $history)
+							<tr>
+								<td>{{$i+1}}</td>
+								<td class="text-center">{{$history->no_wo}}</td>
+								<td class="text-center">{{$history->tanggal}}</td>
+								<td class="text-center"><a href="{{url('work-order/'. $history->id)}}">Detail</a></td>
+							</tr>
+							@empty
+							@endforelse
+						</tbody>
 
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
-
-</div>
-</div>
 </div>
 
 @endsection

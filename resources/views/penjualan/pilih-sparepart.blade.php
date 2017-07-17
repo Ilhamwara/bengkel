@@ -18,7 +18,7 @@
   <h3 class="page-title"><b>Pilih Sparepart</b></h3>
   <br>
   <div class="row">
-  @include('include.alert')
+    @include('include.alert')
     <form action="{{url('post-jual-sparepart')}}" method="POST" enctype="multipart/form-data" class="form-horizontal" style="overflow: hidden;">
       {{ csrf_field() }}    
       <input type="hidden" name="idpenj" value="{{$idpenj}}" >        
@@ -28,50 +28,50 @@
          <select name="sparepart" class="form-control select2" id ="select3">
            <option>Pilih Sparepart</option>
            @foreach($spareparts as $data)
-              <option value="{{$data->id}}" data-sparepart="{{$data->nama}}" data-nomor="{{$data->no}}" data-harga="{{$data->harga_jual}}">{{$data->nama}}</option>
+           <option value="{{$data->id}}" data-sparepart="{{$data->nama}}" data-nomor="{{$data->no}}" data-harga="{{$data->harga_jual}}">{{$data->nama}}</option>
            @endforeach
          </select>
        </div>
-       </div>
-       <div class="form-group">
-         <label class="col-sm-2 control-label">Nama Part</label>
-         <div class="col-sm-6">
-          <input type="text" class="form-control" name="nama" id="data_sparepart" disabled>
-        </div>
-      </div>
-
-       <div class="form-group">
-         <label class="col-sm-2 control-label">No Part</label>
-         <div class="col-sm-6">
-          <input type="text" class="form-control" name="quantity_sparepart" id="data_nomor" disabled>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="col-sm-2 control-label">Quantity</label>
-        <div class="col-sm-6">
-          <input type="text" onblur="checkNum($(this))" class="form-control" id="qty" name="quantity_sparepart" value="0">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-2 control-label">Harga</label>
-        <div class="col-sm-6">
-          <input type="text" class="form-control" id="data_harga" name="data_harga" disabled>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-2 control-label">Total</label>
-        <div class="col-sm-6">
-          <input type="text" class="form-control" name="total_harga_sparepart" id="total" value="0" readonly>
-        </div>
+     </div>
+     <div class="form-group">
+       <label class="col-sm-2 control-label">Nama Part</label>
+       <div class="col-sm-6">
+        <input type="text" class="form-control" name="nama" id="data_sparepart" disabled>
       </div>
     </div>
+
     <div class="form-group">
-      <div class="col-sm-offset-1 col-sm-10">
-        <button class="btn btn-primary">Tambah</button>
-      </div>
+     <label class="col-sm-2 control-label">No Part</label>
+     <div class="col-sm-6">
+      <input type="text" class="form-control" name="quantity_sparepart" id="data_nomor" disabled>
     </div>
-  </form>
+  </div>
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Quantity</label>
+    <div class="col-sm-6">
+      <input type="text" onblur="checkNum($(this))" class="form-control" id="qty" name="quantity_sparepart" value="0">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Harga</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" id="data_harga" name="data_harga" disabled>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Total</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" name="total_harga_sparepart" id="total" value="0" readonly>
+    </div>
+  </div>
+</div>
+<div class="form-group">
+  <div class="col-sm-offset-1 col-sm-10">
+    <button class="btn btn-primary">Tambah</button>
+  </div>
+</div>
+</form>
 
 </div>
 </div>
@@ -85,30 +85,30 @@
   });
 </script>
 <script>$('#select3').change(function(){
-    var
-    value = $(this).val(),
-    $obj = $('#select3 option[value="'+value+'"]'),
-    sparepart = $obj.attr('data-sparepart'),
-    nomor = $obj.attr('data-nomor');
-    harga = $obj.attr('data-harga');
+  var
+  value = $(this).val(),
+  $obj = $('#select3 option[value="'+value+'"]'),
+  sparepart = $obj.attr('data-sparepart'),
+  nomor = $obj.attr('data-nomor');
+  harga = $obj.attr('data-harga');
 
-    
-    
-    $('#data_sparepart').val(sparepart);
-    $('#data_nomor').val(nomor);
-    $('#data_harga').val(harga);
+  
+  
+  $('#data_sparepart').val(sparepart);
+  $('#data_nomor').val(nomor);
+  $('#data_harga').val(harga);
 });
 
 function checkNum(obj) {
-        v = obj.val();
-        if (!$.isNumeric(v)) {
-            alert('Anda harus memasukan angka');
-            obj.val('0');
-            return false;
-        }
-    }
+  v = obj.val();
+  if (!$.isNumeric(v)) {
+    alert('Anda harus memasukan angka');
+    obj.val('0');
+    return false;
+  }
+}
 </script>
-  <script type="text/javascript">
+<script type="text/javascript">
   $('input[name=quantity_sparepart], input[name=data_harga]').keyup(function() {
     var divParent = $(this).closest('div');
     var qty = $('input[name=quantity_sparepart]', divParent).val()-0;

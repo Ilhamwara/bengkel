@@ -40,12 +40,11 @@
 								<th class="text-center">Status</th>
 							</tr>
 						</thead>
-						<?php $i = 0 ?>
+					
 						<tbody>
-							@forelse($laporans as $laporan)
-							<?php $i++ ?>
+							@forelse($laporans as $i => $laporan)
 							<tr>
-								<td>{{$i}}</td>
+								<td>{{$i+1}}</td>
 								<td class="text-center"><a href="{{url('work-order/'. $laporan->id)}}">{{$laporan->no_wo}}</a></td>
 								<td class="text-center">{{$laporan->tanggal}}</td>
 								<td class="text-center">{{$laporan->transaksi}}</td>
@@ -54,6 +53,7 @@
 							@empty
 							@endforelse
 						</tbody>
+						
 					</table>
 				</div>
 			</div>

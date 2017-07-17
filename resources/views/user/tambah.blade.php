@@ -16,7 +16,7 @@
     <br>
     <div class="row">
         <div class="col-md-12">
-        @include('include.alert')
+            @include('include.alert')
             <form action="{{url('tambah/user/')}}" method="POST" class="form-horizontal">
                 {{ csrf_field() }}
                 <div class="form-group">
@@ -38,12 +38,12 @@
                     </div>
                 </div>
                 <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button class="btn btn-primary">Simpan</button>
-                </div>
+                    <div class="col-sm-offset-2 col-sm-10">
+                      <button class="btn btn-primary">Simpan</button>
+                  </div>
               </div>
-        </form>
-    </div>
-</div>
+          </form>
+      </div>
+  </div>
 
-@endsection
+  @endsection

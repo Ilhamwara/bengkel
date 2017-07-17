@@ -27,42 +27,40 @@
 	<br>
 	<div class="row">
 		<div class="col-md-12">
-		<div class="portlet light bordered">
+			<div class="portlet light bordered">
 				<div class="portlet-body">
 					<table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
 						<thead>
 							<tr><th class="text-center">No</th>
-						<th class="text-center">No WO</th>
-						<th class="text-center">Customer</th>
-						<th class="text-center">Work Order</th>
-						<th class="text-center">Vehicle Inspection</th>
-						<th class="text-center">Nota Service</th>
-						<th class="text-center">Estimasi Biaya</th>
-					</tr>
-				</thead>
-				<?php $i = 0 ?>
-				<tbody>@forelse($orders as $order)
-					<?php $i++ ?>
-					<tr>
-						<td>{{$i}}</td>
-						<td class="text-center">{{$order->no_wo}}</td>
-						<td class="text-center">{{$order->nama_pelanggan}}</td>
-						<td class="text-center"><a href="{{url('work-order/'. $order->id)}}">Tampilkan</a></td>
-						<td class="text-center"><a href="{{url('detail/inspection/'. $order->id)}}">Tampilkan</a></td>
-						<td class="text-center"><a href="{{url('#')}}">Tampilkan</a></td>
-						<td class="text-center"><a href="{{url('detail/estimasi/'. $order->id)}}">Tampilkan</a></td>
-						
-					</tr>
-					@empty
-					@endforelse
-				</tbody>
-			</table>
+								<th class="text-center">No WO</th>
+								<th class="text-center">Customer</th>
+								<th class="text-center">Work Order</th>
+								<th class="text-center">Vehicle Inspection</th>
+								<th class="text-center">Nota Service</th>
+								<th class="text-center">Estimasi Biaya</th>
+							</tr>
+						</thead>
 
+						<tbody>
+							@forelse($orders as $i => $order)
+							<tr>
+								<td>{{$i+1}}</td>
+								<td class="text-center">{{$order->no_wo}}</td>
+								<td class="text-center">{{$order->nama_pelanggan}}</td>
+								<td class="text-center"><a href="{{url('work-order/'. $order->id)}}">Tampilkan</a></td>
+								<td class="text-center"><a href="{{url('detail/inspection/'. $order->id)}}">Tampilkan</a></td>
+								<td class="text-center"><a href="{{url('#')}}">Tampilkan</a></td>
+								<td class="text-center"><a href="{{url('detail/estimasi/'. $order->id)}}">Tampilkan</a></td>
+							</tr>
+							@empty
+							@endforelse
+						</tbody>
+
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
-
-</div>
-</div>
 </div>
 
 @endsection

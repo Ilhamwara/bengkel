@@ -97,29 +97,29 @@
             
             <th colspan="2" class="tg-yw4l">Total</th>
 
-          
+            
         </tr>
     </thead>
     <tbody>
-           <tr>
-            <td class="tg-yw4l">UR879</td>
-            <td class="tg-yw4l">Handle</td>
-            <td class="tg-yw4l" style="text-align: center;">1</td>
-            <td class="tg-yw4l">Rp</td>
-            <td class="tg-yw4l" style="text-align: right;">350000</td>
-            <td class="tg-yw4l">Rp</td>
-            <td class="tg-yw4l" style="text-align: right;">350000</td>
-        </tr>
-            <tr>
-            <td class="tg-yw4l">UR879</td>
-            <td class="tg-yw4l">Handle</td>
-            <td class="tg-yw4l" style="text-align: center;">1</td>
-            <td class="tg-yw4l">Rp</td>
-            <td class="tg-yw4l" style="text-align: right;">350000</td>
-            <td class="tg-yw4l">Rp</td>
-            <td class="tg-yw4l" style="text-align: right;">350000</td>
-        </tr>
-    </tbody>
+     <tr>
+        <td class="tg-yw4l">UR879</td>
+        <td class="tg-yw4l">Handle</td>
+        <td class="tg-yw4l" style="text-align: center;">1</td>
+        <td class="tg-yw4l">Rp</td>
+        <td class="tg-yw4l" style="text-align: right;">350000</td>
+        <td class="tg-yw4l">Rp</td>
+        <td class="tg-yw4l" style="text-align: right;">350000</td>
+    </tr>
+    <tr>
+        <td class="tg-yw4l">UR879</td>
+        <td class="tg-yw4l">Handle</td>
+        <td class="tg-yw4l" style="text-align: center;">1</td>
+        <td class="tg-yw4l">Rp</td>
+        <td class="tg-yw4l" style="text-align: right;">350000</td>
+        <td class="tg-yw4l">Rp</td>
+        <td class="tg-yw4l" style="text-align: right;">350000</td>
+    </tr>
+</tbody>
 </table>
 <table class="tg" style="width: 100%; margin-bottom: 20px;">
 
@@ -160,24 +160,24 @@
         <td class="tg-yw4l" style="border: none; border-bottom:1px solid; width: 15%;"></td>
         <td class="tg-yw4l" style="border:none; width: 10%;"></td>
     </tr>
-    </tbody>
-    <tbody>
-     <tr>
-        <td colspan="6" class="tg-yw4l" style="border:none;"></td>
-        <td colspan="3" class="tg-yw4l" style="text-align:center;">Rekening Bank</td>
-    </tr>
-     <tr>
-        <td colspan="6" class="tg-yw4l" style="border:none;"></td>
-        <td class="tg-yw4l">Mandiri</td>
-        <td class="tg-yw4l" style="border:none;">:</td>
-        <td class="tg-yw4l">9000 0359 4136 9</td>
-    </tr>
-      <tr>
-        <td colspan="6" class="tg-yw4l" style="border:none;"></td>
-        <td class="tg-yw4l">BCA</td>
-        <td class="tg-yw4l">:</td>
-        <td class="tg-yw4l">8585 1186 44</td>
-    </tr>
+</tbody>
+<tbody>
+   <tr>
+    <td colspan="6" class="tg-yw4l" style="border:none;"></td>
+    <td colspan="3" class="tg-yw4l" style="text-align:center;">Rekening Bank</td>
+</tr>
+<tr>
+    <td colspan="6" class="tg-yw4l" style="border:none;"></td>
+    <td class="tg-yw4l">Mandiri</td>
+    <td class="tg-yw4l" style="border:none;">:</td>
+    <td class="tg-yw4l">9000 0359 4136 9</td>
+</tr>
+<tr>
+    <td colspan="6" class="tg-yw4l" style="border:none;"></td>
+    <td class="tg-yw4l">BCA</td>
+    <td class="tg-yw4l">:</td>
+    <td class="tg-yw4l">8585 1186 44</td>
+</tr>
 
 </tbody>
 </table>

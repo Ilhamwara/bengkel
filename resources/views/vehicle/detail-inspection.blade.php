@@ -19,13 +19,13 @@
     <h3 class="page-title"><b>Detail Vehicle Inspection</b></h3>
     <br>
     <div class="row">
-       <form action="{{url('vehicle-inspection/cetak-inspection/' .$inspect->id)}}" method="GET" class="form-horizontal">
+     <form action="{{url('vehicle-inspection/cetak-inspection/' .$inspect->id)}}" method="GET" class="form-horizontal">
         {{ csrf_field() }}
         @include('include.alert')
         <div class="col-sm-12" style="margin-bottom: 10px;">
             <div class="col-sm-6">
 
-               <div class="form-group">
+             <div class="form-group">
                 <label class="col-sm-4 text-left">Nama</label>
                 <div class="col-sm-6">
                     <input type="text" class="form-control" min="0" name="nama" value="{{$inspect->nama_pelanggan}}" readonly> 
@@ -100,7 +100,7 @@
     <div class="col-md-12">
         <br><br>
         <div class="table-responsive">
-         <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
+           <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
 
             {{--@if($vecdok[0]->type == 'Dokumen Kendaraan')
             <tr>

@@ -32,7 +32,7 @@
 				{{ csrf_field() }}
 
 				<div class="form-group">
-				<label class="col-sm-2 control-label">Jasa</label>
+					<label class="col-sm-2 control-label">Jasa</label>
 					<div class="col-sm-6">
 						<input type="text" class="form-control" id="nama_jasa" name="nama_jasa" value="{{$jasa->nama_jasa}}" >
 					</div>
@@ -44,10 +44,10 @@
 					</div>
 				</div>
 				<div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-primary">Simpan</button>
-              </div>
-          </div>
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-primary">Simpan</button>
+					</div>
+				</div>
 			</form>
 		</div>
 	</div>

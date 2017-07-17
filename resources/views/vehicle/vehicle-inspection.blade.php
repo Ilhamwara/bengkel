@@ -11,7 +11,7 @@
                 <a href="{{url('home')}}">Home</a><i class="fa fa-circle"></i>
             </li>
             <li>
-            <span>Buat Vehicle Inspection</span>
+                <span>Buat Vehicle Inspection</span>
             </li>
         </ul>
     </div>
@@ -27,16 +27,16 @@
                     <div class="form-group">
                         <label class="col-sm-4 text-left">Pilih WO</label>
                         <div class="col-sm-6">
-                           <select name="workorder" class="select2 form-control" id ="select2" required>
-                               <option value="">Pilih WO</option>
-                               @foreach($workorder as $data)
-                               <option value="{{$data->id}}" data-nama="{{$data->nama}}" data-alamat="{{$data->alamat}}" data-nopol="{{$data->no_pol}}" data-telepon="{{$data->telepon}}" data-tipe="{{$data->tipe}}" data-nokanosin="{{$data->noka_nosin}}" data-warna="{{$data->warna}}" data-km="{{$data->km_datang}}" data-fuel="{{$data->fuel_datang}}" data-tanggal="{{$data->tanggal}}">{{$data->no_wo}}</option>
-                               @endforeach
-                           </select>
-                       </div>
-                   </div>
+                         <select name="workorder" class="select2 form-control" id ="select2" required>
+                             <option value="">Pilih WO</option>
+                             @foreach($workorder as $data)
+                             <option value="{{$data->id}}" data-nama="{{$data->nama}}" data-alamat="{{$data->alamat}}" data-nopol="{{$data->no_pol}}" data-telepon="{{$data->telepon}}" data-tipe="{{$data->tipe}}" data-nokanosin="{{$data->noka_nosin}}" data-warna="{{$data->warna}}" data-km="{{$data->km_datang}}" data-fuel="{{$data->fuel_datang}}" data-tanggal="{{$data->tanggal}}">{{$data->no_wo}}</option>
+                             @endforeach
+                         </select>
+                     </div>
+                 </div>
 
-                   <div class="form-group">
+                 <div class="form-group">
                     <label class="col-sm-4 text-left">Nama</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" min="0" name="nama" id="data_nama" disabled> 
@@ -111,7 +111,7 @@
         <div class="col-md-12">
             <br><br>
             <div class="table-responsive">
-             <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
+               <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
 
                 @if($vecdok[0]->type == 'Dokumen Kendaraan')
                 <tr>

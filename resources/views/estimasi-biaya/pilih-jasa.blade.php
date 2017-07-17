@@ -18,7 +18,7 @@
   <h3 class="page-title"><b>Pilih Jasa</b></h3>
   <br>
   <div class="row">
-  @include('include.alert')
+    @include('include.alert')
     <form action="{{url('post-pilih-jasa')}}" method="POST" enctype="multipart/form-data" class="form-horizontal" style="overflow: hidden;">
       {{ csrf_field() }} 
       <input type="hidden" name="idest" value="{{$idest}}">           
@@ -33,38 +33,38 @@
          </select>
        </div>
      </div>
-      <div class="form-group">
+     <div class="form-group">
        <label class="col-sm-2 control-label">Jasa</label>
        <div class="col-sm-6">
         <input type="text" class="form-control" name="fr" id="data_jasa" disabled>
       </div>
     </div>
 
-     <div class="form-group">
-       <label class="col-sm-2 control-label">FR</label>
-       <div class="col-sm-6">
-        <input type="text" class="form-control" name="fr" id="banyaknya" value="0" onblur="checkNum($(this))">
-      </div>
+    <div class="form-group">
+     <label class="col-sm-2 control-label">FR</label>
+     <div class="col-sm-6">
+      <input type="text" class="form-control" name="fr" id="banyaknya" value="0" onblur="checkNum($(this))">
     </div>
+  </div>
 
-    <div class="form-group">
-      <label class="col-sm-2 control-label">Harga per FR</label>
-      <div class="col-sm-6">
-        <input type="text" class="form-control" name="harga_perfr" id="data_harga" disabled>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="col-sm-2 control-label">Jumlah</label>
-      <div class="col-sm-6">
-        <input type="text" class="form-control" name="total_harga_jasa" id="sum" value="0" readonly>
-      </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">Harga per FR</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" name="harga_perfr" id="data_harga" disabled>
     </div>
   </div>
   <div class="form-group">
-    <div class="col-sm-offset-1 col-sm-10">
-      <button type="submit" class="btn btn-primary">Tambah</button>
+    <label class="col-sm-2 control-label">Jumlah</label>
+    <div class="col-sm-6">
+      <input type="text" class="form-control" name="total_harga_jasa" id="sum" value="0" readonly>
     </div>
   </div>
+</div>
+<div class="form-group">
+  <div class="col-sm-offset-1 col-sm-10">
+    <button type="submit" class="btn btn-primary">Tambah</button>
+  </div>
+</div>
 </form>
 
 </div>
@@ -91,16 +91,16 @@
 
 });
 function checkNum(obj) {
-        v = obj.val();
-        if (!$.isNumeric(v)) {
-            alert('Anda harus memasukan angka');
-            obj.val('0');
-            return false;
-        }
-    }
+  v = obj.val();
+  if (!$.isNumeric(v)) {
+    alert('Anda harus memasukan angka');
+    obj.val('0');
+    return false;
+  }
+}
 </script>
 
-  <script type="text/javascript">
+<script type="text/javascript">
   $('input[name=qty], input[name=harga_perfr]').keyup(function() {
     var divParent = $(this).closest('div');
     var qty = $('input[name=qty]', divParent).val()-0;
