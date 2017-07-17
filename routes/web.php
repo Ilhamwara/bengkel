@@ -78,7 +78,7 @@ Route::group(['middleware' => ['session']], function () {
 	Route::post('post-inspection', 'WorkordersController@post_inspection');
 	Route::get('vehicle-inspection/cetak-inspection/{id}', 'WorkordersController@cetak_inspection');
 
-    //ESTIMASI BIAYA
+	//ESTIMASI BIAYA
 	Route::get('estimasi-biaya', 'EstimasisController@index');
 	Route::get('buat-estimasi-biaya', 'EstimasisController@buat_estimasi');
 	Route::post('post-estimasi', 'EstimasisController@post_estimasi');
@@ -90,10 +90,10 @@ Route::group(['middleware' => ['session']], function () {
 	Route::post('post-pilih-jasa', 'EstimasisController@post_pilih_jasa');
 	Route::get('estimasi-biaya/hapus-part/{id}', 'EstimasisController@hapusestpart');
 	Route::get('estimasi-biaya/hapus-jasa/{id}', 'EstimasisController@hapusestjasa');
-	Route::get('estimasi/cetak-estimasi/{id}', 'EstimasisController@cetak');
+	Route::get('estimasi/cetak-estimasi/{id}', 'EstimasisController@cetak_estimasi');
 
 
-//PURCHASE ORDER
+	//PURCHASE ORDER
 	Route::get('purchase-order', 'PurchasesController@index');
 	Route::get('buat-purchase-order', 'PurchasesController@buat_purchase_order');
 	Route::post('post-purchase-order', 'PurchasesController@post_purchase_order');
@@ -103,7 +103,7 @@ Route::group(['middleware' => ['session']], function () {
 	// Route::post('editpost/purchase-order/{id}', 'PurchasesController@editpost_purchase_order');
 	Route::get('purchase-order/cetak-po/{id}', 'PurchasesController@cetak_po');
 
-//LAPORAN
+	//LAPORAN
 	Route::get('laporan', 'LaporansController@index');
 
 	//PENJUALAN
@@ -118,7 +118,7 @@ Route::group(['middleware' => ['session']], function () {
 	Route::get('penjualan/cetak-penjualan/{id}', 'PenjualansController@cetak_penjualan');
 
 
-//USER
+	//USER
 	Route::get('user-management', 'UserController@manage');
 	Route::get('hapus/user/{id}', 'UserController@hapususer');
 	Route::get('tambah/user', 'UserController@tambahuser');
@@ -127,9 +127,7 @@ Route::group(['middleware' => ['session']], function () {
 	Route::post('edit/user/{id}', 'UserController@edituserpost');
 
 
-
-
-//PRINT
+	//PRINT
 	Route::get('/print-wo', function () {
 		return view('print.workorder');
 	});
