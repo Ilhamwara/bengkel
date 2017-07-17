@@ -71,7 +71,7 @@
         <!-- END CONTAINER -->
         <!-- BEGIN FOOTER -->
         <div class="page-footer">
-            <div class="page-footer-inner"> {{date('Y')}} &copy; CREATIVE-G</div>
+            <div class="page-footer-inner"> {{date('Y')}} &copy; <a href="https:www.creative-g.com" target="_blank">Creative Generation Digital Agency</a></div>
             <div class="scroll-to-top">
                 <i class="icon-arrow-up"></i>
             </div>
