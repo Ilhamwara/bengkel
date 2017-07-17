@@ -84,99 +84,56 @@
       </tr>
     </thead>
     <tbody>
+  
       <tr>
-        <td class="tg-yw4l" style="text-align: center; border: none;">1</td>
-        <td class="tg-yw4l" style="border:none;">STNK</td>
-        <td class="tg-yw4l" style="text-align: center; border: none;"></td>
-        <td class="tg-yw4l" style="text-align: center; border: none;"></td>
-        <td class="tg-yw4l" style="text-align: center; border: none;"></td>
-        <td class="tg-yw4l" style="border:none;">3</td>
-        <td class="tg-yw4l" style="text-align: center; border: none;">Kir</td>
-        <td class="tg-yw4l" style="border:none;"></td>
-        <td class="tg-yw4l" style="border:none;"></td>
-        <td class="tg-yw4l" style="border:none;"></td>
-        <td class="tg-yw4l" style="border:none;"></td>
-        <td class="tg-yw4l" style="border:none;">Buku Manual</td>
-        <td class="tg-yw4l" style="border:none;"></td>
+        <td class="tg-yw4l">1</td>
+        <td class="tg-yw4l"></td>
+        <td class="tg-yw4l"></td>
+        <td class="tg-yw4l"></td>
       </tr>
-     <tr>
-        <td class="tg-yw4l" style="text-align: center; border: none;">1</td>
-        <td class="tg-yw4l" style="border:none;">STNK</td>
-        <td class="tg-yw4l" style="text-align: center; border: none;"></td>
-        <td class="tg-yw4l" style="text-align: center; border: none;"></td>
-        <td class="tg-yw4l" style="text-align: center; border: none;"></td>
-        <td class="tg-yw4l" style="border:none;">3</td>
-        <td class="tg-yw4l" style="text-align: center; border: none;">Kir</td>
-        <td class="tg-yw4l" style="border:none;"></td>
-        <td class="tg-yw4l" style="border:none;"></td>
-        <td class="tg-yw4l" style="border:none;"></td>
-        <td class="tg-yw4l" style="border:none;"></td>
-        <td class="tg-yw4l" style="border:none;">Buku Manual</td>
-        <td class="tg-yw4l" style="border:none;"></td>
-      </tr>
+ 
     </tbody>
     <thead>
       <tr>
-        <td colspan="2" class="tg-031el" style="text-align: center; border-right: none; border-left:none;"><b>DOKUMEN KENDARAAN</b></td>
+        <td colspan="2" class="tg-031el" style="text-align: center; border-right: none; border-left:none;"><b>FUNGSI AKSESORIS BAGIAN DALAM</b></td>
       </tr>
-
     </thead>
-    <tbody>
-      
+     <tbody>
       <tr>
-        <td class="tg-yw4l" style="text-align: center; border: none;">1</td>
-        <td class="tg-yw4l" style="border:none;">STNK</td>
-        <td class="tg-yw4l" style="text-align: center; border: none;"></td>
-        <td class="tg-yw4l" style="text-align: center; border: none;"></td>
-        <td class="tg-yw4l" style="text-align: center; border: none;"></td>
-        <td class="tg-yw4l" style="border:none;">3</td>
-        <td class="tg-yw4l" style="text-align: center; border: none;">Kir</td>
-        <td class="tg-yw4l" style="border:none;"></td>
-        <td class="tg-yw4l" style="border:none;"></td>
-        <td class="tg-yw4l" style="border:none;"></td>
-        <td class="tg-yw4l" style="border:none;"></td>
-        <td class="tg-yw4l" style="border:none;">Buku Manual</td>
-        <td class="tg-yw4l" style="border:none;"></td>
+        <td class="tg-yw4l">1</td>
+        <td class="tg-yw4l"></td>
+        <td class="tg-yw4l"></td>
+        <td class="tg-yw4l"></td>
       </tr>
-     <tr>
-        <td class="tg-yw4l" style="text-align: center; border: none;">1</td>
-        <td class="tg-yw4l" style="border:none;">STNK</td>
-        <td class="tg-yw4l" style="text-align: center; border: none;"></td>
-        <td class="tg-yw4l" style="text-align: center; border: none;"></td>
-        <td class="tg-yw4l" style="text-align: center; border: none;"></td>
-        <td class="tg-yw4l" style="border:none;">3</td>
-        <td class="tg-yw4l" style="text-align: center; border: none;">Kir</td>
-        <td class="tg-yw4l" style="border:none;"></td>
-        <td class="tg-yw4l" style="border:none;"></td>
-        <td class="tg-yw4l" style="border:none;"></td>
-        <td class="tg-yw4l" style="border:none;"></td>
-        <td class="tg-yw4l" style="border:none;">Buku Manual</td>
-        <td class="tg-yw4l" style="border:none;"></td>
-        
+    </tbody>
+     <thead>
+      <tr>
+        <td colspan="2" class="tg-031el" style="text-align: center; border-right: none; border-left:none;"><b>FUNGSI AKSESORIS BAGIAN LUAR</b></td>
+      </tr>
+    </thead>
+     <tbody>
+      <tr>
+        <td class="tg-yw4l">1</td>
+        <td class="tg-yw4l"></td>
+        <td class="tg-yw4l"></td>
+        <td class="tg-yw4l"></td>
+      </tr>
+    </tbody>
+     <thead>
+      <tr>
+        <td colspan="2" class="tg-031el" style="text-align: center; border-right: none; border-left:none;"><b>PERLENGKAPAN KENDARAAN</b></td>
+      </tr>
+    </thead>
+     <tbody>
+      <tr>
+        <td class="tg-yw4l">1</td>
+        <td class="tg-yw4l"></td>
+        <td class="tg-yw4l"></td>
+        <td class="tg-yw4l"></td>
+      </tr>
     </tbody>
   </table>
 
-  <table class="tg" style="width: 100%; margin-bottom:5%;border:none;">
-    <thead style="border: 1px solid; border-right: none;border-left: none;">
-      <tr>
-        <td class="tg-yw4l" style="text-align: center; border:none;"><b>No</b></td>
-        <td class="tg-yw4l" style="text-align: center; border: none;"><b>EST SPARE PART DAN JASA</b></td>
-        <td class="tg-yw4l" style="text-align: center; border: none;"><b>QTY</b></td>
-        <td class="tg-yw4l" style="text-align: center; border: none;"><b>HARGA SAT</b></td>
-        <td class="tg-yw4l" style="text-align: center; border: none;"><b>JUMLAH</b></td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="tg-yw4l" style="text-align: center; border:none;">1</td>
-        <td class="tg-yw4l" style="border: none; text-align: center;">EST </td>
-        <td class="tg-yw4l" style="text-align: center;border: none;">5</td>
-        <td class="tg-yw4l" style="text-align: right;border: none;">5000</td>
-        <td class="tg-yw4l" style="text-align: right;border: none;">25000</td>
-
-      </tr>
-    </tbody>
-  </table>
   <table class="tg" width="100%" style="text-align: center;">
     <tr>
       <td class="tg-yw4l" style="border:none;">Diterima Oleh</td>

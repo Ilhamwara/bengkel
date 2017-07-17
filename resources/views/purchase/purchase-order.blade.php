@@ -47,7 +47,7 @@
 							@forelse($purchases as $i => $po)
 							<tr>
 								<td>{{$i+1}}</td>
-								<td class="text-center">{{$po->supplier}}</td>
+								<td class="text-center">{{$po->nama}}</td>
 								<td class="text-center">{{$po->alamat}}</td>
 								<td class="text-center">{{$po->no_po}}</td>
 								<td class="text-center">{{$po->tanggal}}</td>

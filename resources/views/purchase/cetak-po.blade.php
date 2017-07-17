@@ -26,7 +26,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">Supplier</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" value="{{$cetak->supplier}}" disabled> 
+                    <input type="text" class="form-control" value="{{$cetak->nama}}" disabled> 
                 </div>
             </div>
 

@@ -9,14 +9,15 @@
     .header .tg-031e, .header .tg-yw4l{
       border:none!important;
     }
-    .header{
-      border-bottom:2px solid #666!important;
+    table.header{
+      border:none;
+      border-bottom:1px solid #666!important;
     }
     .profil .tg-031e, .profil .tg-yw4l{
       border:none!important;
     }
     body{
-      width: 1200px;
+      width: 700px;
       margin: 0 auto;
     }
   </style>
@@ -28,73 +29,71 @@
       <td class="tg-031e" style="font-size: 16px;"><b>AUTO VISION</b></td>
       <td class="tg-031e" style="font-size: 16px;"><b>PURCHASE ORDER</b></td>
     </tr>
-
     <tr>
       <td class="tg-031e">Jl. Ahmad Yani Km 5.5(Pelingkau)</td>
-      <td class="tg-yw4l">Tanggal: 20 juli 2017</td>
     </tr>
     <tr>
       <td class="tg-031e">Telp. 081348956040, Email m_zainuri84@yahoo.com </td>
-      <td class="tg-yw4l">No WO: {{--no--}}</td>
     </tr>
   </table>
 
   <table class="tg profil" style="width: 100%; border:none;">
-    <thead>
+    <tbody>
+
       <tr>
-        <td class="tg-031e">Kepada</td>
+        <td class="tg-031e" style="width: 50%;"">Kepada</td>
         <td class="tg-031e"></td>
         <td class="tg-031e">Tgl PO</td>
         <td class="tg-yw4l">:</td>
-        <td class="tg-yw4l">rabu 2 april 2017</td>
-
+        <td class="tg-yw4l">{{$cetak->tanggal}}</td>
       </tr>
-    </thead>
+    </tbody>
     <tbody>
       <tr>
-        <td class="tg-031e">Safari Raya</td>
+        <td class="tg-031e" style="width: 50%;">{{$cetak->nama}}</td>
+        <td class="tg-031e"></td>
+        <td class="tg-031e">No PO</td>
+        <td class="tg-yw4l">:</td>
+        <td class="tg-yw4l">{{$cetak->no_po}}</td>
+
+      </tr>
+      <tr>
+        <td class="tg-yw4l" style="width: 50%;">Ditempat</td>
         <td class="tg-031e"></td>
         <td class="tg-031e">Status Pengiriman</td>
         <td class="tg-yw4l">:</td>
-        <td class="tg-yw4l">Emergency</td>
-
+        <td class="tg-yw4l">{{$cetak->status}}</td>
       </tr>
-      <tr>
-        <td class="tg-yw4l">Ditempat</td>
-        <td class="tg-yw4l"></td>
-        <td class="tg-yw4l"></td>
-        <td class="tg-yw4l"></td>
-        <td class="tg-yw4l"></td>
-
-      </tr>
-
     </tbody>
   </table>
 
   <table class="tg" style="width: 100%;">
     <thead>
-      <tr>
-        <th class="tg-yw4l">No</th>
-        <th class="tg-yw4l">Part Number</th>
-        <th class="tg-yw4l">Part Name</th>
-        <th class="tg-yw4l">Qty</th>
-        <th class="tg-yw4l">ORY</th>
-        <th class="tg-yw4l">Thailand</th>
-        <th class="tg-yw4l">Jepang</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="tg-yw4l" style="text-align: center;">1</td>
-        <td class="tg-yw4l">Door</td>
-        <td class="tg-yw4l">UI909</td>
-        <td class="tg-yw4l" style="text-align: center;">5</td>
-        <td class="tg-yw4l" style="text-align: right;">675000</td>
-        <td class="tg-yw4l" style="text-align: right;"></td>
-        <td class="tg-yw4l" style="text-align: right;"></td>
-      </tr>
-    </tbody>
+     <tr>
+      <th style="text-align: center;">No</th>
+      <th style="text-align: center;">Part Number</th>
+      <th style="text-align: center;">Part Name</th>
+      <th style="text-align: center;">Qty</th>
+      <th style="text-align: center;">ORY</th>
+      <th style="text-align: center;">Thailand</th>
+      <th style="text-align: center;">Jepang</th>
+    </tr>
+  </thead>
+  <tbody>
+    @forelse($po_part as $i => $data)
+    <tr>
+      <td style="text-align: center;">{{$i+1}}</td>
+      <td style="text-align: center;">{{$data->part_number}}</td>
+      <td style="text-align: center;">{{$data->part_name}}</td>
+      <td style="text-align: center;">{{$data->qty}}</td>
+      <td style="text-align: right;">{{$data->ory}}</td>
+      <td style="text-align: right;">{{$data->thailand}}</td>
+      <td style="text-align: right;">{{$data->jepang}}</td>
+    </tr>
+    @empty
+    @endforelse
+  </tbody>
 
-  </table>
+</table>
 </body>
 </html>

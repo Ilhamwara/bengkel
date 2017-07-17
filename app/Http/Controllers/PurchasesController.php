@@ -14,8 +14,9 @@ class PurchasesController extends Controller
 {
 
 	public function index (){
-		$purchases = Purchase::all();
-
+		$purchases = Purchase::join('supplier', 'form_po.supplier', 'supplier.id')
+		->select('form_po.*', 'supplier.nama')
+		->get();
 		return view ('purchase.purchase-order', compact('purchases'));
 	}
 
@@ -73,7 +74,9 @@ class PurchasesController extends Controller
 	}
 
 	public function detail_purchase_order($id){
-		$cetak = Purchase::where('form_po.id', $id)->first();
+		$cetak = Purchase::where('form_po.id', $id)
+		->join('supplier', 'form_po.supplier', 'supplier.id')
+		->select('form_po.*', 'supplier.nama')->first();
 		$po_part = PoPart::where('id_sup',$id)->get();
 
 		return view ('purchase.cetak-po', compact('cetak','po_part'));
@@ -86,13 +89,16 @@ class PurchasesController extends Controller
 	}
 
 	public function cetak_PO($id, Request $request)
-    {
-    	$cetak = Purchase::where('form_po.id', $id)->first();
+	{
+		$cetak = Purchase::where('form_po.id', $id)
+		->join('supplier', 'form_po.supplier', 'supplier.id')
+		->select('form_po.*', 'supplier.nama')
+		->first();
 		$po_part = PoPart::where('id_sup',$id)->get();
         // dd(Hashids::connection('spd')->decode($id));
         // $wo = Workorder::findOrFail(Hashids::connection('workorder')->decode($id)[0]);
-        $pdf = PDF::loadView('print.workorder', compact('cetak', 'po_part'));
-        return @$pdf->stream('PURCHASE-ORDER-'.'pdf');
+		$pdf = PDF::loadView('print.po', compact('cetak', 'po_part'));
+		return @$pdf->stream('PURCHASE-ORDER-'.'pdf');
         // return view('print.spd', compact('spd'));
-    }
+	}
 }
