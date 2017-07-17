@@ -21,7 +21,7 @@ class EstimasisController extends Controller
 		$estimasis = Estimasi::join('work_order','estimasi_biaya.wo_id','=','work_order.id')
 		->join('pelanggans','work_order.pelanggan_id','=','pelanggans.id')
 		->select('estimasi_biaya.id','work_order.no_wo','estimasi_biaya.keterangan','pelanggans.nama','pelanggans.no_pol','estimasi_biaya.created_at')
-							 // ->groupBy('estimasi_biaya.no_est')
+		->groupBy('estimasi_biaya.no_est')
 		->get();
 
 		// $estimasis = Estimasi::join('work_order', 'estimasi_biaya.wo_id', 'work_order.id')
@@ -43,7 +43,7 @@ class EstimasisController extends Controller
 		->get();
 
 		Estimasi::updateOrCreate([
-			'no_est' => 'EST-'.date('dmy').'-A'
+			'no_est' => 'EST-A'
 			]);
 
 		$cek_est = Estimasi::orderBy('id','DESC')->first();
@@ -66,7 +66,7 @@ class EstimasisController extends Controller
 		$cek_est 	= Estimasi::where('wo_id','>',0)->orderBy('id','DESC')->first();
 		$expl 		= explode('-', $cek_est->no_est);
 		$num		= $expl;
-		$noest 		= 'EST-'.date('dmy').'-'.($num[2]+1);
+		$noest 		= 'EST-'.($num[2]+1);
 
 		if (count($r->est_part) > 0) {
 			foreach ($r->est_part as $a => $b) {
@@ -97,14 +97,13 @@ class EstimasisController extends Controller
 
 	public function detail_estimasi($id)
 	{
-		$est = Estimasi::where('estimasi_biaya.id', $id)
-		->first();
+		$est = Estimasi::where('estimasi_biaya.id', $id)->first();
 		$estimasi = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
 	
-		$est_part = EstPart::where('no_est', $est)->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();		
-		$est_jasa = EstJasa::where('no_est', $est)->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr')->get();
+		$est_part = EstPart::where('no_est', $est->no_est)->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();		
+		$est_jasa = EstJasa::where('no_est', $est->no_est)->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr')->get();
 		
 		return view ('estimasi-biaya.detail-estimasi' , compact('estimasi', 'est', 'est_part', 'est_jasa')); 
 	}
@@ -112,6 +111,11 @@ class EstimasisController extends Controller
 	public function hapusestimasi($id)
 	{
 		$estimasi = Estimasi::findOrFail($id);
+		$est_part = EstPart::where('no_est',$estimasi->no_est)->get();
+		$est_jasa = EstJasa::where('no_est',$estimasi->no_est)->get();
+
+		$est_part->delete();
+		$est_jasa->delete();
 		$estimasi->delete();
 
 		return redirect()->back()->with('success','Berhasil menghapus estimasi');

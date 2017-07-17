@@ -18,7 +18,7 @@
 
   <h3 class="page-title"><b>Detail Estimasi Biaya</b></h3>
   <br>
-  <div class="row">
+  <div class="row" style="overflow: hidden;">
     @include('include.alert')
     <form action="{{url('estimasi-biaya/cetak-estimasi/' .$estimasi->id)}}" method="GET" class="form-horizontal">
       <div class="col-sm-10 col-sm-offset-1">
@@ -106,6 +106,7 @@
         <div class="table-responsive">
           <table class="table table-striped table-bordered table-hover">
             <tr>
+              <th class="text-center">No</th>
               <th class="text-center">Nama</th>
               <th class="text-center">Quantity</th>
               <th class="text-center">Harga</th>
@@ -113,8 +114,9 @@
 
             </tr>
 
-            @forelse($est_part as $part)
+            @forelse($est_part as $v => $part)
             <tr>
+              <td class="text-center">{{$v+1}}</td>
               <td class="text-center">{{$part->nama}}</td>
               <td class="text-center">{{$part->qty}}</td>
               <td class="text-center">{{$part->harga_jual}}</td>
@@ -123,9 +125,8 @@
             @empty
             @endforelse
             <tr>
-             <td class="text-center" colspan="3"><b>Total</b></td>
-             <td class="text-center">Rp </td>
-             <td></td>
+             <td class="text-center" colspan="4"><b>Total</b></td>
+             <td class="text-center">Rp {{$est_part->sum('jumlah')}}</td>
            </tr>
          </table>
        </div>
@@ -141,25 +142,26 @@
      <div class="portlet-body">
       <table class="table table-striped table-bordered table-hover">
         <tr>
+          <th class="text-center">No</th>
           <th class="text-center">Nama Jasa</th>
           <th class="text-center">FR</th>
           <th class="text-center">Harga Per FR</th>
           <th class="text-center">Jumlah</th>
         </tr>
 
-        @forelse($est_jasa as $jasa)
+        @forelse($est_jasa as $k => $jasa)
         <tr>
-          <td class="text-center">{{$jasa->nama}}</td>
-          <td class="text-center">{{$jasa->fr}}</td>
+          <td class="text-center">{{$k+1}}</td>
+          <td class="text-center">{{$jasa->nama_jasa}}</td>
+          <td class="text-center">{{$jasa->qty}}</td>
           <td class="text-center">{{$jasa->harga_perfr}}</td>
           <td class="text-center">{{$jasa->jumlah}}</td> 
         </tr> 
         @empty
         @endforelse
         <tr>
-         <td class="text-center" colspan="3"><b>Total</b></td>
-         <td class="text-center">Rp </td>
-         <td></td>
+         <td class="text-center" colspan="4"><b>Total</b></td>
+         <td class="text-center">Rp {{$est_jasa->sum('jumlah')}}</td>
        </tr>
 
      </table>

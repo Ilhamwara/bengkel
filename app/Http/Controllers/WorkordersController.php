@@ -78,10 +78,10 @@ class WorkordersController extends Controller
 
 	public function index_inspection (){
 		
-		$inspection = Inspection::
-		join('work_order', 'vehicle_inspection.order_id', 'work_order.id')
-		->join('foto', 'vehicle_inspection.id', 'foto.inspect_id')
-		->select('vehicle_inspection.*', 'work_order.pelanggan_id', 'work_order.no_wo as nomor_wo', 'work_order.km_datang', 'work_order.tanggal', 'work_order.fuel_datang', 'foto.img as foto')
+		$inspection = Inspection::join('work_order', 'vehicle_inspection.order_id', 'work_order.id')
+		// ->join('foto', 'vehicle_inspection.id', 'foto.inspect_id')
+		->select('vehicle_inspection.*', 'work_order.no_wo as nomor_wo', 'work_order.tanggal')
+		->groupBy('vehicle_inspection.kode')
 		->get();
 
 
@@ -113,7 +113,7 @@ class WorkordersController extends Controller
 
 	public function hapusinspection($id)
 	{
-		$inspection = Inspection::findOrFail($id);
+		$inspection = Inspection::where('kode',$id);
 		$inspection->delete();
 
 		return redirect()->back()->with('success','Berhasil menghapus Inspection');
@@ -121,11 +121,17 @@ class WorkordersController extends Controller
 
 	public function detail_inspection($id)
 	{
-		$inspection = Inspection::all();
-		$inspect = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
-		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
-		->first();
-		return view ('vehicle.detail-inspection' , compact('inspect', 'inspection')); 
+		// $inspection = Inspection::all();
+		// $wo 		= Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+		// ->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
+		// ->first();
+		$inspect = Inspection::where('kode',$id)->get();
+		$wo = Workorder::where('work_order.id',$inspect[0]->order_id)
+					->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+					->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
+					->first();
+		// dd($wo);
+		return view ('vehicle.detail-inspection' , compact('wo','inspect','foto')); 
 	}
 
 	public function tambahvehicle()
@@ -152,9 +158,19 @@ class WorkordersController extends Controller
 			return redirect()->back()->with('warning','Keterangan belum anda isi');
 		}
 		// dd(request()->all());
-		error_reporting(1);
+		// error_reporting(1);
+		// dd($noins);
+		$cek_ins 	= Inspection::orderBy('id','DESC')->first();		
+		if (count($cek_ins) == 0) {
+			$noins 		= 'INS-0';
+		}else{
+			$noins 		= 'INS-'.$cek_ins->id;
+		}
+
 		foreach ($r->tipe as $k => $v) {
+
 			$ins[$k] = new Inspection;
+			$ins[$k]->kode 			= $noins;
 			$ins[$k]->order_id 		= $r->workorder;
 			$ins[$k]->tipe_id 		= $v;
 			$ins[$k]->tgl 			= $r->tgl;
