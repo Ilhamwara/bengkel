@@ -118,7 +118,7 @@ class HashidsServiceProvider extends ServiceProvider
      *
      * @return string[]
      */
-    public function provides(): array
+    public function provides()
     {
         return [
             'hashids',

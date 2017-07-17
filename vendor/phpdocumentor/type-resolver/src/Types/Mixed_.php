@@ -15,11 +15,9 @@ namespace phpDocumentor\Reflection\Types;
 use phpDocumentor\Reflection\Type;
 
 /**
- * Value Object representing the 'self' type.
- *
- * Self, as a Type, represents the class in which the associated element was defined.
+ * Value Object representing an unknown, or mixed, type.
  */
-final class Self_ implements Type
+final class Mixed_ implements Type
 {
     /**
      * Returns a rendered output of the Type as it would be used in a DocBlock.
@@ -28,6 +26,6 @@ final class Self_ implements Type
      */
     public function __toString()
     {
-        return 'self';
+        return 'mixed';
     }
 }
