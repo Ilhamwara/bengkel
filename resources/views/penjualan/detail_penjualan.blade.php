@@ -22,7 +22,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			
-			<form action="{{url('cetak/penjualan/' .$penjualan->id) }}" method="POST" class="form-horizontal">
+			<form action="{{url('penjualan/cetak-penjualan/' .$penjualan->id) }}" method="GET" class="form-horizontal">
 				{{ csrf_field() }}
 
 				<div class="form-group">
@@ -73,34 +73,44 @@
 						<input type="text" class="form-control" id="noka_nosin" name="kota" value="{{$penjualan->kota}}" readonly>
 					</div>
 				</div>
-				<table class="table table-striped table-condensed">
-					<tr>
-						<th class="text-center">No</th>
-						<th class="text-center">Nama Part</th>
-						<th class="text-center">No Part</th>
-						<th class="text-center">Qty</th>
-						<th class="text-center">Harga Satuan</th>
-						<th class="text-center">Jumlah</th>
-					</tr>
-					@foreach($penj_part as $k => $data)
-					<tr>
-						<td class="text-center">{{$k+1}}</td>
-						<td class="text-center">{{$data->nama_part}}</td>
-						<td class="text-center">{{$data->no_part}}</td>
-						<td class="text-center">{{$data->qty}}</td>
-						<td class="text-center">{{$data->harga_jual}}</td>
-						<td class="text-center">{{$data->jumlah}}</td>
-					</tr>
-					
-					@endforeach
-				</table>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-primary">Cetak</button>
+			</div>
+
+			<div class="col-md-12">
+				<div class="portlet light bordered">
+					<div class="portlet-body">
+						<table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
+							<tr>
+								<th class="text-center">No</th>
+								<th class="text-center">Nama Part</th>
+								<th class="text-center">No Part</th>
+								<th class="text-center">Qty</th>
+								<th class="text-center">Harga Satuan</th>
+								<th class="text-center">Jumlah</th>
+							</tr>
+							@foreach($penj_part as $k => $data)
+							<tr>
+								<td class="text-center">{{$k+1}}</td>
+								<td class="text-center">{{$data->nama_part}}</td>
+								<td class="text-center">{{$data->no_part}}</td>
+								<td class="text-center">{{$data->qty}}</td>
+								<td class="text-center">{{$data->harga_jual}}</td>
+								<td class="text-center">{{$data->jumlah}}</td>
+							</tr>
+							@endforeach
+							<td class="text-center" colspan="4"></td>
+							<td class="text-center">Total</td>
+							<td class="text-center">{{$data->sum('jumlah')}}</td>
+						</table>
 					</div>
 				</div>
-			</form>
-		</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-1 col-sm-10">
+					<button type="submit" class="btn btn-primary">Cetak</button>
+				</div>
+			</div>
+		</form>
+
 	</div>
 </div>
 

@@ -129,16 +129,16 @@ class WorkordersController extends Controller
 		// ->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		// ->first();
 		$inspect = Inspection::where('kode',$id)
-							->join('tipe_vehicle','vehicle_inspection.tipe_id','=','tipe_vehicle.id')
-							->get();
+		->join('tipe_vehicle','vehicle_inspection.tipe_id','=','tipe_vehicle.id')
+		->get();
 		if (count($inspect) == 0) {
 			return redirect()->back()->with('warning','Maaf data masih kosong');
 		}
 
 		$wo = Workorder::where('work_order.id',$inspect[0]->order_id)
-					->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
-					->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
-					->first();
+		->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
+		->first();
 		$foto = Foto::where('inspect_id',$id)->get();
 		return view ('vehicle.detail-inspection' , compact('wo','inspect','foto')); 
 	}
@@ -190,8 +190,8 @@ class WorkordersController extends Controller
 
 		foreach ($r->foto as $a => $val) {
 
-		$gambar[$a] = $val->getClientOriginalName();
-		$val->move(storage_path() . '/uploads/img/', $gambar[$a]);
+			$gambar[$a] = $val->getClientOriginalName();
+			$val->move(storage_path() . '/uploads/img/', $gambar[$a]);
 			$foto[$a] = new Foto;
 			$foto[$a]->inspect_id   = $noins;
 			$foto[$a]->img 			= $gambar[$a];
@@ -202,37 +202,36 @@ class WorkordersController extends Controller
 
 	}
 	public function cetak_wo($id, Request $request)
-    {
-    	$order = Workorder::where('work_order.id', $id)
+	{
+		$order = Workorder::where('work_order.id', $id)
 		->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
         // dd(Hashids::connection('spd')->decode($id));
         // $wo = Workorder::findOrFail(Hashids::connection('workorder')->decode($id)[0]);
-        $pdf = PDF::loadView('print.workorder', compact('order'));
-        return @$pdf->stream('WORKORDER-'.'pdf');
+		$pdf = PDF::loadView('print.workorder', compact('order'));
+		return @$pdf->stream('WORKORDER-'.'pdf');
         // return view('print.spd', compact('spd'));
-    }
-    public function cetak_inspection($id, Request $request)
-    {
-    	
+	}
+	public function cetak_inspection($id, Request $request)
+	{
+
 		
 		$pelanggan = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*','work_order.id', 'pelanggans.nama', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
 		
-		$inspect = Inspection::first();
 		$inspections = Inspection::where('kode',$id)
-							->join('tipe_vehicle','vehicle_inspection.tipe_id','=','tipe_vehicle.id')
-							->get();
+		->join('tipe_vehicle','vehicle_inspection.tipe_id','=','tipe_vehicle.id')
+		->select('vehicle_inspection.*', 'tipe_vehicle.nama as nama_vehicle', 'tipe_vehicle.type as tipe_vehicle')
+		->get();
 
 		$foto = Foto::where('inspect_id',$id)->get();
-        // dd(Hashids::connection('spd')->decode($id));
-        // $wo = Workorder::findOrFail(Hashids::connection('workorder')->decode($id)[0]);
-        $pdf = PDF::loadView('print.inspection', compact('pelanggan', 'inspect', 'foto', 'inspections'));
-        return @$pdf->stream('INSPECTION-'.'pdf');
-        // return view('print.spd', compact('spd'));
-    }
+   
+		$pdf = PDF::loadView('print.inspection', compact('pelanggan', 'inspect', 'foto', 'inspections'));
+		return @$pdf->stream('INSPECTION-'.'pdf');
+       
+	}
 
 	
 }

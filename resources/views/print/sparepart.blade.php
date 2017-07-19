@@ -16,7 +16,7 @@
           border:none!important;
       }
       body{
-          width: 1200px;
+          width: 700px;
           margin: 0 auto;
       }
   </style>
@@ -35,7 +35,6 @@
     </tr>
     <tr>
         <td class="tg-031e">Telp. 081348956040, Email m_zainuri84@yahoo.com </td>
-        <td class="tg-yw4l">No WO: {{--no--}}</td>
     </tr>
 </table>
 
@@ -43,7 +42,7 @@
     <tr>
         <td class="tg-031e">Nomor Faktur</td>
         <td class="tg-031e">:</td>
-        <td class="tg-031e">Avbasdad</td>
+        <td class="tg-031e">{{$penj->no_nota}}</td>
         <td class="tg-yw4l"></td>
         <td class="tg-yw4l">Kepada Yth</td>
         <td class="tg-yw4l">:</td>
@@ -52,34 +51,34 @@
     <tr>
         <td class="tg-031e">Tgl. Faktur</td>
         <td class="tg-031e">:</td>
-        <td class="tg-031e">9-10-2012</td>
+        <td class="tg-031e">{{$penj->tgl_nota}}</td>
         <td class="tg-yw4l"></td>
         <td class="tg-yw4l">Nama</td>
         <td class="tg-yw4l">:</td>
-        <td class="tg-yw4l">Pak Samijo</td>
+        <td class="tg-yw4l">{{$penj->nama}}</td>
     </tr>
     <tr>
         <td class="tg-031e">No BKB</td>
         <td class="tg-031e">:</td>
-        <td class="tg-031e">-</td>
+        <td class="tg-031e">{{$penj->no_bkb}}</td>
         <td class="tg-yw4l"></td>
         <td class="tg-yw4l">Alamat</td>
         <td class="tg-yw4l">:</td>
-        <td class="tg-yw4l">Pangkalan</td>
+        <td class="tg-yw4l">{{$penj->alamat}}</td>
     </tr>
     <tr>
         <td class="tg-yw4l">No Pol</td>
         <td class="tg-yw4l">:</td>
-        <td class="tg-yw4l">KT0909</td>
+        <td class="tg-yw4l">{{$penj->no_pol}}</td>
         <td class="tg-yw4l"></td>
         <td class="tg-yw4l">Kota</td>
         <td class="tg-yw4l">:</td>
-        <td class="tg-yw4l">Pangkalan bun</td>
+        <td class="tg-yw4l">{{$penj->kota}}</td>
     </tr>
     <tr>
         <td class="tg-yw4l">Kode</td>
         <td class="tg-yw4l">:</td>
-        <td class="tg-yw4l">0898898</td>
+        <td class="tg-yw4l">{{$penj->kode}}</td>
         <td class="tg-yw4l"></td>
         <td class="tg-yw4l"></td>
         <td class="tg-yw4l"></td>
@@ -90,36 +89,28 @@
 <table class="tg" style="width: 100%; margin-bottom: 20px;">
     <thead>
         <tr>
-            <th class="tg-yw4l">Nomor Part</th>
-            <th class="tg-yw4l">Nama Part</th>
-            <th class="tg-yw4l">Qty</th>
-            <th colspan="2" class="tg-yw4l">Harga</th>
-            
-            <th colspan="2" class="tg-yw4l">Total</th>
-
-            
+            <th class="tg-yw4l" style="text-align:center;"><b>No</b></th>
+            <th class="tg-yw4l" style="text-align:center;"><b>Nomor Part</b></th>
+            <th class="tg-yw4l" style="text-align:center;"><b>Nama Part</b></th>
+            <th class="tg-yw4l" style="text-align:center;"><b>Qty</b></th>
+            <th class="tg-yw4l" style="text-align:center;"><b>Harga</b></th> 
+            <th class="tg-yw4l" style="text-align:center;"><b>Total</b></th>
         </tr>
     </thead>
     <tbody>
-     <tr>
-        <td class="tg-yw4l">UR879</td>
-        <td class="tg-yw4l">Handle</td>
-        <td class="tg-yw4l" style="text-align: center;">1</td>
-        <td class="tg-yw4l">Rp</td>
-        <td class="tg-yw4l" style="text-align: right;">350000</td>
-        <td class="tg-yw4l">Rp</td>
-        <td class="tg-yw4l" style="text-align: right;">350000</td>
-    </tr>
-    <tr>
-        <td class="tg-yw4l">UR879</td>
-        <td class="tg-yw4l">Handle</td>
-        <td class="tg-yw4l" style="text-align: center;">1</td>
-        <td class="tg-yw4l">Rp</td>
-        <td class="tg-yw4l" style="text-align: right;">350000</td>
-        <td class="tg-yw4l">Rp</td>
-        <td class="tg-yw4l" style="text-align: right;">350000</td>
-    </tr>
-</tbody>
+        @forelse($part as $i => $pa)
+        <tr>
+          <td class="tg-yw4l" style="text-align: center;">{{$i+1}}</td>
+          <td class="tg-yw4l" style="text-align:center;">{{$pa->no_part}}</td>
+          <td class="tg-yw4l">{{$pa->nama_part}}</td>
+          <td class="tg-yw4l" style="text-align:center;">{{$pa->qty}}</td>
+          <td class="tg-yw4l" style="text-align: right;">{{$pa->harga_jual}}</td>
+          <td class="tg-yw4l" style="text-align: right;">{{$pa->jumlah}}</td>
+      </tr>
+      @empty
+      @endforelse
+
+  </tbody>
 </table>
 <table class="tg" style="width: 100%; margin-bottom: 20px;">
 
@@ -129,7 +120,7 @@
             <td colspan="3" style="border: none;"></td>
             <td class="tg-yw4l">Sub Total</td>
             <td class="tg-yw4l">Rp</td>
-            <td class="tg-yw4l" style="text-align: right;"></td>
+            <td class="tg-yw4l" style="text-align: right;">{{$part->sum('jumlah')}}</td>
         </tr>
         <tr>
             <td colspan="3" style="border: none;"></td>
@@ -150,9 +141,9 @@
     <tr>
         <td colspan="3" style="border: none;"></td>
         <td colspan="3" style="border: none;"></td>
-        <td class="tg-yw4l">Grand Total</td>
-        <td class="tg-yw4l">Rp</td>
-        <td class="tg-yw4l" style="text-align: right;"></td>
+        <td class="tg-yw4l" style="border-bottom: 1px solid;">Grand Total</td>
+        <td class="tg-yw4l" style="border-bottom: 1px solid;">Rp</td>
+        <td class="tg-yw4l" style="text-align: right;border-bottom: 1px solid;">{{$part->sum('jumlah')}}</td>
     </tr>
     <tr>
         <td class="tg-yw4l" style="border: none;">Muhammad Zainuri</td>
@@ -162,7 +153,7 @@
     </tr>
 </tbody>
 <tbody>
-   <tr>
+ <tr>
     <td colspan="6" class="tg-yw4l" style="border:none;"></td>
     <td colspan="3" class="tg-yw4l" style="text-align:center;">Rekening Bank</td>
 </tr>

@@ -132,10 +132,15 @@ class PenjualansController extends Controller
 
 	public function cetak_penjualan($id, Request $request)
     {
-    	$penjualan = Penjualan::all();
+    	$penj = Penjualan::findOrFail($id);
+    	$part = PenjPart::where('penj_part.no_penj',$penj->no_penj)
+		->join('penjualan', 'penj_part.no_penj','=','penjualan.no_penj')
+		->join('spare_parts', 'penj_part.part_id', 'spare_parts.id')
+		->select('penj_part.*', 'spare_parts.no as no_part', 'spare_parts.nama as nama_part', 'spare_parts.harga_jual')
+		->get();
         // dd(Hashids::connection('spd')->decode($id));
         // $wo = Workorder::findOrFail(Hashids::connection('workorder')->decode($id)[0]);
-        $pdf = PDF::loadView('print.workorder', compact('penjualan'));
+        $pdf = PDF::loadView('print.sparepart', compact('penj', 'part'));
         return @$pdf->stream('PENJUALAN-SPAREPART-'.'pdf');
         // return view('print.spd', compact('spd'));
     }

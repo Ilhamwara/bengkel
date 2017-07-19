@@ -26,12 +26,12 @@
   <table class="tg header" style="width: 100%; margin-bottom: 20px;">
     <tr>
       <td class="tg-031e" style="font-size: 16px;"><b>AUTO VISION</b></td>
-      <td class="tg-031e" style="font-size: 16px;"><b>WORK ORDER</b></td>
+      <td class="tg-031e" style="font-size: 16px;"><b>VEHICLE INSPECTION</b></td>
     </tr>
 
     <tr>
       <td class="tg-031e">Jl. Ahmad Yani Km 5.5(Pelingkau)</td>
-      <td class="tg-yw4l">Tanggal: {{$inspect->tgl}}</td>
+      <td class="tg-yw4l">Tanggal: </td>
     </tr>
     <tr>
       <td class="tg-031e">Telp. 081348956040, Email m_zainuri84@yahoo.com </td>
@@ -77,59 +77,63 @@
       <td class="tg-yw4l">{{$pelanggan->fuel_datang}}</td>
     </tr>
   </table>
-<table class="table table-striped table-bordered table-hover table-checkable order-column">
-                <tr>
-                    <th class="tg-yw4">No</th>
-                    <th class="tg-yw4">Type</th>
-                    <th class="tg-yw4">Nama</th>
-                </tr>
-                @foreach($inspections as $k => $data)                
-                <tr>
-                    <td>{{$k+1}}</td>
-                    <td>{{$data->type}}</td>
-                    <td>{{$data->nama}}</td>
-                </tr>
-                @endforeach
-            </table>
+  <table class="tg profil" style="width: 100%; border:none;">
+   <thead>
+    <tr>
+      <th class="tg-yw4">No</th>
+      <th class="tg-yw4">Type</th>
+      <th class="tg-yw4">Nama</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($inspections as $k => $data)                
+    <tr>
+      <td class="tg-yw4l">{{$k+1}}</td>
+      <td class="tg-yw4l">{{$data->tipe_vehicle}}</td>
+      <td class="tg-yw4l">{{$data->nama_vehicle}}</td>
+    </tr>
+    @endforeach
+  </tbody>
+</table>
 
 <div class="col-sm-offset-1 col-sm-10">
-    <h4><b>Kondisi Body Luar Kendaraan</b></h4>
-    <br>
-    @foreach($foto as $data_foto)
-        <div class="col-md-4">
-            <img src="{{url('storage/uploads/img/'.$data_foto->img)}}" class="img-responsive">
-        </div>
-        <div class="col-md-4">
-            <img src="{{url('storage/uploads/img/'.$data_foto->img)}}" class="img-responsive">
-        </div>
-        <div class="col-md-4">
-            <img src="{{url('storage/uploads/img/'.$data_foto->img)}}" class="img-responsive">
-        </div>
-    @endforeach  
+  <h4><b>Kondisi Body Luar Kendaraan</b></h4>
+  <br>
+  @foreach($foto as $data_foto)
+  <div class="col-md-4">
+    <img src="{{url('storage/uploads/img/'.$data_foto->img)}}" class="img-responsive">
+  </div>
+  <div class="col-md-4">
+    <img src="{{url('storage/uploads/img/'.$data_foto->img)}}" class="img-responsive">
+  </div>
+  <div class="col-md-4">
+    <img src="{{url('storage/uploads/img/'.$data_foto->img)}}" class="img-responsive">
+  </div>
+  @endforeach  
 </div>
 
-  <table class="tg" width="100%" style="text-align: center;">
-    <tr>
-      <td class="tg-yw4l" style="border:none;">Diterima Oleh</td>
-      <td class="tg-yw4l" style="border:none;"></td>
-      <td class="tg-yw4l" style="border:none;">Diserahkan Oleh</td>
-    </tr>
-    <tr>
-      <td class="tg-yw4l" style="padding: 50px 0; border:none;"></td>
-      <td class="tg-yw4l" style="border:none;"></td>
-      <td class="tg-yw4l" style="padding: 50px 0; border:none;"></td>
-    </tr>
-    <tr>
-      <td class="tg-yw4l" style="border:none;"><b>Muhammad Zainuri</b></td>
-      <td class="tg-yw4l" style="border:none;"></td>
-      <td class="tg-yw4l" style="border:none;"></td>
-    </tr>
-    <tr>
-      <td class="tg-yw4l" style="border:none;">Service Advisor</td>
-      <td class="tg-yw4l" style="border:none;"></td>
-      <td class="tg-yw4l" style="border:none;">Pemilik/ Pembawa Kendaraan</td>
-    </tr>
-  </table>
+<table class="tg" width="100%" style="text-align: center;">
+  <tr>
+    <td class="tg-yw4l" style="border:none;">Diterima Oleh</td>
+    <td class="tg-yw4l" style="border:none;"></td>
+    <td class="tg-yw4l" style="border:none;">Diserahkan Oleh</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l" style="padding: 50px 0; border:none;"></td>
+    <td class="tg-yw4l" style="border:none;"></td>
+    <td class="tg-yw4l" style="padding: 50px 0; border:none;"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l" style="border:none;"><b>Muhammad Zainuri</b></td>
+    <td class="tg-yw4l" style="border:none;"></td>
+    <td class="tg-yw4l" style="border:none;"></td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l" style="border:none;">Service Advisor</td>
+    <td class="tg-yw4l" style="border:none;"></td>
+    <td class="tg-yw4l" style="border:none;">Pemilik/ Pembawa Kendaraan</td>
+  </tr>
+</table>
 
 </body>
 </html>
