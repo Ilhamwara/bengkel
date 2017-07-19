@@ -51,7 +51,7 @@ class PenjualansController extends Controller
 		$penjualan = new Penjualan;
 		$penjualan->no_penj     = $nopenj;
 		$penjualan->no_nota     = $request->no_nota;
-		$penjualan->tgl_nota    = date('d-m-Y');
+		$penjualan->tgl_nota    = date('Y-m-d');
 		$penjualan->no_bkb      = $request->no_bkb;
 		$penjualan->no_pol      = $request->no_pol;
 		$penjualan->kode        = $request->kode;
