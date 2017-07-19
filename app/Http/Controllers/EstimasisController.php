@@ -63,7 +63,8 @@ class EstimasisController extends Controller
 		if ($cek->wo_id > 0) {
 			return redirect()->back()->with('warning','Maaf Nomer Workorder yang anda masukan sudah ada');
 		}
-		$cek_est 	= Estimasi::where('wo_id',0)->orderBy('id','DESC')->first();
+
+		$cek_est 	= Estimasi::where('wo_id','>',0)->orderBy('id','DESC')->first();
 		$expl 		= explode('-', $cek_est->no_est);
 		$num		= $expl;
 		$noest 		= 'EST-'.($num[1]+1);
@@ -117,12 +118,10 @@ class EstimasisController extends Controller
 	public function hapusestimasi($id)
 	{
 		$estimasi = Estimasi::findOrFail($id);
-		$est_part = EstPart::where('no_est',$estimasi->no_est)->get();
-		$est_jasa = EstJasa::where('no_est',$estimasi->no_est)->get();
-
-		$est_part->delete();
-		$est_jasa->delete();
-		$estimasi->delete();
+		$est_part = EstPart::where('no_est',$estimasi->no_est)->delete();
+		$est_jasa = EstJasa::where('no_est',$estimasi->no_est)->delete();
+		
+		Estimasi::findOrFail($id)->delete();
 
 		return redirect()->back()->with('success','Berhasil menghapus estimasi');
 	}
