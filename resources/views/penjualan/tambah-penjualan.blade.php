@@ -105,7 +105,7 @@
           </tbody>
         </table>
         <a href="{{url('penjualan/jual-sparepart/'.$cek_penj->no_penj)}}" class="btn btn-primary">Tambah</a>
-         <a class="btn btn-primary" data-toggle="modal" data-target="#myModal">Tambah</a>     
+        <!--  <a class="btn btn-primary" data-toggle="modal" data-target="#myModal">Tambah</a>    -->  
       </div>
     </div>
   </div>
