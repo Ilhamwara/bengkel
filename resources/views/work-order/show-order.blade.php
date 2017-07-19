@@ -32,56 +32,56 @@
 
                 <div class="form-group">
                     <label class="col-sm-2 control-label text-left">No WO</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-9">
                         <input type="text" class="form-control" id="nama" name="no_wo" value="{{$order->no_wo}}" disabled>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label text-left">Nama</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-9">
                         <input type="text" class="form-control" id="nid" name="nama" value="{{$order->nama_pelanggan}}" disabled >
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label text-left">Alamat</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-9">
                         <input type="text" class="form-control" id="jabatan" name="Alamat" value="{{$order->alamat}}" disabled>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label text-left">Nopol</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-9">
                         <input type="text" class="form-control" id="no_pol" name="grade" value="{{$order->no_pol}}" disabled>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label text-left">Telepon</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-9">
                         <input type="text" class="form-control" id="telepon" name="telepon" value="{{$order->telepon}}" disabled>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label text-left">Tipe</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-9">
                         <input type="text" class="form-control" id="tipe" name="tipe" value="{{$order->tipe}}" disabled>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label text-left">Noka/ Nosin</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-9">
                         <input type="text" class="form-control" id="noka_nosin" name="noka_nosin" value="{{$order->noka_nosin}}" disabled>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label text-left">Warna</label>
-                    <div class="col-sm-6">
+                    <div class="col-sm-9">
                         <input type="text" class="form-control" id="noka_nosin" name="warna" value="{{$order->warna}}" disabled>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label text-left">Keluhan</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="keluhan" value="{{$order->keluhan}}" disabled>
+                    <div class="col-sm-9">
+                        <textarea name="keluhan" id="deskripsi" cols="30" rows="10" disabled class="form-control">{!! $order->keluhan!!}</textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -94,4 +94,14 @@
   </div>
 </div>
 
+@endsection
+@section('js')
+<script src="{{asset('js/ckeditor.js')}}"></script>
+<script>
+    CKEDITOR.replace( 'deskripsi',
+  {
+    customConfig : '',
+    toolbar : 'simple'
+})
+</script>
 @endsection

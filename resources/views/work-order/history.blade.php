@@ -44,7 +44,7 @@
 								<td>{{$i+1}}</td>
 								<td class="text-center">{{$history->no_wo}}</td>
 								<td class="text-center">{{$history->tanggal}}</td>
-								<td class="text-center"><a href="{{url('work-order/'. $history->id)}}">Detail</a></td>
+								<td class="text-center"><a href="{{url('work-order/'. $history->id)}}" class="btn btn-primary">Detail</a></td>
 							</tr>
 							@empty
 							@endforelse

@@ -172,7 +172,7 @@
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1">
     <h4><b>Keterangan</b></h4>
-    <textarea class="form-control" name="keterangan" id="" cols="30" rows="10" readonly>{{--$est->keterangan--}}</textarea>
+    <textarea class="form-control" id="deskripsi" name="keterangan" id="" cols="30" rows="10" readonly>{!!$est->keterangan!!}</textarea>
   </div>
 </div>
 <br><br>

@@ -29,6 +29,7 @@
 		<div class="col-md-12">
 			<div class="portlet light bordered">
 				<div class="portlet-body">
+				@include('include.alert')
 					<table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
 						<thead>
 							<tr><th class="text-center">No</th>
@@ -47,10 +48,10 @@
 								<td>{{$i+1}}</td>
 								<td class="text-center">{{$order->no_wo}}</td>
 								<td class="text-center">{{$order->nama_pelanggan}}</td>
-								<td class="text-center"><a href="{{url('work-order/'. $order->id)}}">Tampilkan</a></td>
-								<td class="text-center"><a href="{{url('detail/inspection/'. $order->id)}}">Tampilkan</a></td>
-								<td class="text-center"><a href="{{url('#')}}">Tampilkan</a></td>
-								<td class="text-center"><a href="{{url('detail/estimasi/'. $order->id)}}">Tampilkan</a></td>
+								<td class="text-center"><a href="{{url('work-order/'. $order->id)}}" class="btn btn-primary">Tampilkan</a></td>
+								<td class="text-center"><a href="{{url('detail/inspection/'. $order->id)}}" class="btn btn-primary">Tampilkan</a></td>
+								<td class="text-center"><a href="{{url('#')}}" class="btn btn-primary">Tampilkan</a></td>
+								<td class="text-center"><a href="{{url('detail/estimasi/'. $order->id)}}" class="btn btn-primary">Tampilkan</a></td>
 							</tr>
 							@empty
 							@endforelse
