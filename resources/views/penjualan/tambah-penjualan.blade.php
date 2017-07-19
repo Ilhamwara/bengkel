@@ -105,7 +105,7 @@
           </tbody>
         </table>
         <a href="{{url('penjualan/jual-sparepart/'.$cek_penj->no_penj)}}" class="btn btn-primary">Tambah</a>
-         <!-- <a class="btn btn-primary" data-toggle="modal" data-target="#myModal">Tambah</a>  -->    
+         <a class="btn btn-primary" data-toggle="modal" data-target="#myModal">Tambah</a>     
       </div>
     </div>
   </div>
@@ -134,7 +134,7 @@
       <div class="modal-body">
         <form action="{{url('post-jual-sparepart')}}" method="POST" enctype="multipart/form-data" class="form-horizontal" style="overflow: hidden;">
           {{ csrf_field() }}    
-          <input type="hidden" name="idpenj" value="" >        
+          <input type="hidden" name="idpenj" value="1E" >        
           <div class="form-group">
             <label class="col-sm-2 control-label">Pilih Sparepart</label>
             <div class="col-sm-6">
