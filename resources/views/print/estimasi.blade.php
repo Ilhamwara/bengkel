@@ -16,7 +16,7 @@
       border:none!important;
     }
     body{
-      width: 1200px;
+      width: 700px;
       margin: 0 auto;
     }
   </style>
@@ -31,11 +31,11 @@
 
     <tr>
       <td class="tg-031e">Jl. Ahmad Yani Km 5.5(Pelingkau)</td>
-      <td class="tg-yw4l">Tanggal: 20 juli 2017</td>
+      <td class="tg-yw4l">{{$estimasi->tanggal}}</td>
     </tr>
     <tr>
       <td class="tg-031e">Telp. 081348956040, Email m_zainuri84@yahoo.com </td>
-      <td class="tg-yw4l">No WO: {{--no--}}</td>
+      <td class="tg-yw4l">No WO: {{$estimasi->no_wo}}</td>
     </tr>
   </table>
 
@@ -43,38 +43,38 @@
     <tr>
       <td class="tg-031e">Nama</td>
       <td class="tg-031e">:</td>
-      <td class="tg-031e">Ade Rahhmat</td>
+      <td class="tg-031e">{{$estimasi->nama_pelanggan}}</td>
       <td class="tg-yw4l"></td>
       <td class="tg-yw4l">Type</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">Ford Everest TDCI</td>
+      <td class="tg-yw4l">{{$estimasi->type}}</td>
     </tr>
     <tr>
       <td class="tg-031e">Alamat</td>
       <td class="tg-031e">:</td>
-      <td class="tg-031e">Jl kampung Baru</td>
+      <td class="tg-031e">{{$estimasi->alamat}}</td>
       <td class="tg-yw4l"></td>
       <td class="tg-yw4l">Noka/Nosin</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">271238138</td>
+      <td class="tg-yw4l">{{$estimasi->noka_nosin}}</td>
     </tr>
     <tr>
       <td class="tg-yw4l">No Polisi</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">KT0909</td>
+      <td class="tg-yw4l">{{$estimasi->no_pol}}</td>
       <td class="tg-yw4l"></td>
       <td class="tg-yw4l">Warna</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">Putih</td>
+      <td class="tg-yw4l">{{$estimasi->warna}}</td>
     </tr>
     <tr>
       <td class="tg-yw4l">Telp</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">0898898</td>
+      <td class="tg-yw4l">{{$estimasi->telepon}}</td>
       <td class="tg-yw4l"></td>
       <td class="tg-yw4l">Km/ Fuel</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">140, </td>
+      <td class="tg-yw4l">{{$estimasi->fuel_datang}}</td>
     </tr>
   </table>
   <table class="tg" style="width: 100%; margin-bottom:5%;border:none;">
@@ -89,28 +89,30 @@
       </tr>
     </thead>
     <tbody>
+    @forelse($est_part as $v => $part)
       <tr>
-        <td class="tg-yw4l" style="text-align: center;">1</td>
-        <td class="tg-yw4l">Spion</td>
-        <td class="tg-yw4l" style="text-align: center;">5dfsf</td>
-        <td class="tg-yw4l" style="text-align: center;">5</td>
-        <td class="tg-yw4l" style="text-align: right;">5000</td>
-        <td class="tg-yw4l" style="text-align: right;">25000</td>
-
+        <td class="tg-yw4l" style="text-align: center;">{{$v+1}}</td>
+        <td class="tg-yw4l">{{$part->nama}}</td>
+        <td class="tg-yw4l" style="text-align: center;">{{$part->no}}</td>
+        <td class="tg-yw4l" style="text-align: center;">{{$part->qty}}</td>
+        <td class="tg-yw4l" style="text-align: right;">{{$part->harga_jual}}</td>
+        <td class="tg-yw4l" style="text-align: right;">{{$part->jumlah}}</td>
       </tr>
+      @empty
+      @endforelse
     </tbody>
     <tbody style="border-top:1px solid;">
       <tr>
         <td colspan="4" style="border: none;"></td>
 
         <td class="tg-yw4l" style="text-align: center;"><b>Total Part</b></td>
-        <td class="tg-yw4l" style="text-align: right;">21312313</td>
+       <!--  <td class="tg-yw4l" style="text-align: right;">{{$est_part->sum('jumlah')}}</td> -->
       </tr>
 
     </tbody>
   </table>
 
-  <table class="tg" style="width: 100%; margin-bottom:5%;border:none;">
+  <!-- <table class="tg" style="width: 100%; margin-bottom:5%;border:none;">
     <thead style="border: 1px solid; border-right: none;border-left: none;">
       <tr>
         <td class="tg-yw4l" style="text-align: center;"><b>No</b></td>
@@ -121,32 +123,33 @@
       </tr>
     </thead>
     <tbody>
+    @forelse($est_jasa as $i => $jasa)
       <tr>
-        <td class="tg-yw4l" style="text-align: center;">1</td>
-        <td class="tg-yw4l">OH Transmisi</td>
-        <td class="tg-yw4l" style="text-align: center;"></td>
-        <td class="tg-yw4l" style="text-align: center;"></td>
-        <td class="tg-yw4l" style="text-align: right;">1000000</td>
-
-
+        <td class="tg-yw4l" style="text-align: center;">{{$i+1}}</td>
+        <td class="tg-yw4l">{{$jasa->nama_jasa}}</td>
+        <td class="tg-yw4l" style="text-align: center;">{{$jasa->fr}}</td>
+        <td class="tg-yw4l" style="text-align: center;">{{$jasa->harga_perfr}}</td>
+        <td class="tg-yw4l" style="text-align: right;">{{$jasa->jumlah}}</td>
       </tr>
+      @empty
+@endforelse
     </tbody>
     <tbody style="border-top:1px solid;">
       <tr>
         <td colspan="3" style="border: none;"></td>
 
-        <td class="tg-yw4l" style="text-align: center;"><b>Total Part</b></td>
-        <td class="tg-yw4l" style="text-align: right;">21312313</td>
+        <td class="tg-yw4l" style="text-align: center;"><b>Total jasa</b></td>
+        <td class="tg-yw4l" style="text-align: right;">{{$est_jasa->sum('jumlah')}}</td>
       </tr>
 
     </tbody>
-  </table>
+  </table> -->
   <table class="tg" style=" width:100% ;margin-bottom:5%;border:none; ">
     <tbody>
       <tr>
         <td class="tg-yw4l" style="text-align: center; border:none; width: 50%;"><b></b></td>
         <td class="tg-yw4l" style="text-align: center; border:none; width: 25%; border-bottom:1px solid;"><b>Sub Total</b></td>
-        <td class="tg-yw4l" style="text-align: right; border:none; width: 25%; border-bottom:1px solid;">21312313</td>
+        <td class="tg-yw4l" style="text-align: right; border:none; width: 25%; border-bottom:1px solid;"></td>
       </tr>
 
     </tbody>
@@ -161,7 +164,7 @@
     </thead>
     <tbody>
       <tr>
-        <td class="tg-yw4l" style="border:none;">lorem ipsum</td>
+        <td class="tg-yw4l" style="border:none;">{{$estimasi->keterangan}}/td>
       </tr>
 
     </tbody>

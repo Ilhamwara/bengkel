@@ -35,7 +35,7 @@
     </tr>
     <tr>
       <td class="tg-031e">Telp. 081348956040, Email m_zainuri84@yahoo.com </td>
-      <td class="tg-yw4l">No WO:{{$inspect->no_wo}}</td>
+      <td class="tg-yw4l">No WO:{{$pelanggan->no_wo}}</td>
     </tr>
   </table>
 
@@ -43,96 +43,70 @@
     <tr>
       <td class="tg-031e">Nama</td>
       <td class="tg-031e">:</td>
-      <td class="tg-031e">{{$pelanggans->nama}}</td>
+      <td class="tg-031e">{{$pelanggan->nama}}</td>
       <td class="tg-yw4l"></td>
       <td class="tg-yw4l">Type</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">{{$pelanggans->tipe}}</td>
+      <td class="tg-yw4l">{{$pelanggan->tipe}}</td>
     </tr>
     <tr>
       <td class="tg-031e">Alamat</td>
       <td class="tg-031e">:</td>
-      <td class="tg-031e">{{$pelanggans->alamat}}</td>
+      <td class="tg-031e">{{$pelanggan->alamat}}</td>
       <td class="tg-yw4l"></td>
       <td class="tg-yw4l">Noka/Nosin</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">{{$pelanggans->noka_nosin}}</td>
+      <td class="tg-yw4l">{{$pelanggan->noka_nosin}}</td>
     </tr>
     <tr>
       <td class="tg-yw4l">No Polisi</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">{{$pelanggans->no_pol}}</td>
+      <td class="tg-yw4l">{{$pelanggan->no_pol}}</td>
       <td class="tg-yw4l"></td>
       <td class="tg-yw4l">Warna</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">{{$pelanggans->warna}}</td>
+      <td class="tg-yw4l">{{$pelanggan->warna}}</td>
     </tr>
     <tr>
       <td class="tg-yw4l">Telp</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">{{$pelanggans->telepon}}</td>
+      <td class="tg-yw4l">{{$pelanggan->telepon}}</td>
       <td class="tg-yw4l"></td>
       <td class="tg-yw4l">Km/ Fuel</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">{{$inspect->fuel_datang}}</td>
+      <td class="tg-yw4l">{{$pelanggan->fuel_datang}}</td>
     </tr>
   </table>
-  <table class="tg keluhan" style="width: 100%; margin-bottom: 10px;border-collapse:collapse;border-spacing:0; border-style:solid;border-width:1px; border-right: none; border-left: none;">
-    <thead>
-      <tr>
-        <td colspan="2" class="tg-031el" style="text-align: center; border-right: none; border-left:none;"><b>DOKUMEN KENDARAAN</b></td>
-      </tr>
-    </thead>
-    <tbody>
-  
-      <tr>
-        <td class="tg-yw4l">1</td>
-        <td class="tg-yw4l"></td>
-        <td class="tg-yw4l"></td>
-        <td class="tg-yw4l"></td>
-      </tr>
- 
-    </tbody>
-    <thead>
-      <tr>
-        <td colspan="2" class="tg-031el" style="text-align: center; border-right: none; border-left:none;"><b>FUNGSI AKSESORIS BAGIAN DALAM</b></td>
-      </tr>
-    </thead>
-     <tbody>
-      <tr>
-        <td class="tg-yw4l">1</td>
-        <td class="tg-yw4l"></td>
-        <td class="tg-yw4l"></td>
-        <td class="tg-yw4l"></td>
-      </tr>
-    </tbody>
-     <thead>
-      <tr>
-        <td colspan="2" class="tg-031el" style="text-align: center; border-right: none; border-left:none;"><b>FUNGSI AKSESORIS BAGIAN LUAR</b></td>
-      </tr>
-    </thead>
-     <tbody>
-      <tr>
-        <td class="tg-yw4l">1</td>
-        <td class="tg-yw4l"></td>
-        <td class="tg-yw4l"></td>
-        <td class="tg-yw4l"></td>
-      </tr>
-    </tbody>
-     <thead>
-      <tr>
-        <td colspan="2" class="tg-031el" style="text-align: center; border-right: none; border-left:none;"><b>PERLENGKAPAN KENDARAAN</b></td>
-      </tr>
-    </thead>
-     <tbody>
-      <tr>
-        <td class="tg-yw4l">1</td>
-        <td class="tg-yw4l"></td>
-        <td class="tg-yw4l"></td>
-        <td class="tg-yw4l"></td>
-      </tr>
-    </tbody>
-  </table>
+<table class="table table-striped table-bordered table-hover table-checkable order-column">
+                <tr>
+                    <th class="tg-yw4">No</th>
+                    <th class="tg-yw4">Type</th>
+                    <th class="tg-yw4">Nama</th>
+                </tr>
+                @foreach($inspections as $k => $data)                
+                <tr>
+                    <td>{{$k+1}}</td>
+                    <td>{{$data->type}}</td>
+                    <td>{{$data->nama}}</td>
+                </tr>
+                @endforeach
+            </table>
+
+<div class="col-sm-offset-1 col-sm-10">
+    <h4><b>Kondisi Body Luar Kendaraan</b></h4>
+    <br>
+    @foreach($foto as $data_foto)
+        <div class="col-md-4">
+            <img src="{{url('storage/uploads/img/'.$data_foto->img)}}" class="img-responsive">
+        </div>
+        <div class="col-md-4">
+            <img src="{{url('storage/uploads/img/'.$data_foto->img)}}" class="img-responsive">
+        </div>
+        <div class="col-md-4">
+            <img src="{{url('storage/uploads/img/'.$data_foto->img)}}" class="img-responsive">
+        </div>
+    @endforeach  
+</div>
 
   <table class="tg" width="100%" style="text-align: center;">
     <tr>

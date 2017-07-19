@@ -217,19 +217,19 @@ class WorkordersController extends Controller
     {
     	
 		
-		$pelanggans = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+		$pelanggan = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*','work_order.id', 'pelanggans.nama', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
 		
 		$inspect = Inspection::first();
+		$inspections = Inspection::where('kode',$id)
+							->join('tipe_vehicle','vehicle_inspection.tipe_id','=','tipe_vehicle.id')
+							->get();
 
-		$vecdok 	= TipeVehicle::where('type','Dokumen Kendaraan')->get();
-		$vecdalam 	= TipeVehicle::where('type','Fungsi Aksesoris Bagian Dalam')->get();
-		$vecluar 	= TipeVehicle::where('type','Fungsi Aksesoris Bagian Luar')->get();
-		$vecperl 	= TipeVehicle::where('type','Perlengkapan Kendaraan')->get();
+		$foto = Foto::where('inspect_id',$id)->get();
         // dd(Hashids::connection('spd')->decode($id));
         // $wo = Workorder::findOrFail(Hashids::connection('workorder')->decode($id)[0]);
-        $pdf = PDF::loadView('print.inspection', compact('pelanggans', 'inspect'));
+        $pdf = PDF::loadView('print.inspection', compact('pelanggan', 'inspect', 'foto', 'inspections'));
         return @$pdf->stream('INSPECTION-'.'pdf');
         // return view('print.spd', compact('spd'));
     }

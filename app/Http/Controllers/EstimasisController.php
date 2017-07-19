@@ -202,17 +202,22 @@ class EstimasisController extends Controller
 
 	public function cetak_estimasi($id, Request $request)
     {
-    	$order = Workorder::where('work_order.id', $id)
-		->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+    	$est = Estimasi::where('estimasi_biaya.id', $id)->first();
+		if (count($est) == 0) {
+			return redirect()->back()->with('warning','Maaf data masih kosong');
+		}
+		
+		$estimasi = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
-		$est_part = EstPart::where('no_est',$no_est)->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();		
-		$est_jasa = EstJasa::where('no_est',$no_est)->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr')->get();
-        // dd(Hashids::connection('spd')->decode($id));
-        // $wo = Workorder::findOrFail(Hashids::connection('workorder')->decode($id)[0]);
-        $pdf = PDF::loadView('print.estimasi', compact('order', 'est_part', 'est_jasa'));
-        return @$pdf->stream('WORKORDER-'.'pdf');
-        // return view('print.spd', compact('spd'));
+	
+		$est_part = EstPart::where('no_est', $est->no_est)->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();		
+		// $est_jasa = EstJasa::where('no_est', $est->no_est)->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr')->get();
+
+
+        $pdf = PDF::loadView('print.estimasi', compact('estimasi', 'est_part'));
+        return @$pdf->stream('ESTIMASI-BIAYA-'.'pdf');
+
     }
 
 }
