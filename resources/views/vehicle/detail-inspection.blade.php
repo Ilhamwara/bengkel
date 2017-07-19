@@ -17,7 +17,7 @@
     <h3 class="page-title"><b>Detail Vehicle Inspection</b></h3>
     <br>
     <div class="row">
-     <form action="{{url('vehicle-inspection/cetak-inspection/' .$wo->id)}}" method="GET" class="form-horizontal">
+     <form action="{{url('vehicle-inspection/cetak-inspection/' .$wo->id)}}" method="GET" class="form-horizontal" style="overflow: hidden;">
         {{ csrf_field() }}
         @include('include.alert')
         <div class="col-sm-12" style="margin-bottom: 10px;">
@@ -100,13 +100,17 @@
         <div class="table-responsive">
            <table class="table table-striped table-bordered table-hover table-checkable order-column">
                 <tr>
-                    <th>No</th>
-                    <th>Nama</th>
+                    <th class="text-center bg-primary">No</th>
+                    <th class="text-center bg-primary">Type</th>
+                    <th class="text-center bg-primary">Nama</th>
                 </tr>
+                @foreach($inspect as $k => $data)                
                 <tr>
-                    <td>1</td>
-                    <td>Nama</td>
+                    <td>{{$k+1}}</td>
+                    <td>{{$data->type}}</td>
+                    <td>{{$data->nama}}</td>
                 </tr>
+                @endforeach
             </table>
     </div>
 </div>
@@ -114,12 +118,25 @@
 <div class="col-sm-offset-1 col-sm-10">
     <h4><b>Kondisi Body Luar Kendaraan</b></h4>
     <br>
-
+    @foreach($foto as $data_foto)
+        <div class="col-md-4">
+            <img src="{{url('storage/uploads/img/'.$data_foto->img)}}" class="img-responsive">
+        </div>
+        <div class="col-md-4">
+            <img src="{{url('storage/uploads/img/'.$data_foto->img)}}" class="img-responsive">
+        </div>
+        <div class="col-md-4">
+            <img src="{{url('storage/uploads/img/'.$data_foto->img)}}" class="img-responsive">
+        </div>
+    @endforeach  
+</div>
+<div class="col-sm-offset-1 col-sm-10">
     <div class="form-group">
+    <br><br>
         <label><b>Keterangan</b></label> 
         <textarea class="form-control" id="deskripsi" name="keterangan">{!! $inspect[0]->keterangan !!}</textarea>  
-    </div>     
-</div>
+    </div> 
+</div>  
 <div class="form-group">
     <div class="col-sm-offset-1 col-sm-10">
       <button class="btn btn-primary">Cetak</button>

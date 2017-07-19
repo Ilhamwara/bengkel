@@ -14,7 +14,7 @@ class PenjualansController extends Controller
 {
     	public function index()
 	{
-		$penjualans = Penjualan::all();
+		$penjualans = Penjualan::whereNotNull('no_nota')->get();
 		return view ('penjualan.penjualan', compact('penjualans'));
 
 	}

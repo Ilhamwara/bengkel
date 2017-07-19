@@ -45,7 +45,7 @@
 							@forelse($laporans as $i => $laporan)
 							<tr>
 								<td>{{$i+1}}</td>
-								<td class="text-center"><a href="{{url('work-order/'. $laporan->id)}}">{{$laporan->no_wo}}</a></td>
+								<td class="text-center"><a class="btn btn-primary" href="{{url('work-order/'. $laporan->id)}}">{{$laporan->no_wo}}</a></td>
 								<td class="text-center">{{$laporan->tanggal}}</td>
 								<td class="text-center">{{$laporan->transaksi}}</td>
 								<td class="text-center">{{$laporan->status}}</td>

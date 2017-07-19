@@ -17,6 +17,7 @@
     <br>
     <div class="row">
         <div class="col-md-12">
+        @include('include.alert')
             <form action="{{url('post-pelanggan')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                 {{ csrf_field() }}
                 <div class="form-group">
@@ -58,7 +59,7 @@
         <div class="form-group">
          <label class="col-sm-2 control-label text-left">Noka/Nosin</label>
          <div class="col-sm-6">
-            <input type="text" class="form-control" name="noka_nosin" placeholder="Noka/ Nosin" required>
+            <input type="text" class="form-control" onblur="checkNum($(this))" name="noka_nosin" placeholder="Noka/ Nosin" required>
         </div>
     </div>
     <div class="form-group">

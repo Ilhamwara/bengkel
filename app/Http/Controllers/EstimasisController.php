@@ -63,10 +63,10 @@ class EstimasisController extends Controller
 		if ($cek->wo_id > 0) {
 			return redirect()->back()->with('warning','Maaf Nomer Workorder yang anda masukan sudah ada');
 		}
-		$cek_est 	= Estimasi::where('wo_id','>',0)->orderBy('id','DESC')->first();
+		$cek_est 	= Estimasi::where('wo_id',0)->orderBy('id','DESC')->first();
 		$expl 		= explode('-', $cek_est->no_est);
 		$num		= $expl;
-		$noest 		= 'EST-'.($num[2]+1);
+		$noest 		= 'EST-'.($num[1]+1);
 
 		if (count($r->est_part) > 0) {
 			foreach ($r->est_part as $a => $b) {
@@ -90,14 +90,20 @@ class EstimasisController extends Controller
 				$estimasi[$c]->save();
 			}
 		}
-
-		Estimasi::where('wo_id',0)->delete();
+		EstJasa::where('no_est','EST-A')->update(['no_est' => $noest]);		
+		EstPart::where('no_est','EST-A')->update(['no_est' => $noest]);		
+		
+		Estimasi::where('no_est','EST-A')->delete();
 		return redirect()->back()->with('success','Berhasil tambah Workorder');
 	}
 
 	public function detail_estimasi($id)
 	{
 		$est = Estimasi::where('estimasi_biaya.id', $id)->first();
+		if (count($est) == 0) {
+			return redirect()->back()->with('warning','Maaf data masih kosong');
+		}
+		
 		$estimasi = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
@@ -123,12 +129,17 @@ class EstimasisController extends Controller
 
 	public function pilih_jasa ($idest){
 		$jasas = Jasa::all();
+		if (count($jasas) == 0) {
+			return redirect('jasa/tambah-jasa')->with('warning','Maaf data jasa masih kosong silahkan isi terlebih dahulu');
+		}
 		return view ('estimasi-biaya.pilih-jasa', compact('jasas','idest'));
 
 	}
 	public function pilih_sparepart($idest){
-
 		$spareparts = Sparepart::all();
+		if (count($spareparts) == 0) {
+			return redirect('sparepart/tambah-sparepart')->with('warning','Maaf data sparepart masih kosong silahkan isi terlebih dahulu');
+		}
 		return view ('estimasi-biaya.pilih-sparepart', compact('spareparts','idest'));
 
 	}

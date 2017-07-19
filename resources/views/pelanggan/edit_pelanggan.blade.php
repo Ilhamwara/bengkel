@@ -52,7 +52,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label text-left">Telepon</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" id="telepon" name="telepon" value="{{$pelanggan->telepon}}">
+						<input type="text" class="form-control" onblur="checkNum($(this))" id="telepon" name="telepon" value="{{$pelanggan->telepon}}">
 					</div>
 				</div>
 				<div class="form-group">
@@ -64,13 +64,13 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label text-left">Noka/ Nosin</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" id="noka_nosin" name="noka_nosin" value="{{$pelanggan->noka_nosin}}">
+						<input type="text" class="form-control" onblur="checkNum($(this))" id="noka_nosin" name="noka_nosin" value="{{$pelanggan->noka_nosin}}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label text-left">Warna</label>
 					<div class="col-sm-6">
-						<input type="text" class="form-control" id="noka_nosin" name="warna" value="{{$pelanggan->warna}}">
+						<input type="text" class="form-control" name="warna" value="{{$pelanggan->warna}}">
 					</div>
 				</div>
 				<div class="form-group">
@@ -83,4 +83,16 @@
 	</div>
 </div>
 
+@endsection
+@section('js')
+<script>
+    function checkNum(obj) {
+        v = obj.val();
+        if (!$.isNumeric(v)) {
+            alert('Anda harus memasukan angka');
+            obj.val('0');
+            return false;
+        }
+    }
+</script>
 @endsection

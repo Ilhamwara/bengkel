@@ -65,7 +65,7 @@
                 <div class="form-group">
                     <label class="col-sm-4 text-left">Tanggal</label>
                     <div class="col-sm-6">
-                        <input type="date" class="form-control" name="tgl" id="data_tanggal">
+                        <input type="text" class="form-control" name="tgl" id="data_tanggal" value="{{date('d-m-Y')}}" disabled>
                     </div>
                 </div>
 
@@ -255,5 +255,16 @@
         customConfig : '',
         toolbar : 'simple'
     })
+
+     function tambah(){
+        $('<div class="form-group" id="field-baru">'+
+            '<input type="file" class="form-control" name="foto[]" required>'+
+            '<br>'+
+            '<a data-toggle="tooltip" title="Hapus Field" class="remove_field btn btn-danger"><i class="fa fa-trash-o"></i></a>'+
+            '</div>').insertBefore('#field-baru');
+        $(".remove_field").click(function(){
+            $(this).closest("div").remove();
+        });
+    }
 </script>
 @endsection

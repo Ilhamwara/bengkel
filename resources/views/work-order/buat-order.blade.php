@@ -99,7 +99,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">Tanggal</label>
                 <div class="col-sm-8">
-                    <input type="date" class="form-control" name="tanggal" placeholder="Tanggal" required>
+                    <input type="text" class="form-control" name="tanggal" placeholder="Tanggal" value="{{date('d-m-Y')}}" readonly>
                 </div>
             </div>
             <div class="form-group">

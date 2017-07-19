@@ -46,10 +46,18 @@ class WorkordersController extends Controller
 			return redirect()->back()->with('warning','Maaf Nomer Workorder yang anda masukan sudah ada');
 		}
 
+		if ($r->no_wo == '0') {
+			return redirect()->back()->with('warning','Maaf Nomer Workorder yang anda masukan salah');
+		}if ($r->km_datang == '0') {
+			return redirect()->back()->with('warning','Maaf KM Kedatangan yang anda masukan salah');
+		}if ($r->fuel_datang == '0') {
+			return redirect()->back()->with('warning','Maaf Fuel Kedatangan yang anda masukan salah');
+		}
+
 		$order = new Workorder;
 		$order->pelanggan_id  	= $r->pelanggan;
 		$order->no_wo    	  	= $r->no_wo;
-		$order->tanggal 		= $r->tanggal;
+		$order->tanggal 		= date('Y-m-d');
 		$order->km_datang     	= $r->km_datang;
 		$order->fuel_datang   	= $r->fuel_datang;    
 		$order->keluhan       	= $r->deskripsi;
@@ -95,18 +103,13 @@ class WorkordersController extends Controller
 		$workorder = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*','work_order.id', 'pelanggans.nama', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->get();
-		
-		$inspection = Inspection::
-		join('work_order', 'vehicle_inspection.order_id', 'work_order.id')
-		->select('vehicle_inspection.*', 'work_order.pelanggan_id', 'work_order.no_wo as nomor_wo', 'work_order.km_datang', 'work_order.tanggal', 'work_order.fuel_datang')
-		->get();
 
 		$vecdok 	= TipeVehicle::where('type','Dokumen Kendaraan')->get();
 		$vecdalam 	= TipeVehicle::where('type','Fungsi Aksesoris Bagian Dalam')->get();
 		$vecluar 	= TipeVehicle::where('type','Fungsi Aksesoris Bagian Luar')->get();
 		$vecperl 	= TipeVehicle::where('type','Perlengkapan Kendaraan')->get();
 
-		return view ('vehicle.vehicle-inspection', compact('inspection', 'pelanggan','workorder','vecdok','vecdalam','vecluar','vecperl'));
+		return view ('vehicle.vehicle-inspection', compact('pelanggan','workorder','vecdok','vecdalam','vecluar','vecperl'));
 
 	}
 
@@ -125,12 +128,18 @@ class WorkordersController extends Controller
 		// $wo 		= Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		// ->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		// ->first();
-		$inspect = Inspection::where('kode',$id)->get();
+		$inspect = Inspection::where('kode',$id)
+							->join('tipe_vehicle','vehicle_inspection.tipe_id','=','tipe_vehicle.id')
+							->get();
+		if (count($inspect) == 0) {
+			return redirect()->back()->with('warning','Maaf data masih kosong');
+		}
+
 		$wo = Workorder::where('work_order.id',$inspect[0]->order_id)
 					->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 					->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 					->first();
-		// dd($wo);
+		$foto = Foto::where('inspect_id',$id)->get();
 		return view ('vehicle.detail-inspection' , compact('wo','inspect','foto')); 
 	}
 
@@ -173,18 +182,18 @@ class WorkordersController extends Controller
 			$ins[$k]->kode 			= $noins;
 			$ins[$k]->order_id 		= $r->workorder;
 			$ins[$k]->tipe_id 		= $v;
-			$ins[$k]->tgl 			= $r->tgl;
+			$ins[$k]->tgl 			= date('Y-m-d');
 			$ins[$k]->keterangan 	= $r->keterangan;
 			$ins[$k]->save();
 		}
-		$cek = Inspection::where('order_id',$r->workorder)->orderBy('id','DESC')->first();
+		// $cek = Inspection::where('order_id',$r->workorder)->orderBy('id','DESC')->first();
 
 		foreach ($r->foto as $a => $val) {
 
 		$gambar[$a] = $val->getClientOriginalName();
 		$val->move(storage_path() . '/uploads/img/', $gambar[$a]);
 			$foto[$a] = new Foto;
-			$foto[$a]->inspect_id   = $cek->id;
+			$foto[$a]->inspect_id   = $noins;
 			$foto[$a]->img 			= $gambar[$a];
 			$foto[$a]->save();
 		}
