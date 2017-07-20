@@ -18,9 +18,11 @@ class WorkordersController extends Controller
 	public function index()
 	{
 		
-		$orders = Workorder::all();
+	
 		$orders = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
-		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
+		->join('vehicle_inspection', 'work_order.no_wo', '=', 'vehicle_inspection.order_id')
+		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna', 'vehicle_inspection.kode', 'vehicle_inspection.order_id')
+		->groupBy('vehicle_inspection.kode')
 		->get();
 		return view ('work-order.work-data', compact('orders'));
 
@@ -145,8 +147,8 @@ class WorkordersController extends Controller
 			return redirect()->back()->with('warning','Maaf data masih kosong');
 		}
 
-		$wo = Workorder::
-		join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+		$wo = Workorder::where('work_order.id',$id)
+		->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
 		

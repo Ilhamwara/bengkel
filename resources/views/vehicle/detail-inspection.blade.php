@@ -129,6 +129,7 @@
         <div class="col-md-4">
             <img src="{{url('storage/uploads/img/'.$data_foto->img)}}" class="img-responsive">
         </div>
+
     @endforeach  
 </div>
 <div class="col-sm-offset-1 col-sm-10">
