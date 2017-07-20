@@ -25,48 +25,43 @@
       <input type="hidden" name="estid" value="{{$cek_est->id}}">
       <div class="col-sm-10 col-sm-offset-1">
         <div class="col-sm-6">
-          <div class="form-group">
-            <label class="col-sm-3 control-label">Pilih WO</label>
-            <div class="col-sm-8">
-             <select name="order_id" class="select2 form-control" id ="select2" required>
-               <option value="">-- Pilih WO --</option>
-               @foreach($workorder as $data)
-               <option value="{{$data->id}}" data-nama="{{$data->nama}}" data-alamat="{{$data->alamat}}" data-nopol="{{$data->no_pol}}" data-telepon="{{$data->telepon}}" data-tipe="{{$data->tipe}}" data-nokanosin="{{$data->noka_nosin}}" data-warna="{{$data->warna}}" data-km="{{$data->km_datang}}" data-fuel="{{$data->fuel_datang}}" data-tanggal="{{$data->tanggal}}">{{$data->no_wo}}</option>
-               @endforeach
-             </select>
-           </div>
-         </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">No WO</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" min="0" name="order_id" id="data_nama" value="{{$wo->no_wo}}" readonly> 
+          </div>
+        </div>
 
          <div class="form-group">
           <label class="col-sm-3 control-label">Nama</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" min="0" name="nama" id="data_nama" disabled> 
+            <input type="text" class="form-control" min="0" name="nama" id="data_nama" value="{{$wo->nama}}" disabled> 
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-sm-3 control-label">Alamat</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" name="alamat" id="data_alamat" disabled> 
+            <input type="text" class="form-control" name="alamat" id="data_alamat" value="{{$wo->alamat}}" disabled> 
           </div>
         </div>
         <div class="form-group">
           <label class="col-sm-3 control-label">No. Pol</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" name="no_pol" id="data_nopol" disabled>
+            <input type="text" class="form-control" name="no_pol" id="data_nopol" value="{{$wo->no_pol}}" disabled>
           </div>
         </div>
         <div class="form-group">
           <label class="col-sm-3 control-label">Telepon</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" name="telepon" id="data_telepon" disabled>
+            <input type="text" class="form-control" name="telepon" id="data_telepon" value="{{$wo->telepon}}" disabled>
           </div>
         </div>
 
         <div class="form-group">
           <label class="col-sm-3 control-label">Tanggal</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" name="tanggal" id="data_tanggal" disabled>
+            <input type="date" class="form-control" name="tanggal_est" id="data_tanggal"  value="{{$wo->tanggal}}">
           </div>
         </div>
 
@@ -77,19 +72,19 @@
         <div class="form-group">
           <label class="col-sm-3 control-label">Type</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" name="tipe" id="data_tipe" disabled>
+            <input type="text" class="form-control" name="tipe" id="data_tipe" value="{{$wo->tipe}}" disabled>
           </div>
         </div>
         <div class="form-group">
           <label class="col-sm-3 control-label">Noka/ Nosin</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" name="noka_nosin" id="data_nokanosin" disabled>
+            <input type="text" class="form-control" name="noka_nosin" id="data_nokanosin" value="{{$wo->noka_nosin}}" disabled>
           </div>
         </div>
         <div class="form-group">
           <label class="col-sm-3 control-label">Warna</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" name="warna" id="data_warna" disabled>
+            <input type="text" class="form-control" name="warna" id="data_warna" value="{{$wo->warna}}" disabled>
           </div>
         </div>
 
@@ -97,13 +92,13 @@
         <div class="form-group">
           <label class="col-sm-3 control-label">Km Datang</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" name="km_datang" id="data_km" disabled>
+            <input type="text" class="form-control" name="km_datang" id="data_km" value="{{$wo->km_datang}}" disabled>
           </div>
         </div>
         <div class="form-group">
           <label class="col-sm-3 control-label">Fuel Datang</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" name="fuel_datang" id="data_fuel" disabled>
+            <input type="text" class="form-control" name="fuel_datang" id="data_fuel" value="{{$wo->fuel_datang}}" disabled>
           </div>
         </div>
       </div>

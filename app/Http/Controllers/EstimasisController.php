@@ -19,11 +19,12 @@ class EstimasisController extends Controller
 {
 	public function index(){
 		$estimasis = Estimasi::join('work_order','estimasi_biaya.wo_id','=','work_order.id')
-		->join('pelanggans','work_order.pelanggan_id','=','pelanggans.id')
-		->select('estimasi_biaya.id','work_order.no_wo','estimasi_biaya.keterangan','pelanggans.nama','pelanggans.no_pol','estimasi_biaya.created_at')
+		// ->join('pelanggans','work_order.pelanggan_id','=','pelanggans.id')
+		->select('estimasi_biaya.id','work_order.no_wo','estimasi_biaya.keterangan','estimasi_biaya.created_at')
 		->groupBy('estimasi_biaya.no_est')
 		->get();
 
+		// Dd($estimasis);
 		// $estimasis = Estimasi::join('work_order', 'estimasi_biaya.wo_id', 'work_order.id')
 		// ->join('est_part', 'estimasi_biaya.no_est', 'est_part.no_est')
 		// ->join('est_jasa', 'estimasi_biaya.no_est', 'est_jasa.no_est')
@@ -36,11 +37,12 @@ class EstimasisController extends Controller
 
 
 	}
-	public function buat_estimasi (){
-		$pelanggan = Pelanggan::all();
-		$workorder = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
-		->select('work_order.*', 'pelanggans.nama', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
-		->get();
+	public function buat_estimasi($id){
+		$wo = Workorder::where('work_order.id', $id)->
+		join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+		->select('work_order.*','work_order.id', 'pelanggans.nama', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
+		->first();
+		// Dd($pelanggan);
 
 		Estimasi::updateOrCreate([
 			'no_est' => 'EST-A'
@@ -52,7 +54,7 @@ class EstimasisController extends Controller
 		$est_part = EstPart::where('no_est',$cek_est->no_est)->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();		
 		$est_jasa = EstJasa::where('no_est',$cek_est->no_est)->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr')->get();
 		
-		return view ('estimasi-biaya.buat-estimasi-biaya', compact('pelanggan','workorder','cek_est','est_jasa','est_part'));
+		return view ('estimasi-biaya.buat-estimasi-biaya', compact('pelanggan','wo','cek_est','est_jasa','est_part'));
 
 	}
 
@@ -144,6 +146,10 @@ class EstimasisController extends Controller
 	}
 	public function post_pilih_sparepart (Request $r)
 	{
+		$workorder = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
+
+		->first();
 		
 		$est = new EstPart;
 		$est->part_id   = $r->sparepart;
@@ -162,12 +168,16 @@ class EstimasisController extends Controller
 		$part->save();
 		$est->save();
 
-		return redirect('buat-estimasi-biaya')->with('success','Berhasil menambahkan estimasi sparepart');
+		return redirect('buat-estimasi-biaya/' .$workorder->id)->with('success','Berhasil menambahkan estimasi sparepart');
 		
 	}
 
 	public function post_pilih_jasa (Request $r)
 	{
+		$workorder = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
+
+		->first();
 		
 		$est = new EstJasa;
 		$est->jasa_id   = $r->jasa;
@@ -176,7 +186,7 @@ class EstimasisController extends Controller
 		$est->jumlah 	= $r->total_harga_jasa;
 		$est->save();
 
-		return redirect('buat-estimasi-biaya')->with('success','Berhasil menambahkan estimasi jasa');
+		return redirect('buat-estimasi-biaya/' .$workorder->id)->with('success','Berhasil menambahkan estimasi jasa');
 		
 	}
 

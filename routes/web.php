@@ -59,18 +59,19 @@ Route::group(['middleware' => ['session']], function () {
 
     //WORKORDER
 	Route::get('work-data', 'WorkordersController@index');
-	Route::get('buat-order', 'WorkordersController@buat_order');
+	Route::get('wo', 'WorkordersController@wo');
+	Route::get('buat-order/{id}', 'WorkordersController@buat_order');
 	Route::post('post-order', 'WorkordersController@post_order');
 	Route::get('work-order/{id}', 'WorkordersController@show_order');
-	Route::get('Work-order/{id}/edit', 'WorkordersController@edit_order');
-	Route::post('Work-order/{id}/editpost', 'WorkordersController@editpost_order');
+	Route::get('work-order/{id}/edit', 'WorkordersController@edit_order');
+	Route::post('work-order/{id}/editpost', 'WorkordersController@editpost_order');
 	Route::get('Work-order/{id}/hapus', 'WorkordersController@hapus_order');
 	Route::get('history', 'WorkordersController@history');
 	Route::get('work-order/cetak-wo/{id}', 'WorkordersController@cetak_wo');
 
     //INSPECTION
 	Route::get('vehicle-inspection', 'WorkordersController@index_inspection');
-	Route::get('buat-inspection', 'WorkordersController@buat_inspection');
+	Route::get('buat-inspection/{id}', 'WorkordersController@buat_inspection');
 	Route::get('detail/inspection/{id}', 'WorkordersController@detail_inspection');
 	Route::get('hapus/inspection/{id}', 'WorkordersController@hapusinspection');
 	Route::get('tambah-vehicle', 'WorkordersController@tambahvehicle');
@@ -80,7 +81,7 @@ Route::group(['middleware' => ['session']], function () {
 
 	//ESTIMASI BIAYA
 	Route::get('estimasi-biaya', 'EstimasisController@index');
-	Route::get('buat-estimasi-biaya', 'EstimasisController@buat_estimasi');
+	Route::get('buat-estimasi-biaya/{id}', 'EstimasisController@buat_estimasi');
 	Route::post('post-estimasi', 'EstimasisController@post_estimasi');
 	Route::get('detail/estimasi/{id}', 'EstimasisController@detail_estimasi');
 	Route::get('hapus/estimasi-biaya/{id}', 'EstimasisController@hapusestimasi');

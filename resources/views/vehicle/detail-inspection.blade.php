@@ -23,6 +23,13 @@
         <div class="col-sm-12" style="margin-bottom: 10px;">
             <div class="col-sm-6">
 
+            <div class="form-group">
+                <label class="col-sm-4 text-left">No WO</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" min="0" name="nama" value="{{$wo->no_wo}}" readonly> 
+                </div>
+            </div>
+
              <div class="form-group">
                 <label class="col-sm-4 text-left">Nama</label>
                 <div class="col-sm-6">
@@ -119,12 +126,6 @@
     <h4><b>Kondisi Body Luar Kendaraan</b></h4>
     <br>
     @foreach($foto as $data_foto)
-        <div class="col-md-4">
-            <img src="{{url('storage/uploads/img/'.$data_foto->img)}}" class="img-responsive">
-        </div>
-        <div class="col-md-4">
-            <img src="{{url('storage/uploads/img/'.$data_foto->img)}}" class="img-responsive">
-        </div>
         <div class="col-md-4">
             <img src="{{url('storage/uploads/img/'.$data_foto->img)}}" class="img-responsive">
         </div>

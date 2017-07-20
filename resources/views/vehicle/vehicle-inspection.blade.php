@@ -24,48 +24,43 @@
             @include('include.alert')
             <div class="col-sm-12" style="margin-bottom: 10px;">
                 <div class="col-sm-6">
-                    <div class="form-group">
-                        <label class="col-sm-4 text-left">Pilih WO</label>
-                        <div class="col-sm-6">
-                         <select name="workorder" class="select2 form-control" id ="select2" required>
-                             <option value="">Pilih WO</option>
-                             @foreach($workorder as $data)
-                             <option value="{{$data->id}}" data-nama="{{$data->nama}}" data-alamat="{{$data->alamat}}" data-nopol="{{$data->no_pol}}" data-telepon="{{$data->telepon}}" data-tipe="{{$data->tipe}}" data-nokanosin="{{$data->noka_nosin}}" data-warna="{{$data->warna}}" data-km="{{$data->km_datang}}" data-fuel="{{$data->fuel_datang}}" data-tanggal="{{$data->tanggal}}">{{$data->no_wo}}</option>
-                             @endforeach
-                         </select>
-                     </div>
-                 </div>
+                   <div class="form-group">
+                      <label class="col-sm-4 text-left">No WO</label>
+                      <div class="col-sm-6">
+                      <input type="text" class="form-control" min="0" name="workorder" id="data_nama" value="{{$wo->no_wo}}" readonly> 
+                    </div>
+                </div>
 
-                 <div class="form-group">
+                <div class="form-group">
                     <label class="col-sm-4 text-left">Nama</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" min="0" name="nama" id="data_nama" disabled> 
+                        <input type="text" class="form-control" min="0" name="nama" id="data_nama" value ="{{$wo->nama}}" disabled> 
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-4 text-left">Alamat</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="alamat" id="data_alamat" disabled> 
+                        <input type="text" class="form-control" name="alamat" id="data_alamat" value ="{{$wo->alamat}}" disabled> 
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-4 text-left">No. Pol</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="no_pol" id="data_nopol" disabled>
+                        <input type="text" class="form-control" name="no_pol" id="data_nopol" value ="{{$wo->no_pol}}" disabled>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-4 text-left">Telepon</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="telepon" id="data_telepon" disabled>
+                        <input type="text" class="form-control" name="telepon" id="data_telepon" value ="{{$wo->telepon}}" disabled>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="col-sm-4 text-left">Tanggal</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="tgl" id="data_tanggal" value="{{date('d-m-Y')}}" disabled>
+                        <input type="date" class="form-control" name="tgl" id="data_tanggal" value ="{{$wo->tanggal}}">
                     </div>
                 </div>
 
@@ -76,19 +71,19 @@
                 <div class="form-group">
                     <label class="col-sm-4 text-left">Type</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="tipe" id="data_tipe" disabled>
+                        <input type="text" class="form-control" name="tipe" id="data_tipe" value ="{{$wo->tipe}}" disabled>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-4 text-left">Noka/ Nosin</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="noka_nosin" id="data_nokanosin" disabled>
+                        <input type="text" class="form-control" name="noka_nosin" id="data_nokanosin" value ="{{$wo->noka_nosin}}" disabled>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-4 text-left">Warna</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="warna" id="data_warna" disabled>
+                        <input type="text" class="form-control" name="warna" id="data_warna" value ="{{$wo->warna}}" disabled>
                     </div>
                 </div>
 
@@ -96,13 +91,13 @@
                 <div class="form-group">
                     <label class="col-sm-4 text-left">Km Datang</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="km_datang" id="data_km" disabled>
+                        <input type="text" class="form-control" name="km_datang" id="data_km" value ="{{$wo->km_datang}}" disabled>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-4 text-left">Fuel Datang</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" name="fuel_datang" id="data_fuel" disabled>
+                        <input type="text" class="form-control" name="fuel_datang" id="data_fuel" value ="{{$wo->fuel_datang}}" disabled>
                     </div>
                 </div>
             </div>
@@ -111,7 +106,7 @@
         <div class="col-md-12">
             <br><br>
             <div class="table-responsive">
-               <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
+             <table class="table table-striped table-bordered table-hover table-checkable order-column" id="sample_1">
 
                 @if($vecdok[0]->type == 'Dokumen Kendaraan')
                 <tr>
@@ -256,7 +251,7 @@
         toolbar : 'simple'
     })
 
-     function tambah(){
+    function tambah(){
         $('<div class="form-group" id="field-baru">'+
             '<input type="file" class="form-control" name="foto[]" required>'+
             '<br>'+

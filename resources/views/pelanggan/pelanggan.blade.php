@@ -6,6 +6,10 @@
 	.action li{
 		display: inline-block;
 		list-style-type: none;
+
+	}
+	.action{
+		padding-left: 0!important;
 	}
 </style>        
 @endsection
@@ -64,6 +68,7 @@
 									<ul class="action">
 										<li><a href="{{url('edit/pelanggan/'.$pelanggan->id)}}" class="btn btn-warning"  data-toggle="tooltip" title="Edit" style="padding: 6px 12px;"><i class="fa fa-pencil"></i></a></li>
 										<li><a href="{{url('hapus/pelanggan/'.$pelanggan->id)}}" class="btn btn-danger"  data-toggle="tooltip" title="Hapus" style="padding: 6px 12px;"><i class="fa fa-trash-o"></i></a></li>
+										<li><a href="{{url('buat-order/'.$pelanggan->id)}}" class="btn btn-danger"  data-toggle="tooltip" title="Hapus" style="padding: 6px 12px;">Buat WO</a></li>
 									</ul>
 								</td>
 							</tr>

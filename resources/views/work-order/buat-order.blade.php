@@ -31,61 +31,49 @@
             @include('include.alert')
             <form action="{{url('post-order')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
                 {{ csrf_field() }}
-
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Pilih Customer</label>
-                    <div class="col-sm-8">
-                       <select name="pelanggan" class="select2 form-control" id ="select2">
-                           <option value="">Pilih Pelanggan</option>
-                           @foreach($pelanggan as $data)
-                           <option value="{{$data->id}}" data-nama="{{$data->nama}}" data-alamat="{{$data->alamat}}" data-nopol="{{$data->no_pol}}" data-telepon="{{$data->telepon}}" data-tipe="{{$data->tipe}}" data-nokanosin="{{$data->noka_nosin}}" data-warna="{{$data->warna}}">{{$data->nama}}</option>
-                           @endforeach
-                       </select>
-                   </div>
-               </div>
-
+                <input type="text" name="pelanggan" value="{{$pelanggan->id}}" hidden>
                <div class="form-group">
                 <label class="col-sm-2 control-label">Nama</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" min="0" name="nama_pelanggan" id="data_nama" disabled> 
+                    <input type="text" class="form-control" min="0" name="nama_pelanggan" id="data_nama" value="{{$pelanggan->nama}}" disabled> 
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">Alamat</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="alamat" id="data_alamat" disabled> 
+                    <input type="text" class="form-control" name="alamat" id="data_alamat" value="{{$pelanggan->alamat}}" disabled> 
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">No. Pol</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="no_pol" id="data_nopol" disabled>
+                    <input type="text" class="form-control" name="no_pol" id="data_nopol" value="{{$pelanggan->no_pol}}" disabled>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Telepon</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="telepon" id="data_telepon" disabled>
+                    <input type="text" class="form-control" name="telepon" id="data_telepon" value="{{$pelanggan->telepon}}" disabled>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">Type</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="tipe" id="data_tipe" disabled>
+                    <input type="text" class="form-control" name="tipe" id="data_tipe" value="{{$pelanggan->tipe}}" disabled>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Noka/ Nosin</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" onblur="checkNum($(this))" name="noka_nosin" id="data_nokanosin" disabled>
+                    <input type="text" class="form-control" onblur="checkNum($(this))" name="noka_nosin" id="data_nokanosin" value="{{$pelanggan->noka_nosin}}" disabled>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">Warna</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="warna" id="data_warna" disabled>
+                    <input type="text" class="form-control" name="warna" id="data_warna" value="{{$pelanggan->warna}}" disabled>
                 </div>
             </div>
 

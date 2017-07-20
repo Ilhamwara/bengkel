@@ -46,7 +46,7 @@
 							<tr>
 								<td>{{$i+1}}</td>
 								<td class="text-center">{{$inspect->nomor_wo}}</td>
-								<td class="text-center">{{$inspect->tgl}}</td>		
+								<td class="text-center">{{$inspect->tanggal}}</td>		
 								<td class="text-center">{!!$inspect->keterangan!!}</td>
 								<td class="text-center">
 									<ul class="action">
@@ -55,7 +55,7 @@
 									</ul>
 								</td>
 							</tr>
-							@empty
+						@empty
 							@endforelse
 						</tbody>
 
