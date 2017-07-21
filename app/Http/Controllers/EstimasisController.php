@@ -23,6 +23,7 @@ class EstimasisController extends Controller
 		// ->join('pelanggans','work_order.pelanggan_id','=','pelanggans.id')
 		select('estimasi_biaya.id','estimasi_biaya.wo_id as nomor_wo','estimasi_biaya.keterangan','estimasi_biaya.created_at', 'estimasi_biaya.no_est')
 		->groupBy('estimasi_biaya.no_est')
+		->where('wo_id','>','0')
 		->get();
 		
 
