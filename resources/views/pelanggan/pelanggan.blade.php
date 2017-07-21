@@ -66,7 +66,7 @@
 									<ul class="action">
 										<li><a href="{{url('edit/pelanggan/'.$pelanggan->id)}}" class="btn btn-warning"  data-toggle="tooltip" title="Edit" style="padding: 6px 12px;"><i class="fa fa-pencil"></i></a></li>
 										<li><a href="{{url('hapus/pelanggan/'.$pelanggan->id)}}" class="btn btn-danger"  data-toggle="tooltip" title="Hapus" style="padding: 6px 12px;"><i class="fa fa-trash-o"></i></a></li>
-										<li><a href="{{url('buat-order/'.$pelanggan->id)}}" class="btn btn-danger"  data-toggle="tooltip" title="Hapus" style="padding: 6px 12px;">Buat WO</a></li>
+										<li><a href="{{url('buat-order/'.$pelanggan->id)}}" class="btn btn-success"  data-toggle="tooltip" title="Buat Work Order" style="padding: 6px 12px;"><i class="fa fa-file-text-o"></i></a></li>
 									</ul>
 								</td>
 							</tr>

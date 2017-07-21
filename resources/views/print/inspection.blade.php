@@ -18,6 +18,13 @@
     body{
       width: 700px;
       margin: 0 auto;
+      font-size: 12px;
+    }
+    .image{
+      padding-left: 0;
+    }
+    .image li{
+      display: inline-block;
     }
   </style>
 </head>
@@ -92,20 +99,22 @@
       <td class="tg-yw4l">{{$datas->nama_vehicle}}</td>
       <td class="tg-yw4l">{{$datas->tipe_vehicle}}</td>
     </tr>
-   @empty
-   @endforelse
+    @empty
+    @endforelse
   </tbody>
 </table>
 
 <div class="col-sm-offset-1 col-sm-10">
   <h4><b>Kondisi Body Luar Kendaraan</b></h4>
-  <br>
-  @foreach($foto as $data_foto)
-  <div class="col-md-4">
-    <img src="{{url('storage/uploads/img/'.$data_foto->img)}}" class="img-responsive">
-  </div>
-  @endforeach  
 </div>
+<table class="tg profil" style="width: 100%; border:none;">
+  @foreach($foto as $data_foto)
+  <td>
+    <img src="{{url('storage/uploads/img/'.$data_foto->img)}}" class="img-responsive" width="200">
+  </td>
+  @endforeach  
+</table>
+
 
 <table class="tg" width="100%" style="text-align: center;">
   <tr>

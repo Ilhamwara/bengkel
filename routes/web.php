@@ -119,6 +119,8 @@ Route::group(['middleware' => ['session']], function () {
 	Route::get('penjualan/cetak-penjualan/{id}', 'PenjualansController@cetak_penjualan');
 	Route::get('penjualan/hapus-part/{id}', 'PenjualansController@hapusestpart');
 
+	//NOTA
+	Route::get('buat-nota/{id}', 'NotaController@buat_nota');
 
 	//USER
 	Route::get('user-management', 'UserController@manage');
