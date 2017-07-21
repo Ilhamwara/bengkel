@@ -151,8 +151,8 @@ class WorkordersController extends Controller
 
 		// dd($wo);
 		
-		$foto = Foto::where('inspect_id',$id)->get();
-		// Dd($foto);
+		$foto = Foto::where('inspect_id',$inspect[0]->kode)->get();
+		// dd($foto);
 		return view ('vehicle.detail-inspection' , compact('wo','inspect','foto')); 
 
 	}
