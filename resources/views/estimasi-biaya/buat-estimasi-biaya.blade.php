@@ -140,7 +140,7 @@
              </tr>
            </table>
          </div>
-         <a href="{{url('estimasi-biaya/pilih-sparepart/'.$cek_est->no_est)}}" class="btn btn-primary">Tambah</a>
+         <a href="{{url('estimasi-biaya/pilih-sparepart/'.$wo->no_wo.'/'.$cek_est->no_est)}}" class="btn btn-primary">Tambah</a>
        </div>
      </div>
    </div>
@@ -180,7 +180,7 @@
          <td></td>
        </tr>
      </table>
-     <a href="{{url('estimasi-biaya/pilih-jasa/'.$cek_est->no_est)}}" class="btn btn-primary">Tambah</a>
+     <a href="{{url('estimasi-biaya/pilih-jasa/'.$wo->no_wo.'/'.$cek_est->no_est)}}" class="btn btn-primary">Tambah</a>
    </div>
  </div>
 </div>

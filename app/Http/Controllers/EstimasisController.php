@@ -40,8 +40,7 @@ class EstimasisController extends Controller
 
 	}
 	public function buat_estimasi($id){
-		$wo = Workorder::where('work_order.no_wo', $id)->
-		join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+		$wo = Workorder::where('work_order.no_wo', $id)->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*','work_order.id', 'pelanggans.nama', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
 		// Dd($pelanggan);
@@ -135,29 +134,24 @@ class EstimasisController extends Controller
 		return redirect()->back()->with('success','Berhasil menghapus estimasi');
 	}
 
-	public function pilih_jasa ($idest){
+	public function pilih_jasa ($wo,$idest){
 		$jasas = Jasa::all();
 		if (count($jasas) == 0) {
 			return redirect('jasa/tambah-jasa')->with('warning','Maaf data jasa masih kosong silahkan isi terlebih dahulu');
 		}
-		return view ('estimasi-biaya.pilih-jasa', compact('jasas','idest'));
+		return view ('estimasi-biaya.pilih-jasa', compact('jasas','idest','wo'));
 
 	}
-	public function pilih_sparepart($idest){
+	public function pilih_sparepart($wo,$idest){
 		$spareparts = Sparepart::all();
 		if (count($spareparts) == 0) {
 			return redirect('sparepart/tambah-sparepart')->with('warning','Maaf data sparepart masih kosong silahkan isi terlebih dahulu');
 		}
-		return view ('estimasi-biaya.pilih-sparepart', compact('spareparts','idest'));
+		return view ('estimasi-biaya.pilih-sparepart', compact('spareparts','idest','wo'));
 
 	}
 	public function post_pilih_sparepart (Request $r)
-	{
-		$workorder = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
-		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
-
-		->first();
-		
+	{		
 		$est = new EstPart;
 		$est->part_id   = $r->sparepart;
 		$est->no_est    = $r->idest;
@@ -175,17 +169,12 @@ class EstimasisController extends Controller
 		$part->save();
 		$est->save();
 
-		return redirect('buat-estimasi-biaya/' .$workorder->no_wo)->with('success','Berhasil menambahkan estimasi sparepart');
+		return redirect('buat-estimasi-biaya/' .$r->wo)->with('success','Berhasil menambahkan estimasi sparepart');
 		
 	}
 
 	public function post_pilih_jasa (Request $r)
-	{
-		$workorder = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
-		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
-
-		->first();
-		
+	{		
 		$est = new EstJasa;
 		$est->jasa_id   = $r->jasa;
 		$est->no_est    = $r->idest;
@@ -193,7 +182,7 @@ class EstimasisController extends Controller
 		$est->jumlah 	= $r->total_harga_jasa;
 		$est->save();
 
-		return redirect('buat-estimasi-biaya/' .$workorder->id)->with('success','Berhasil menambahkan estimasi jasa');
+		return redirect('buat-estimasi-biaya/' .$r->wo)->with('success','Berhasil menambahkan estimasi jasa');
 		
 	}
 

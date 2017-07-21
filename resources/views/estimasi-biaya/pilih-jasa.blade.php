@@ -20,7 +20,8 @@
   <div class="row">
     @include('include.alert')
     <form action="{{url('post-pilih-jasa')}}" method="POST" enctype="multipart/form-data" class="form-horizontal" style="overflow: hidden;">
-      {{ csrf_field() }} 
+      {{ csrf_field()}} 
+      <input type="hidden" name="wo" value="{{$wo}}">
       <input type="hidden" name="idest" value="{{$idest}}">           
       <div class="form-group">
         <label class="col-sm-2 control-label">Pilih Jasa</label>
