@@ -25,7 +25,7 @@
 
   <table class="tg header" style="width: 100%; margin-bottom: 20px;">
     <tr>
-      <td class="tg-031e" style="font-size: 16px;"><b>AUTO VISION</b></td>
+      <td class="tg-031e" style="font-size: 16px;"><b>AUTO VISTON</b></td>
       <td class="tg-031e" style="font-size: 16px;"><b>VEHICLE INSPECTION</b></td>
     </tr>
 
@@ -43,7 +43,7 @@
     <tr>
       <td class="tg-031e">Nama</td>
       <td class="tg-031e">:</td>
-      <td class="tg-031e">{{$pelanggan->nama}}</td>
+      <td class="tg-031e">{{$pelanggan->nama_pelanggan}}</td>
       <td class="tg-yw4l"></td>
       <td class="tg-yw4l">Type</td>
       <td class="tg-yw4l">:</td>
@@ -86,13 +86,14 @@
     </tr>
   </thead>
   <tbody>
-    @foreach($inspections as $k => $data)                
+    @forelse($inspect as $i => $datas)                
     <tr>
       <td class="tg-yw4l">{{$k+1}}</td>
-      <td class="tg-yw4l">{{$data->tipe_vehicle}}</td>
-      <td class="tg-yw4l">{{$data->nama_vehicle}}</td>
+      <td class="tg-yw4l">{{$datas->tipe_}}</td>
+      <td class="tg-yw4l">{{$datas->nama_inspect}}</td>
     </tr>
-    @endforeach
+   @empty
+   @endforelse
   </tbody>
 </table>
 
@@ -100,12 +101,6 @@
   <h4><b>Kondisi Body Luar Kendaraan</b></h4>
   <br>
   @foreach($foto as $data_foto)
-  <div class="col-md-4">
-    <img src="{{url('storage/uploads/img/'.$data_foto->img)}}" class="img-responsive">
-  </div>
-  <div class="col-md-4">
-    <img src="{{url('storage/uploads/img/'.$data_foto->img)}}" class="img-responsive">
-  </div>
   <div class="col-md-4">
     <img src="{{url('storage/uploads/img/'.$data_foto->img)}}" class="img-responsive">
   </div>

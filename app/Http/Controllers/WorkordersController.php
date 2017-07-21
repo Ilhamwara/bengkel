@@ -151,7 +151,8 @@ class WorkordersController extends Controller
 
 		// dd($wo);
 		
-		$foto = Foto::where('inspect_id',$id)->get();
+		$foto = Foto::where('foto.inspect_id',$id)
+		->select('foto.img')->get();
 		// Dd($foto);
 		return view ('vehicle.detail-inspection' , compact('wo','inspect','foto')); 
 
@@ -231,18 +232,19 @@ class WorkordersController extends Controller
 	{
 
 		
-		$pelanggan = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
-		->select('work_order.*','work_order.id', 'pelanggans.nama', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
+		$pelanggan = Workorder::where('work_order.no_wo', $id)
+		->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
 		
-		$inspections = Inspection::where('kode',$id)
+		$inspect = Inspection::where('order_id',$id)
 		->join('tipe_vehicle','vehicle_inspection.tipe_id','=','tipe_vehicle.id')
-		->select('vehicle_inspection.*', 'tipe_vehicle.nama as nama_vehicle', 'tipe_vehicle.type as tipe_vehicle')
+		->select('tipe_vehicle.type as tipe', 'tipe_vehicle.nama as nama_inspect')
 		->get();
 
 		$foto = Foto::where('inspect_id',$id)->get();
 
-		$pdf = PDF::loadView('print.inspection', compact('pelanggan', 'inspect', 'foto', 'inspections'));
+		$pdf = PDF::loadView('print.inspection', compact('pelanggan', 'inspect', 'foto'));
 		return @$pdf->stream('INSPECTION-'.'pdf');
 
 	}
