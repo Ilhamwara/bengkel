@@ -18,11 +18,13 @@ use PDF;
 class EstimasisController extends Controller
 {
 	public function index(){
-		$estimasis = Estimasi::join('work_order','estimasi_biaya.wo_id','=','work_order.id')
+		$estimasis = Estimasi::
+		// ->join('work_order','estimasi_biaya.wo_id','=','work_order.id')
 		// ->join('pelanggans','work_order.pelanggan_id','=','pelanggans.id')
-		->select('estimasi_biaya.id','work_order.no_wo','estimasi_biaya.keterangan','estimasi_biaya.created_at')
+		select('estimasi_biaya.id','estimasi_biaya.wo_id as nomor_wo','estimasi_biaya.keterangan','estimasi_biaya.created_at', 'estimasi_biaya.no_est')
 		->groupBy('estimasi_biaya.no_est')
 		->get();
+		
 
 		// Dd($estimasis);
 		// $estimasis = Estimasi::join('work_order', 'estimasi_biaya.wo_id', 'work_order.id')

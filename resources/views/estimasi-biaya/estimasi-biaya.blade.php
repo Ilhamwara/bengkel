@@ -46,12 +46,12 @@
 							@forelse($estimasis as $i => $data)
 							<tr>
 								<td>{{$i+1}}</td>
-								<td class="text-center">{{$data->no_wo}}</td>
+								<td class="text-center">{{$data->nomor_wo}}</td>
 								<td class="text-center">{{date('d-m-Y H:i',strtotime($data->created_at))}}</td>
 								<td class="text-center">{!!$data->keterangan!!}</td>
 								<td class="text-center">
 									<ul class="action">
-										<li><a href="{{url('detail/estimasi/'.$data->id)}}" class="btn btn-warning"  data-toggle="tooltip" title="Detail" style="padding: 6px 12px;"><i class="fa fa-eye"></i></a></li>
+										<li><a href="{{url('detail/estimasi/'.$data->nomor_wo)}}" class="btn btn-warning"  data-toggle="tooltip" title="Detail" style="padding: 6px 12px;"><i class="fa fa-eye"></i></a></li>
 										<li><a href="{{url('view/estimasi/'.$data->id)}}" class="btn btn-info"  data-toggle="tooltip" title="Buat Nota" style="padding: 6px 12px;"><i class="fa fa-calculator"></i></a></li>
 										<li><a href="{{url('hapus/estimasi-biaya/'.$data->id)}}" class="btn btn-danger"  data-toggle="tooltip" title="Hapus" style="padding: 6px 12px;"><i class="fa fa-trash-o"></i></a></li>
 									</ul>
