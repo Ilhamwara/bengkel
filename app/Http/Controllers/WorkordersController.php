@@ -24,6 +24,7 @@ class WorkordersController extends Controller
 		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna', 'vehicle_inspection.kode', 'vehicle_inspection.order_id')
 		->groupBy('vehicle_inspection.kode')
 		->get();
+		// dd($orders);
 		return view ('work-order.work-data', compact('orders'));
 
 	}
@@ -99,8 +100,7 @@ class WorkordersController extends Controller
 
 	public function index_inspection (){
 		
-		$inspection = Inspection::
-		select('vehicle_inspection.tgl as tanggal', 'vehicle_inspection.keterangan as keterangan', 'vehicle_inspection.order_id as nomor_wo', 'vehicle_inspection.kode' )
+		$inspection = Inspection::select('vehicle_inspection.tgl as tanggal', 'vehicle_inspection.keterangan as keterangan', 'vehicle_inspection.order_id as nomor_wo', 'vehicle_inspection.kode' )
 		->groupBy('vehicle_inspection.kode')
 		->get();
 
@@ -147,10 +147,12 @@ class WorkordersController extends Controller
 			return redirect()->back()->with('warning','Maaf data masih kosong');
 		}
 
-		$wo = Workorder::where('work_order.id',$id)
+		$wo = Workorder::where('work_order.no_wo',$inspect[0]->order_id)
 		->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
+
+		// dd($wo);
 		
 		$foto = Foto::where('inspect_id',$id)->get();
 		// Dd($foto);

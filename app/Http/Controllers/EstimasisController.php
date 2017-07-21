@@ -67,9 +67,14 @@ class EstimasisController extends Controller
 		}
 
 		$cek_est 	= Estimasi::where('wo_id','>',0)->orderBy('id','DESC')->first();
-		$expl 		= explode('-', $cek_est->no_est);
-		$num		= $expl;
-		$noest 		= 'EST-'.($num[1]+1);
+
+		if (count($cek_est) > 0) {
+			$expl 		= explode('-', $cek_est->no_est);
+			$num		= $expl;
+			$noest 		= 'EST-'.($num[1]+1);
+		}else{
+			$noest 		= 'EST-1';
+		}
 
 		if (count($r->est_part) > 0) {
 			foreach ($r->est_part as $a => $b) {
@@ -102,7 +107,7 @@ class EstimasisController extends Controller
 
 	public function detail_estimasi($id)
 	{
-		$est = Estimasi::where('estimasi_biaya.id', $id)->first();
+		$est = Estimasi::where('estimasi_biaya.wo_id', $id)->first();
 		if (count($est) == 0) {
 			return redirect()->back()->with('warning','Maaf data masih kosong');
 		}

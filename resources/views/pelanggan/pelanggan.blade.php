@@ -39,7 +39,6 @@
 						<thead>
 							<tr>
 								<th class="text-center">No</th>
-								<th class="text-center">ID</th>
 								<th class="text-center">Nama</th>
 								<th class="text-center">Alamat</th>
 								<th class="text-center">No Polisi</th>
@@ -56,7 +55,6 @@
 							<?php $i++ ?>
 							<tr>
 								<td>{{$i}}</td>
-								<td class="text-center">{{$pelanggan->id_pelanggan}}</td>
 								<td class="text-center">{{$pelanggan->nama}}</td>
 								<td class="text-center">{{$pelanggan->alamat}}</td>
 								<td class="text-center">{{$pelanggan->no_pol}}</td>
