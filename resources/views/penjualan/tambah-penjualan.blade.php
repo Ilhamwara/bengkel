@@ -82,6 +82,7 @@
               <th class="text-center">Qty</th>
               <th class="text-center">Harga Satuan</th>
               <th class="text-center">Jumlah</th>
+                <th class="text-center"></th>
             </tr>
           </thead>   
           <tbody>
@@ -93,6 +94,7 @@
               <td class="text-center">{{$part->qty}}</td>
               <td class="text-center">{{$part->harga_jual}}</td>
               <td class="text-center">{{$part->jumlah}}</td>
+              <td class="text-center"><a href="{{url('penjualan/hapus-part/'.$part->id)}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
             </tr>
             <input type="hidden" name="id_part[]" value="{{$part->id}}">
             @empty

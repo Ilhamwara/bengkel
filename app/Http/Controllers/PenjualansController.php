@@ -130,6 +130,19 @@ class PenjualansController extends Controller
 		
 	}
 
+	public function hapusestpart($id)
+	{
+		$penpart = PenjPart::findOrFail($id);
+
+		$part = Sparepart::where('id',$penpart->part_id)->first();
+		$part->stok = ($part->stok + $penpart->qty);
+		$part->save();
+
+		$penpart->delete();
+
+		return redirect()->back()->with('success','Berhasil mengahpus estimasi sparepart');
+	}
+
 	public function cetak_penjualan($id, Request $request)
     {
     	$penj = Penjualan::findOrFail($id);

@@ -117,6 +117,7 @@ Route::group(['middleware' => ['session']], function () {
 	// Route::post('editpost/penjualan/{id}', 'PenjualansController@editpost_penjualan');
 	Route::get('hapus/penjualan/{id}', 'PenjualansController@hapus_penjualan');
 	Route::get('penjualan/cetak-penjualan/{id}', 'PenjualansController@cetak_penjualan');
+	Route::get('penjualan/hapus-part/{id}', 'PenjualansController@hapusestpart');
 
 
 	//USER
