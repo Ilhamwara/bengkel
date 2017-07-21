@@ -127,7 +127,7 @@ class WorkordersController extends Controller
 
 	public function hapusinspection($id)
 	{
-		$inspection = Inspection::where('kode',$id);
+		$inspection = Inspection::where('order_id',$id);
 		$inspection->delete();
 
 		return redirect()->back()->with('success','Berhasil menghapus Inspection');
@@ -139,7 +139,7 @@ class WorkordersController extends Controller
 		// $wo 		= Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		// ->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		// ->first();
-		$inspect = Inspection::where('kode',$id)
+		$inspect = Inspection::where('order_id',$id)
 		->join('tipe_vehicle','vehicle_inspection.tipe_id','=','tipe_vehicle.id')
 		->get();
 

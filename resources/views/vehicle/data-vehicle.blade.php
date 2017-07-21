@@ -50,8 +50,8 @@
 								<td class="text-center">{!!$inspect->keterangan!!}</td>
 								<td class="text-center">
 									<ul class="action">
-										<li><a href="{{url('detail/inspection/'.$inspect->kode)}}" class="btn btn-warning"  data-toggle="tooltip" title="Detail" style="padding: 6px 12px;"><i class="fa fa-eye"></i></a></li>
-										<li><a href="{{url('hapus/inspection/'.$inspect->kode)}}" class="btn btn-danger"  data-toggle="tooltip" title="Hapus" style="padding: 6px 12px;"><i class="fa fa-trash-o"></i></a></li>
+										<li><a href="{{url('detail/inspection/'.$inspect->nomor_wo)}}" class="btn btn-warning"  data-toggle="tooltip" title="Detail" style="padding: 6px 12px;"><i class="fa fa-eye"></i></a></li>
+										<li><a href="{{url('hapus/inspection/'.$inspect->nomor_wo)}}" class="btn btn-danger"  data-toggle="tooltip" title="Hapus" style="padding: 6px 12px;"><i class="fa fa-trash-o"></i></a></li>
 									</ul>
 								</td>
 							</tr>
