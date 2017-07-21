@@ -40,7 +40,7 @@ class EstimasisController extends Controller
 
 	}
 	public function buat_estimasi($id){
-		$wo = Workorder::where('work_order.id', $id)->
+		$wo = Workorder::where('work_order.no_wo', $id)->
 		join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*','work_order.id', 'pelanggans.nama', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
@@ -114,7 +114,7 @@ class EstimasisController extends Controller
 			return redirect()->back()->with('warning','Maaf data masih kosong');
 		}
 		
-		$estimasi = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+		$estimasi = Workorder::where('work_order.no_wo', $id)->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
 	
@@ -175,7 +175,7 @@ class EstimasisController extends Controller
 		$part->save();
 		$est->save();
 
-		return redirect('buat-estimasi-biaya/' .$workorder->id)->with('success','Berhasil menambahkan estimasi sparepart');
+		return redirect('buat-estimasi-biaya/' .$workorder->no_wo)->with('success','Berhasil menambahkan estimasi sparepart');
 		
 	}
 

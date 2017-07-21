@@ -17,12 +17,9 @@ class WorkordersController extends Controller
 {
 	public function index()
 	{
-		
-	
+	$orders = Workorder::all();
 		$orders = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
-		->join('vehicle_inspection', 'work_order.no_wo', '=', 'vehicle_inspection.order_id')
-		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna', 'vehicle_inspection.kode', 'vehicle_inspection.order_id')
-		->groupBy('vehicle_inspection.kode')
+		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->get();
 		// dd($orders);
 		return view ('work-order.work-data', compact('orders'));
@@ -82,7 +79,7 @@ class WorkordersController extends Controller
 
 	public function show_order($id)
 	{
-		$order = Workorder::where('work_order.id', $id)
+		$order = Workorder::where('work_order.no_wo', $id)
 		->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();

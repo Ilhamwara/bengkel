@@ -48,10 +48,10 @@
 								<td>{{$i+1}}</td>
 								<td class="text-center">{{$order->no_wo}}</td>
 								<td class="text-center">{{$order->nama_pelanggan}}</td>
-								<td class="text-center"><a href="{{url('work-order/'. $order->id)}}" class="btn btn-primary">Tampilkan</a></td>
-								<td class="text-center"><a href="{{url('detail/inspection/'. $order->id)}}" class="btn btn-primary">Tampilkan</a></td>
+								<td class="text-center"><a href="{{url('work-order/'. $order->no_wo)}}" class="btn btn-primary">Tampilkan</a></td>
+								<td class="text-center"><a href="{{url('detail/inspection/'. $order->no_wo)}}" class="btn btn-primary">Tampilkan</a></td>
 								<td class="text-center"><a href="{{url('#')}}" class="btn btn-primary">Tampilkan</a></td>
-								<td class="text-center"><a href="{{url('detail/estimasi/'. $order->order_id)}}" class="btn btn-primary">Tampilkan</a></td>
+								<td class="text-center"><a href="{{url('detail/estimasi/'. $order->no_wo)}}" class="btn btn-primary">Tampilkan</a></td>
 							</tr>
 							@empty
 							@endforelse
