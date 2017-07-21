@@ -135,6 +135,7 @@ class WorkordersController extends Controller
 		// $inspection = Inspection::all();
 		// $wo 		= Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		// ->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
+		$inspection = Inspection::where('order_id',$id)->first();
 		// ->first();
 		$inspect = Inspection::where('order_id',$id)
 		->join('tipe_vehicle','vehicle_inspection.tipe_id','=','tipe_vehicle.id')
@@ -151,10 +152,9 @@ class WorkordersController extends Controller
 
 		// dd($wo);
 		
-		$foto = Foto::where('foto.inspect_id',$id)
-		->select('foto.img')->get();
+		$foto = Foto::where('inspect_id',$id)->get();
 		// Dd($foto);
-		return view ('vehicle.detail-inspection' , compact('wo','inspect','foto')); 
+		return view ('vehicle.detail-inspection' , compact('wo','inspect','foto', 'inspection')); 
 
 	}
 
@@ -231,6 +231,7 @@ class WorkordersController extends Controller
 	public function cetak_inspection($id, Request $request)
 	{
 
+		$inspection = Inspection::where('order_id',$id)->first();
 		
 		$pelanggan = Workorder::where('work_order.no_wo', $id)
 		->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
@@ -244,7 +245,7 @@ class WorkordersController extends Controller
 
 		$foto = Foto::where('inspect_id',$id)->get();
 
-		$pdf = PDF::loadView('print.inspection', compact('pelanggan', 'inspect', 'foto'));
+		$pdf = PDF::loadView('print.inspection', compact('pelanggan', 'inspect', 'foto', 'inspection'));
 		return @$pdf->stream('INSPECTION-'.'pdf');
 
 	}

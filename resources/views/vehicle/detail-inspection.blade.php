@@ -59,7 +59,7 @@
                 <div class="form-group">
                     <label class="col-sm-4 text-left">Tanggal</label>
                     <div class="col-sm-6">
-                        <input type="date" class="form-control" name="tgl" value="{{$wo->tgl}}" readonly>
+                        <input type="date" class="form-control" name="tgl" value="{{$inspection->tgl}}" readonly>
                     </div>
                 </div>
 

@@ -31,7 +31,7 @@
 
     <tr>
       <td class="tg-031e">Jl. Ahmad Yani Km 5.5(Pelingkau)</td>
-      <td class="tg-yw4l">Tanggal: </td>
+      <td class="tg-yw4l">Tanggal: {{$inspection->tgl}}</td>
     </tr>
     <tr>
       <td class="tg-031e">Telp. 081348956040, Email m_zainuri84@yahoo.com </td>
@@ -88,8 +88,8 @@
   <tbody>
     @forelse($inspect as $i => $datas)                
     <tr>
-      <td class="tg-yw4l">{{$k+1}}</td>
-      <td class="tg-yw4l">{{$datas->tipe_}}</td>
+      <td class="tg-yw4l">{{$i+1}}</td>
+      <td class="tg-yw4l">{{$datas->tipe}}</td>
       <td class="tg-yw4l">{{$datas->nama_inspect}}</td>
     </tr>
    @empty
