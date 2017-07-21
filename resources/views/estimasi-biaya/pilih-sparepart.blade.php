@@ -21,7 +21,8 @@
     @include('include.alert')
     <form action="{{url('post-pilih-sparepart')}}" method="POST" enctype="multipart/form-data" class="form-horizontal" style="overflow: hidden;">
       {{ csrf_field() }}    
-      <input type="hidden" name="idest" value="{{$idest}}" >        
+      <input type="hidden" name="idest" value="{{$idest}}" >
+     <input type="hidden" name="wo" value="{{$wo}}">       
       <div class="form-group">
         <label class="col-sm-2 control-label">Pilih Sparepart</label>
         <div class="col-sm-6">

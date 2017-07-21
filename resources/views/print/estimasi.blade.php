@@ -18,6 +18,7 @@
     body{
       width: 700px;
       margin: 0 auto;
+      font-size: 12px;
     }
   </style>
 </head>
@@ -25,12 +26,12 @@
 
   <table class="tg header" style="width: 100%; margin-bottom: 20px;">
     <tr>
-      <td class="tg-031e" style="font-size: 16px;"><b>AUTO VISION</b></td>
+      <td class="tg-031e" style="font-size: 16px;"><b>AUTO VISTON</b></td>
       <td class="tg-031e" style="font-size: 16px;"><b>ESTIMASI BIAYA</b></td>
     </tr>
 
     <tr>
-      <td class="tg-031e">Jl. Ahmad Yani Km 5.5(Pelingkau)</td>
+      <td class="tg-031e">Jl. Ahmad Yani Km 5.5 (Pelingkau)</td>
       <td class="tg-yw4l">{{$estimasi->tanggal}}</td>
     </tr>
     <tr>
@@ -47,7 +48,7 @@
       <td class="tg-yw4l"></td>
       <td class="tg-yw4l">Type</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">{{$estimasi->type}}</td>
+      <td class="tg-yw4l">{{$estimasi->tipe}}</td>
     </tr>
     <tr>
       <td class="tg-031e">Alamat</td>
@@ -89,12 +90,12 @@
       </tr>
     </thead>
     <tbody>
-    @forelse($est_part as $v => $part)
+      @forelse($est_part as $v => $part)
       <tr>
         <td class="tg-yw4l" style="text-align: center;">{{$v+1}}</td>
         <td class="tg-yw4l">{{$part->nama}}</td>
-        <td class="tg-yw4l" style="text-align: center;">{{$part->no}}</td>
-        <td class="tg-yw4l" style="text-align: center;">{{$part->qty}}</td>
+        <td class="tg-yw4l" style="text-align: center;">{{$part->nomor_part}}</td>
+        <td class="tg-yw4l" style="text-align: center;">{{$part->qty_part}}</td>
         <td class="tg-yw4l" style="text-align: right;">{{$part->harga_jual}}</td>
         <td class="tg-yw4l" style="text-align: right;">{{$part->jumlah}}</td>
       </tr>
@@ -106,13 +107,13 @@
         <td colspan="4" style="border: none;"></td>
 
         <td class="tg-yw4l" style="text-align: center;"><b>Total Part</b></td>
-       <!--  <td class="tg-yw4l" style="text-align: right;">{{$est_part->sum('jumlah')}}</td> -->
+        <td class="tg-yw4l" style="text-align: right;">{{$est_part->sum('jumlah')}}</td>
       </tr>
 
     </tbody>
   </table>
 
-  <!-- <table class="tg" style="width: 100%; margin-bottom:5%;border:none;">
+  <table class="tg" style="width: 100%; margin-bottom:5%;border:none;">
     <thead style="border: 1px solid; border-right: none;border-left: none;">
       <tr>
         <td class="tg-yw4l" style="text-align: center;"><b>No</b></td>
@@ -123,16 +124,16 @@
       </tr>
     </thead>
     <tbody>
-    @forelse($est_jasa as $i => $jasa)
+      @forelse($est_jasa as $i => $jasa)
       <tr>
         <td class="tg-yw4l" style="text-align: center;">{{$i+1}}</td>
         <td class="tg-yw4l">{{$jasa->nama_jasa}}</td>
-        <td class="tg-yw4l" style="text-align: center;">{{$jasa->fr}}</td>
+        <td class="tg-yw4l" style="text-align: center;">{{$jasa->qty_jasa}}</td>
         <td class="tg-yw4l" style="text-align: center;">{{$jasa->harga_perfr}}</td>
         <td class="tg-yw4l" style="text-align: right;">{{$jasa->jumlah}}</td>
       </tr>
       @empty
-@endforelse
+      @endforelse
     </tbody>
     <tbody style="border-top:1px solid;">
       <tr>
@@ -143,13 +144,13 @@
       </tr>
 
     </tbody>
-  </table> -->
+  </table>
   <table class="tg" style=" width:100% ;margin-bottom:5%;border:none; ">
     <tbody>
       <tr>
         <td class="tg-yw4l" style="text-align: center; border:none; width: 50%;"><b></b></td>
         <td class="tg-yw4l" style="text-align: center; border:none; width: 25%; border-bottom:1px solid;"><b>Sub Total</b></td>
-        <td class="tg-yw4l" style="text-align: right; border:none; width: 25%; border-bottom:1px solid;"></td>
+        <td class="tg-yw4l" style="text-align: right; border:none; width: 25%; border-bottom:1px solid;"><?php $total = $est_part->sum('jumlah') + $est_jasa->sum('jumlah'); echo $total; ?></td>
       </tr>
 
     </tbody>
@@ -164,7 +165,7 @@
     </thead>
     <tbody>
       <tr>
-        <td class="tg-yw4l" style="border:none;">{{$estimasi->keterangan}}/td>
+        <td class="tg-yw4l" style="border:none;">{{$est->keterangan}}</td>
       </tr>
 
     </tbody>

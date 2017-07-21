@@ -103,7 +103,7 @@ class EstimasisController extends Controller
 		EstPart::where('no_est','EST-A')->update(['no_est' => $noest]);		
 		
 		Estimasi::where('no_est','EST-A')->delete();
-		return redirect()->back()->with('success','Berhasil tambah Workorder');
+		return redirect()->back()->with('success','Berhasil tambah Biaya Estimasi');
 	}
 
 	public function detail_estimasi($id)
@@ -208,20 +208,19 @@ class EstimasisController extends Controller
 
 	public function cetak_estimasi($id, Request $request)
     {
-    	$est = Estimasi::where('estimasi_biaya.id', $id)->first();
-		if (count($est) == 0) {
-			return redirect()->back()->with('warning','Maaf data masih kosong');
-		}
+    	$est = Estimasi::where('estimasi_biaya.wo_id', $id)->first();
+    	
 		
-		$estimasi = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+		$estimasi = Workorder::where('work_order.no_wo', $id)
+		->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
 	
-		$est_part = EstPart::where('no_est', $est->no_est)->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();		
-		// $est_jasa = EstJasa::where('no_est', $est->no_est)->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr')->get();
+		$est_part = EstPart::where('no_est', $est->no_est)->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual', 'spare_parts.no as nomor_part', 'est_part.qty as qty_part')->get();		
+		$est_jasa = EstJasa::where('no_est', $est->no_est)->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr', 'est_jasa.qty as qty_jasa')->get();
 
 
-        $pdf = PDF::loadView('print.estimasi', compact('estimasi', 'est_part'));
+        $pdf = PDF::loadView('print.estimasi', compact('estimasi', 'est_part', 'est_jasa', 'est'));
         return @$pdf->stream('ESTIMASI-BIAYA-'.'pdf');
 
     }
