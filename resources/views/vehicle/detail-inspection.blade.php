@@ -111,7 +111,7 @@
                     <th class="text-center bg-primary">Type</th>
                     <th class="text-center bg-primary">Nama</th>
                 </tr>
-                @foreach($inspect as $k => $data)                
+                @foreach($inspections as $k => $data)                
                 <tr>
                     <td>{{$k+1}}</td>
                     <td>{{$data->type}}</td>

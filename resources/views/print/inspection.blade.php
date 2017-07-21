@@ -89,8 +89,8 @@
     @forelse($inspect as $i => $datas)                
     <tr>
       <td class="tg-yw4l">{{$i+1}}</td>
-      <td class="tg-yw4l">{{$datas->tipe}}</td>
-      <td class="tg-yw4l">{{$datas->nama_inspect}}</td>
+      <td class="tg-yw4l">{{$datas->nama_vehicle}}</td>
+      <td class="tg-yw4l">{{$datas->tipe_vehicle}}</td>
     </tr>
    @empty
    @endforelse
