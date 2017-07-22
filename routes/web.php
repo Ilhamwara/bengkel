@@ -121,6 +121,17 @@ Route::group(['middleware' => ['session']], function () {
 
 	//NOTA
 	Route::get('buat-nota/{id}', 'NotaController@buat_nota');
+	Route::get('nota', 'NotaController@buat_nota');
+	Route::post('post-nota', 'NotaController@post_nota');
+	Route::get('detail/nota/{id}', 'NotaController@detail_nota');
+	Route::get('hapus/nota/{id}', 'NotaController@hapus_nota');
+	Route::get('nota/pilih-sparepart/{wo}/{idnot}', 'NotaController@pilih_sparepart');
+	Route::post('post-pilih-part', 'NotaController@post_pilih_sparepart');
+	Route::get('nota/pilih-jasa/{wo}/{idest}', 'NotaController@pilih_jasa');
+	Route::post('post-pilih-jas', 'NotaController@post_pilih_jasa');
+	Route::get('nota/hapus-part/{id}', 'NotaController@hapunotapart');
+	Route::get('nota/hapus-jasa/{id}', 'NotaController@hapusnotajasa');
+	Route::get('nota/cetak-nota/{id}', 'NotaController@cetak_nota');
 
 	//USER
 	Route::get('user-management', 'UserController@manage');

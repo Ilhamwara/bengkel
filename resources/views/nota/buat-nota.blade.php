@@ -22,7 +22,7 @@
     @include('include.alert')
     <form action="{{url('post-nota')}}" method="POST" enctype="multipart/form-data" class="form-horizontal" style="overflow: hidden;">
       {{ csrf_field() }}
-      <input type="hidden" name="estid" value="{{$cek_est->id}}">
+      <input type="hidden" name="notid" value="{{$cek_not->id}}">
       <div class="col-sm-10 col-sm-offset-1">
         <div class="col-sm-6">
           <div class="form-group">
@@ -101,6 +101,12 @@
               <input type="text" class="form-control" name="fuel_datang" id="data_fuel" value="{{$wo->fuel_datang}}" disabled>
             </div>
           </div>
+            <div class="form-group">
+            <label class="col-sm-3 control-label">DP</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="dp" id="data_fuel" value="" placeholder="DP">
+            </div>
+          </div>
         </div>
       </div>
 
@@ -150,7 +156,7 @@
                </tr>
              </table>
            </div>
-           <a href="{{url('estimasi-biaya/pilih-sparepart/'.$wo->no_wo.'/'.$cek_est->no_est)}}" class="btn btn-primary">Tambah</a>
+           <a href="{{url('nota/pilih-sparepart/'.$wo->no_wo.'/'.$cek_not->no_not)}}" class="btn btn-primary">Tambah</a>
          </div>
        </div>
      </div>
@@ -200,7 +206,7 @@
            <td></td>
          </tr>
        </table>
-       <a href="{{url('estimasi-biaya/pilih-jasa/'.$wo->no_wo.'/'.$cek_est->no_est)}}" class="btn btn-primary">Tambah</a>
+       <a href="{{url('estimasi-biaya/pilih-jasa/'.$wo->no_wo.'/'.$cek_not->no_not)}}" class="btn btn-primary">Tambah</a>
      </div>
    </div>
  </div>
