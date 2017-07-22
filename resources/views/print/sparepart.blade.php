@@ -43,7 +43,7 @@
 </head>
 <body>
 
-    <table class="tg header" style="width: 100%; margin-bottom: 20px;">
+    <table class="tg header" style="width: 100%; margin-bottom: 15px;">
       <tr>
         <td class="tg-031e" style="font-size: 16px;"><b>AUTO VISTON</b></td>
         <td class="tg-031e" style="font-size: 16px;"><b>NOTA SPAREPART</b></td>
@@ -51,10 +51,11 @@
 
     <tr>
         <td class="tg-031e">Jl. Ahmad Yani Km 5.5 (Pelingkau)</td>
-        <td class="tg-yw4l">Tanggal: 20 juli 2017</td>
+        <td class="tg-yw4l"></td>
     </tr>
     <tr>
         <td class="tg-031e">Telp. 081348956040, Email m_zainuri84@yahoo.com </td>
+        <td class="tg-yw4l"></td>
     </tr>
 </table>
 
@@ -106,7 +107,7 @@
     </tr>
 </table>
 
-<table class="tg part" style="width: 100%; margin-bottom: 20px;">
+<table class="tg part" style="width: 100%; margin-bottom: 15px;">
     <thead>
         <tr>
             <th class="tg-yw4l" style="text-align:center;"><b>No</b></th>
@@ -165,10 +166,11 @@
         <td class="tg-yw4l" style="width: 1%;">Rp. </td>
         <td class="tg-yw4l" style="text-align: right;">{{$part->sum('jumlah')}}</td>
     </tr>
-    <tr>
+
+    <tr style="padding-top: 10%;">
         <td class="tg-031e" style="border: none;">Muhammad Zainuri</td>
-        <td class="tg-031e" style="border:none; height: 10%;"></td>
-        <td class="tg-031e" style="border: none; border-bottom:1px solid; width: 15%;  height: 10%!important;"></td>
+        <td class="tg-031e" style="border:none;"></td>
+        <td class="tg-031e" style="border: none; border-bottom:1px solid; width: 15%;"></td>
         <td class="tg-031e" style="border:none; width: 10%;"></td>
     </tr>
 </tbody>

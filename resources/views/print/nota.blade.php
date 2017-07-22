@@ -23,9 +23,9 @@
 </head>
 <body>
 
-  <table class="tg header" style="width: 100%; margin-bottom: 20px;">
+  <table class="tg header" style="width: 100%; margin-bottom: 15px;">
     <tr>
-      <td class="tg-031e" style="font-size: 16px;"><b>AUTO VISION</b></td>
+      <td class="tg-031e" style="font-size: 16px;"><b>AUTO VISTON</b></td>
       <td class="tg-031e" style="font-size: 16px;"><b>NOTA SERVICE</b></td>
     </tr>
 
