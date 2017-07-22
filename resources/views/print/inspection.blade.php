@@ -53,7 +53,7 @@
     </tr>
   </table>
 
-  <table class="tg profil" style="width: 100%; border:none;">
+  <table class="tg profil" style="width: 100%; border:none; margin-bottom: 20px;">
     <tr>
       <td class="tg-031e">Nama</td>
       <td class="tg-031e">:</td>
