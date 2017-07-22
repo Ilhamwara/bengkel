@@ -4,8 +4,11 @@
 @php
 
     $workorder = DB::table('work_order')->count();
-    $vehicle = DB::table('vehicle_inspection')->count();
-    $estimasi = DB::table('estimasi_biaya')->count();
+    $vehicle = DB::table('vehicle_inspection')
+    ->groupBy('kode')
+    ->count();
+    $estimasi = DB::table('estimasi_biaya')
+    ->where('wo_id', '>', 0)->count();
 
  @endphp
 
