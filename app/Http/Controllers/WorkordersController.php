@@ -8,6 +8,8 @@ use App\Workorder;
 use App\Inspection;
 use App\Estimasi;
 use App\Sparepart;
+use App\EstPart;
+use App\EstJasa;
 use App\TipeVehicle;
 use App\Foto;
 use Validator;
@@ -83,7 +85,18 @@ class WorkordersController extends Controller
 		->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
-		return view ('work-order.show-order' , compact('order')); 
+
+		$est = Estimasi::where('wo_id', $id)->first();
+
+		$est_part = EstPart::where('no_est', $est->no_est)
+		->where('type', 'espart')
+		->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();		
+		$est_jasa = EstJasa::where('no_est', $est->no_est)
+		->where('type', 'esjasa')
+		->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr')->get();
+
+		
+		return view ('work-order.show-order' , compact('order', 'esti')); 
 	}
 
 	public function history (){
@@ -219,15 +232,24 @@ class WorkordersController extends Controller
 	}
 	public function cetak_wo($id, Request $request)
 	{
-		$order = Workorder::where('work_order.id', $id)
+		$est = Estimasi::where('estimasi_biaya.wo_id', $id)->first();
+    	
+		
+		$order = Workorder::where('work_order.no_wo', $id)
 		->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
-        // dd(Hashids::connection('spd')->decode($id));
-        // $wo = Workorder::findOrFail(Hashids::connection('workorder')->decode($id)[0]);
-		$pdf = PDF::loadView('print.workorder', compact('order'));
+	
+		$est_part = EstPart::where('no_est', $est->no_est)
+		->where('type', 'espart')
+		->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual', 'spare_parts.no as nomor_part', 'est_part.qty as qty_part')->get();		
+		$est_jasa = EstJasa::where('no_est', $est->no_est)
+		->where('type', 'esjasa')
+		->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr', 'est_jasa.qty as qty_jasa')->get();
+
+		$pdf = PDF::loadView('print.workorder', compact('order', 'est', 'est_part', 'est_jasa'));
 		return @$pdf->stream('WORKORDER-'.'pdf');
-        // return view('print.spd', compact('spd'));
+     
 	}
 	public function cetak_inspection($id, Request $request)
 	{

@@ -110,6 +110,11 @@
         </div>
       </div>
 
+      @php 
+      $a = $est_part->sum('jumlah') - $nota->disc_part;
+      $b = $est_jasa->sum('jumlah') - $nota->disc_jasa; 
+      $c = $a + $b;
+      @endphp
 
       <div class="row">
         <div class="col-sm-10 col-sm-offset-1">
@@ -141,15 +146,15 @@
                 @endforelse
                 <tr>
                  <td class="text-center" colspan="3"><b>Jumlah</b></td>
-                 <td colspan="2" class="text-center">Rp {{$est_part->sum('jumlah')}}</td>
+                 <td colspan="2" class="text-center"><input type="text" name="jumlah_part" class="form-control" id="jumlah" value="{{$est_part->sum('jumlah')}}" disabled></td>
                </tr>
                <tr>
                  <td class="text-center" colspan="3"><b>Discount</b></td>
-                 <td colspan="2" class="text-center">Rp. </td>
+                 <td colspan="2" class="text-center"><input type="text" name="disc_part" class="form-control" id="disc"></td>
                </tr>
                <tr>
                  <td class="text-center" colspan="3"><b>Total</b></td>
-                 <td colspan="2" class="text-center">Rp. </td>
+                 <td colspan="2" class="text-center"><input type="text" name="total_part" class="form-control" id="sum"></td>
                </tr>
              </table>
            </div>
@@ -187,18 +192,18 @@
             <td class="text-center bg-danger" colspan="5"><b>Kosong</b></td>
           </tr>
           @endforelse
-          <tr>
-           <td class="text-center" colspan="3"><b>Jumlah</b></td>
-           <td colspan="2" class="text-center">Rp {{$est_jasa->sum('jumlah')}}</td>
-         </tr>
-         <tr>
-           <td class="text-center" colspan="3"><b>Discount</b></td>
-           <td colspan="2" class="text-center">Rp. </td>
-         </tr>
-         <tr>
-           <td class="text-center" colspan="3"><b>Total</b></td>
-           <td colspan="2" class="text-center">Rp. </td>
-         </tr>
+           <tr>
+                 <td class="text-center" colspan="3"><b>Jumlah</b></td>
+                 <td colspan="2" class="text-center"><input type="text" name="jumlah_jasa" class="form-control" id="jumlah2" value="{{$est_jasa->sum('jumlah')}}" disabled></td>
+               </tr>
+               <tr>
+                 <td class="text-center" colspan="3"><b>Discount</b></td>
+                 <td colspan="2" class="text-center"><input type="text" name="disc_jasa" class="form-control" id="disc2"></td>
+               </tr>
+               <tr>
+                 <td class="text-center" colspan="3"><b>Total</b></td>
+                 <td colspan="2" class="text-center"><input type="text" name="total_jasa" class="form-control" id ="sum2"></td>
+               </tr>
        </table>
        <a href="{{url('nota/pilih-jasa-edit/'.$wo->no_wo.'/'.$nota->no_not)}}" class="btn btn-primary">Tambah</a>
      </div>
@@ -264,6 +269,49 @@
     $('#data_tanggal').val(tanggal);
 
   });
+</script>
+
+<script type="text/javascript">
+
+  $(document).ready(function() {
+    //this calculates values automatically 
+    sum1();
+    $("#jumlah, #disc").on("keydown keyup", function() {
+      sum1();
+    });
+  });
+
+  function sum1() {
+    var num4 = document.getElementById('jumlah').value;
+    var num5 = document.getElementById('disc').value;
+
+    var result = parseInt(num4) - parseInt(num5);
+    if (!isNaN(result)) {
+      document.getElementById('sum').value = result;
+
+    }
+  }
+</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    //this calculates values automatically 
+    sum();
+    $("#jumlah2, #disc2").on("keydown keyup", function() {
+      sum();
+    });
+  });
+
+  function sum() {
+    var num3 = document.getElementById('jumlah2').value;
+    var num4 = document.getElementById('disc2').value;
+
+    var result = parseInt(num3) - parseInt(num4);
+    if (!isNaN(result)) {
+      document.getElementById('sum2').value = result;
+
+    }
+  }
+
 </script>
 
 @endsection

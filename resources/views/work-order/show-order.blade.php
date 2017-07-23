@@ -27,7 +27,7 @@
     <div class="row">
         <div class="col-md-12">
             
-            <form action="{{url('work-order/cetak-wo/' .$order->id) }}" method="GET" class="form-horizontal">
+            <form action="{{url('work-order/cetak-wo/' .$order->no_wo) }}" method="GET" class="form-horizontal">
                 {{ csrf_field() }}
 
                 <div class="form-group">

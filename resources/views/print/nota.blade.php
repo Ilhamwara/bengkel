@@ -138,33 +138,37 @@
  </tbody>
 </table>
 
-
+  @php 
+  $a = $est_part->sum('jumlah') - $nota->disc_part;
+  $b = $est_jasa->sum('jumlah') - $nota->disc_jasa; 
+  $c = $a + $b;
+  @endphp
 
 <table class="tg data" style="width: 100%; border:none;margin-bottom: 10px;">
 
   <tr>
     <td colspan="4" class="tg-yw4l">TOTAL PART & BAHAN</td>
-    <td class="tg-yw4l" width="25%">{{$est_part->sum('jumlah')}}</td>
+    <td class="tg-yw4l" width="25%">Rp. {{$est_part->sum('jumlah')}}</td>
     <td class="tg-yw4l">TOTAL JASA</td>
-    <td colspan="3" class="tg-yw4l">{{$est_jasa->sum('jumlah')}}</td>
+    <td colspan="3" class="tg-yw4l">Rp. {{$est_jasa->sum('jumlah')}}</td>
 
   </tr>
   <tr>
     <td colspan="4" class="tg-yw4l">DISCOUNT PART & BAHAN</td>
-    <td class="tg-yw4l">{{$nota->disc_part}}</td>
+    <td class="tg-yw4l">Rp. {{$nota->disc_part}}</td>
     <td class="tg-yw4l">DISCOUNT JASA INTERNAL 10%</td>
-    <td colspan="3" class="tg-yw4l">{{$nota->disc_jasa}}</td>
+    <td colspan="3" class="tg-yw4l">Rp. {{$nota->disc_jasa}}</td>
   </tr>
   <tr>
     <td colspan="4" class="tg-yw4l">SUB TOTAL PART & BAHAN</td>
-    <td class="tg-yw4l"></td>
+    <td class="tg-yw4l">Rp. {{$a}}</td>
     <td class="tg-yw4l">SUB TOTAL JASA</td>
-    <td colspan="3" class="tg-yw4l" style="border-bottom: 1px solid"></td>
+    <td colspan="3" class="tg-yw4l" style="border-bottom: 1px solid">Rp. {{$b}}</td>
   </tr>
   <tr>
    <td colspan="5" class="tg-yw4l" style="border:none;"></td>
    <td class="tg-yw4l" style="border:none; border-bottom: 2px solid;">GRAND TOTAL</td>
-   <td colspan="3" class="tg-yw4l" style="border:none; border-bottom: 2px solid; width: 20%; border-top: 1px solid;">dasdasdasdasd</td>
+   <td colspan="3" class="tg-yw4l" style="border:none; border-bottom: 2px solid; width: 20%; border-top: 1px solid;">Rp. {{$c}}</td>
  </tr>
 
 

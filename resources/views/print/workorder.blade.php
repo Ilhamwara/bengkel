@@ -103,21 +103,23 @@
       </tr>
     </thead>
     <tbody>
+      @forelse($est_part as $i => $data)
       <tr>
-        <td class="tg-yw4l" style="text-align: center; border:none;">1</td>
-        <td class="tg-yw4l" style="border: none; text-align: center;">EST </td>
-        <td class="tg-yw4l" style="text-align: center;border: none;">5</td>
-        <td class="tg-yw4l" style="text-align: right;border: none;">5000</td>
-        <td class="tg-yw4l" style="text-align: right;border: none;">25000</td>
-
+        <td class="tg-yw4l" style="text-align: center; border:none;">{{$i+1}}</td>
+        <td class="tg-yw4l" style="border: none; text-align: center;">{{$data->nama}}</td>
+        <td class="tg-yw4l" style="text-align: center;border: none;">{{$data->qty}}</td>
+        <td class="tg-yw4l" style="text-align: right;border: none;">{{$data->harga_jual}}</td>
+        <td class="tg-yw4l" style="text-align: right;border: none;">{{$data->jumlah}}</td>
       </tr>
+      @empty
+      @endforelse
     </tbody>
     <tbody style="border-top:1px solid;">
       <tr>
         <td colspan="2" style="border: none;"></td>
         <td class="tg-yw4l" style="border: none; border-bottom: 1px solid;"">Est Biaya</td>
         <td class="tg-yw4l" style="border: none;  border-bottom: 1px solid;">Rp</td>
-        <td class="tg-yw4l" style="text-align: right; border: none;  border-bottom: 1px solid;">21312313</td>
+        <td class="tg-yw4l" style="text-align: right; border: none;  border-bottom: 1px solid;">{{$est_part->sum('jumlah')}}</td>
       </tr>
 
     </tbody>

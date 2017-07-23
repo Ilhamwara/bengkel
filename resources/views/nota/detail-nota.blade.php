@@ -16,6 +16,12 @@
     </ul>
   </div>
 
+  @php 
+  $a = $est_part->sum('jumlah') - $nota->disc_part;
+  $b = $est_jasa->sum('jumlah') - $nota->disc_jasa; 
+
+  @endphp
+
   <h3 class="page-title"><b>Detail Nota</b></h3>
   <br>
   <div class="row">
@@ -101,7 +107,7 @@
               <input type="text" class="form-control" name="fuel_datang" id="data_fuel" value="{{$wo->fuel_datang}}" disabled>
             </div>
           </div>
-            <div class="form-group">
+          <div class="form-group">
             <label class="col-sm-3 control-label">DP</label>
             <div class="col-sm-8">
               <input type="text" class="form-control" name="dp" id="data_fuel" value="{{$nota->dp}}" placeholder="DP" readonly>
@@ -123,7 +129,7 @@
                   <th class="text-center">Quantity</th>
                   <th class="text-center">Harga</th>
                   <th class="text-center">Jumlah</th>
-                 
+                  
                 </tr>
                 @forelse($est_part as $part)
                 <input type="hidden" name="est_part[]" value="{{$part->id}}">
@@ -132,7 +138,7 @@
                   <td class="text-center">{{$part->qty}}</td>
                   <td class="text-center">{{$part->harga_jual}}</td>
                   <td class="text-center">{{$part->jumlah}}</td>
-                 
+                  
                 </tr>
                 @empty
                 <tr>
@@ -147,11 +153,12 @@
                <tr>
                  <td class="text-center" colspan="3"><b>Discount</b></td>
                  <td class="text-center">Rp. {{$nota->disc_part}}</td>
-                
+                 
                </tr>
+               
                <tr>
                  <td class="text-center" colspan="3"><b>Total</b></td>
-                 <td class="text-center">Rp. {{$nota->total}}</td>
+                 <td class="text-center">Rp. {{$a}}</td>
                  
                </tr>
              </table>
@@ -173,7 +180,7 @@
             <th class="text-center">FR</th>
             <th class="text-center">Harga Per FR</th>
             <th class="text-center">Jumlah</th>
-           
+            
           </tr>
           @forelse($est_jasa as $jasa)
           <tr>
@@ -190,19 +197,19 @@
           </tr>
           @endforelse
           <tr>
-          <td class="text-center" colspan="3"><b>Jumlah</b></td>
-           <td class="text-center">Rp. {{$est_jasa->sum('jumlah')}}</td>
-          
-         </tr>
-         <tr>
+            <td class="text-center" colspan="3"><b>Jumlah</b></td>
+            <td class="text-center">Rp. {{$est_jasa->sum('jumlah')}}</td>
+            
+          </tr>
+          <tr>
            <td class="text-center" colspan="3"><b>Discount</b></td>
            <td class="text-center">Rp. {{$nota->disc_jasa}}</td>
-        
+           
          </tr>
          <tr>
            <td class="text-center" colspan="3"><b>Total</b></td>
-           <td class="text-center">Rp. {{$nota->total}}</td>
-        
+           <td class="text-center">Rp. {{$b}}</td>
+           
          </tr>
        </table>
      </div>
