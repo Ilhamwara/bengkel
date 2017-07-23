@@ -50,7 +50,7 @@
 								<td class="text-center">{{$order->nama_pelanggan}}</td>
 								<td class="text-center"><a href="{{url('work-order/'. $order->no_wo)}}" class="btn btn-primary">Tampilkan</a></td>
 								<td class="text-center"><a href="{{url('detail/inspection/'. $order->no_wo)}}" class="btn btn-primary">Tampilkan</a></td>
-								<td class="text-center"><a href="{{url('#')}}" class="btn btn-primary">Tampilkan</a></td>
+								<td class="text-center"><a href="{{url('detail/nota/'. $order->no_wo)}}" class="btn btn-primary">Tampilkan</a></td>
 								<td class="text-center"><a href="{{url('detail/estimasi/'. $order->no_wo)}}" class="btn btn-primary">Tampilkan</a></td>
 							</tr>
 							@empty

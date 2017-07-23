@@ -39,13 +39,13 @@ class NotaController extends Controller
 
 	public function post_pilih_jasa (Request $r)
 	{		
-		$est = new EstJasa;
-		$est->jasa_id   = $r->jasa;
-		$est->no_est    = $r->idest;
-		$est->type 		= $r->tipe;
-		$est->qty  		= $r->fr;
-		$est->jumlah 	= $r->total_harga_jasa;
-		$est->save();
+		$not = new EstJasa;
+		$not->jasa_id   = $r->jasa;
+		$not->no_est    = $r->idest;
+		$not->type 		= $r->tipe;
+		$not->qty  		= $r->fr;
+		$not->jumlah 	= $r->total_harga_jasa;
+		$not->save();
 
 		return redirect('buat-nota/' .$r->wo)->with('success','Berhasil menambahkan estimasi jasa');
 		
@@ -95,7 +95,7 @@ class NotaController extends Controller
 		$cek_est 	= Nota::where('wo_id','>',0)->orderBy('id','DESC')->first();
 
 		if (count($cek_est) > 0) {
-			$expl 		= explode('-', $cek_est->no_est);
+			$expl 		= explode('-', $cek_est->no_not);
 			$num		= $expl;
 			$noest 		= 'NOT-'.($num[1]+1);
 		}else{
@@ -126,8 +126,8 @@ class NotaController extends Controller
 				$nota[$c]->type 			= 'notajasa';
 				$nota[$c]->keterangan	 	= $r->keterangan;
 				$nota[$c]->dp	 			= $r->dp;
-				$nota[$c]->disc_part	 		= $r->discount_part;
-				$nota[$c]->disc_jasa	 		= $r->discount_jasa;
+				$nota[$c]->disc_part	 	= $r->discount_part;
+				$nota[$c]->disc_jasa	 	= $r->discount_jasa;
 				$nota[$c]->tanggal	 		= $r->tanggal_nota;
 				$nota[$c]->save();
 			}
@@ -138,4 +138,29 @@ class NotaController extends Controller
 		Nota::where('no_not','NOT-A')->delete();
 		return redirect()->back()->with('success','Berhasil tambah Biaya Estimasi');
 	}
+
+	public function detail_nota ($id){
+
+		$nota = Nota::where('nota.wo_id', $id)->first();
+
+		$est = Estimasi::where('estimasi_biaya.wo_id', $id)->first();
+		if (count($est) == 0) {
+			return redirect()->back()->with('warning','Maaf data masih kosong');
+		}
+		
+		$wo = Workorder::where('work_order.no_wo', $id)->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
+		->first();
+	
+		$est_part = EstPart::where('no_est', $est->no_est)
+		
+		->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();		
+		$est_jasa = EstJasa::where('no_est', $est->no_est)
+		
+		->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr')->get();
+		
+		return view ('nota.detail-nota' , compact('wo', 'est', 'est_part', 'est_jasa', 'nota')); 
+	}
+
+	
 }
