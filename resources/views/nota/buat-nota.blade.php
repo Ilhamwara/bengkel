@@ -22,7 +22,7 @@
     @include('include.alert')
     <form action="{{url('post-nota')}}" method="POST" enctype="multipart/form-data" class="form-horizontal" style="overflow: hidden;">
       {{ csrf_field() }}
-      <input type="hidden" name="notid" value="{{$cek_not->id}}">
+      <input type="hidden" name="estid" value="{{$est->id}}">
       <div class="col-sm-10 col-sm-offset-1">
         <div class="col-sm-6">
           <div class="form-group">
@@ -61,7 +61,7 @@
           <div class="form-group">
             <label class="col-sm-3 control-label">Tanggal</label>
             <div class="col-sm-8">
-              <input type="date" class="form-control" name="tanggal_est" id="data_tanggal"  value="{{$wo->tanggal}}">
+              <input type="date" class="form-control" name="tanggal_nota" id="data_tanggal"  value="{{$wo->tanggal}}">
             </div>
           </div>
 
@@ -156,7 +156,7 @@
                </tr>
              </table>
            </div>
-           <a href="{{url('nota/pilih-sparepart/'.$wo->no_wo.'/'.$cek_not->no_not)}}" class="btn btn-primary">Tambah</a>
+           <a href="{{url('nota/pilih-sparepart/'.$wo->no_wo.'/'.$est->no_est)}}" class="btn btn-primary">Tambah</a>
          </div>
        </div>
      </div>
@@ -206,7 +206,7 @@
            <td></td>
          </tr>
        </table>
-       <a href="{{url('estimasi-biaya/pilih-jasa/'.$wo->no_wo.'/'.$cek_not->no_not)}}" class="btn btn-primary">Tambah</a>
+       <a href="{{url('nota/pilih-jasa/'.$wo->no_wo.'/'.$est->no_est)}}" class="btn btn-primary">Tambah</a>
      </div>
    </div>
  </div>

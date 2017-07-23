@@ -22,7 +22,8 @@
     <form action="{{url('post-pilih-jasa')}}" method="POST" enctype="multipart/form-data" class="form-horizontal" style="overflow: hidden;">
       {{ csrf_field()}} 
       <input type="hidden" name="wo" value="{{$wo}}">
-      <input type="hidden" name="idest" value="{{$idest}}">           
+      <input type="hidden" name="idest" value="{{$idest}}">
+      <input type="hidden" name="tipe" value="esjasa">            
       <div class="form-group">
         <label class="col-sm-2 control-label">Pilih Jasa</label>
         <div class="col-sm-6">

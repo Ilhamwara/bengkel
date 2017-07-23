@@ -22,7 +22,7 @@ class EstimasisController extends Controller
 		where('wo_id', '>', 0)
 		// ->join('work_order','estimasi_biaya.wo_id','=','work_order.id')
 		// ->join('pelanggans','work_order.pelanggan_id','=','pelanggans.id')
-		->select('estimasi_biaya.id','estimasi_biaya.wo_id as nomor_wo','estimasi_biaya.keterangan','estimasi_biaya.created_at', 'estimasi_biaya.no_est')
+		->select('estimasi_biaya.id','estimasi_biaya.wo_id as nomor_wo','estimasi_biaya.keterangan','estimasi_biaya.updated_at', 'estimasi_biaya.no_est')
 		->groupBy('estimasi_biaya.no_est')
 		->get();
 
@@ -108,8 +108,12 @@ class EstimasisController extends Controller
 		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
 	
-		$est_part = EstPart::where('no_est', $est->no_est)->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();		
-		$est_jasa = EstJasa::where('no_est', $est->no_est)->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr')->get();
+		$est_part = EstPart::where('no_est', $est->no_est)
+		->where('type', 'espart')
+		->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();		
+		$est_jasa = EstJasa::where('no_est', $est->no_est)
+		->where('type', 'esjasa')
+		->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr')->get();
 		
 		return view ('estimasi-biaya.detail-estimasi' , compact('estimasi', 'est', 'est_part', 'est_jasa')); 
 	}
@@ -147,6 +151,7 @@ class EstimasisController extends Controller
 		$est = new EstPart;
 		$est->part_id   = $r->sparepart;
 		$est->no_est    = $r->idest;
+		$est->type 		= $r->tipe;
 		$est->qty  		= $r->quantity_sparepart;
 		$est->jumlah 	= $r->total_harga_sparepart;
 
@@ -171,6 +176,7 @@ class EstimasisController extends Controller
 		$est->jasa_id   = $r->jasa;
 		$est->no_est    = $r->idest;
 		$est->qty  		= $r->fr;
+		$est->type 		= $r->tipe;
 		$est->jumlah 	= $r->total_harga_jasa;
 		$est->save();
 
@@ -217,30 +223,31 @@ class EstimasisController extends Controller
 
     }
 
-    ////////////////////////////////////////////////EDIT////////////////////
+    ////////////////////////////////////////////////EDIT/////////////////////////////////////////////////////////////////////////////////////////////
+
+
     public function edit_estimasi ($id){
 
 		$wo = Workorder::where('work_order.no_wo', $id)->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*','work_order.id', 'pelanggans.nama', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
-		// Dd($pelanggan);
 
-		// Estimasi::updateOrCreate([
-		// 	'no_est' => 'EST-A'
-		// 	]);
 		$est = Estimasi::where('estimasi_biaya.wo_id', $id)->first();
-		$cek_est = Estimasi::orderBy('id','DESC')->first();
-		// dd($cek_est->no_est);
-		$est_part = EstPart::where('no_est',$est->no_est)->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();		
-		$est_jasa = EstJasa::where('no_est',$est->no_est)->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr')->get();
+
+		$est_part = EstPart::where('no_est',$est->no_est)
+		->where('type', 'espart')
+		->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();		
+		$est_jasa = EstJasa::where('no_est',$est->no_est)
+		->where('type', 'esjasa')
+		->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr')->get();
 		
-		return view ('estimasi-biaya.edit-estimasi', compact('pelanggan','wo','cek_est','est_jasa','est_part', 'est'));
+		return view ('estimasi-biaya.edit-estimasi', compact('wo','est_jasa','est_part', 'est'));
 
 	}
 
 	public function postedit_estimasi (Request $request, $id){
-		$est = Estimasi::where('estimasi_biaya.wo_id', $id)
-		->select('estimasi_biaya.keterangan as keter', 'estimasi_biaya.no_est', 'estimasi_biaya.wo_id')
+		$est = Estimasi::
+		select('estimasi_biaya.keterangan as keter', 'estimasi_biaya.no_est', 'estimasi_biaya.wo_id')
 		->first();
 		$estimasi = Workorder::where('work_order.no_wo', $id)->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
@@ -250,6 +257,7 @@ class EstimasisController extends Controller
 	
 		// $estimasi->update($request->all());
 		$est->update($request->all());
+		$estimasi->update($request->all());
 		
 	
 		return redirect('estimasi-biaya')->with('success','Berhasil edit pelanggan');
@@ -277,6 +285,7 @@ class EstimasisController extends Controller
 		$est = new EstPart;
 		$est->part_id   = $r->sparepart;
 		$est->no_est    = $r->idest;
+		$est->type 		= $r->tipe;
 		$est->qty  		= $r->quantity_sparepart;
 		$est->jumlah 	= $r->total_harga_sparepart;
 
@@ -300,6 +309,7 @@ class EstimasisController extends Controller
 		$est = new EstJasa;
 		$est->jasa_id   = $r->jasa;
 		$est->no_est    = $r->idest;
+		$est->type 		= $r->tipe;
 		$est->qty  		= $r->fr;
 		$est->jumlah 	= $r->total_harga_jasa;
 		$est->save();

@@ -47,7 +47,7 @@
 							<tr>
 								<td>{{$i+1}}</td>
 								<td class="text-center">{{$data->nomor_wo}}</td>
-								<td class="text-center">{{date('d-m-Y H:i',strtotime($data->created_at))}}</td>
+								<td class="text-center">{{date('d-m-Y H:i',strtotime($data->updated_at))}}</td>
 								<td class="text-center">{!!$data->keterangan!!}</td>
 								<td class="text-center">
 									<ul class="action">
