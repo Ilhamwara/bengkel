@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>Work Order</title>  
+  <title>Nota Service</title>  
   <style type="text/css">
     .tg  {border-collapse:collapse;border-spacing:0;}
     .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
@@ -16,7 +16,7 @@
       border:none!important;
     }
     body{
-      width: 1200px;
+      width: 700px;
       margin: 0 auto;
     }
   </style>
@@ -31,11 +31,11 @@
 
     <tr>
       <td class="tg-031e">Jl. Ahmad Yani Km 5.5(Pelingkau)</td>
-      <td class="tg-yw4l">Tanggal: 20 juli 2017</td>
+      <td class="tg-yw4l">Tanggal: {{$nota->tanggal}}</td>
     </tr>
     <tr>
       <td class="tg-031e">Telp. 081348956040, Email m_zainuri84@yahoo.com </td>
-      <td class="tg-yw4l">No WO: {{--no--}}</td>
+      <td class="tg-yw4l">No WO: {{$wo->no_wo}}</td>
     </tr>
   </table>
 
@@ -43,42 +43,43 @@
     <tr>
       <td class="tg-031e">Nama</td>
       <td class="tg-031e">:</td>
-      <td class="tg-031e">Ade Rahhmat</td>
+      <td class="tg-031e">{{$wo->nama_pelanggan}}</td>
       <td class="tg-yw4l"></td>
       <td class="tg-yw4l">Type</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">Ford Everest TDCI</td>
+      <td class="tg-yw4l">{{$wo->tipe}}</td>
     </tr>
     <tr>
       <td class="tg-031e">Alamat</td>
       <td class="tg-031e">:</td>
-      <td class="tg-031e">Jl kampung Baru</td>
+      <td class="tg-031e">{{$wo->alamat}}</td>
       <td class="tg-yw4l"></td>
       <td class="tg-yw4l">Noka/Nosin</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">271238138</td>
+      <td class="tg-yw4l">{{$wo->noka_nosin}}</td>
     </tr>
     <tr>
       <td class="tg-yw4l">No Polisi</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">KT0909</td>
+      <td class="tg-yw4l">{{$wo->no_pol}}</td>
       <td class="tg-yw4l"></td>
       <td class="tg-yw4l">Warna</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">Putih</td>
+      <td class="tg-yw4l">{{$wo->warna}}</td>
     </tr>
     <tr>
       <td class="tg-yw4l">Telp</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">0898898</td>
+      <td class="tg-yw4l">{{$wo->telepon}}</td>
       <td class="tg-yw4l"></td>
       <td class="tg-yw4l">Km/ Fuel</td>
       <td class="tg-yw4l">:</td>
-      <td class="tg-yw4l">140, </td>
+      <td class="tg-yw4l">{{$wo->km_datang}} / {{$wo->fuel_datang}} </td>
     </tr>
   </table>
   <table class="tg" style="width: 100%; border:none;margin-bottom: 10px;">
     <thead>
+
       <tr>
         <th class="tg-yw4l">No</th>
         <th class="tg-yw4l">SPAREPART</th>
@@ -92,17 +93,20 @@
       </tr>
     </thead>
     <tbody>
+    @forelse($est_part as $i => $data)
       <tr>
-        <td class="tg-yw4l" style="text-align: center;">1</td>
-        <td class="tg-yw4l">Piston</td>
-        <td class="tg-yw4l" style="text-align: center;">4</td>
-        <td class="tg-yw4l" style="text-align: right;">1900000</td>
-        <td class="tg-yw4l" style="text-align: right;">5500000</td>
+        <td class="tg-yw4l" style="text-align: center;">{{$i+1}}</td>
+        <td class="tg-yw4l">{{$data->nama}}</td>
+        <td class="tg-yw4l" style="text-align: center;">{{$data->qty}}</td>
+        <td class="tg-yw4l" style="text-align: right;">{{$data->harga_jual}}</td>
+        <td class="tg-yw4l" style="text-align: right;">{{$data->jumlah}}</td>
         <td class="tg-yw4l" style="text-align: center;">1</td>
         <td class="tg-yw4l">bubut lock</td>
         <td class="tg-yw4l" style="text-align: center;">IN</td>
         <td class="tg-yw4l" style="text-align: right;">15000000</td>
       </tr>
+      @empty
+      @endforelse
       <tr>
         <td colspan="4" class="tg-yw4l">TOTAL PART & BAHAN</td>
         <td class="tg-yw4l"></td>
@@ -138,7 +142,7 @@
     <tr>
       <td class="tg-yw4l" style="padding: 50px 0; border:none;"></td>
       <td class="tg-yw4l" style="border:none;"></td>
-      <td class="tg-yw4l" style="padding: 50px 0; border:none;"></td>
+      <td class="tg-yw4l" style="padding: 50px 0; border:none;">{{$nota->keterangan}}</td>
     </tr>
     <tr>
       <td class="tg-yw4l" style="border:none;"><b>Muhammad Zainuri</b></td>

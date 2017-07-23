@@ -154,7 +154,7 @@
             </li>
         </ul>
     </li>
-    <li class="nav-item @if(Request::is('estimasi-biaya') || Request::is('buat-estimasi-biaya')) active open @endif">
+    <!-- <li class="nav-item @if(Request::is('estimasi-biaya') || Request::is('buat-estimasi-biaya')) active open @endif">
         <a href="javascript:;" class="nav-link nav-toggle">
             <i class="fa fa-calculator"></i>
             <span class="title">Estimasi Biaya</span>
@@ -176,7 +176,7 @@
             </a>
         </li>
 
-           <!--  <li class="nav-item @if(Request::is('buat-estimasi-biaya')) active open @endif">
+            <li class="nav-item @if(Request::is('buat-estimasi-biaya')) active open @endif">
                 <a href="{{url('buat-estimasi-biaya')}}" class="nav-link nav-toggle">
                     <i class=""></i>
                     <span class="title">Buat Estimasi Biaya</span>
@@ -184,9 +184,29 @@
                     <span class="selected"></span>
                     @endif
                 </a>
-            </li> -->
+            </li>
         </ul>
+    </li> -->
+    <li class="nav-item @if(Request::is('estimasi-biaya')) active open @endif">
+        <a href="{{url('estimasi-biaya')}}" class="nav-link nav-toggle">
+            <i class="fa fa-calculator"></i>
+            <span class="title">Estimasi Biaya</span>
+            @if(Request::is('estimasi-biaya'))
+            <span class="selected"></span>
+            @endif
+        </a>
     </li>
+
+      <li class="nav-item @if(Request::is('nota')) active open @endif">
+        <a href="{{url('nota')}}" class="nav-link nav-toggle">
+            <i class="fa fa-money"></i>
+            <span class="title">Nota</span>
+            @if(Request::is('nota'))
+            <span class="selected"></span>
+            @endif
+        </a>
+    </li>
+
     <li class="nav-item @if(Request::is('jasa') || Request::is('sparepart') || Request::is('supplier')) active open @endif">
         <a href="javascript:;" class="nav-link nav-toggle">
             <i class="fa fa-list"></i>

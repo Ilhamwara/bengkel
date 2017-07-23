@@ -11,6 +11,7 @@ use App\Workorder;
 use App\Estimasi;
 use App\Sparepart;
 use App\Jasa;
+use PDF;
 
 class NotaController extends Controller
 {
@@ -196,6 +197,44 @@ class NotaController extends Controller
 		
 		return view ('nota.detail-nota' , compact('wo', 'est', 'est_part', 'est_jasa', 'nota')); 
 	}
+
+	public function hapus_nota($id)
+	{
+		$nota = Nota::where('wo_id', $id)
+		->first();
+		$est_part = EstPart::where('no_est',$nota->no_not)
+		->orwhere('type', 'notpart')
+		->delete();
+		$est_jasa = EstJasa::where('no_est',$nota->no_not)
+		->orwhere('type', 'notjasa')
+		->delete();
+		
+		$nota->delete();
+
+		return redirect()->back()->with('success','Berhasil menghapus Nota');
+	}
+
+	public function cetak_nota($id, Request $request)
+    {
+    	$est = Estimasi::where('estimasi_biaya.wo_id', $id)->first();
+    	
+    	$nota = Nota::where('nota.wo_id', $id)->first();
+		
+		$wo = Workorder::where('work_order.no_wo', $id)
+		->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
+		->first();
+	
+		$est_part = EstPart::where('no_est', $est->no_est)
+		->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual', 'spare_parts.no as nomor_part', 'est_part.qty as qty_part')->get();		
+		$est_jasa = EstJasa::where('no_est', $est->no_est)
+		->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr', 'est_jasa.qty as qty_jasa')->get();
+
+
+        $pdf = PDF::loadView('print.nota', compact('wo', 'est_part', 'est_jasa', 'est', 'nota'));
+        return @$pdf->stream('NOTA SERVICE-'.'pdf');
+
+    }
 
 	////////////////////////////////////////////////EDIT/////////////////////////////////////////////////////
 	public function edit_nota($id){

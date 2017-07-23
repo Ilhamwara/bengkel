@@ -23,7 +23,7 @@
       {{ csrf_field() }}    
       <input type="hidden" name="idest" value="{{$idest}}" >
      <input type="hidden" name="wo" value="{{$wo}}">
-     <input type="hidden" name="tipe" value="espart">        
+     <input type="hidden" name="tipe" value="notpart">        
       <div class="form-group">
         <label class="col-sm-2 control-label">Pilih Sparepart</label>
         <div class="col-sm-6">

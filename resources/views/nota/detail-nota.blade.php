@@ -20,7 +20,7 @@
   <br>
   <div class="row">
     @include('include.alert')
-    <form action="{{url('nota/cetak-nota/'. $wo->no_wo)}}" method="POST" enctype="multipart/form-data" class="form-horizontal" style="overflow: hidden;">
+    <form action="{{url('nota/cetak-nota/'. $wo->no_wo)}}" method="GET" enctype="multipart/form-data" class="form-horizontal" style="overflow: hidden;">
       {{ csrf_field() }}
       <input type="hidden" name="estid" value="{{$est->id}}">
       <div class="col-sm-10 col-sm-offset-1">
