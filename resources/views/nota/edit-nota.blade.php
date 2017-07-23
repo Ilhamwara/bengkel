@@ -25,165 +25,185 @@
       <input type="hidden" name="wo_id">
       <div class="col-sm-10 col-sm-offset-1">
         <div class="col-sm-6">
-        <div class="form-group">
-          <label class="col-sm-3 control-label">No WO</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" min="0" name="order_id" id="data_nama" value="{{$wo->no_wo}}" readonly> 
+          <div class="form-group">
+            <label class="col-sm-3 control-label">No WO</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" min="0" name="order_id" id="data_nama" value="{{$wo->no_wo}}" readonly> 
+            </div>
           </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Nama</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" min="0" name="nama" id="data_nama" value="{{$wo->nama}}" disabled> 
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Alamat</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="alamat" id="data_alamat" value="{{$wo->alamat}}" disabled> 
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">No. Pol</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="no_pol" id="data_nopol" value="{{$wo->no_pol}}" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Telepon</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="telepon" id="data_telepon" value="{{$wo->telepon}}" disabled>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Tanggal</label>
+            <div class="col-sm-8">
+              <input type="date" class="form-control" name="tanggal" id="data_tanggal"  value="{{$wo->tanggal}}">
+            </div>
+          </div>
+
         </div>
 
-         <div class="form-group">
-          <label class="col-sm-3 control-label">Nama</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" min="0" name="nama" id="data_nama" value="{{$wo->nama}}" disabled> 
-          </div>
-        </div>
+        <div class="col-sm-6">
 
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Alamat</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" name="alamat" id="data_alamat" value="{{$wo->alamat}}" disabled> 
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Type</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="tipe" id="data_tipe" value="{{$wo->tipe}}" disabled>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">No. Pol</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" name="no_pol" id="data_nopol" value="{{$wo->no_pol}}" disabled>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Noka/ Nosin</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="noka_nosin" id="data_nokanosin" value="{{$wo->noka_nosin}}" disabled>
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Telepon</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" name="telepon" id="data_telepon" value="{{$wo->telepon}}" disabled>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Warna</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="warna" id="data_warna" value="{{$wo->warna}}" disabled>
+            </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Tanggal</label>
-          <div class="col-sm-8">
-            <input type="date" class="form-control" name="tanggal" id="data_tanggal"  value="{{$wo->tanggal}}">
+
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Km Datang</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="km_datang" id="data_km" value="{{$wo->km_datang}}" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Fuel Datang</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="fuel_datang" id="data_fuel" value="{{$wo->fuel_datang}}" disabled>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">DP</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" name="dp" id="data_fuel" value="{{$nota->dp}}" placeholder="DP">
+            </div>
           </div>
         </div>
-
       </div>
 
-      <div class="col-sm-6">
 
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Type</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" name="tipe" id="data_tipe" value="{{$wo->tipe}}" disabled>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Noka/ Nosin</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" name="noka_nosin" id="data_nokanosin" value="{{$wo->noka_nosin}}" disabled>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Warna</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" name="warna" id="data_warna" value="{{$wo->warna}}" disabled>
-          </div>
-        </div>
-
-
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Km Datang</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" name="km_datang" id="data_km" value="{{$wo->km_datang}}" disabled>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-sm-3 control-label">Fuel Datang</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" name="fuel_datang" id="data_fuel" value="{{$wo->fuel_datang}}" disabled>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-
-    <div class="row">
-      <div class="col-sm-10 col-sm-offset-1">
-        <h4><b>Data Sparepart</b></h4>
-        <div class="portlet light bordered">
-         <div class="portlet-body">
-          <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover">
-              <tr>
-                <th class="text-center">Nama</th>
-                <th class="text-center">Quantity</th>
-                <th class="text-center">Harga</th>
-                <th class="text-center">Jumlah</th>
-                <th class="text-center"></th>
-              </tr>
-              @forelse($est_part as $part)
-              <input type="hidden" name="est_part[]" value="{{$part->id}}">
-              <tr>
-                <td class="text-center">{{$part->nama}}</td>
-                <td class="text-center">{{$part->qty}}</td>
-                <td class="text-center">{{$part->harga_jual}}</td>
-                <td class="text-center">{{$part->jumlah}}</td>
-                <td class="text-center"><a href="{{url('nota/hapus-part-edit/'.$part->id)}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
-              </tr>
-              @empty
-              <tr>
-                <td colspan="5" class="text-center bg-danger"><b>Kosong</b></td>
-              </tr>
-              @endforelse
-              <tr>
-               <td class="text-center" colspan="3"><b>Total</b></td>
-               <td class="text-center">Rp {{$est_part->sum('jumlah')}}</td>
-               <td></td>
-             </tr>
-           </table>
+      <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+          <h4><b>Data Sparepart</b></h4>
+          <div class="portlet light bordered">
+           <div class="portlet-body">
+            <div class="table-responsive">
+              <table class="table table-striped table-bordered table-hover">
+                <tr>
+                  <th class="text-center">Nama</th>
+                  <th class="text-center">Quantity</th>
+                  <th class="text-center">Harga</th>
+                  <th class="text-center">Jumlah</th>
+                  <th class="text-center"></th>
+                </tr>
+                @forelse($est_part as $part)
+                <input type="hidden" name="est_part[]" value="{{$part->id}}">
+                <tr>
+                  <td class="text-center">{{$part->nama}}</td>
+                  <td class="text-center">{{$part->qty}}</td>
+                  <td class="text-center">{{$part->harga_jual}}</td>
+                  <td class="text-center">{{$part->jumlah}}</td>
+                  <td class="text-center"><a href="{{url('nota/hapus-part-edit/'.$part->id)}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
+                </tr>
+                @empty
+                <tr>
+                  <td colspan="5" class="text-center bg-danger"><b>Kosong</b></td>
+                </tr>
+                @endforelse
+                <tr>
+                 <td class="text-center" colspan="3"><b>Jumlah</b></td>
+                 <td colspan="2" class="text-center">Rp {{$est_part->sum('jumlah')}}</td>
+               </tr>
+               <tr>
+                 <td class="text-center" colspan="3"><b>Discount</b></td>
+                 <td colspan="2" class="text-center">Rp. </td>
+               </tr>
+               <tr>
+                 <td class="text-center" colspan="3"><b>Total</b></td>
+                 <td colspan="2" class="text-center">Rp. </td>
+               </tr>
+             </table>
+           </div>
+           <a href="{{url('nota/pilih-sparepart-edit/'.$wo->no_wo.'/'.$nota->no_not)}}" class="btn btn-primary">Tambah</a>
          </div>
-         <a href="{{url('nota/pilih-sparepart-edit/'.$wo->no_wo.'/'.$nota->no_not)}}" class="btn btn-primary">Tambah</a>
        </div>
      </div>
    </div>
- </div>
 
- <div class="row">
-  <div class="col-sm-10 col-sm-offset-1">
-   <h4><b>Data Jasa</b></h4>
-   <div class="portlet light bordered">
+   <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+     <h4><b>Data Jasa</b></h4>
+     <div class="portlet light bordered">
 
-     <div class="portlet-body">
-      <table class="table table-striped table-bordered table-hover">
-        <tr>
-          <th class="text-center">Nama Jasa</th>
-          <th class="text-center">FR</th>
-          <th class="text-center">Harga Per FR</th>
-          <th class="text-center">Jumlah</th>
-          <th class="text-center"></th>
-        </tr>
-        @forelse($est_jasa as $jasa)
-        <tr>
-          <input type="hidden" name="est_jasa[]" value="{{$jasa->id}}">
-          <td class="text-center">{{$jasa->nama_jasa}}</td>
-          <td class="text-center">{{$jasa->qty}}</td>
-          <td class="text-center">{{$jasa->harga_perfr}}</td>
-          <td class="text-center">{{$jasa->jumlah}}</td>
-          <td class="text-center"><a href="{{url('nota/hapus-jasa-edit/'.$jasa->id)}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
-        </tr>
-        @empty
-        <tr>
-          <td class="text-center bg-danger" colspan="5"><b>Kosong</b></td>
-        </tr>
-        @endforelse
-        <tr>
-         <td class="text-center" colspan="3"><b>Total</b></td>
-         <td class="text-center">Rp {{$est_jasa->sum('jumlah')}}</td>
-         <td></td>
-       </tr>
-     </table>
-     <a href="{{url('nota/pilih-jasa-edit/'.$wo->no_wo.'/'.$nota->no_not)}}" class="btn btn-primary">Tambah</a>
+       <div class="portlet-body">
+        <table class="table table-striped table-bordered table-hover">
+          <tr>
+            <th class="text-center">Nama Jasa</th>
+            <th class="text-center">FR</th>
+            <th class="text-center">Harga Per FR</th>
+            <th class="text-center">Jumlah</th>
+            <th class="text-center"></th>
+          </tr>
+          @forelse($est_jasa as $jasa)
+          <tr>
+            <input type="hidden" name="est_jasa[]" value="{{$jasa->id}}">
+            <td class="text-center">{{$jasa->nama_jasa}}</td>
+            <td class="text-center">{{$jasa->qty}}</td>
+            <td class="text-center">{{$jasa->harga_perfr}}</td>
+            <td class="text-center">{{$jasa->jumlah}}</td>
+            <td class="text-center"><a href="{{url('nota/hapus-jasa-edit/'.$jasa->id)}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
+          </tr>
+          @empty
+          <tr>
+            <td class="text-center bg-danger" colspan="5"><b>Kosong</b></td>
+          </tr>
+          @endforelse
+          <tr>
+           <td class="text-center" colspan="3"><b>Jumlah</b></td>
+           <td colspan="2" class="text-center">Rp {{$est_jasa->sum('jumlah')}}</td>
+         </tr>
+         <tr>
+           <td class="text-center" colspan="3"><b>Discount</b></td>
+           <td colspan="2" class="text-center">Rp. </td>
+         </tr>
+         <tr>
+           <td class="text-center" colspan="3"><b>Total</b></td>
+           <td colspan="2" class="text-center">Rp. </td>
+         </tr>
+       </table>
+       <a href="{{url('nota/pilih-jasa-edit/'.$wo->no_wo.'/'.$nota->no_not)}}" class="btn btn-primary">Tambah</a>
+     </div>
    </div>
  </div>
-</div>
 </div>
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1">

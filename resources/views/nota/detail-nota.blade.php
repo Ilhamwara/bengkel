@@ -151,7 +151,7 @@
                </tr>
                <tr>
                  <td class="text-center" colspan="3"><b>Total</b></td>
-                 <td class="text-center"><input type="text" name="total_part" class="form-control"></td>
+                 <td class="text-center">Rp. {{$nota->total}}</td>
                  
                </tr>
              </table>
@@ -201,7 +201,7 @@
          </tr>
          <tr>
            <td class="text-center" colspan="3"><b>Total</b></td>
-           <td class="text-center"><input type="text" name="total_jasa" class="form-control"></td>
+           <td class="text-center">Rp. {{$nota->total}}</td>
         
          </tr>
        </table>

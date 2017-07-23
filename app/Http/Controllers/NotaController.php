@@ -313,9 +313,7 @@ class NotaController extends Controller
 	}
 
 	public function postedit_nota (Request $request, $id){
-		$est = Nota::
-		select('nota.keterangan as keterangan', 'nota.no_not', 'nota.wo_id')
-		->first();
+		$est = Nota::where('nota.wo_id', $id)->first();
 		$nota = Workorder::where('work_order.no_wo', $id)->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
@@ -324,7 +322,7 @@ class NotaController extends Controller
 	
 		// $estimasi->update($request->all());
 		$est->update($request->all());
-		$nota->update($request->all());
+	
 		
 	
 		return redirect('nota')->with('success','Berhasil edit pelanggan');
