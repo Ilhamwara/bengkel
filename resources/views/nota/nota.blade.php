@@ -17,13 +17,13 @@
 				<a href="{{url('home')}}">Home</a><i class="fa fa-circle"></i>
 			</li>
 			<li>
-				<span>Data Estimasi Biaya</span>
+				<span>Data Nota</span>
 			</li>
 		</ul>
 	</div>
 	<!-- END PAGE BAR -->
 	<!-- BEGIN PAGE TITLE-->
-	<h3 class="page-title"><b>Data Estimasi Biaya</b></h3>
+	<h3 class="page-title"><b>Data Nota</b></h3>
 	<br>
 	<div class="row">
 		<div class="col-md-12">
@@ -43,7 +43,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							@forelse($estimasis as $i => $data)
+							@forelse($nota as $i => $data)
 							<tr>
 								<td>{{$i+1}}</td>
 								<td class="text-center">{{$data->nomor_wo}}</td>
@@ -51,10 +51,9 @@
 								<td class="text-center">{!!$data->keterangan!!}</td>
 								<td class="text-center">
 									<ul class="action">
-										<li><a href="{{url('detail/estimasi/'.$data->nomor_wo)}}" class="btn btn-warning"  data-toggle="tooltip" title="Detail" style="padding: 6px 12px;"><i class="fa fa-eye"></i></a></li>
-										<li><a href="{{url('edit/estimasi/'.$data->nomor_wo)}}" class="btn btn-warning"  data-toggle="tooltip" title="Update" style="padding: 6px 12px;"><i class="fa fa-pencil"></i></a></li>
-										<li><a href="{{url('buat-nota/'.$data->nomor_wo)}}" class="btn btn-info"  data-toggle="tooltip" title="Buat Nota" style="padding: 6px 12px;"><i class="fa fa-calculator"></i></a></li>
-										<li><a href="{{url('hapus/estimasi-biaya/'.$data->id)}}" class="btn btn-danger"  data-toggle="tooltip" title="Hapus" style="padding: 6px 12px;"><i class="fa fa-trash-o"></i></a></li>
+										<li><a href="{{url('detail/nota/'.$data->nomor_wo)}}" class="btn btn-warning"  data-toggle="tooltip" title="Detail" style="padding: 6px 12px;"><i class="fa fa-eye"></i></a></li>
+										<li><a href="{{url('edit/nota/'.$data->nomor_wo)}}" class="btn btn-warning"  data-toggle="tooltip" title="Update" style="padding: 6px 12px;"><i class="fa fa-pencil"></i></a></li>
+										<li><a href="{{url('hapus/nota/'.$data->nomor_wo)}}" class="btn btn-danger"  data-toggle="tooltip" title="Hapus" style="padding: 6px 12px;"><i class="fa fa-trash-o"></i></a></li>
 									</ul>
 								</td>
 							</tr>

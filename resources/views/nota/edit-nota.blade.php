@@ -11,16 +11,16 @@
         <a href="{{url('home')}}">Home</a><i class="fa fa-circle"></i>
       </li>
       <li>
-        <span>Update Estimasi Biaya</span>
+        <span>Update Nota</span>
       </li>
     </ul>
   </div>
 
-  <h3 class="page-title"><b>Update Estimasi Biaya</b></h3>
+  <h3 class="page-title"><b>Update Nota</b></h3>
   <br>
   <div class="row">
     @include('include.alert')
-    <form action="{{url('post-edit-estimasi/' .$est->wo_id)}}" method="POST" enctype="multipart/form-data" class="form-horizontal" style="overflow: hidden;">
+    <form action="{{url('post-edit-nota/' .$est->wo_id)}}" method="POST" enctype="multipart/form-data" class="form-horizontal" style="overflow: hidden;">
       {{ csrf_field() }}
       <input type="hidden" name="wo_id">
       <div class="col-sm-10 col-sm-offset-1">
@@ -126,7 +126,7 @@
                 <td class="text-center">{{$part->qty}}</td>
                 <td class="text-center">{{$part->harga_jual}}</td>
                 <td class="text-center">{{$part->jumlah}}</td>
-                <td class="text-center"><a href="{{url('estimasi-biaya/hapus-part-edit/'.$part->id)}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
+                <td class="text-center"><a href="{{url('nota/hapus-part-edit/'.$part->id)}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
               </tr>
               @empty
               <tr>
@@ -140,7 +140,7 @@
              </tr>
            </table>
          </div>
-         <a href="{{url('estimasi-biaya/pilih-sparepart-edit/'.$wo->no_wo.'/'.$est->no_est)}}" class="btn btn-primary">Tambah</a>
+         <a href="{{url('nota/pilih-sparepart-edit/'.$wo->no_wo.'/'.$nota->no_not)}}" class="btn btn-primary">Tambah</a>
        </div>
      </div>
    </div>
@@ -167,7 +167,7 @@
           <td class="text-center">{{$jasa->qty}}</td>
           <td class="text-center">{{$jasa->harga_perfr}}</td>
           <td class="text-center">{{$jasa->jumlah}}</td>
-          <td class="text-center"><a href="{{url('estimasi-biaya/hapus-jasa-edit/'.$jasa->id)}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
+          <td class="text-center"><a href="{{url('nota/hapus-jasa-edit/'.$jasa->id)}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
         </tr>
         @empty
         <tr>
@@ -180,7 +180,7 @@
          <td></td>
        </tr>
      </table>
-     <a href="{{url('estimasi-biaya/pilih-jasa-edit/'.$wo->no_wo.'/'.$est->no_est)}}" class="btn btn-primary">Tambah</a>
+     <a href="{{url('nota/pilih-jasa-edit/'.$wo->no_wo.'/'.$nota->no_not)}}" class="btn btn-primary">Tambah</a>
    </div>
  </div>
 </div>
@@ -188,7 +188,7 @@
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1">
     <h4><b>Keterangan</b></h4>
-    <textarea class="form-control" id="deskripsi" name="keter" id="" cols="30" rows="10">{{$est->keterangan}}</textarea>
+    <textarea class="form-control" id="deskripsi" name="keterangan" id="" cols="30" rows="10">{{$est->keterangan}}</textarea>
   </div>
 </div>
 <br><br>

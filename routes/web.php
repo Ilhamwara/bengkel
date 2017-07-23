@@ -99,6 +99,8 @@ Route::group(['middleware' => ['session']], function () {
 	Route::get('estimasi-biaya/pilih-jasa-edit/{wo}/{idest}', 'EstimasisController@pilih_jasaedit');
 	Route::post('post-pilih-sparepart-edit', 'EstimasisController@post_pilih_sparepartedit');
 	Route::post('post-pilih-jasa-edit', 'EstimasisController@post_pilih_jasaedit');
+	Route::get('estimasi-biaya/hapus-part-edit/{id}', 'EstimasisController@hapusesteditpart');
+	Route::get('estimasi-biaya/hapus-jasa-edit/{id}', 'EstimasisController@hapusesteditjasa');
 
 
 
@@ -129,7 +131,7 @@ Route::group(['middleware' => ['session']], function () {
 
 	//NOTA
 	Route::get('buat-nota/{id}', 'NotaController@buat_nota');
-	Route::get('nota', 'NotaController@buat_nota');
+	Route::get('nota', 'NotaController@index');
 	Route::post('post-nota', 'NotaController@post_nota');
 	Route::get('detail/nota/{id}', 'NotaController@detail_nota');
 	Route::get('hapus/nota/{id}', 'NotaController@hapus_nota');
@@ -140,6 +142,15 @@ Route::group(['middleware' => ['session']], function () {
 	Route::get('nota/hapus-part/{id}', 'NotaController@hapunotapart');
 	Route::get('nota/hapus-jasa/{id}', 'NotaController@hapusnotajasa');
 	Route::get('nota/cetak-nota/{id}', 'NotaController@cetak_nota');
+
+	Route::get('edit/nota/{id}', 'NotaController@edit_nota');
+	Route::post('post-edit-nota/{id}', 'NotaController@postedit_nota');
+	Route::get('nota/pilih-sparepart-edit/{wo}/{idest}', 'NotaController@pilih_sparepartedit');
+	Route::get('nota/pilih-jasa-edit/{wo}/{idest}', 'NotaController@pilih_jasaedit');
+	Route::post('post-nota-sparepart-edit', 'NotaController@post_pilih_sparepartedit');
+	Route::post('post-nota-jasa-edit', 'NotaController@post_pilih_jasaedit');
+	Route::get('nota/hapus-part-edit/{id}', 'NotaController@hapusnotapart');
+	Route::get('nota/hapus-jasa-edit/{id}', 'NotaController@hapusnotajasa');
 
 	//USER
 	Route::get('user-management', 'UserController@manage');

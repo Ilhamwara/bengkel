@@ -14,6 +14,20 @@ use App\Jasa;
 
 class NotaController extends Controller
 {
+
+	public function index(){
+
+		$nota = Nota::
+		where('wo_id', '>', 0)
+		// ->join('work_order','estimasi_biaya.wo_id','=','work_order.id')
+		// ->join('pelanggans','work_order.pelanggan_id','=','pelanggans.id')
+		->select('nota.id','nota.wo_id as nomor_wo','nota.keterangan','nota.updated_at', 'nota.no_not')
+		->groupBy('nota.no_not')
+		->get();
+
+		return view('nota.nota', compact('nota'));
+	}
+
 	public function buat_nota($id){
 		$wo = Workorder::where('work_order.no_wo', $id)->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*','work_order.id', 'pelanggans.nama', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
@@ -21,7 +35,8 @@ class NotaController extends Controller
 
 		$est = Estimasi::where('estimasi_biaya.wo_id', $id)->first();
 
-		$est_part = EstPart::where('no_est',$est->no_est)->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();		
+		$est_part = EstPart::where('no_est',$est->no_est)
+				->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();		
 		$est_jasa = EstJasa::where('no_est',$est->no_est)->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr')->get();
 		
 		return view ('nota.buat-nota', compact('wo','est_jasa','est_part', 'est'));
@@ -139,6 +154,26 @@ class NotaController extends Controller
 		return redirect()->back()->with('success','Berhasil tambah Biaya Estimasi');
 	}
 
+	public function hapusestpart($id)
+	{
+		$est = EstPart::findOrFail($id);
+
+		$part = Sparepart::where('id',$est->part_id)->first();
+		$part->stok = ($part->stok + $est->qty);
+		$part->save();
+
+		$est->delete();
+
+		return redirect()->back()->with('success','Berhasil mengahpus estimasi sparepart');
+	}
+	public function hapusestjasa($id)
+	{
+		$jasa = EstJasa::findOrFail($id);
+		$jasa->delete();
+
+		return redirect()->back()->with('success','Berhasil mengahpus estimasi jasa');
+	}
+
 	public function detail_nota ($id){
 
 		$nota = Nota::where('nota.wo_id', $id)->first();
@@ -153,14 +188,126 @@ class NotaController extends Controller
 		->first();
 	
 		$est_part = EstPart::where('no_est', $est->no_est)
-		
+		->orwhere('no_est',$nota->no_not)
 		->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();		
 		$est_jasa = EstJasa::where('no_est', $est->no_est)
-		
+		->orwhere('no_est',$nota->no_not)
 		->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr')->get();
 		
 		return view ('nota.detail-nota' , compact('wo', 'est', 'est_part', 'est_jasa', 'nota')); 
 	}
 
+	////////////////////////////////////////////////EDIT/////////////////////////////////////////////////////
+	public function edit_nota($id){
+
+	$wo = Workorder::where('work_order.no_wo', $id)->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+		->select('work_order.*','work_order.id', 'pelanggans.nama', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
+		->first();
+
+		$nota = Nota::where('nota.wo_id', $id)->first();
+		$est = Estimasi::where('estimasi_biaya.wo_id', $id)->first();
+
+		$est_part = EstPart::where('no_est',$est->no_est)
+		->orwhere('no_est',$nota->no_not)
+		->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();		
+		$est_jasa = EstJasa::where('no_est',$est->no_est)
+		->orwhere('no_est',$nota->no_not)
+		->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr')->get();
+		
+		return view ('nota.edit-nota', compact('wo','est_jasa','est_part', 'est', 'nota'));
+
+	}
+	public function pilih_sparepartedit($wo,$idest){
+		$spareparts = Sparepart::all();
+		if (count($spareparts) == 0) {
+			return redirect('sparepart/tambah-sparepart-edit')->with('warning','Maaf data sparepart masih kosong silahkan isi terlebih dahulu');
+		}
+		return view ('nota.pilih-part-edit', compact('spareparts','idest','wo'));
+
+	}
+
+	public function post_pilih_sparepartedit (Request $r)
+	{		
+		$est = new EstPart;
+		$est->part_id   = $r->sparepart;
+		$est->no_est    = $r->idest;
+		$est->type 		= $r->tipe;
+		$est->qty  		= $r->quantity_sparepart;
+		$est->jumlah 	= $r->total_harga_sparepart;
+
+		$part = Sparepart::where('id',$r->sparepart)->first();
+
+		if($r->quantity_sparepart > $part->stok) {
+			return redirect()->back()->with('warning','Maaf jumlah yang anda masukan tidak mencukupi dari stok barang');
+		}
+
+		$part->stok = ($part->stok - $r->quantity_sparepart);
+
+		$part->save();
+		$est->save();
+
+		return redirect('edit/nota/' .$r->wo)->with('success','Berhasil menambahkan estimasi sparepart');
+		
+	}
+
+	public function pilih_jasaedit ($wo,$idest){
+		$jasas = Jasa::all();
+		if (count($jasas) == 0) {
+			return redirect('jasa/tambah-jasa-edit')->with('warning','Maaf data jasa masih kosong silahkan isi terlebih dahulu');
+		}
+		return view ('nota.pilih-jasa-edit', compact('jasas','idest','wo'));
+
+	}
+
+	public function post_pilih_jasaedit (Request $r)
+	{		
+		$est = new EstJasa;
+		$est->jasa_id   = $r->jasa;
+		$est->no_est    = $r->idest;
+		$est->type 		= $r->tipe;
+		$est->qty  		= $r->fr;
+		$est->jumlah 	= $r->total_harga_jasa;
+		$est->save();
+
+		return redirect('edit/nota/' .$r->wo)->with('success','Berhasil menambahkan estimasi jasa');
+		
+	}
+
+	public function postedit_nota (Request $request, $id){
+		$est = Nota::
+		select('nota.keterangan as keterangan', 'nota.no_not', 'nota.wo_id')
+		->first();
+		$nota = Workorder::where('work_order.no_wo', $id)->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
+		->first();
+		// $est_part = EstPart::where('no_est',$id)->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();		
+		// $est_jasa = EstJasa::where('no_est',$est->no_est)->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr')->get();
 	
+		// $estimasi->update($request->all());
+		$est->update($request->all());
+		$nota->update($request->all());
+		
+	
+		return redirect('nota')->with('success','Berhasil edit pelanggan');
+	}
+
+	public function hapusnotapart($id)
+	{
+		$est = EstPart::findOrFail($id);
+
+		$part = Sparepart::where('id',$est->part_id)->first();
+		$part->stok = ($part->stok + $est->qty);
+		$part->save();
+
+		$est->delete();
+
+		return redirect()->back()->with('success','Berhasil mengahpus estimasi sparepart');
+	}
+	public function hapusnotajasa($id)
+	{
+		$jasa = EstJasa::findOrFail($id);
+		$jasa->delete();
+
+		return redirect()->back()->with('success','Berhasil mengahpus estimasi jasa');
+	}
 }

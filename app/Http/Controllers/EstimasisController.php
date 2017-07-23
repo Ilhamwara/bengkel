@@ -318,4 +318,25 @@ class EstimasisController extends Controller
 		
 	}
 
+
+	public function hapusesteditpart($id)
+	{
+		$est = EstPart::findOrFail($id);
+
+		$part = Sparepart::where('id',$est->part_id)->first();
+		$part->stok = ($part->stok + $est->qty);
+		$part->save();
+
+		$est->delete();
+
+		return redirect()->back()->with('success','Berhasil mengahpus estimasi sparepart');
+	}
+	public function hapusesteditjasa($id)
+	{
+		$jasa = EstJasa::findOrFail($id);
+		$jasa->delete();
+
+		return redirect()->back()->with('success','Berhasil mengahpus estimasi jasa');
+	}
+
 }

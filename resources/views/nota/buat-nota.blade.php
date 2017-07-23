@@ -132,7 +132,7 @@
                   <td class="text-center">{{$part->qty}}</td>
                   <td class="text-center">{{$part->harga_jual}}</td>
                   <td class="text-center">{{$part->jumlah}}</td>
-                  <td class="text-center"><a href="{{url('estimasi-biaya/hapus-part/'.$part->id)}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
+                  <td class="text-center"><a href="{{url('nota/hapus-part/'.$part->id)}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
                 </tr>
                 @empty
                 <tr>
@@ -183,7 +183,7 @@
             <td class="text-center">{{$jasa->qty}}</td>
             <td class="text-center">{{$jasa->harga_perfr}}</td>
             <td class="text-center">{{$jasa->jumlah}}</td>
-            <td class="text-center"><a href="{{url('estimasi-biaya/hapus-jasa/'.$jasa->id)}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
+            <td class="text-center"><a href="{{url('nota/hapus-jasa/'.$jasa->id)}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
           </tr>
           @empty
           <tr>
