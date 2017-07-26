@@ -104,7 +104,7 @@
           <div class="form-group">
             <label class="col-sm-3 control-label">DP</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" name="dp" id="data_fuel" value="{{$nota->dp}}" placeholder="DP">
+              <div class="input-group"><span class="input-group-addon">Rp</span><input type="text" class="form-control" name="dp" id="data_fuel" value="{{$nota->dp}}"></div>
             </div>
           </div>
         </div>
@@ -146,15 +146,15 @@
                 @endforelse
                 <tr>
                  <td class="text-center" colspan="3"><b>Jumlah</b></td>
-                 <td colspan="2" class="text-center"><input type="text" name="jumlah_part" class="form-control" id="jumlah" value="{{$est_part->sum('jumlah')}}" disabled></td>
+                 <td colspan="2" class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="jumlah_part" class="form-control" id="jumlah" value="{{$est_part->sum('jumlah')}}" disabled></div></td>
                </tr>
                <tr>
                  <td class="text-center" colspan="3"><b>Discount</b></td>
-                 <td colspan="2" class="text-center"><input type="text" name="disc_part" class="form-control" id="disc"></td>
+                 <td colspan="2" class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="disc_part" class="form-control" id="disc"></div></td>
                </tr>
                <tr>
                  <td class="text-center" colspan="3"><b>Total</b></td>
-                 <td colspan="2" class="text-center"><input type="text" name="total_part" class="form-control" id="sum"></td>
+                 <td colspan="2" class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="total_part" class="form-control" id="sum" readonly></div></td>
                </tr>
              </table>
            </div>
@@ -194,15 +194,15 @@
           @endforelse
            <tr>
                  <td class="text-center" colspan="3"><b>Jumlah</b></td>
-                 <td colspan="2" class="text-center"><input type="text" name="jumlah_jasa" class="form-control" id="jumlah2" value="{{$est_jasa->sum('jumlah')}}" disabled></td>
+                 <td colspan="2" class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="jumlah_jasa" class="form-control" id="jumlah2" value="{{$est_jasa->sum('jumlah')}}" disabled></div></td>
                </tr>
                <tr>
                  <td class="text-center" colspan="3"><b>Discount</b></td>
-                 <td colspan="2" class="text-center"><input type="text" name="disc_jasa" class="form-control" id="disc2"></td>
+                 <td colspan="2" class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="disc_jasa" class="form-control" id="disc2"></div></td>
                </tr>
                <tr>
                  <td class="text-center" colspan="3"><b>Total</b></td>
-                 <td colspan="2" class="text-center"><input type="text" name="total_jasa" class="form-control" id ="sum2"></td>
+                 <td colspan="2" class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="total_jasa" class="form-control" id ="sum2" readonly></div></td>
                </tr>
        </table>
        <a href="{{url('nota/pilih-jasa-edit/'.$wo->no_wo.'/'.$nota->no_not)}}" class="btn btn-primary">Tambah</a>

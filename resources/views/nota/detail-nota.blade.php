@@ -109,125 +109,129 @@
           </div>
           <div class="form-group">
             <label class="col-sm-3 control-label">DP</label>
-            <div class="col-sm-8">
-              <input type="text" class="form-control" name="dp" id="data_fuel" value="{{$nota->dp}}" placeholder="DP" readonly>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="row">
-        <div class="col-sm-10 col-sm-offset-1">
-          <h4><b>Data Sparepart</b></h4>
-          <div class="portlet light bordered">
-           <div class="portlet-body">
-            <div class="table-responsive">
-              <table class="table table-striped table-bordered table-hover">
-                <tr>
-                  <th class="text-center">Nama</th>
-                  <th class="text-center">Quantity</th>
-                  <th class="text-center">Harga</th>
-                  <th class="text-center">Jumlah</th>
-                  
-                </tr>
-                @forelse($est_part as $part)
-                <input type="hidden" name="est_part[]" value="{{$part->id}}">
-                <tr>
-                  <td class="text-center">{{$part->nama}}</td>
-                  <td class="text-center">{{$part->qty}}</td>
-                  <td class="text-center">{{$part->harga_jual}}</td>
-                  <td class="text-center">{{$part->jumlah}}</td>
-                  
-                </tr>
-                @empty
-                <tr>
-                  <td colspan="5" class="text-center bg-danger"><b>Kosong</b></td>
-                </tr>
-                @endforelse
-                <tr>
-                 <td class="text-center" colspan="3"><b>Jumlah</b></td>
-                 <td class="text-center">Rp. {{$est_part->sum('jumlah')}}</td>
-                 
-               </tr>
-               <tr>
-                 <td class="text-center" colspan="3"><b>Discount</b></td>
-                 <td class="text-center">Rp. {{$nota->disc_part}}</td>
-                 
-               </tr>
-               
-               <tr>
-                 <td class="text-center" colspan="3"><b>Total</b></td>
-                 <td class="text-center">Rp. {{$a}}</td>
-                 
-               </tr>
-             </table>
+            <div class="col-sm-8"><div class="input-group">
+             <span class="input-group-addon">Rp</span>
+             <input type="text" class="form-control" name="dp" id="data_fuel" value="{{$nota->dp}}" placeholder="DP" readonly></div>
            </div>
          </div>
        </div>
      </div>
-   </div>
 
-   <div class="row">
-    <div class="col-sm-10 col-sm-offset-1">
-     <h4><b>Data Jasa</b></h4>
-     <div class="portlet light bordered">
 
-       <div class="portlet-body">
-        <table class="table table-striped table-bordered table-hover">
-          <tr>
-            <th class="text-center">Nama Jasa</th>
-            <th class="text-center">FR</th>
-            <th class="text-center">Harga Per FR</th>
-            <th class="text-center">Jumlah</th>
-            
-          </tr>
-          @forelse($est_jasa as $jasa)
-          <tr>
-            <input type="hidden" name="est_jasa[]" value="{{$jasa->id}}">
-            <td class="text-center">{{$jasa->nama_jasa}}</td>
-            <td class="text-center">{{$jasa->qty}}</td>
-            <td class="text-center">{{$jasa->harga_perfr}}</td>
-            <td class="text-center">{{$jasa->jumlah}}</td>
+     <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+        <h4><b>Data Sparepart</b></h4>
+        <div class="portlet light bordered">
+         <div class="portlet-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+              <tr>
+                <th class="text-center">Nama</th>
+                <th class="text-center">Quantity</th>
+                <th class="text-center">Harga</th>
+                <th class="text-center">Jumlah</th>
 
-          </tr>
-          @empty
-          <tr>
-            <td class="text-center bg-danger" colspan="5"><b>Kosong</b></td>
-          </tr>
-          @endforelse
-          <tr>
-            <td class="text-center" colspan="3"><b>Jumlah</b></td>
-            <td class="text-center">Rp. {{$est_jasa->sum('jumlah')}}</td>
-            
-          </tr>
-          <tr>
-           <td class="text-center" colspan="3"><b>Discount</b></td>
-           <td class="text-center">Rp. {{$nota->disc_jasa}}</td>
-           
-         </tr>
-         <tr>
-           <td class="text-center" colspan="3"><b>Total</b></td>
-           <td class="text-center">Rp. {{$b}}</td>
-           
-         </tr>
-       </table>
+              </tr>
+              @forelse($est_part as $part)
+              <input type="hidden" name="est_part[]" value="{{$part->id}}">
+              <tr>
+                <td class="text-center">{{$part->nama}}</td>
+                <td class="text-center">{{$part->qty}}</td>
+                <td class="text-center">{{$part->harga_jual}}</td>
+                <td class="text-center">{{$part->jumlah}}</td>
+
+              </tr>
+              @empty
+              <tr>
+                <td colspan="5" class="text-center bg-danger"><b>Kosong</b></td>
+              </tr>
+              @endforelse
+              <tr>
+               <td class="text-center" colspan="3"><b>Jumlah</b></td>
+               <td class="text-center"><div class="input-group">
+                 <span class="input-group-addon">Rp</span><input type="text" class="form-control" value="{{$est_part->sum('jumlah')}}" readonly  style="text-align: right;"></div></td>
+                 
+               </tr>
+               <tr>
+                 <td class="text-center" colspan="3"><b>Discount</b></td>
+                 <td class="text-center"><div class="input-group">
+                 <span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{$nota->disc_part}}" readonly style="text-align: right;"></div></td>
+
+                 </tr>
+
+                 <tr>
+                   <td class="text-center" colspan="3"><b>Total</b></td>
+                   <td class="text-center"><div class="input-group">
+                     <span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{$a}}" readonly style="text-align: right;"></div></td></td>
+
+                   </tr>
+                 </table>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+
+       <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+         <h4><b>Data Jasa</b></h4>
+         <div class="portlet light bordered">
+
+           <div class="portlet-body">
+            <table class="table table-striped table-bordered table-hover">
+              <tr>
+                <th class="text-center">Nama Jasa</th>
+                <th class="text-center">FR</th>
+                <th class="text-center">Harga Per FR</th>
+                <th class="text-center">Jumlah</th>
+
+              </tr>
+              @forelse($est_jasa as $jasa)
+              <tr>
+                <input type="hidden" name="est_jasa[]" value="{{$jasa->id}}">
+                <td class="text-center">{{$jasa->nama_jasa}}</td>
+                <td class="text-center">{{$jasa->qty}}</td>
+                <td class="text-center">{{$jasa->harga_perfr}}</td>
+                <td class="text-center">{{$jasa->jumlah}}</td>
+
+              </tr>
+              @empty
+              <tr>
+                <td class="text-center bg-danger" colspan="5"><b>Kosong</b></td>
+              </tr>
+              @endforelse
+              <tr>
+                <td class="text-center" colspan="3"><b>Jumlah</b></td>
+                <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" class="form-control" value="{{$est_jasa->sum('jumlah')}}" readonly  style="text-align: right;"></div></td>
+
+              </tr>
+              <tr>
+               <td class="text-center" colspan="3"><b>Discount</b></td>
+               <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" class="form-control" value="{{$nota->disc_jasa}}" readonly  style="text-align: right;"></div></td>
+
+             </tr>
+             <tr>
+               <td class="text-center" colspan="3"><b>Total</b></td>
+               <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" class="form-control" value="{{$b}}" readonly  style="text-align: right;"></div></td>
+
+             </tr>
+           </table>
+         </div>
+       </div>
      </div>
    </div>
- </div>
-</div>
-<div class="row">
-  <div class="col-sm-10 col-sm-offset-1">
-    <h4><b>Keterangan</b></h4>
-    <textarea class="form-control" id="deskripsi" name="keterangan" id="" cols="30" rows="10" readonly>{{$nota->keterangan}}</textarea>
+   <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+      <h4><b>Keterangan</b></h4>
+      <textarea class="form-control" id="deskripsi" name="keterangan" id="" cols="30" rows="10" readonly>{{$nota->keterangan}}</textarea>
+    </div>
   </div>
-</div>
-<br><br>
-<div class="form-group">
-  <div class="col-sm-offset-1 col-sm-10">
-    <button type="submit" class="btn btn-primary">Cetak</button>
+  <br><br>
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-10">
+      <button type="submit" class="btn btn-primary">Cetak</button>
+    </div>
   </div>
-</div>
 </form>
 
 </div>

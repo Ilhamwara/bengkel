@@ -131,7 +131,8 @@
               @endforelse
               <tr>
                <td class="text-center" colspan="4"><b>Total</b></td>
-               <td class="text-center">Rp {{$est_part->sum('jumlah')}}</td>
+               <td class="text-center"><div class="input-group">
+                     <span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{$est_part->sum('jumlah')}}" readonly style="text-align: right;"></div></td>
              </tr>
            </table>
          </div>
@@ -166,7 +167,7 @@
           @endforelse
           <tr>
            <td class="text-center" colspan="4"><b>Total</b></td>
-           <td class="text-center">Rp {{$est_jasa->sum('jumlah')}}</td>
+           <td class="text-center"><div class="input-group"><span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{$est_jasa->sum('jumlah')}}" readonly style="text-align: right;"></div></td>
          </tr>
 
        </table>

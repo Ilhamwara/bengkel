@@ -101,10 +101,10 @@
               <input type="text" class="form-control" name="fuel_datang" id="data_fuel" value="{{$wo->fuel_datang}}" disabled>
             </div>
           </div>
-            <div class="form-group">
+          <div class="form-group">
             <label class="col-sm-3 control-label">DP</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" name="dp" id="data_fuel" value="" placeholder="DP">
+              <div class="input-group"><span class="input-group-addon">Rp</span><input type="text" class="form-control" name="dp" id="data_fuel" value="" placeholder="DP"></div>
             </div>
           </div>
         </div>
@@ -141,17 +141,17 @@
                 @endforelse
                 <tr>
                  <td class="text-center" colspan="3"><b>Jumlah</b></td>
-                 <td class="text-center">{{$est_part->sum('jumlah')}}</td>
+                 <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="discount_part" class="form-control" id="jumlah" value="{{$est_part->sum('jumlah')}}" readonly></div></td>
                  <td></td>
                </tr>
                <tr>
                  <td class="text-center" colspan="3"><b>Discount</b></td>
-                 <td class="text-center"><input type="text" name="discount_part" class="form-control"></td>
+                 <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="discount_part" class="form-control" id="disc"></div></td>
                  <td></td>
                </tr>
                <tr>
                  <td class="text-center" colspan="3"><b>Total</b></td>
-                 <td class="text-center"><input type="text" name="total_part" class="form-control"></td>
+                 <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="total_part" class="form-control" id="sum" readonly></div></td>
                  <td></td>
                </tr>
              </table>
@@ -191,25 +191,26 @@
           </tr>
           @endforelse
           <tr>
-          <td class="text-center" colspan="3"><b>Jumlah</b></td>
-           <td class="text-center">Rp {{$est_jasa->sum('jumlah')}}</td>
-           <td></td>
-         </tr>
-         <tr>
+            <td class="text-center" colspan="3"><b>Jumlah</b></td>
+            <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="jumlah2" class="form-control" id ="jumlah2" value="{{$est_jasa->sum('jumlah')}}" readonly> </div> </td>
+            <td></td>
+          </tr>
+          <tr>
            <td class="text-center" colspan="3"><b>Discount</b></td>
-           <td class="text-center"><input type="text" name="discount_jasa" class="form-control"></td>
+           <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="discount_jasa" class="form-control" id ="disc2"></div></td>
            <td></td>
          </tr>
          <tr>
            <td class="text-center" colspan="3"><b>Total</b></td>
-           <td class="text-center"><input type="text" name="total_jasa" class="form-control"></td>
-           <td></td>
-         </tr>
-       </table>
-       <a href="{{url('nota/pilih-jasa/'.$wo->no_wo.'/'.$est->no_est)}}" class="btn btn-primary">Tambah</a>
-     </div>
-   </div>
- </div>
+           <td class="text-center"><div class="input-group">
+           <span class="input-group-addon">Rp</span><input type="text" name="total_jasa" class="form-control" id="sum2" readonly></div></td>
+            <td></td>
+          </tr>
+        </table>
+        <a href="{{url('nota/pilih-jasa/'.$wo->no_wo.'/'.$est->no_est)}}" class="btn btn-primary">Tambah</a>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1">
@@ -270,6 +271,49 @@
     $('#data_tanggal').val(tanggal);
 
   });
+</script>
+
+<script type="text/javascript">
+
+  $(document).ready(function() {
+    //this calculates values automatically 
+    sum1();
+    $("#jumlah, #disc").on("keydown keyup", function() {
+      sum1();
+    });
+  });
+
+  function sum1() {
+    var num4 = document.getElementById('jumlah').value;
+    var num5 = document.getElementById('disc').value;
+
+    var result = parseInt(num4) - parseInt(num5);
+    if (!isNaN(result)) {
+      document.getElementById('sum').value = result;
+
+    }
+  }
+</script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    //this calculates values automatically 
+    sum();
+    $("#jumlah2, #disc2").on("keydown keyup", function() {
+      sum();
+    });
+  });
+
+  function sum() {
+    var num3 = document.getElementById('jumlah2').value;
+    var num4 = document.getElementById('disc2').value;
+
+    var result = parseInt(num3) - parseInt(num4);
+    if (!isNaN(result)) {
+      document.getElementById('sum2').value = result;
+
+    }
+  }
+
 </script>
 
 @endsection

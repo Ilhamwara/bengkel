@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Workorder;
+use App\Nota;
 
 class LaporansController extends Controller
 {

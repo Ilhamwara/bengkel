@@ -10,6 +10,9 @@
 </style>        
 @endsection
 @section('content')
+
+
+
 <div class="page-content">
 	<div class="page-bar">
 		<ul class="page-breadcrumb">
@@ -42,13 +45,13 @@
 						</thead>
 					
 						<tbody>
-							@forelse($laporans as $i => $laporan)
+							@forelse($laporans as $i => $la)
 							<tr>
 								<td>{{$i+1}}</td>
-								<td class="text-center"><a class="btn btn-primary" href="{{url('work-order/'. $laporan->id)}}">{{$laporan->no_wo}}</a></td>
-								<td class="text-center">{{$laporan->tanggal}}</td>
-								<td class="text-center">{{$laporan->transaksi}}</td>
-								<td class="text-center">{{$laporan->status}}</td>
+								<td class="text-center"><a class="btn btn-primary" href="{{url('work-order/'. $la->no_wo)}}">{{$la->no_wo}}</a></td>
+								<td class="text-center">{{$la->tanggal}}</td>
+								<td class="text-center">{{$la->transaksi}}</td>
+								<td class="text-center">{{$la->status}}</td>
 							</tr>
 							@empty
 							@endforelse
