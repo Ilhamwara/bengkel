@@ -86,15 +86,7 @@ class WorkordersController extends Controller
 		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
 
-		$est = Estimasi::where('wo_id', $id)->first();
-
-		$est_part = EstPart::where('no_est', $est->no_est)
-		->where('type', 'espart')
-		->join('spare_parts','est_part.part_id','=','spare_parts.id')->select('est_part.*','spare_parts.nama','spare_parts.harga_jual')->get();		
-		$est_jasa = EstJasa::where('no_est', $est->no_est)
-		->where('type', 'esjasa')
-		->join('jasa','est_jasa.jasa_id','=','jasa.id')->select('est_jasa.*','jasa.nama_jasa','jasa.harga_perfr')->get();
-
+		
 		
 		return view ('work-order.show-order' , compact('order', 'esti')); 
 	}

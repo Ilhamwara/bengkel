@@ -104,7 +104,7 @@
           <div class="form-group">
             <label class="col-sm-3 control-label">DP</label>
             <div class="col-sm-8">
-              <div class="input-group"><span class="input-group-addon">Rp</span><input type="text" class="form-control" name="dp" id="data_fuel" value="" placeholder="DP"></div>
+              <div class="input-group"><span class="input-group-addon">Rp</span><input type="text" class="form-control" name="dp" id="data_fuel" placeholder="DP"></div>
             </div>
           </div>
         </div>
