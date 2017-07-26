@@ -86,9 +86,7 @@ class WorkordersController extends Controller
 		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
 
-		
-		
-		return view ('work-order.show-order' , compact('order', 'esti')); 
+		return view ('work-order.show-order' , compact('order')); 
 	}
 
 	public function history (){
