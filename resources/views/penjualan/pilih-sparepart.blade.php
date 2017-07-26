@@ -55,14 +55,16 @@
   </div>
   <div class="form-group">
     <label class="col-sm-2 control-label">Harga</label>
-    <div class="col-sm-6">
-      <input type="text" class="form-control" id="data_harga" name="data_harga" disabled>
+    <div class="col-sm-6"><div class="input-group">
+    <span class="input-group-addon">Rp</span>
+      <input type="text" class="form-control" id="data_harga" name="data_harga" disabled style="text-align: right;"></div>
     </div>
   </div>
   <div class="form-group">
     <label class="col-sm-2 control-label">Total</label>
-    <div class="col-sm-6">
-      <input type="text" class="form-control" name="total_harga_sparepart" id="total" value="0" readonly>
+    <div class="col-sm-6"><div class="input-group">
+    <span class="input-group-addon">Rp</span>
+      <input type="text" class="form-control" name="total_harga_sparepart" id="total" value="0" readonly style="text-align: right;"></div>
     </div>
   </div>
 </div>

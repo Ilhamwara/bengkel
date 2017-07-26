@@ -88,9 +88,21 @@
                 <td class="text-center"><input type="text" class="form-control" required name="number[]"></td>
                 <td class="text-center"><input type="text" class="form-control" required name="nama[]"></td>
                 <td class="text-center"><input type="text" class="form-control" required name="qty[]"></td>
-                <td class="text-center"><input type="text" class="form-control" required name="ory[]"></td>
-                <td class="text-center"><input type="text" class="form-control" required name="thailand[]"></td>
-                <td class="text-center"><input type="text" class="form-control" required name="jepang[]"></td>
+                <td class="text-center">
+                  <div class="input-group">
+                    <span class="input-group-addon">Rp</span><input type="text" class="form-control" required name="ory[]" style="text-align: right;">
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="input-group">
+                    <span class="input-group-addon">Rp</span><input type="text" class="form-control" required name="thailand[]" style="text-align: right;">
+                  </div>
+                </td>
+                <td class="text-center">
+                  <div class="input-group">
+                    <span class="input-group-addon">Rp</span><input type="text" class="form-control" required name="jepang[]" style="text-align: right;">
+                  </div>
+                </td>
                 <td class="text-center"><a class="btn btn-info" id="add"><i class="fa fa-plus"></i></a></td>
               </tr>
             </tbody>
@@ -120,7 +132,7 @@
  var cnt = 2;
 
  $("#add").click(function() {
-  $("table").append("<tr><td>"+cnt+"</td><td class='text-center'><input type='text' class='form-control' name='number[]''></td><td class='text-center'><input type='text' class='form-control' name='nama[]'></td><td class='text-center'><input type='text' class='form-control' name='qty[]''></td><td class='text-center'><input type='text' class='form-control' name='ory[]'></td><td class='text-center'><input type='text' class='form-control' name='thailand[]'></td><td class='text-center'><input type='text' class='form-control' name='jepang[]'></td><td><button class='btn btn-danger' id='delete'><i class='fa fa-trash'></i></button></td></tr>" );
+  $("table").append("<tr><td>"+cnt+"</td><td class='text-center'><input type='text' class='form-control' name='number[]''></td><td class='text-center'><input type='text' class='form-control' name='nama[]'></td><td class='text-center'><input type='text' class='form-control' name='qty[]''></td><td class='text-center'><div class='input-group'><span class='input-group-addon'>Rp</span><input type='text' class='form-control' name='ory[]' style='text-align:right;'></div></td><td class='text-center'><div class='input-group'><span class='input-group-addon'>Rp</span><input type='text' class='form-control' name='thailand[]' style='text-align:right;'></div></td><td class='text-center'><div class='input-group'><span class='input-group-addon'>Rp</span><input type='text' class='form-control' name='jepang[]' style='text-align:right;'></div></td><td><button class='btn btn-danger' id='delete'><i class='fa fa-trash'></i></button></td></tr>" );
   cnt++;
 });
 

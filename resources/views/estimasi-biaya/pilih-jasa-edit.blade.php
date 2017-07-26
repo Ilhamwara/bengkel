@@ -19,7 +19,7 @@
   <br>
   <div class="row">
     @include('include.alert')
-    <form action="{{url('post-pilih-jasa')}}" method="POST" enctype="multipart/form-data" class="form-horizontal" style="overflow: hidden;">
+    <form action="{{url('post-pilih-jasa-edit')}}" method="POST" enctype="multipart/form-data" class="form-horizontal" style="overflow: hidden;">
       {{ csrf_field()}} 
       <input type="hidden" name="wo" value="{{$wo}}">
       <input type="hidden" name="idest" value="{{$idest}}">
@@ -52,13 +52,15 @@
   <div class="form-group">
     <label class="col-sm-2 control-label">Harga per FR</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" name="harga_perfr" id="data_harga" disabled>
+       <div class="input-group">
+    <span class="input-group-addon">Rp</span><input type="text" class="form-control" name="harga_perfr" id="data_harga" disabled></div>
     </div>
   </div>
   <div class="form-group">
     <label class="col-sm-2 control-label">Jumlah</label>
     <div class="col-sm-6">
-      <input type="text" class="form-control" name="total_harga_jasa" id="sum" value="0" readonly>
+      <div class="input-group">
+    <span class="input-group-addon">Rp</span><input type="text" class="form-control" name="total_harga_jasa" id="sum" value="0" readonly></div>
     </div>
   </div>
 </div>

@@ -124,8 +124,8 @@
               <tr>
                 <td class="text-center">{{$part->nama}}</td>
                 <td class="text-center">{{$part->qty}}</td>
-                <td class="text-center">{{$part->harga_jual}}</td>
-                <td class="text-center">{{$part->jumlah}}</td>
+                <td class="text-center"><div class="input-group"><span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{$part->harga_jual}}" readonly style="text-align: right;"></div></td>
+                <td class="text-center"><div class="input-group"><span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{$part->jumlah}}" readonly style="text-align: right;"></div></td>
                 <td class="text-center"><a href="{{url('estimasi-biaya/hapus-part-edit/'.$part->id)}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
               </tr>
               @empty
@@ -165,8 +165,8 @@
           <input type="hidden" name="est_jasa[]" value="{{$jasa->id}}">
           <td class="text-center">{{$jasa->nama_jasa}}</td>
           <td class="text-center">{{$jasa->qty}}</td>
-          <td class="text-center">{{$jasa->harga_perfr}}</td>
-          <td class="text-center">{{$jasa->jumlah}}</td>
+          <td class="text-center"><div class="input-group"><span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{$jasa->harga_perfr}}" readonly style="text-align: right;"></div></td>
+          <td class="text-center"><div class="input-group"><span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{$jasa->jumlah}}" readonly style="text-align: right;"></div></td>
           <td class="text-center"><a href="{{url('estimasi-biaya/hapus-jasa-edit/'.$jasa->id)}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
         </tr>
         @empty

@@ -39,8 +39,10 @@
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Harga per FR</label>
-					<div class="col-sm-6">
-						<input type="text" class="form-control" id="harga_perfr" name="harga_perfr" value="{{$jasa->harga_perfr}}" >
+					<div class="col-sm-6"><div class="input-group">
+                            <span class="input-group-addon">Rp</span>
+						<input type="text" class="form-control" id="harga_perfr" name="harga_perfr" value="{{$jasa->harga_perfr}}" style="text-align: right;">
+						</div>
 					</div>
 				</div>
 				<div class="form-group">

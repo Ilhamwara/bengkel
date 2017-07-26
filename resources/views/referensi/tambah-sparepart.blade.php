@@ -34,14 +34,16 @@
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Harga Beli</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="harga_beli" placeholder="Harga Beli" required> 
+                    <div class="col-sm-6"> <div class="input-group">
+                            <span class="input-group-addon">Rp</span>
+                        <input type="text" class="form-control" name="harga_beli" placeholder="Harga Beli" required style="text-align: right;"></div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Harga Jual</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="harga_jual" placeholder="Harga Jual" required>
+                    <div class="col-sm-6"> <div class="input-group">
+                            <span class="input-group-addon">Rp</span>
+                        <input type="text" class="form-control" name="harga_jual" placeholder="Harga Jual" required style="text-align: right;"> </div>
                     </div>
                 </div>
                 <div class="form-group">

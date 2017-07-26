@@ -93,25 +93,28 @@
 								<td class="text-center">{{$data->nama_part}}</td>
 								<td class="text-center">{{$data->no_part}}</td>
 								<td class="text-center">{{$data->qty}}</td>
-								<td class="text-center">{{$data->harga_jual}}</td>
-								<td class="text-center">{{$data->jumlah}}</td>
-							</tr>
-							@endforeach
-							<td class="text-center" colspan="4"></td>
-							<td class="text-center">Total</td>
-							<td class="text-center">{{$data->sum('jumlah')}}</td>
-						</table>
-					</div>
+								<td class="text-center"> <div class="input-group">
+									<span class="input-group-addon">Rp</span><input type="text" class="form-control" value="{{number_format($data->harga_jual)}}" readonly style="text-align: right;"></div></td>
+									<td class="text-center"> <div class="input-group">
+									<span class="input-group-addon">Rp</span><input type="text" class="form-control" value="{{number_format($data->jumlah)}}" readonly style="text-align: right;"></div></td>
+									</tr>
+									@endforeach
+									<td class="text-center" colspan="4"></td>
+									<td class="text-center">Total</td>
+									<td class="text-center"> <div class="input-group">
+										<span class="input-group-addon">Rp</span></span><input type="text" class="form-control" value="{{number_format($data->sum('jumlah'))}}" readonly style="text-align: right;"></div></td>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-offset-1 col-sm-10">
+								<button type="submit" class="btn btn-primary">Cetak</button>
+							</div>
+						</div>
+					</form>
+
 				</div>
 			</div>
-			<div class="form-group">
-				<div class="col-sm-offset-1 col-sm-10">
-					<button type="submit" class="btn btn-primary">Cetak</button>
-				</div>
-			</div>
-		</form>
 
-	</div>
-</div>
-
-@endsection
+			@endsection

@@ -111,7 +111,7 @@
             <label class="col-sm-3 control-label">DP</label>
             <div class="col-sm-8"><div class="input-group">
              <span class="input-group-addon">Rp</span>
-             <input type="text" class="form-control" name="dp" id="data_fuel" value="{{$nota->dp}}" placeholder="DP" readonly></div>
+             <input type="text" class="form-control" name="dp" id="data_fuel" value="{{number_format($nota->dp)}}" placeholder="DP" readonly></div>
            </div>
          </div>
        </div>
@@ -128,8 +128,8 @@
               <tr>
                 <th class="text-center">Nama</th>
                 <th class="text-center">Quantity</th>
-                <th class="text-center">Harga</th>
-                <th class="text-center">Jumlah</th>
+                <th class="text-center">Harga (Rp)</th>
+                <th class="text-center">Jumlah (Rp)</th>
 
               </tr>
               @forelse($est_part as $part)
@@ -137,8 +137,8 @@
               <tr>
                 <td class="text-center">{{$part->nama}}</td>
                 <td class="text-center">{{$part->qty}}</td>
-                <td class="text-center">{{$part->harga_jual}}</td>
-                <td class="text-center">{{$part->jumlah}}</td>
+                <td class="text-center">{{number_format($part->harga_jual)}}</td>
+                <td class="text-center">{{number_format($part->jumlah)}}</td>
 
               </tr>
               @empty
@@ -149,20 +149,20 @@
               <tr>
                <td class="text-center" colspan="3"><b>Jumlah</b></td>
                <td class="text-center"><div class="input-group">
-                 <span class="input-group-addon">Rp</span><input type="text" class="form-control" value="{{$est_part->sum('jumlah')}}" readonly  style="text-align: right;"></div></td>
+                 <span class="input-group-addon">Rp</span><input type="text" class="form-control" value="{{number_format($est_part->sum('jumlah'))}}" readonly  style="text-align: right;"></div></td>
                  
                </tr>
                <tr>
                  <td class="text-center" colspan="3"><b>Discount</b></td>
                  <td class="text-center"><div class="input-group">
-                 <span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{$nota->disc_part}}" readonly style="text-align: right;"></div></td>
+                 <span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{number_format($nota->disc_part)}}" readonly style="text-align: right;"></div></td>
 
                  </tr>
 
                  <tr>
                    <td class="text-center" colspan="3"><b>Total</b></td>
                    <td class="text-center"><div class="input-group">
-                     <span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{$a}}" readonly style="text-align: right;"></div></td></td>
+                     <span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{number_format($a)}}" readonly style="text-align: right;"></div></td></td>
 
                    </tr>
                  </table>
@@ -182,8 +182,8 @@
               <tr>
                 <th class="text-center">Nama Jasa</th>
                 <th class="text-center">FR</th>
-                <th class="text-center">Harga Per FR</th>
-                <th class="text-center">Jumlah</th>
+                <th class="text-center">Harga Per FR (Rp)</th>
+                <th class="text-center">Jumlah (Rp)</th>
 
               </tr>
               @forelse($est_jasa as $jasa)
@@ -191,8 +191,8 @@
                 <input type="hidden" name="est_jasa[]" value="{{$jasa->id}}">
                 <td class="text-center">{{$jasa->nama_jasa}}</td>
                 <td class="text-center">{{$jasa->qty}}</td>
-                <td class="text-center">{{$jasa->harga_perfr}}</td>
-                <td class="text-center">{{$jasa->jumlah}}</td>
+                <td class="text-center">{{number_format($jasa->harga_perfr)}}</td>
+                <td class="text-center">{{number_format($jasa->jumlah)}}</td>
 
               </tr>
               @empty
@@ -202,17 +202,17 @@
               @endforelse
               <tr>
                 <td class="text-center" colspan="3"><b>Jumlah</b></td>
-                <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" class="form-control" value="{{$est_jasa->sum('jumlah')}}" readonly  style="text-align: right;"></div></td>
+                <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" class="form-control" value="{{number_format($est_jasa->sum('jumlah'))}}" readonly  style="text-align: right;"></div></td>
 
               </tr>
               <tr>
                <td class="text-center" colspan="3"><b>Discount</b></td>
-               <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" class="form-control" value="{{$nota->disc_jasa}}" readonly  style="text-align: right;"></div></td>
+               <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" class="form-control" value="{{number_format($nota->disc_jasa)}}" readonly  style="text-align: right;"></div></td>
 
              </tr>
              <tr>
                <td class="text-center" colspan="3"><b>Total</b></td>
-               <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" class="form-control" value="{{$b}}" readonly  style="text-align: right;"></div></td>
+               <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" class="form-control" value="{{number_format($b)}}" readonly  style="text-align: right;"></div></td>
 
              </tr>
            </table>

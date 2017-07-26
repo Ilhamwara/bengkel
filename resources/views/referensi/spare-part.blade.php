@@ -7,6 +7,9 @@
 		display: inline-block;
 		list-style-type: none;
 	}
+	.action{
+		padding-left: 0;
+	}
 </style>        
 @endsection
 @section('content')
@@ -37,8 +40,8 @@
 								<th class="text-center">No</th>
 								<th class="text-center">No Part</th>
 								<th class="text-center">Nama Part</th>
-								<th class="text-center">Harga Beli</th>
-								<th class="text-center">Harga Jual</th>
+								<th class="text-center">Harga Beli (Rp)</th>
+								<th class="text-center">Harga Jual (Rp)</th>
 								<th class="text-center">Stok</th>
 								<th class="text-center">Action</th>
 							</tr>
@@ -51,9 +54,9 @@
 								<td>{{$i}}</td>
 								<td class="text-center">{{$sparepart->no}}</td>
 								<td class="text-center">{{$sparepart->nama}}</td>
-								<td class="text-center">{{$sparepart->harga_beli}}</td>
-								<td class="text-center">{{$sparepart->harga_jual}}</td>
-								<td class="text-center">{{$sparepart->stok}}</td>
+								<td class="text-center">{{number_format($sparepart->harga_beli)}}</td>
+								<td class="text-center">{{number_format($sparepart->harga_jual)}}</td>
+								<td class="text-center">{{number_format($sparepart->stok)}}</td>
 								<td class="text-center">
 									@if($sparepart->stok > 0)
 									<ul class="action">

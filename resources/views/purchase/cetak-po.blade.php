@@ -20,7 +20,7 @@
     <br>
     <div class="row">
         <div class="col-md-12">
-         <form action="{{url('purchase-order/cetak-po/' .$cetak->id)}}" method="GET" class="form-horizontal">
+           <form action="{{url('purchase-order/cetak-po/' .$cetak->id)}}" method="GET" class="form-horizontal">
             {{ csrf_field() }}
 
             <div class="form-group">
@@ -72,20 +72,32 @@
                     <td class="text-center">{{$data->part_number}}</td>
                     <td class="text-center">{{$data->part_name}}</td>
                     <td class="text-center">{{$data->qty}}</td>
-                    <td class="text-center">{{$data->ory}}</td>
-                    <td class="text-center">{{$data->thailand}}</td>
-                    <td class="text-center">{{$data->jepang}}</td>
-                </tr>
-                @endforeach
-            </table>
-            <div class="form-group">
-                <div class="col-sm-offset-2 col-sm-10">
-                  <button type="submit" class="btn btn-primary">Cetak</button>
-              </div>
+                    <td class="text-center">
+                        <div class="input-group">
+                            <span class="input-group-addon">Rp</span><input type="text" class="form-control" value="{{number_format($data->ory)}}" disabled style="text-align: right;">
+                        </div>
+                    </td>
+                    <td class="text-center">
+                     <div class="input-group">
+                     <span class="input-group-addon">Rp</span><input type="text" class="form-control" value="{{number_format($data->thailand)}}" disabled style="text-align: right;">
+                    </div>
+                </td>
+                <td class="text-center">
+                    <div class="input-group">
+                        <span class="input-group-addon">Rp</span><input type="text" class="form-control" value="{{number_format($data->jepang)}}" disabled style="text-align: right;">
+                    </div>
+                </td>
+            </tr>
+            @endforeach
+        </table>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary">Cetak</button>
           </div>
-      </form>
+      </div>
+  </form>
 
-  </div>
+</div>
 
 </div>
 </div>

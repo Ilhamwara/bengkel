@@ -28,8 +28,9 @@
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Harga per FR</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="harga_perfr" placeholder="Harga per RF" required> 
+                    <div class="col-sm-6"><div class="input-group">
+                            <span class="input-group-addon">Rp</span>
+                        <input type="text" class="form-control" name="harga_perfr" placeholder="Harga per RF" required style="text-align: right;"> </div>
                     </div>
                 </div>
                 

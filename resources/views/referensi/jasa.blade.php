@@ -36,7 +36,7 @@
 							<tr>
 								<th class="text-center">No</th>
 								<th class="text-center">Jasa</th>
-								<th class="text-center">Harga per FR</th>
+								<th class="text-center">Harga per FR (Rp)</th>
 								<th class="text-center">Action</th>
 							</tr>
 						</thead>
@@ -47,7 +47,7 @@
 							<tr>
 								<td>{{$i}}</td>
 								<td class="text-center">{{$jasa->nama_jasa}}</td>
-								<td class="text-center">{{$jasa->harga_perfr}}</td>
+								<td class="text-center">{{number_format($jasa->harga_perfr)}}</td>
 								<td class="text-center">
 									<ul class="action">
 										<li><a href="{{url('jasa/'.$jasa->id.'/edit')}}" class="btn btn-warning"  data-toggle="tooltip" title="Edit" style="padding: 6px 12px;"><i class="fa fa-pencil"></i></a></li>

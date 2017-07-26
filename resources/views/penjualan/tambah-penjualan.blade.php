@@ -17,7 +17,7 @@
   <br>
   <div class="row">
     <div class="col-md-12">
-    @include('include.alert')
+      @include('include.alert')
       <form action="{{url('post-penjualan')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
         {{ csrf_field() }}
         <div class="form-group">
@@ -82,7 +82,7 @@
               <th class="text-center">Qty</th>
               <th class="text-center">Harga Satuan</th>
               <th class="text-center">Jumlah</th>
-                <th class="text-center"></th>
+              <th class="text-center"></th>
             </tr>
           </thead>   
           <tbody>
@@ -92,35 +92,38 @@
               <td class="text-center">{{$part->nama}}</td>
               <td class="text-center">{{$part->no}}</td>
               <td class="text-center">{{$part->qty}}</td>
-              <td class="text-center">{{$part->harga_jual}}</td>
-              <td class="text-center">{{$part->jumlah}}</td>
-              <td class="text-center"><a href="{{url('penjualan/hapus-part/'.$part->id)}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
-            </tr>
-            <input type="hidden" name="id_part[]" value="{{$part->id}}">
-            @empty
-            <tr>
-              <td colspan="6">Kosong</td>
-            </tr>
-            @endforelse
-            <td colspan="5" class="text-center">Total</td>
-            <td class="text-center">Rp {{$penj_part->sum('jumlah')}}</td>
-          </tbody>
-        </table>
-        <a href="{{url('penjualan/jual-sparepart/'.$cek_penj->no_penj)}}" class="btn btn-primary">Tambah</a>     
+              <td class="text-center"><div class="input-group">
+                <span class="input-group-addon">Rp</span><input type="text" class="form-control" value="{{$part->harga_jual}}" disabled></div></td>
+                <td class="text-center"><div class="input-group">
+                <span class="input-group-addon">Rp</span><input type="text" class="form-control" value="{{$part->jumlah}}" disabled></div></td>
+                <td class="text-center"><a href="{{url('penjualan/hapus-part/'.$part->id)}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
+              </tr>
+              <input type="hidden" name="id_part[]" value="{{$part->id}}">
+              @empty
+              <tr>
+                <td colspan="6">Kosong</td>
+              </tr>
+              @endforelse
+              <td colspan="5" class="text-center">Total</td>
+              <td class="text-center"><div class="input-group">
+                <span class="input-group-addon">Rp</span><input type="text" class="form-control" value="{{$penj_part->sum('jumlah')}}" readonly></div></td>
+            </tbody>
+          </table>
+          <a href="{{url('penjualan/jual-sparepart/'.$cek_penj->no_penj)}}" class="btn btn-primary">Tambah</a>     
+        </div>
       </div>
     </div>
-  </div>
 
-@if(count($penj_part) > 0)
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-primary">Simpan</button>
+    @if(count($penj_part) > 0)
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary">Simpan</button>
+      </div>
     </div>
-  </div>
-  @endif
+    @endif
 
 
-</form>
+  </form>
 </div>
 </div>
 @endsection

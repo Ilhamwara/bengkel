@@ -45,14 +45,18 @@
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Harga Beli</label>
-					<div class="col-sm-6">
-						<input type="text" class="form-control" id="harga_beli" name="harga_beli" value="{{$sparepart->harga_beli}}" >
+					<div class="col-sm-6"><div class="input-group">
+                            <span class="input-group-addon">Rp</span>
+						<input type="text" class="form-control" id="harga_beli" name="harga_beli" value="{{$sparepart->harga_beli}}" style="text-align: right;">
+						</div>
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Harga Jual</label>
-					<div class="col-sm-6">
-						<input type="text" class="form-control" id="harga_jual" name="harga_jual" value="{{$sparepart->harga_jual}}" >
+					<div class="col-sm-6"><div class="input-group">
+                            <span class="input-group-addon">Rp</span>
+						<input type="text" class="form-control" id="harga_jual" name="harga_jual" value="{{$sparepart->harga_jual}}" style="text-align: right;">
+						</div>
 					</div>
 				</div>
 				<div class="form-group">

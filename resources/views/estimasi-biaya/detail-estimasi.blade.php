@@ -124,15 +124,15 @@
                 <td class="text-center">{{$v+1}}</td>
                 <td class="text-center">{{$part->nama}}</td>
                 <td class="text-center">{{$part->qty}}</td>
-                <td class="text-center">{{$part->harga_jual}}</td>
-                <td class="text-center">{{$part->jumlah}}</td>    
+                <td class="text-center"><div class="input-group"><span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{number_format($part->harga_jual)}}" readonly style="text-align: right;"></td>
+                <td class="text-center"><div class="input-group"><span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{number_format($part->jumlah)}}" readonly style="text-align: right;"></td>    
               </tr>
               @empty
               @endforelse
               <tr>
                <td class="text-center" colspan="4"><b>Total</b></td>
                <td class="text-center"><div class="input-group">
-                     <span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{$est_part->sum('jumlah')}}" readonly style="text-align: right;"></div></td>
+                     <span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{number_format($est_part->sum('jumlah'))}}" readonly style="text-align: right;"></div></td>
              </tr>
            </table>
          </div>
@@ -160,14 +160,14 @@
             <td class="text-center">{{$k+1}}</td>
             <td class="text-center">{{$jasa->nama_jasa}}</td>
             <td class="text-center">{{$jasa->qty}}</td>
-            <td class="text-center">{{$jasa->harga_perfr}}</td>
-            <td class="text-center">{{$jasa->jumlah}}</td> 
+            <td class="text-center"><div class="input-group"><span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{number_format($jasa->harga_perfr)}}" readonly style="text-align: right;"></td>
+            <td class="text-center"><div class="input-group"><span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{number_format($jasa->jumlah)}}" readonly style="text-align: right;"></td> 
           </tr> 
           @empty
           @endforelse
           <tr>
            <td class="text-center" colspan="4"><b>Total</b></td>
-           <td class="text-center"><div class="input-group"><span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{$est_jasa->sum('jumlah')}}" readonly style="text-align: right;"></div></td>
+           <td class="text-center"><div class="input-group"><span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{number_format($est_jasa->sum('jumlah'))}}" readonly style="text-align: right;"></div></td>
          </tr>
 
        </table>
