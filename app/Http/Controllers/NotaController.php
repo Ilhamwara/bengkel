@@ -125,10 +125,12 @@ class NotaController extends Controller
 				$nota[$a]->wo_id  			= $r->order_id;
 				$nota[$a]->ref_id  			= $b;
 				$nota[$a]->type 			= 'notapart';
+				$nota[$a]->status           = $r->status;
 				$nota[$a]->keterangan	 	= $r->keterangan;
 				$nota[$a]->dp	 			= $r->dp;
-				$nota[$a]->disc_part	 		= $r->discount_part;
-				$nota[$a]->disc_jasa	 		= $r->discount_jasa;
+				$nota[$a]->disc_part	 	= $r->discount_part;
+				$nota[$a]->disc_jasa	 	= $r->discount_jasa;
+				$nota[$a]->grand_total		= $r->grand_total;
 				$nota[$a]->tanggal	 		= $r->tanggal_nota;
 				$nota[$a]->save();
 			}
@@ -140,10 +142,12 @@ class NotaController extends Controller
 				$nota[$c]->wo_id  			= $r->order_id;
 				$nota[$c]->ref_id  			= $d;
 				$nota[$c]->type 			= 'notajasa';
+				$nota[$a]->status           = $r->status;
 				$nota[$c]->keterangan	 	= $r->keterangan;
 				$nota[$c]->dp	 			= $r->dp;
 				$nota[$c]->disc_part	 	= $r->discount_part;
 				$nota[$c]->disc_jasa	 	= $r->discount_jasa;
+				$nota[$a]->grand_total		= $r->grand_total;
 				$nota[$c]->tanggal	 		= $r->tanggal_nota;
 				$nota[$c]->save();
 			}

@@ -102,115 +102,133 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-3 control-label">DP</label>
+            <label class="col-sm-3 control-label">Status</label>
             <div class="col-sm-8">
-              <div class="input-group"><span class="input-group-addon">Rp</span><input type="text" class="form-control" name="dp" id="data_fuel" placeholder="DP"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="row">
-        <div class="col-sm-10 col-sm-offset-1">
-          <h4><b>Data Sparepart</b></h4>
-          <div class="portlet light bordered">
-           <div class="portlet-body">
-            <div class="table-responsive">
-              <table class="table table-striped table-bordered table-hover">
-                <tr>
-                  <th class="text-center">Nama</th>
-                  <th class="text-center">Quantity</th>
-                  <th class="text-center">Harga</th>
-                  <th class="text-center">Jumlah</th>
-                  <th class="text-center"></th>
-                </tr>
-                @forelse($est_part as $part)
-                <input type="hidden" name="est_part[]" value="{{$part->id}}">
-                <tr>
-                  <td class="text-center">{{$part->nama}}</td>
-                  <td class="text-center">{{$part->qty}}</td>
-                  <td class="text-center">{{$part->harga_jual}}</td>
-                  <td class="text-center">{{$part->jumlah}}</td>
-                  <td class="text-center"><a href="{{url('nota/hapus-part/'.$part->id)}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
-                </tr>
-                @empty
-                <tr>
-                  <td colspan="5" class="text-center bg-danger"><b>Kosong</b></td>
-                </tr>
-                @endforelse
-                <tr>
-                 <td class="text-center" colspan="3"><b>Jumlah</b></td>
-                 <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="discount_part" class="form-control" id="jumlah" value="{{$est_part->sum('jumlah')}}" readonly></div></td>
-                 <td></td>
-               </tr>
-               <tr>
-                 <td class="text-center" colspan="3"><b>Discount</b></td>
-                 <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="discount_part" class="form-control" id="disc"></div></td>
-                 <td></td>
-               </tr>
-               <tr>
-                 <td class="text-center" colspan="3"><b>Total</b></td>
-                 <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="total_part" class="form-control" id="sum" readonly></div></td>
-                 <td></td>
-               </tr>
-             </table>
+              <select class="form-control" id="sel1" name="status">
+               <option value="Belum Lunas">Belum Lunas</option>
+               <option value="Lunas">Lunas</option>
+             </select>
            </div>
-           <a href="{{url('nota/pilih-sparepart/'.$wo->no_wo.'/'.$est->no_est)}}" class="btn btn-primary">Tambah</a>
          </div>
        </div>
      </div>
+
+
+     <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+        <h4><b>Data Sparepart</b></h4>
+        <div class="portlet light bordered">
+         <div class="portlet-body">
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+              <tr>
+                <th class="text-center">Nama</th>
+                <th class="text-center">Quantity</th>
+                <th class="text-center">Harga</th>
+                <th class="text-center">Jumlah</th>
+                <th class="text-center"></th>
+              </tr>
+              @forelse($est_part as $part)
+              <input type="hidden" name="est_part[]" value="{{$part->id}}">
+              <tr>
+                <td class="text-center">{{$part->nama}}</td>
+                <td class="text-center">{{$part->qty}}</td>
+                <td class="text-center">{{$part->harga_jual}}</td>
+                <td class="text-center">{{$part->jumlah}}</td>
+                <td class="text-center"><a href="{{url('nota/hapus-part/'.$part->id)}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
+              </tr>
+              @empty
+              <tr>
+                <td colspan="5" class="text-center bg-danger"><b>Kosong</b></td>
+              </tr>
+              @endforelse
+              <tr>
+               <td class="text-center" colspan="3"><b>Jumlah</b></td>
+               <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="discount_part" class="form-control" id="jumlah" value="{{$est_part->sum('jumlah')}}" readonly></div></td>
+               <td></td>
+             </tr>
+             <tr>
+               <td class="text-center" colspan="3"><b>Discount</b></td>
+               <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="discount_part" class="form-control" id="disc" value="0"></div></td>
+               <td></td>
+             </tr>
+             <tr>
+               <td class="text-center" colspan="3"><b>Total</b></td>
+               <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="total_part" class="form-control" id="sum1" readonly></div></td>
+               <td></td>
+             </tr>
+           </table>
+         </div>
+         <a href="{{url('nota/pilih-sparepart/'.$wo->no_wo.'/'.$est->no_est)}}" class="btn btn-primary">Tambah</a>
+       </div>
+     </div>
    </div>
+ </div>
 
-   <div class="row">
-    <div class="col-sm-10 col-sm-offset-1">
-     <h4><b>Data Jasa</b></h4>
-     <div class="portlet light bordered">
+ <div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+   <h4><b>Data Jasa</b></h4>
+   <div class="portlet light bordered">
 
-       <div class="portlet-body">
-        <table class="table table-striped table-bordered table-hover">
-          <tr>
-            <th class="text-center">Nama Jasa</th>
-            <th class="text-center">FR</th>
-            <th class="text-center">Harga Per FR</th>
-            <th class="text-center">Jumlah</th>
-            <th class="text-center"></th>
-          </tr>
-          @forelse($est_jasa as $jasa)
-          <tr>
-            <input type="hidden" name="est_jasa[]" value="{{$jasa->id}}">
-            <td class="text-center">{{$jasa->nama_jasa}}</td>
-            <td class="text-center">{{$jasa->qty}}</td>
-            <td class="text-center">{{$jasa->harga_perfr}}</td>
-            <td class="text-center">{{$jasa->jumlah}}</td>
-            <td class="text-center"><a href="{{url('nota/hapus-jasa/'.$jasa->id)}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
-          </tr>
-          @empty
-          <tr>
-            <td class="text-center bg-danger" colspan="5"><b>Kosong</b></td>
-          </tr>
-          @endforelse
-          <tr>
-            <td class="text-center" colspan="3"><b>Jumlah</b></td>
-            <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="jumlah2" class="form-control" id ="jumlah2" value="{{$est_jasa->sum('jumlah')}}" readonly> </div> </td>
-            <td></td>
-          </tr>
-          <tr>
-           <td class="text-center" colspan="3"><b>Discount</b></td>
-           <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="discount_jasa" class="form-control" id ="disc2"></div></td>
+     <div class="portlet-body">
+      <table class="table table-striped table-bordered table-hover">
+        <tr>
+          <th class="text-center">Nama Jasa</th>
+          <th class="text-center">FR</th>
+          <th class="text-center">Harga Per FR</th>
+          <th class="text-center">Jumlah</th>
+          <th class="text-center"></th>
+        </tr>
+        @forelse($est_jasa as $jasa)
+        <tr>
+          <input type="hidden" name="est_jasa[]" value="{{$jasa->id}}">
+          <td class="text-center">{{$jasa->nama_jasa}}</td>
+          <td class="text-center">{{$jasa->qty}}</td>
+          <td class="text-center">{{$jasa->harga_perfr}}</td>
+          <td class="text-center">{{$jasa->jumlah}}</td>
+          <td class="text-center"><a href="{{url('nota/hapus-jasa/'.$jasa->id)}}" class="btn btn-danger"><i class="fa fa-trash-o"></i></a></td>
+        </tr>
+        @empty
+        <tr>
+          <td class="text-center bg-danger" colspan="5"><b>Kosong</b></td>
+        </tr>
+        @endforelse
+        <tr>
+          <td class="text-center" colspan="3"><b>Jumlah</b></td>
+          <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="jumlah2" class="form-control" id ="jumlah2" value="{{$est_jasa->sum('jumlah')}}" readonly> </div> </td>
+          <td></td>
+        </tr>
+        <tr>
+         <td class="text-center" colspan="3"><b>Discount</b></td>
+         <td class="text-center"><div class="input-group"><span class="input-group-addon">Rp</span><input type="text" name="discount_jasa" class="form-control" id ="disc2" value="0"></div></td>
+         <td></td>
+       </tr>
+       <tr>
+         <td class="text-center" colspan="3"><b>Total</b></td>
+         <td class="text-center"><div class="input-group">
+           <span class="input-group-addon">Rp</span><input type="text" name="total_jasa" class="form-control" id="sum" readonly></div></td>
            <td></td>
          </tr>
-         <tr>
-           <td class="text-center" colspan="3"><b>Total</b></td>
-           <td class="text-center"><div class="input-group">
-           <span class="input-group-addon">Rp</span><input type="text" name="total_jasa" class="form-control" id="sum2" readonly></div></td>
-            <td></td>
-          </tr>
-        </table>
-        <a href="{{url('nota/pilih-jasa/'.$wo->no_wo.'/'.$est->no_est)}}" class="btn btn-primary">Tambah</a>
-      </div>
+       </table>
+       <a href="{{url('nota/pilih-jasa/'.$wo->no_wo.'/'.$est->no_est)}}" class="btn btn-primary">Tambah</a>
+     </div>
+   </div>
+
+   <div class="form-group">
+    <label class="col-sm-3 control-label">DP</label>
+    <div class="col-sm-8">
+      <div class="input-group"><span class="input-group-addon">Rp</span><input type="text" class="form-control" name="dp" id="dp" value="0"></div>
     </div>
   </div>
+
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Grand Total</label>
+    <div class="col-sm-8">
+      <div class="input-group"><span class="input-group-addon">Rp</span><input type="text" class="form-control" name="grand_total" id="sum2" readonly></div>
+    </div>
+  </div>
+
+</div>
 </div>
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1">
@@ -281,26 +299,30 @@
     $("#jumlah, #disc").on("keydown keyup", function() {
       sum1();
     });
+
+    function sum1() {
+      var num5 = document.getElementById('jumlah').value;
+      var num6 = document.getElementById('disc').value;
+
+      var result = parseInt(num5) - parseInt(num6);
+      if (!isNaN(result)) {
+        document.getElementById('sum1').value = result;
+
+      }
+    }
+
+    
+
+
   });
 
-  function sum1() {
-    var num4 = document.getElementById('jumlah').value;
-    var num5 = document.getElementById('disc').value;
-
-    var result = parseInt(num4) - parseInt(num5);
-    if (!isNaN(result)) {
-      document.getElementById('sum').value = result;
-
-    }
-  }
-</script>
-<script type="text/javascript">
   $(document).ready(function() {
-    //this calculates values automatically 
+
     sum();
     $("#jumlah2, #disc2").on("keydown keyup", function() {
       sum();
     });
+
   });
 
   function sum() {
@@ -309,11 +331,35 @@
 
     var result = parseInt(num3) - parseInt(num4);
     if (!isNaN(result)) {
-      document.getElementById('sum2').value = result;
+      document.getElementById('sum').value = result;
 
     }
   }
 
+
+  $(document).ready(function() {
+
+   sum2();
+   $("#jumlah, #disc, #jumlah2, #disc2, #dp").on("keydown keyup", function() {
+    sum2();
+  });
+
+ });
+
+  function sum2() {
+   var num3 = document.getElementById('jumlah2').value;
+   var num4 = document.getElementById('disc2').value;
+   var num5 = document.getElementById('jumlah').value;
+   var num6 = document.getElementById('disc').value;
+   var num7 = document.getElementById('dp').value;
+
+   var result = (parseInt(num3) - parseInt(num4)) + (parseInt(num5) - parseInt(num6)) - parseInt(num7);
+   if (!isNaN(result)) {
+    document.getElementById('sum2').value = result;
+
+  }
+}
 </script>
+
 
 @endsection

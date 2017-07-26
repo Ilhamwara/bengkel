@@ -39,7 +39,7 @@
 								<th class="text-center">No</th>
 								<th class="text-center">No WO</th>
 								<th class="text-center">Tanggal</th>
-								<th class="text-center">Nilai Transaksi</th>
+								<th class="text-center">Nilai Transaksi (Rp)</th>
 								<th class="text-center">Status</th>
 							</tr>
 						</thead>
@@ -48,10 +48,10 @@
 							@forelse($laporans as $i => $la)
 							<tr>
 								<td>{{$i+1}}</td>
-								<td class="text-center"><a class="btn btn-primary" href="{{url('work-order/'. $la->no_wo)}}">{{$la->no_wo}}</a></td>
+								<td class="text-center"><a class="btn btn-primary" href="{{url('work-order/'. $la->nomor_wo)}}">{{$la->nomor_wo}}</a></td>
 								<td class="text-center">{{$la->tanggal}}</td>
-								<td class="text-center">{{$la->transaksi}}</td>
-								<td class="text-center">{{$la->status}}</td>
+								<td class="text-center">{{number_format($la->grand_total)}}</td>
+								<td class="text-center"><a class="btn btn-warning" href="{{url('edit/nota/'. $la->nomor_wo)}}">{{$la->status}}</a></td>
 							</tr>
 							@empty
 							@endforelse

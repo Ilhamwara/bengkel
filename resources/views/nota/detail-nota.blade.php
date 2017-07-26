@@ -108,12 +108,12 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-3 control-label">DP</label>
-            <div class="col-sm-8"><div class="input-group">
-             <span class="input-group-addon">Rp</span>
-             <input type="text" class="form-control" name="dp" id="data_fuel" value="{{number_format($nota->dp)}}" placeholder="DP" readonly></div>
+            <label class="col-sm-3 control-label">Status</label>
+            <div class="col-sm-8">
+               <input type="text" class="form-control" name="fuel_datang" id="data_fuel" value="{{$nota->status}}" disabled>
            </div>
          </div>
+
        </div>
      </div>
 
@@ -155,17 +155,18 @@
                <tr>
                  <td class="text-center" colspan="3"><b>Discount</b></td>
                  <td class="text-center"><div class="input-group">
-                 <span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{number_format($nota->disc_part)}}" readonly style="text-align: right;"></div></td>
+                   <span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{number_format($nota->disc_part)}}" readonly style="text-align: right;"></div></td>
 
                  </tr>
 
                  <tr>
                    <td class="text-center" colspan="3"><b>Total</b></td>
                    <td class="text-center"><div class="input-group">
-                     <span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{number_format($a)}}" readonly style="text-align: right;"></div></td></td>
+                     <span class="input-group-addon" >Rp</span><input type="text" class="form-control" value="{{number_format($a)}}" readonly style="text-align: right;"></div></td>
 
                    </tr>
                  </table>
+
                </div>
              </div>
            </div>
@@ -220,18 +221,40 @@
        </div>
      </div>
    </div>
+
    <div class="row">
     <div class="col-sm-10 col-sm-offset-1">
-      <h4><b>Keterangan</b></h4>
-      <textarea class="form-control" id="deskripsi" name="keterangan" id="" cols="30" rows="10" readonly>{{$nota->keterangan}}</textarea>
+
+     <div class="form-group">
+      <label class="col-sm-3 control-label">DP</label>
+      <div class="col-sm-8"><div class="input-group">
+       <span class="input-group-addon">Rp</span>
+       <input type="text" class="form-control" name="dp" id="data_fuel" value="{{number_format($nota->dp)}}" placeholder="DP" readonly></div>
+     </div>
+   </div>
+
+   <div class="form-group">
+    <label class="col-sm-3 control-label">Grand Total</label>
+    <div class="col-sm-8">
+    <div class="input-group"><span class="input-group-addon">Rp</span><input type="text" class="form-control" name="grand_total" id="sum2" readonly value="{{number_format($nota->grand_total)}}"></div>
     </div>
   </div>
-  <br><br>
-  <div class="form-group">
-    <div class="col-sm-offset-1 col-sm-10">
-      <button type="submit" class="btn btn-primary">Cetak</button>
-    </div>
+
+</div>
+</div>
+
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+    <h4><b>Keterangan</b></h4>
+    <textarea class="form-control" id="deskripsi" name="keterangan" id="" cols="30" rows="10" readonly>{{$nota->keterangan}}</textarea>
   </div>
+</div>
+<br><br>
+<div class="form-group">
+  <div class="col-sm-offset-1 col-sm-10">
+    <button type="submit" class="btn btn-primary">Cetak</button>
+  </div>
+</div>
 </form>
 
 </div>

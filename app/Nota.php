@@ -17,6 +17,8 @@ class Nota extends Model
         'disc_jasa',
         'dp',
         'tanggal',
+        'status',
+        'grand_total',
 
     ];
 }
