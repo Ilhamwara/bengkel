@@ -92,9 +92,9 @@
       <td class="tg-yw4l" style="text-align: center;">{{$data->part_number}}</td>
       <td class="tg-yw4l" style="text-align: center;">{{$data->part_name}}</td>
       <td class="tg-yw4l" style="text-align: center;">{{$data->qty}}</td>
-      <td class="tg-yw4l" style="text-align: right;">{{$data->ory}}</td>
-      <td class="tg-yw4l" style="text-align: right;">{{$data->thailand}}</td>
-      <td class="tg-yw4l" style="text-align: right;">{{$data->jepang}}</td>
+      <td class="tg-yw4l" style="text-align: right;">{{number_format($data->ory)}}</td>
+      <td class="tg-yw4l" style="text-align: right;">{{number_format($data->thailand)}}</td>
+      <td class="tg-yw4l" style="text-align: right;">{{number_format($data->jepang)}}</td>
     </tr>
     @empty
     @endforelse

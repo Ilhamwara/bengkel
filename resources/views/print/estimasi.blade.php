@@ -91,8 +91,8 @@
         <td class="tg-yw4l" style="text-align: center; font-size: 11px; padding: 3px;"><b>Nama Part</b></td>
         <td class="tg-yw4l" style="text-align: center; font-size: 11px; padding: 3px;"><b>No Part</b></td>
         <td class="tg-yw4l" style="text-align: center; font-size: 11px; padding: 3px;"><b>Qty</b></td>
-        <td class="tg-yw4l" style="text-align: center; font-size: 11px; padding: 3px;"><b>Hrg Satuan</b></td>
-        <td class="tg-yw4l" style="text-align: center; font-size: 11px; padding: 3px;"><b>Jumlah</b></td>
+        <td class="tg-yw4l" style="text-align: center; font-size: 11px; padding: 3px;"><b>Hrg Satuan (Rp)</b></td>
+        <td class="tg-yw4l" style="text-align: center; font-size: 11px; padding: 3px;"><b>Jumlah (Rp)</b></td>
       </tr>
     </thead>
     <tbody>
@@ -102,8 +102,8 @@
         <td class="tg-yw4l" style="font-size: 11px; padding: 2px;">{{$part->nama}}</td>
         <td class="tg-yw4l" style="text-align: center; font-size: 11px; padding: 2px;">{{$part->nomor_part}}</td>
         <td class="tg-yw4l" style="text-align: center; font-size: 11px; padding: 2px;">{{$part->qty_part}}</td>
-        <td class="tg-yw4l" style="text-align: right; font-size: 11px; padding: 2px;">{{$part->harga_jual}}</td>
-        <td class="tg-yw4l" style="text-align: right; font-size: 11px; padding: 2px;">{{$part->jumlah}}</td>
+        <td class="tg-yw4l" style="text-align: right; font-size: 11px; padding: 2px;">{{number_format($part->harga_jual)}}</td>
+        <td class="tg-yw4l" style="text-align: right; font-size: 11px; padding: 2px;">{{number_format($part->jumlah)}}</td>
       </tr>
       @empty
       @endforelse
@@ -113,7 +113,7 @@
         <td colspan="4" style="border: none;"></td>
 
         <td class="tg-yw4l" style="text-align: center; font-size: 11px; padding: 3px;""><b>Total Part</b></td>
-        <td class="tg-yw4l" style="text-align: right; font-size: 11px; padding: 3px;"">{{$est_part->sum('jumlah')}}</td>
+        <td class="tg-yw4l" style="text-align: right; font-size: 11px; padding: 3px;"">{{number_format($est_part->sum('jumlah'))}}</td>
       </tr>
 
     </tbody>
@@ -125,8 +125,8 @@
         <td class="tg-yw4l" style="text-align: center; font-size: 11px; padding: 3px;"><b>No</b></td>
         <td class="tg-yw4l" style="text-align: center; font-size: 11px; padding: 3px;"><b>Jasa</b></td>
         <td class="tg-yw4l" style="text-align: center; font-size: 11px; padding: 3px;"><b>Fr</b></td>
-        <td class="tg-yw4l" style="text-align: center; font-size: 11px; padding: 3px;"><b>Harga Per FR</b></td>
-        <td class="tg-yw4l" style="text-align: center; font-size: 11px; padding: 3px;"><b>Jumlah</b></td>
+        <td class="tg-yw4l" style="text-align: center; font-size: 11px; padding: 3px;"><b>Harga Per FR (Rp)</b></td>
+        <td class="tg-yw4l" style="text-align: center; font-size: 11px; padding: 3px;"><b>Jumlah (Rp)</b></td>
       </tr>
     </thead>
     <tbody>
@@ -135,8 +135,8 @@
         <td class="tg-yw4l" style="text-align: center; font-size: 11px;padding: 2px;">{{$i+1}}</td>
         <td class="tg-yw4l" style="font-size: 11px;padding: 2px;">{{$jasa->nama_jasa}}</td>
         <td class="tg-yw4l" style="text-align: center; font-size: 11px;padding: 2px;">{{$jasa->qty_jasa}}</td>
-        <td class="tg-yw4l" style="text-align: right; font-size: 11px;padding: 2px;">{{$jasa->harga_perfr}}</td>
-        <td class="tg-yw4l" style="text-align: right; font-size: 11px; padding: 2px;">{{$jasa->jumlah}}</td>
+        <td class="tg-yw4l" style="text-align: right; font-size: 11px;padding: 2px;">{{number_format($jasa->harga_perfr)}}</td>
+        <td class="tg-yw4l" style="text-align: right; font-size: 11px; padding: 2px;">{{number_format($jasa->jumlah)}}</td>
       </tr>
       @empty
       @endforelse
@@ -146,7 +146,7 @@
         <td colspan="3" style="border: none;"></td>
 
         <td class="tg-yw4l" style="text-align: center; font-size: 11px; padding: 3px;"><b>Total jasa</b></td>
-        <td class="tg-yw4l" style="text-align: right; font-size: 11px; padding: 3px;">{{$est_jasa->sum('jumlah')}}</td>
+        <td class="tg-yw4l" style="text-align: right; font-size: 11px; padding: 3px;">{{number_format($est_jasa->sum('jumlah'))}}</td>
       </tr>
 
     </tbody>
@@ -156,7 +156,7 @@
       <tr>
         <td class="tg-yw4l" style="text-align: center; border:none; width: 50%;"><b></b></td>
         <td class="tg-yw4l" style="text-align: center; border:none; width: 25%; border-bottom:1px solid; font-size: 11px; padding: 3px;"><b>Sub Total</b></td>
-        <td class="tg-yw4l" style="text-align: right; border:none; width: 25%; border-bottom:1px solid; font-size: 11px; padding: 3px;"><?php $total = $est_part->sum('jumlah') + $est_jasa->sum('jumlah'); echo $total; ?></td>
+        <td class="tg-yw4l" style="text-align: right; border:none; width: 25%; border-bottom:1px solid; font-size: 11px; padding: 3px;"><?php $total = $est_part->sum('jumlah') + $est_jasa->sum('jumlah'); echo number_format($total); ?></td>
       </tr>
 
     </tbody>

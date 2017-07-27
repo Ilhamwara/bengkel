@@ -3,14 +3,21 @@
 
 @php
 
-    $workorder = DB::table('work_order')->count();
-    $vehicle = DB::table('vehicle_inspection')
-    ->groupBy('kode')
-    ->count();
-    $estimasi = DB::table('estimasi_biaya')
-    ->where('wo_id', '>', 0)->count();
+$workorder = DB::table('work_order')->count();
+$vehicle = DB::table('vehicle_inspection')
+->groupBy('kode')
+->count();
+$estimasi = DB::table('estimasi_biaya')
+->where('wo_id', '>', 0)
+->groupBy('wo_id')
+->count();
 
- @endphp
+$nota = DB::table('nota')
+->where('wo_id', '>', 0)
+->groupBy('wo_id')
+->count();
+
+@endphp
 
 <div class="page-content">
     <!-- BEGIN PAGE HEADER-->
@@ -89,25 +96,25 @@
                         </div>
                         <div class="details">
                             <div class="number">
-                                <span data-counter="counterup" data-value="89">0</div>
-                                <div class="desc"> Nota Service </div>
+                                <span data-counter="counterup" data-value="{{$nota}}">0</div>
+                                    <div class="desc"> Nota Service </div>
+                                </div>
+                                <a class="more" href="javascript:;"> View more
+                                    <i class="m-icon-swapright m-icon-white"></i>
+                                </a>
                             </div>
-                            <a class="more" href="javascript:;"> View more
-                                <i class="m-icon-swapright m-icon-white"></i>
-                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
-            @endsection
-            @section('js')
-            <script src="{{asset('recources/global/plugins/moment.min.js')}}" type="text/javascript"></script>
-            <script src="{{asset('recources/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js')}}" type="text/javascript"></script>        
-            <script src="{{asset('recources/global/plugins/counterup/jquery.waypoints.min.js')}}" type="text/javascript"></script>
-            <script src="{{asset('recources/global/plugins/counterup/jquery.counterup.min.js')}}" type="text/javascript"></script>
-            <script src="{{asset('recources/global/plugins/fullcalendar/fullcalendar.min.js')}}" type="text/javascript"></script>
-            <script src="{{asset('recources/global/plugins/flot/jquery.flot.min.js')}}" type="text/javascript"></script>
-            <script src="{{asset('recources/global/plugins/flot/jquery.flot.resize.min.js')}}" type="text/javascript"></script>
-            <script src="{{asset('recources/global/plugins/flot/jquery.flot.categories.min.js')}}" type="text/javascript"></script>
-            <script src="{{asset('recources/pages/scripts/dashboard.min.js')}}" type="text/javascript"></script>
-            @endsection
+                @endsection
+                @section('js')
+                <script src="{{asset('recources/global/plugins/moment.min.js')}}" type="text/javascript"></script>
+                <script src="{{asset('recources/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js')}}" type="text/javascript"></script>        
+                <script src="{{asset('recources/global/plugins/counterup/jquery.waypoints.min.js')}}" type="text/javascript"></script>
+                <script src="{{asset('recources/global/plugins/counterup/jquery.counterup.min.js')}}" type="text/javascript"></script>
+                <script src="{{asset('recources/global/plugins/fullcalendar/fullcalendar.min.js')}}" type="text/javascript"></script>
+                <script src="{{asset('recources/global/plugins/flot/jquery.flot.min.js')}}" type="text/javascript"></script>
+                <script src="{{asset('recources/global/plugins/flot/jquery.flot.resize.min.js')}}" type="text/javascript"></script>
+                <script src="{{asset('recources/global/plugins/flot/jquery.flot.categories.min.js')}}" type="text/javascript"></script>
+                <script src="{{asset('recources/pages/scripts/dashboard.min.js')}}" type="text/javascript"></script>
+                @endsection

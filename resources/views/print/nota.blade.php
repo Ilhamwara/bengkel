@@ -93,8 +93,8 @@
         <th class="tg-yw4l" style="text-align: center;">No</th>
         <th class="tg-yw4l" style="text-align: center;">SPAREPART</th>
         <th class="tg-yw4l" style="text-align: center;">Qty</th>
-        <th class="tg-yw4l" style="text-align: center;">Harga Set</th>
-        <th class="tg-yw4l" style="text-align: center;">Jumlah</th>
+        <th class="tg-yw4l" style="text-align: center;">Harga Set (Rp)</th>
+        <th class="tg-yw4l" style="text-align: center;">Jumlah (Rp)</th>
       </tr>
     </thead>
     <tbody>
@@ -104,8 +104,8 @@
       <td class="tg-yw4l" style="text-align: center;">{{$i+1}}</td>
       <td class="tg-yw4l">{{$data->nama}}</td>
       <td class="tg-yw4l" style="text-align: center;">{{$data->qty}}</td>
-      <td class="tg-yw4l" style="text-align: right;">{{$data->harga_jual}}</td>
-      <td class="tg-yw4l" style="text-align: right;">{{$data->jumlah}}</td>
+      <td class="tg-yw4l" style="text-align: right;">{{number_format($data->harga_jual)}}</td>
+      <td class="tg-yw4l" style="text-align: right;">{{number_format($data->jumlah)}}</td>
     </tr>
     @empty
 
@@ -119,7 +119,7 @@
       <th class="tg-yw4l" style="text-align: center;">No</th>
       <th class="tg-yw4l" style="text-align: center;">Jasa Perbaikan</th>
       <th class="tg-yw4l" style="text-align: center;">In/Ex</th>
-      <th class="tg-yw4l" style="text-align: center;">Jumlah</th>
+      <th class="tg-yw4l" style="text-align: center;">Jumlah (Rp)</th>
     </tr>
   </thead>
   <tbody>
@@ -128,8 +128,8 @@
    <tr>
      <td class="tg-yw4l" style="text-align: center;">{{$i+1}}</td>
      <td class="tg-yw4l">{{$jas->nama_jasa}}</td>
-     <td class="tg-yw4l" style="text-align: right;">{{$jas->harga_perfr}}</td>
-     <td class="tg-yw4l" style="text-align: right;">{{$jas->jumlah}}</td>
+     <td class="tg-yw4l" style="text-align: right;">{{number_format($jas->harga_perfr)}}</td>
+     <td class="tg-yw4l" style="text-align: right;">{{number_format($jas->jumlah)}}</td>
    </tr>
    @empty
 
@@ -138,37 +138,43 @@
  </tbody>
 </table>
 
-  @php 
-  $a = $est_part->sum('jumlah') - $nota->disc_part;
-  $b = $est_jasa->sum('jumlah') - $nota->disc_jasa; 
-  $c = $a + $b;
-  @endphp
+@php 
+$a = $est_part->sum('jumlah') - $nota->disc_part;
+$b = $est_jasa->sum('jumlah') - $nota->disc_jasa;
+$c = $nota->dp; 
+$d = $a + $b - $c;
+@endphp
 
 <table class="tg data" style="width: 100%; border:none;margin-bottom: 10px;">
 
   <tr>
     <td colspan="4" class="tg-yw4l">TOTAL PART & BAHAN</td>
-    <td class="tg-yw4l" width="25%">Rp. {{$est_part->sum('jumlah')}}</td>
+    <td class="tg-yw4l" width="25%">Rp. {{number_format($est_part->sum('jumlah'))}}</td>
     <td class="tg-yw4l">TOTAL JASA</td>
-    <td colspan="3" class="tg-yw4l">Rp. {{$est_jasa->sum('jumlah')}}</td>
+    <td colspan="3" class="tg-yw4l">Rp. {{number_format($est_jasa->sum('jumlah'))}}</td>
 
   </tr>
   <tr>
     <td colspan="4" class="tg-yw4l">DISCOUNT PART & BAHAN</td>
-    <td class="tg-yw4l">Rp. {{$nota->disc_part}}</td>
+    <td class="tg-yw4l">Rp. {{number_format($nota->disc_part)}}</td>
     <td class="tg-yw4l">DISCOUNT JASA INTERNAL 10%</td>
-    <td colspan="3" class="tg-yw4l">Rp. {{$nota->disc_jasa}}</td>
+    <td colspan="3" class="tg-yw4l">Rp. {{number_format($nota->disc_jasa)}}</td>
   </tr>
   <tr>
     <td colspan="4" class="tg-yw4l">SUB TOTAL PART & BAHAN</td>
-    <td class="tg-yw4l">Rp. {{$a}}</td>
+    <td class="tg-yw4l">Rp. {{number_format($a)}}</td>
     <td class="tg-yw4l">SUB TOTAL JASA</td>
-    <td colspan="3" class="tg-yw4l" style="border-bottom: 1px solid">Rp. {{$b}}</td>
+    <td colspan="3" class="tg-yw4l" style="border-bottom: 1px solid">Rp. {{number_format($b)}}</td>
   </tr>
   <tr>
    <td colspan="5" class="tg-yw4l" style="border:none;"></td>
+   <td class="tg-yw4l" style="border:none; border-bottom: 2px solid;">DP</td>
+   <td colspan="3" class="tg-yw4l" style="border:none; border-bottom: 2px solid; width: 20%; border-top: 1px solid;">Rp. {{number_format($c)}}</td>
+ </tr>
+ <tr>
+   <td colspan="5" class="tg-yw4l" style="border:none;"></td>
    <td class="tg-yw4l" style="border:none; border-bottom: 2px solid;">GRAND TOTAL</td>
-   <td colspan="3" class="tg-yw4l" style="border:none; border-bottom: 2px solid; width: 20%; border-top: 1px solid;">Rp. {{$c}}</td>
+   <td colspan="3" class="tg-yw4l" style="border:none; border-bottom: 2px solid; width: 20%; border-top: 1px solid;">Rp. {{number_format($d)}}</td>
  </tr>
 
 
