@@ -171,7 +171,7 @@
     </thead>
     <tbody>
       <tr>
-        <td class="tg-yw4l" style="border:none; font-size: 12px;">{{$est->keterangan}}</td>
+        <td class="tg-yw4l" style="border:none; font-size: 12px;">{!!$est->keterangan!!}</td>
       </tr>
 
     </tbody>

@@ -209,7 +209,7 @@ $d = $a + $b - $c;
   </thead>
   <tbody>
     <tr>
-      <td class="tg-yw4l" style="border:none;">{{$nota->keterangan}}</td>
+      <td class="tg-yw4l" style="border:none;">{!!$nota->keterangan!!}</td>
 
     </tr>
   </tbody>

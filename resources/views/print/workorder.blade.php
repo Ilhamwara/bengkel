@@ -86,8 +86,8 @@
     </thead>
     <tbody>
       <tr>
-        <td class="tg-yw4l" style="text-align: center; border: none;">1</td>
-        <td class="tg-yw4l" style="border:none;">{{$order->keluhan}}</td>
+        <td class="tg-yw4l" style="text-align: center; border: none;"></td>
+        <td class="tg-yw4l" style="border:none;">{!!$order->keluhan!!}</td>
       </tr>
     </tbody>
   </table>
