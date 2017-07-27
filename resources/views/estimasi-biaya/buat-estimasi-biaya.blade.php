@@ -61,7 +61,7 @@
         <div class="form-group">
           <label class="col-sm-3 control-label">Tanggal</label>
           <div class="col-sm-8">
-            <input type="date" class="form-control" name="tanggal_est" id="data_tanggal"  value="{{$wo->tanggal}}">
+            <input type="date" class="form-control" name="tanggal" id="data_tanggal"  value="{{$wo->tanggal}}">
           </div>
         </div>
 

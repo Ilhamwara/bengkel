@@ -161,7 +161,7 @@ class NotaController extends Controller
 		EstPart::where('no_est','NOT-A')->update(['no_est' => $noest]);		
 		
 		Nota::where('no_not','NOT-A')->delete();
-		return redirect()->back()->with('success','Berhasil tambah Biaya Estimasi');
+		return redirect('nota')->with('success','Berhasil buat Nota');
 	}
 
 	public function hapusestpart($id)
@@ -341,7 +341,7 @@ class NotaController extends Controller
 	
 		
 	
-		return redirect('nota')->with('success','Berhasil edit pelanggan');
+		return redirect('nota')->with('success','Berhasil edit Nota');
 	}
 
 	public function hapusnotapart($id)

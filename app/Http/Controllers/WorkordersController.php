@@ -223,8 +223,7 @@ class WorkordersController extends Controller
 			$foto[$a]->save();
 		}
 
-		return redirect()->back()->with('success','Berhasil Menambahkan');
-
+		return redirect('vehicle-inspection')->with('success','Berhasil buat Vehicle Inspection');
 	}
 	public function cetak_wo($id, Request $request)
 	{
