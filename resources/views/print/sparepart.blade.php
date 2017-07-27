@@ -114,8 +114,8 @@
             <th class="tg-yw4l" style="text-align:center;"><b>Nomor Part</b></th>
             <th class="tg-yw4l" style="text-align:center;"><b>Nama Part</b></th>
             <th class="tg-yw4l" style="text-align:center;"><b>Qty</b></th>
-            <th class="tg-yw4l" style="text-align:center;"><b>Harga</b></th> 
-            <th class="tg-yw4l" style="text-align:center;"><b>Total</b></th>
+            <th class="tg-yw4l" style="text-align:center;"><b>Harga (Rp)</b></th> 
+            <th class="tg-yw4l" style="text-align:center;"><b>Total (Rp)</b></th>
         </tr>
     </thead>
     <tbody>
@@ -125,8 +125,8 @@
           <td class="tg-yw4l" style="text-align:center;">{{$pa->no_part}}</td>
           <td class="tg-yw4l">{{$pa->nama_part}}</td>
           <td class="tg-yw4l" style="text-align:center;">{{$pa->qty}}</td>
-          <td class="tg-yw4l" style="text-align: right;">{{$pa->harga_jual}}</td>
-          <td class="tg-yw4l" style="text-align: right;">{{$pa->jumlah}}</td>
+          <td class="tg-yw4l" style="text-align: right;">{{number_format($pa->harga_jual)}}</td>
+          <td class="tg-yw4l" style="text-align: right;">{{number_format($pa->jumlah)}}</td>
       </tr>
       @empty
       @endforelse
@@ -141,7 +141,7 @@
             <td colspan="3" style="border: none;"></td>
             <td class="tg-yw4l">Sub Total</td>
             <td class="tg-yw4l" style="width: 1%;">Rp. </td>
-            <td class="tg-yw4l" style="text-align: right;">{{$part->sum('jumlah')}}</td>
+            <td class="tg-yw4l" style="text-align: right;">{{number_format($part->sum('jumlah'))}}</td>
         </tr>
         <tr>
             <td colspan="3" style="border: none;"></td>
@@ -164,7 +164,7 @@
         <td colspan="3" style="border: none;"></td>
         <td class="tg-yw4l" >Grand Total</td>
         <td class="tg-yw4l" style="width: 1%;">Rp. </td>
-        <td class="tg-yw4l" style="text-align: right;">{{$part->sum('jumlah')}}</td>
+        <td class="tg-yw4l" style="text-align: right;">{{number_format($part->sum('jumlah'))}}</td>
     </tr>
 
     <tr style="padding-top: 10%;">
