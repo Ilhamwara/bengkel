@@ -13,5 +13,6 @@ class Estimasi extends Model
         'wo_id',
         'keterangan',
         'type',
+        'tanggal',
     ];
 }

@@ -333,7 +333,10 @@ class NotaController extends Controller
 		$est->update($request->all());
 
 		$not = Nota::where('wo_id',$id)->update([
-				'keterangan' => $request->keterangan
+				'keterangan' => $request->keterangan,
+				'wo_id' =>$request->wo_id,
+				'tanggal' =>$request->tanggal,
+				'status' =>$request->status,
 			]);
 	
 		

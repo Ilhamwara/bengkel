@@ -22,7 +22,7 @@ class EstimasisController extends Controller
 		where('wo_id', '>', 0)
 		// ->join('work_order','estimasi_biaya.wo_id','=','work_order.id')
 		// ->join('pelanggans','work_order.pelanggan_id','=','pelanggans.id')
-		->select('estimasi_biaya.id','estimasi_biaya.wo_id as nomor_wo','estimasi_biaya.keterangan','estimasi_biaya.updated_at', 'estimasi_biaya.no_est')
+		->select('estimasi_biaya.id','estimasi_biaya.wo_id as nomor_wo','estimasi_biaya.keterangan','estimasi_biaya.updated_at', 'estimasi_biaya.no_est', 'estimasi_biaya.tanggal')
 		->groupBy('estimasi_biaya.no_est')
 		->get();
 
@@ -81,6 +81,7 @@ class EstimasisController extends Controller
 				$estimasi[$a]->ref_id  			= $b;
 				$estimasi[$a]->type 			= 'part';
 				$estimasi[$a]->keterangan	 	= $r->keterangan;
+				$estimasi[$a]->tanggal	 	= $r->tanggal;
 				$estimasi[$a]->save();
 			}
 		}
@@ -92,6 +93,7 @@ class EstimasisController extends Controller
 				$estimasi[$c]->ref_id  			= $d;
 				$estimasi[$c]->type 			= 'jasa';
 				$estimasi[$c]->keterangan	 	= $r->keterangan;
+				$estimasi[$a]->tanggal	 	= $r->tanggal;
 				$estimasi[$c]->save();
 			}
 		}
@@ -99,7 +101,8 @@ class EstimasisController extends Controller
 		EstPart::where('no_est','EST-A')->update(['no_est' => $noest]);		
 		
 		Estimasi::where('no_est','EST-A')->delete();
-		return redirect()->back()->with('success','Berhasil tambah Biaya Estimasi');
+		return redirect('estimasi-biaya')->with('success','Berhasil buat estimasi');
+	
 	}
 
 	public function detail_estimasi($id)
@@ -267,7 +270,8 @@ class EstimasisController extends Controller
 		$estimasi->update($request->all());
 
 		$est = Estimasi::where('wo_id',$id)->update([
-				'keterangan' => $request->keter
+				'keterangan' => $request->keter,
+				'tanggal' => $request->tanggal,
 			]);
 		
 	

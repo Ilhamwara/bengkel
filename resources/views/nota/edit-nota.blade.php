@@ -22,7 +22,7 @@
     @include('include.alert')
     <form action="{{url('post-edit-nota/' .$est->wo_id)}}" method="POST" enctype="multipart/form-data" class="form-horizontal" style="overflow: hidden;">
       {{ csrf_field() }}
-      <input type="hidden" name="wo_id">
+      <input type="hidden" name="wo_id" value="{{$nota->wo_id}}">
       <div class="col-sm-10 col-sm-offset-1">
         <div class="col-sm-6">
           <div class="form-group">
@@ -236,7 +236,7 @@
 <div class="row">
   <div class="col-sm-10 col-sm-offset-1">
     <h4><b>Keterangan</b></h4>
-    <textarea class="form-control" id="deskripsi" name="keterangan" id="" cols="30" rows="10">{{$est->keterangan}}</textarea>
+    <textarea class="form-control" id="deskripsi" name="keterangan" id="" cols="30" rows="10">{{$nota->keterangan}}</textarea>
   </div>
 </div>
 <br><br>
