@@ -27,6 +27,7 @@
 	<br>
 	<div class="row">
 		<div class="col-md-12">
+		@include('include.alert')
 			<div class="portlet light bordered">
 				
 				<div class="portlet-body">

@@ -57,7 +57,7 @@
 
 										<li><a href="{{url('work-order/'.$ord->no_wo)}}" class="btn btn-warning"  data-toggle="tooltip" title="Detail" style="padding: 6px 12px;"><i class="fa fa-eye"></i></a></li>
 										<li><a href="{{url('hapus/pelanggan/'.$ord->id)}}" class="btn btn-danger"  data-toggle="tooltip" title="Hapus" style="padding: 6px 12px;"><i class="fa fa-trash-o"></i></a></li>
-										<li><a href="{{url('buat-inspection/'.$ord->id)}}" class="btn btn-success"  data-toggle="tooltip" title="Buat Vehicle Inspection" style="padding: 6px 12px;"><i class="fa fa-truck"></i></a></li>
+										<li><a href="{{url('buat-inspection/'.$ord->no_wo)}}" class="btn btn-success"  data-toggle="tooltip" title="Buat Vehicle Inspection" style="padding: 6px 12px;"><i class="fa fa-truck"></i></a></li>
 										<li><a href="{{url('buat-estimasi-biaya/'.$ord->no_wo)}}" class="btn btn-success"  data-toggle="tooltip" title="Buat Estimasi Biaya" style="padding: 6px 12px;"><i class="fa fa-calculator"></i></a></li></a></li>
 
 									</ul>

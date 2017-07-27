@@ -110,7 +110,13 @@ class WorkordersController extends Controller
 	}
 	
 	public function buat_inspection ($id){
-		$wo = Workorder::where('work_order.id', $id)->
+		$cek = Inspection::where('order_id',$id)->where('tipe_id', '>', 0)->first();
+
+		if (count($cek) > 0) {
+			return redirect()->back()->with('warning','Maaf vehicle inspection sudah dibuat');
+		}
+
+		$wo = Workorder::where('work_order.no_wo', $id)->
 		join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*','work_order.id', 'pelanggans.nama', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();

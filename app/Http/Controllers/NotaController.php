@@ -30,6 +30,11 @@ class NotaController extends Controller
 	}
 
 	public function buat_nota($id){
+		$cek = Nota::where('wo_id',$id)->where('ref_id', '>', 0)->first();
+
+		if (count($cek) > 0) {
+			return redirect()->back()->with('warning','Maaf nota sudah dibuat');
+		}
 		$wo = Workorder::where('work_order.no_wo', $id)->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
 		->select('work_order.*','work_order.id', 'pelanggans.nama', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
 		->first();
@@ -326,6 +331,10 @@ class NotaController extends Controller
 	
 		// $estimasi->update($request->all());
 		$est->update($request->all());
+
+		$not = Nota::where('wo_id',$id)->update([
+				'keterangan' => $request->keterangan
+			]);
 	
 		
 	
