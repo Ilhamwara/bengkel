@@ -34,13 +34,13 @@
         <link rel="shortcut icon" href="favicon.ico" /> </head>
     <!-- END HEAD -->
 
-    <body class=" login">
+    <body class=" login" style="margin-top: -50px!important;">
         <!-- BEGIN LOGO -->
         <div class="logo">
             <a href="{{url('/')}}">
             <h2><b>Aplikasi Manajemen Bengkel</b></h2>
             <br>
-                <img src="{{asset('recources/img/logo.jpeg')}}" width="500"> 
+                <img src="{{asset('recources/img/logo1.png')}}" width="400px"> 
             </a>
         </div>
         <!-- END LOGO -->
