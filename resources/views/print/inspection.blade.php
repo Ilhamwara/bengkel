@@ -49,7 +49,7 @@
     </tr>
     <tr>
       <td class="tg-031e">Telp. 081348956040, Email m_zainuri84@yahoo.com </td>
-      <td class="tg-yw4l">No WO:{{$pelanggan->no_wo}}</td>
+      <td class="tg-yw4l">No WO:{{$inspection->order_id}}</td>
     </tr>
   </table>
 
