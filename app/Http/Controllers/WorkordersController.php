@@ -250,15 +250,18 @@ class WorkordersController extends Controller
 	{
 
 		$inspection = Inspection::where('order_id',$id)->first();
-		
-		$pelanggan = Workorder::join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
-		->select('work_order.*','work_order.id', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
-		->first();
-		
+
 		$inspect = Inspection::where('order_id',$id)
 		->join('tipe_vehicle','vehicle_inspection.tipe_id','=','tipe_vehicle.id')
 		->select('vehicle_inspection.*', 'tipe_vehicle.nama as nama_vehicle', 'tipe_vehicle.type as tipe_vehicle')
 		->get();
+		
+		$pelanggan = Workorder::where('work_order.no_wo',$inspect[0]->order_id)
+		->join('pelanggans', 'work_order.pelanggan_id', 'pelanggans.id')
+		->select('work_order.*', 'pelanggans.nama as nama_pelanggan', 'pelanggans.alamat', 'pelanggans.no_pol', 'pelanggans.telepon', 'pelanggans.tipe', 'pelanggans.noka_nosin', 'pelanggans.warna')
+		->first();
+		
+		
 
 		$foto = Foto::where('inspect_id',$inspect[0]->kode)->get();
 
