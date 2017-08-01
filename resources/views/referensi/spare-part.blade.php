@@ -64,6 +64,7 @@
 										<li><a href="{{url('hapus/sparepart/'.$sparepart->id)}}" class="btn btn-danger"  data-toggle="tooltip" title="Hapus" style="padding: 6px 12px;"><i class="fa fa-trash-o"></i></a></li>
 									</ul>
 									@else
+									<a href="{{url('sparepart/'.$sparepart->id.'/edit')}}" class="btn btn-warning"  data-toggle="tooltip" title="Edit" style="padding: 6px 12px;"><i class="fa fa-pencil"></i></a>
 									<a href="{{url('buat-purchase-order')}}" class="btn btn-primary">Buat Order</a>
 									@endif
 								</td>
