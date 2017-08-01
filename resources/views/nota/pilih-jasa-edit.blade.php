@@ -45,7 +45,7 @@
     <div class="form-group">
      <label class="col-sm-2 control-label">FR</label>
      <div class="col-sm-6">
-      <input type="text" class="form-control" name="fr" id="banyaknya" value="0" onblur="checkNum($(this))">
+      <input type="number" min="0" step="0.01" class="form-control" name="fr" id="banyaknya" value="0" onblur="checkNum($(this))">
     </div>
   </div>
 
@@ -53,16 +53,16 @@
     <label class="col-sm-2 control-label">Harga per FR</label>
     <div class="col-sm-6"> <div class="input-group">
     <span class="input-group-addon">Rp</span>
-      <input type="text" class="form-control" name="harga_perfr" id="data_harga" disabled style="text-align: right;"></div>
+      <input type="text" class="form-control" name="harga_perfr" id="data_harga" readonly style="text-align: right;"></div>
     </div>
   </div>
-  <div class="form-group">
+  {{-- <div class="form-group">
     <label class="col-sm-2 control-label">Jumlah</label>
     <div class="col-sm-6"> <div class="input-group">
     <span class="input-group-addon">Rp</span>
       <input type="text" class="form-control" name="total_harga_jasa" id="sum" value="0" readonly style="text-align: right;"></div>
     </div>
-  </div>
+  </div> --}}
 </div>
 <div class="form-group">
   <div class="col-sm-offset-1 col-sm-10">

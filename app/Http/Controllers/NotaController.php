@@ -314,7 +314,7 @@ class NotaController extends Controller
 		$est->no_est    = $r->idest;
 		$est->type 		= $r->tipe;
 		$est->qty  		= $r->fr;
-		$est->jumlah 	= $r->total_harga_jasa;
+		$est->jumlah 	= ($r->fr*$r->harga_perfr);
 		$est->save();
 
 		return redirect('edit/nota/' .$r->wo)->with('success','Berhasil menambahkan estimasi jasa');

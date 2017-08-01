@@ -45,7 +45,7 @@
     <div class="form-group">
      <label class="col-sm-2 control-label">FR</label>
      <div class="col-sm-6">
-      <input type="text" class="form-control" name="fr" id="banyaknya" value="0" onblur="checkNum($(this))">
+      <input type="number" min="0" class="form-control" name="fr" id="banyaknya" value="0" step="0.01" onblur="checkNum($(this))">
     </div>
   </div>
 
@@ -53,16 +53,16 @@
     <label class="col-sm-2 control-label">Harga per FR</label>
     <div class="col-sm-6"> <div class="input-group">
     <span class="input-group-addon">Rp</span>
-      <input type="text" class="form-control" name="harga_perfr" id="data_harga" disabled></div>
+      <input type="text" class="form-control" name="harga_perfr" id="data_harga" readonly></div>
     </div>
   </div>
-  <div class="form-group">
+ {{--  <div class="form-group">
     <label class="col-sm-2 control-label">Jumlah</label>
     <div class="col-sm-6"> <div class="input-group">
     <span class="input-group-addon">Rp</span>
-      <input type="text" class="form-control" name="total_harga_jasa" id="sum" value="0" readonly></div>
+      <input type="number" class="form-control" name="total_harga_jasa" id="sum" value="0" step="0.01" readonly></div>
     </div>
-  </div>
+  </div> --}}
 </div>
 <div class="form-group">
   <div class="col-sm-offset-1 col-sm-10">
@@ -85,8 +85,8 @@
 <script>$('#select3').change(function(){
   var
   value = $(this).val(),
-  $obj = $('#select3 option[value="'+value+'"]'),
-  jasa = $obj.attr('data-jasa'),
+  $obj  = $('#select3 option[value="'+value+'"]'),
+  jasa  = $obj.attr('data-jasa'),
   harga = $obj.attr('data-harga');
 
   $('#data_jasa').val(jasa);
@@ -107,14 +107,13 @@ function checkNum(obj) {
 <script type="text/javascript">
   $('input[name=qty], input[name=harga_perfr]').keyup(function() {
     var divParent = $(this).closest('div');
-    var qty = $('input[name=qty]', divParent).val()-0;
-    var price = $('input[name=harga_perfr]', divParent).val()-0;
+    var qty       = $('input[name=qty]', divParent).val()-0;
+    var price     = $('input[name=harga_perfr]', divParent).val()-0;
     if (qty >= 0 && price >= 0)
       $('input[name=jumlah]', divParent).text(qty*price);
   });
 
   $(document).ready(function() {
-    //this calculates values automatically 
     sum();
     $("#banyaknya, #data_harga").on("keydown keyup", function() {
       sum();
@@ -128,7 +127,6 @@ function checkNum(obj) {
     var result = parseInt(num1) * parseInt(num2);
     if (!isNaN(result)) {
       document.getElementById('sum').value = result;
-
     }
   }
 
