@@ -322,12 +322,13 @@ class EstimasisController extends Controller
 
 	public function post_pilih_jasaedit (Request $r)
 	{		
+		// dd($r->harga_perfr);
 		$est = new EstJasa;
 		$est->jasa_id   = $r->jasa;
 		$est->no_est    = $r->idest;
 		$est->type 		= $r->tipe;
 		$est->qty  		= $r->fr;
-		$est->jumlah 	= $r->total_harga_jasa;
+		$est->jumlah 	= ($r->fr*$r->harga_perfr);
 		$est->save();
 
 		return redirect('edit/estimasi/' .$r->wo)->with('success','Berhasil menambahkan estimasi jasa');

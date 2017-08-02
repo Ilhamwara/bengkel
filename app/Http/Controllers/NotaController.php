@@ -65,7 +65,7 @@ class NotaController extends Controller
 		$not->no_est    = $r->idest;
 		$not->type 		= $r->tipe;
 		$not->qty  		= $r->fr;
-		$not->jumlah 	= $r->total_harga_jasa;
+		$not->jumlah 	= ($r->fr*$r->harga_perfr);
 		$not->save();
 
 		return redirect('buat-nota/' .$r->wo)->with('success','Berhasil menambahkan estimasi jasa');
