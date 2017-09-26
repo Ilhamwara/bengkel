@@ -33,43 +33,47 @@
         <!-- END THEME LAYOUT STYLES -->
         <link rel="shortcut icon" href="favicon.ico" /> </head>
     <!-- END HEAD -->
-
-    <body class=" login" style="margin-top: -50px!important;">
+    <style>
+        body{
+            background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url({{asset('background.jpg')}});
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .form-control{height: 45px;}
+    </style>
+    <body class="login" style="margin-top: 150px!important;">
         <!-- BEGIN LOGO -->
         <div class="logo">
             <a href="{{url('/')}}">
-            <h2><b>Aplikasi Manajemen Bengkel</b></h2>
-            <br>
-                <img src="{{asset('recources/img/logo1.png')}}" width="400px"> 
+                <h2><b>APLIKASI MANAJEMEN BENGKEL</b></h2>
             </a>
         </div>
         <!-- END LOGO -->
         <!-- BEGIN LOGIN -->
-        <div class="content">
-            <!-- BEGIN LOGIN FORM -->
-            @include('include.alert')
-            <form class="login-form" action="{{url('post-login')}}" method="POST">
-            {{csrf_field()}}
-                <div class="form-title text-center">
-                    <span class="form-title">Welcome.</span>
-                    <span class="form-subtitle">Please login.</span>
-                </div>
-                <div class="alert alert-danger display-hide">
-                    <button class="close" data-close="alert"></button>
-                    <span> Enter any email and password. </span>
-                </div>
-                <div class="form-group">
-                    <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-                    <label class="control-label visible-ie8 visible-ie9">Email</label>
-                    <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" /> </div>
-                <div class="form-group">
-                    <label class="control-label visible-ie8 visible-ie9">Password</label>
-                    <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" /> </div>
-                <div class="form-actions">
-                    <button type="submit" class="btn red btn-block uppercase">Login</button>
-                </div>
-            </form>
-            <!-- END LOGIN FORM -->
+        <div class="container">
+            <div class="col-md-6 col-md-offset-3">
+                <!-- BEGIN LOGIN FORM -->
+                @include('include.alert')
+                <form class="login-form" action="{{url('post-login')}}" method="POST">
+                {{csrf_field()}}
+                    <div class="form-title text-center">
+                        <span class="form-title">Login Here!!</span>
+                    </div>
+                    <div class="form-group">
+                        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                        <label class="control-label visible-ie8 visible-ie9">Email</label>
+                        <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" /> 
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label visible-ie8 visible-ie9">Password</label>
+                        <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" /> 
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn green btn-block uppercase">Login</button>
+                    </div>
+                </form>
+                <!-- END LOGIN FORM -->
+            </div>
         </div>
         <div class="copyright hide"> {{date('Y')}} © Creative Generation Digital Agency</div>
         <!-- BEGIN CORE PLUGINS -->

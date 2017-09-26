@@ -1,10 +1,11 @@
 .login {
-    background-color: #5c97bd
+    /*background-color: #5c97bd*/
 }
 
-.login a {
-    color: #edf4f8!important
+.login a{
+    color: #fff!important
 }
+.login a:hover{text-decoration: none;}
 
 .login .logo {
     margin: 100px auto 0;
@@ -14,7 +15,7 @@
 
 .login .content {
     width: 400px;
-    margin: 40px auto
+    margin: 0px auto
 }
 
 .login .form-title {
@@ -48,27 +49,27 @@
 }
 
 .login .content .form-control {
-    background-color: #6ba3c8;
-    border: 1px solid #6ba3c8;
-    height: 43px;
-    color: #d9ecf9
+    background-color: #fff;
+    border: 1px solid #fff;
+    height: 55px!important;
+    color: #aaa;
 }
 
 .login .content .form-control:active, .login .content .form-control:focus {
-    border: 1px solid #83b8db
+    border: 1px solid #fff
 }
 
 .login .content .form-control::-moz-placeholder {
-    color: #d9ecf9;
+    color: #aaa;
     opacity: 1
 }
 
 .login .content .form-control:-ms-input-placeholder {
-    color: #d9ecf9
+    color: #aaa
 }
 
 .login .content .form-control::-webkit-input-placeholder {
-    color: #d9ecf9
+    color: #aaa
 }
 
 .login .content select.form-control {
